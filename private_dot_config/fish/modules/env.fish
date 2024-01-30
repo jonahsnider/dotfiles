@@ -62,3 +62,7 @@ end
 set -gx GOROOT (go env GOROOT)
 set -gx GOPATH (go env GOPATH)
 #endregion Go
+
+#region Editor
+set -gx EDITOR "code --wait"
+#endregion
