@@ -1,0 +1,159 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# https://starship.rs/config/#prompt
+# Time and directory have been rearranged
+format = """$username\
+$hostname\
+$localip\
+$time\
+$shlvl\
+$singularity\
+$kubernetes\
+$vcsh\
+$fossil_branch\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$bun\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$jobs\
+$battery\
+$line_break\
+$directory\
+$status\
+$os\
+$container\
+$shell\
+$character"""
+
+# Time module
+[time]
+disabled = false
+time_format = "%I:%M %p"
+use_12hr = true
+utc_time_offset = "-8"
+
+# Directory listing
+[directory]
+fish_style_pwd_dir_length = 1
+truncation_length = 2
+
+# Character before prompt
+[character]
+error_symbol = "[∴](bold red)"
+success_symbol = "[∴](bold green)"
+
+# Battery monitor
+[battery]
+format = "at [$percentage]($style) battery "
+
+[[battery.display]]
+style = "bold #ff5555"
+threshold = 15
+[[battery.display]]
+style = "bold #ffb86c"
+threshold = 33
+[[battery.display]]
+style = "bold #f1fa8c"
+threshold = 66
+[[battery.display]]
+style = "bold #50fa7b"
+threshold = 100
+
+# Make git commit joined with the branch
+[git_branch]
+# No trailing space in quote
+format = "on [$symbol$branch]($style)"
+
+# Show current git commit
+[git_commit]
+only_detached = false
+format = "[@$hash]($style) "
+
+[git_status]
+deleted = "󰆴"
+
+[username]
+format = "[$user]($style)@"
+show_always = true
+
+[hostname]
+format = "[$hostname]($style) "
+ssh_only = false
+style = "green"
+
+[java]
+symbol = " "
+style = "red"
+
+[aws]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[golang]
+symbol = " "
