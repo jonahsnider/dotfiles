@@ -1,0 +1,53 @@
+[core]
+	autocrlf = false
+[pull]
+	rebase = true
+[rebase]
+  autoSquash = true
+[init]
+	defaultBranch = main
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+[interactive]
+  diffFilter = delta --color-only
+[help]
+	autoCorrect = prompt
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[user]
+	email = jonah@jonahsnider.com
+	name = Jonah Snider
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBjTMQzuugrN4n+mQTrid9u7vH6TfhFaTa2stNS4C6EO
+
+[gpg]
+	program = gpg
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
+
+[credential]
+	credentialStore = gpg
+	helper =
+  helper = manager-core
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/env gh auth git-credential
+
+# Delta pager https://github.com/dandavison/delta
+[delta]
+  syntax-theme = Dracula
+
+[diff "lockb"]
+    textconv = /Users/jonah/.bun/bin/bun
+    binary = true
