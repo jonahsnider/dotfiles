@@ -1,0 +1,1 @@
+vhs completion fish | source
