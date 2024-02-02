@@ -1,0 +1,1 @@
+how completion fish | source
