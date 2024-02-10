@@ -2,6 +2,7 @@
 	autocrlf = false
 [pull]
 	rebase = true
+	twohead = ort
 [rebase]
   autoSquash = true
 [init]
