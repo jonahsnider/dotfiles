@@ -160,3 +160,10 @@ alias gor "go run"
 alias gom "go mod"
 alias gob "go build"
 alias gomt "go mod tidy"
+
+# Just
+alias j just
+alias jb "just build"
+alias jt "just test"
+alias jl "just lint"
+alias jL "just lint-fix"
