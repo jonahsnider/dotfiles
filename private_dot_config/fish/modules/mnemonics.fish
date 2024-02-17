@@ -167,3 +167,6 @@ alias jb "just build"
 alias jt "just test"
 alias jl "just lint"
 alias jL "just lint-fix"
+
+# yt-dlp
+alias ytdlp "yt-dlp"
