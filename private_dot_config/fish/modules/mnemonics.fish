@@ -61,6 +61,8 @@ alias bb "bun run build"
 alias bd "bun dev"
 alias bw "bun watch"
 alias bx "bunx"
+alias bf "bun format"
+alias bF "bun format:write"
 
 # Docker
 alias d docker
