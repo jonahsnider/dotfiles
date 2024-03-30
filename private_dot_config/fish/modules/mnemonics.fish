@@ -32,6 +32,7 @@ end
 
 # Yarn
 alias y yarn
+alias yi "yarn install"
 alias ya "yarn add"
 alias yR "yarn remove"
 alias ys "yarn start"
@@ -39,11 +40,13 @@ alias ysd "yarn start:dev"
 alias yp "yarn preview"
 alias yt "yarn test"
 alias yl "yarn lint"
-alias yL "yarn lint --fix"
+alias yL "yarn lint:fix"
 alias yS "yarn style --write"
 alias yb "yarn build"
 alias yd "yarn dev"
 alias yw "yarn watch"
+alias yf "yarn format"
+alias yF "yarn format:write"
 
 # Bun
 alias b bun
