@@ -175,3 +175,6 @@ alias jL "just lint-fix"
 
 # yt-dlp
 alias ytdlp "yt-dlp"
+
+# EdgeDB
+alias edb "edgedb"
