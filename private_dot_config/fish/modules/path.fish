@@ -41,3 +41,7 @@ fish_add_path -g (go env GOPATH)/bin
 #region proto
 fish_add_path -g ~/.proto/bin
 #endregion
+
+#region EdgeDB
+fish_add_path -g ~/Library/Application\ Support/edgedb/bin
+#endregion EdgeDB
