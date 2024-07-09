@@ -96,7 +96,6 @@ $character"""
 disabled = false
 time_format = "%I:%M %p"
 use_12hr = true
-utc_time_offset = "-8"
 
 # Directory listing
 [directory]
