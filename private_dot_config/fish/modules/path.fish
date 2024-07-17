@@ -32,6 +32,7 @@ fish_add_path -g ~/.npm-global/bin
 
 #region Python
 fish_add_path -g ~/.poetry/bin
+fish_add_path -g ~/.rye/shims
 #endregion
 
 #region Go
