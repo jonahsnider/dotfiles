@@ -110,7 +110,7 @@ success_symbol = "[∴](bold green)"
 # Battery monitor
 [battery]
 format = "at [$percentage]($style) battery "
-disabled = false
+disabled = true
 
 [[battery.display]]
 style = "bold #ff5555"
