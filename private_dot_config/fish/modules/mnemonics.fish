@@ -178,3 +178,6 @@ alias ytdlp "yt-dlp"
 
 # EdgeDB
 alias edb "edgedb"
+
+# Kaitai Struct Compiler
+alias ksc "kaitai-struct-compiler"
