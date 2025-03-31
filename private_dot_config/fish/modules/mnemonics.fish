@@ -181,3 +181,6 @@ alias edb "edgedb"
 
 # Kaitai Struct Compiler
 alias ksc "kaitai-struct-compiler"
+
+# Google Java Format
+alias gjf "google-java-format"
