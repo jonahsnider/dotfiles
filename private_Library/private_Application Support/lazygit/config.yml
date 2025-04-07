@@ -4,4 +4,7 @@ git:
     pager: delta --dark --paging=never
 gui:
   authorColors:
-      'Jonah Snider': '#ffbbcc'
+    "Jonah Snider": "#ffbbcc"
+  nerdFontsVersion: "3"
+  showRandomTip: false
+  showCommandLog: false
