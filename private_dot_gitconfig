@@ -52,3 +52,6 @@
 [diff "lockb"]
     textconv = /Users/jonah/.bun/bin/bun
     binary = true
+
+[log]
+  date = local
