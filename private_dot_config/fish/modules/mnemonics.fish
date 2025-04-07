@@ -157,8 +157,10 @@ alias n node
 
 # Gradle wrapper
 alias gw ./gradlew
+alias gwa "./gradlew assemble"
 alias gwb "./gradlew build"
 alias gwS "./gradlew spotlessApply"
+alias gwt "./gradlew test"
 
 # Go
 alias gor "go run"
