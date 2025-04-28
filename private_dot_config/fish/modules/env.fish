@@ -65,4 +65,5 @@ end
 
 #region Mise
 mise env --shell fish | source
+mise activate fish | source
 #endregion
