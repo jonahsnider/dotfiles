@@ -64,5 +64,5 @@ end
 #endregion
 
 #region Mise
-mise env --shell fish
+mise env --shell fish | source
 #endregion
