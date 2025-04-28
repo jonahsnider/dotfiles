@@ -35,10 +35,6 @@ fish_add_path -g ~/.poetry/bin
 fish_add_path -g ~/.rye/shims
 #endregion
 
-#region Go
-fish_add_path -g (go env GOPATH)/bin
-#endregion Go
-
 #region proto
 fish_add_path -g ~/.proto/bin
 #endregion

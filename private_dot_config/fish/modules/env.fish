@@ -63,7 +63,6 @@ if test -f /opt/homebrew/bin/brew
 end
 #endregion
 
-#region Go
-set -gx GOROOT (go env GOROOT)
-set -gx GOPATH (go env GOPATH)
-#endregion Go
+#region Mise
+mise env --shell fish
+#endregion
