@@ -28,13 +28,6 @@ set -gx PATH $BUN_INSTALL/bin $PATH
 set -gx FNM_COREPACK_ENABLED true
 #endregion
 
-#region Python
-# pyenv
-if test (which pyenv)
-  pyenv init - | source
-end
-#endregion
-
 #region Secrets
 # GitHub token
 if test -f ~/.gh_token
