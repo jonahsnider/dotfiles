@@ -30,15 +30,11 @@ set -gx FNM_COREPACK_ENABLED true
 
 #region Secrets
 # GitHub token
-if test -f ~/.gh_token
-  set -gx GITHUB_TOKEN (cat ~/.gh_token)
-  set -gx HOMEBREW_GITHUB_API_TOKEN $GITHUB_TOKEN
-end
+set -gx GITHUB_TOKEN (cat ~/.gh_token)
+set -gx HOMEBREW_GITHUB_API_TOKEN $GITHUB_TOKEN
 
 # npm token
-if test -f ~/.npm_token
-  set -gx NPM_TOKEN (cat ~/.npm_token)
-end
+set -gx NPM_TOKEN (cat ~/.npm_token)
 #endregion
 
 #region .NET
@@ -46,14 +42,12 @@ set -gx DOTNET_CLI_TELEMETRY_OPTOUT true
 #endregion
 
 #region Brew
-if test -f /opt/homebrew/bin/brew
-  set -gx HOMEBREW_PREFIX "/opt/homebrew"
-	set -gx HOMEBREW_CELLAR "$HOMEBREW_PREFIX/Cellar"
-	set -gx HOMEBREW_REPOSITORY "$HOMEBREW_PREFIX/homebrew"
-  fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin";
-  ! set -q MANPATH; and set MANPATH ''; set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH;
-  ! set -q INFOPATH; and set INFOPATH ''; set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH;
-end
+set -gx HOMEBREW_PREFIX "/opt/homebrew"
+set -gx HOMEBREW_CELLAR "$HOMEBREW_PREFIX/Cellar"
+set -gx HOMEBREW_REPOSITORY "$HOMEBREW_PREFIX/homebrew"
+fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
+! set -q MANPATH; and set MANPATH ''; set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH;
+! set -q INFOPATH; and set INFOPATH ''; set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH;
 #endregion
 
 #region Mise
