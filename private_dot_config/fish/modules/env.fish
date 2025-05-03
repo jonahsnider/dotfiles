@@ -19,10 +19,6 @@ set -gx BUN_INSTALL "$HOME/.bun"
 set -gx PATH $BUN_INSTALL/bin $PATH
 #endregion
 
-#region fnm
-set -gx FNM_COREPACK_ENABLED true
-#endregion
-
 #region Secrets
 # GitHub token
 set -gx GITHUB_TOKEN (cat ~/.gh_token)
@@ -55,6 +51,8 @@ function cache_mise_output --argument-names cmd cache_file
     # Refresh the cache in the background using fish's native job control
     eval "$cmd > $cache_file &"
 end
+
+set -gx MISE_NODE_COREPACK true
 
 cache_mise_output "mise env --shell fish" ~/.cache/mise_env.fish
 cache_mise_output "mise activate fish" ~/.cache/mise_activate.fish
