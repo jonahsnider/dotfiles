@@ -51,6 +51,16 @@ fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
 #endregion
 
 #region Mise
-mise env --shell fish | source
-mise activate fish | source
+function cache_mise_output --argument-names cmd cache_file
+    # Source the cache if it exists
+    if test -f $cache_file
+        source $cache_file
+    end
+
+    # Refresh the cache in the background using fish's native job control
+    eval "$cmd > $cache_file &"
+end
+
+cache_mise_output "mise env --shell fish" ~/.cache/mise_env.fish
+cache_mise_output "mise activate fish" ~/.cache/mise_activate.fish
 #endregion
