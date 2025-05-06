@@ -189,3 +189,6 @@ alias gjf "google-java-format"
 
 # Swift
 alias sw swift
+
+# Mise
+alias m mise
