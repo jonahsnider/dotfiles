@@ -192,3 +192,9 @@ alias sw swift
 
 # Mise
 alias m mise
+alias ml "mise lint"
+alias mL "mise lint:fix"
+alias mb "mise build"
+alias mt "mise test"
+alias mf "mise format"
+alias mF "mise format:fix"
