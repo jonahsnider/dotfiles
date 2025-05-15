@@ -77,6 +77,7 @@ alias dcl "docker compose logs"
 alias dcu "docker compose up"
 alias dcD "docker compose down"
 alias dcS "docker compose stop"
+alias dcb "docker compose build"
 
 # cd
 alias cdp "cd ~/programming"
