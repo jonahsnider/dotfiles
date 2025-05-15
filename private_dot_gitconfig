@@ -1,5 +1,6 @@
 [core]
 	autocrlf = false
+	excludesFile = ~/.gitignore
 [pull]
 	rebase = true
 	twohead = ort
