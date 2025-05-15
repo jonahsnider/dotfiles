@@ -10,15 +10,6 @@ export GPG_TTY=(tty)
 set -gx NODE_ENV development
 #endregion
 
-#region Deno
-set -gx DENO_INSTALL ~/.deno
-#endregion
-
-#region Bun
-set -gx BUN_INSTALL "$HOME/.bun"
-set -gx PATH $BUN_INSTALL/bin $PATH
-#endregion
-
 #region Secrets
 # GitHub token
 set -gx GITHUB_TOKEN (cat ~/.gh_token)
@@ -26,10 +17,6 @@ set -gx HOMEBREW_GITHUB_API_TOKEN $GITHUB_TOKEN
 
 # npm token
 set -gx NPM_TOKEN (cat ~/.npm_token)
-#endregion
-
-#region .NET
-set -gx DOTNET_CLI_TELEMETRY_OPTOUT true
 #endregion
 
 #region Brew
