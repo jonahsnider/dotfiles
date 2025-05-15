@@ -28,6 +28,10 @@ fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
 ! set -q INFOPATH; and set INFOPATH ''; set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH;
 #endregion
 
+#region Docker
+set -gx COMPOSE_BAKE true
+#endregion
+
 #region Mise
 function cache_mise_output --argument-names cmd cache_file
     # Source the cache if it exists
