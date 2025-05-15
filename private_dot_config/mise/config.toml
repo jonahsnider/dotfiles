@@ -1,0 +1,12 @@
+[tools]
+bun = "latest"
+go = "latest"
+java = "17"
+node = "lts"
+python = "3.11"
+ruff = "latest"
+rust = "latest"
+uv = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
