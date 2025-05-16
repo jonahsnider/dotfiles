@@ -8,3 +8,9 @@ gui:
   nerdFontsVersion: "3"
   showRandomTip: false
   showCommandLog: false
+keybinding:
+  universal:
+    toggleRangeSelect: V
+  commits:
+    cherryPickCopy: c
+    pasteCommits: v
