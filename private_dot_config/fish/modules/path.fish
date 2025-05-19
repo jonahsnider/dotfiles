@@ -25,3 +25,7 @@ fish_add_path -g ~/.nimble/bin
 #region npm
 fish_add_path -g ~/.npm-global/bin
 #endregion
+
+#region Bun
+fish_add_path -g ~/.bun/bin
+#endregion
