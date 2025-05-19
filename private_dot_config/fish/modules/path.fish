@@ -22,23 +22,6 @@ fish_add_path -g ~/.cargo/bin
 fish_add_path -g ~/.nimble/bin
 #endregion
 
-#region Deno
-fish_add_path -g $DENO_INSTALL/bin
-#endregion
-
 #region npm
 fish_add_path -g ~/.npm-global/bin
 #endregion
-
-#region Python
-fish_add_path -g ~/.poetry/bin
-fish_add_path -g ~/.rye/shims
-#endregion
-
-#region proto
-fish_add_path -g ~/.proto/bin
-#endregion
-
-#region EdgeDB
-fish_add_path -g ~/Library/Application\ Support/edgedb/bin
-#endregion EdgeDB
