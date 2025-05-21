@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "prettier": "^3.5.3",
     "serve": "^14.2.4",
     "turbo": "^2.5.3",
     "vercel": "^41.7.8"
