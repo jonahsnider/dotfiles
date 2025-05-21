@@ -29,3 +29,7 @@ fish_add_path -g ~/.npm-global/bin
 #region Bun
 fish_add_path -g ~/.bun/bin
 #endregion
+
+#region tsgo
+fish_add_path -g ~/programming/typescript-go/built/local
+#endregion
