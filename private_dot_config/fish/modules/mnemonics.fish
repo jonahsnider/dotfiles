@@ -204,3 +204,6 @@ alias mf "mise format"
 alias mF "mise format:fix"
 alias md "mise dev"
 alias mr "mise run"
+
+# Cursor
+alias cur cursor
