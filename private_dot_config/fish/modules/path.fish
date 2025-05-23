@@ -7,12 +7,6 @@ if test -d /Applications
 end
 #endregion
 
-#region Nix
-if test -d ~/.nix-profile/
-  fenv source ~/.nix-profile/etc/profile.d/nix.sh
-end
-#endregion
-
 #region Rust
 # Cargo binaries
 fish_add_path -g ~/.cargo/bin
