@@ -81,11 +81,8 @@ alias dcb "docker compose build"
 
 # cd
 alias cdp "cd ~/programming"
-if test -d ~/programming/uptool
-  alias cdpu "cd ~/programming/uptool"
-  if test -d ~/programming/uptool/uptool
-    alias cdpuu "cd ~/programming/uptool/uptool"
-  end
+if test -d ~/programming/sanity
+  alias cdps "cd ~/programming/sanity"
 end
 if test -d ~/programming/zws
   alias cdpz "cd ~/programming/zws"
