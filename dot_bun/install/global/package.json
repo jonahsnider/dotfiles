@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@anthropic-ai/claude-code": "^1.0.48",
+    "@anthropic-ai/claude-code": "^1.0.51",
     "@biomejs/biome": "^2.0.6",
     "@devcontainers/cli": "^0.77.0",
     "aws-cdk": "^2.1017.1",
