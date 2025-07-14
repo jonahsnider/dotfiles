@@ -9,4 +9,4 @@ alias squoosh=squoosh-cli
 #endregion
 
 # 1Password plugins
-source /Users/jonah/.config/op/plugins.sh
+source ~/.config/op/plugins.sh
