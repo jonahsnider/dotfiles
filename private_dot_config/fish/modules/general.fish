@@ -1,11 +1,11 @@
 #region Python
 # Use Python 3 by default
-alias python=(which python3)
+abbr --add python python3
 #endregion
 
 #region Yarn
 # Alias Squoosh CLI
-alias squoosh=squoosh-cli
+abbr --add squoosh squoosh-cli
 #endregion
 
 # 1Password plugins

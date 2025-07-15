@@ -1,206 +1,206 @@
 # lazygit
-alias lg lazygit
+abbr --add lg lazygit
 
 # Git
-alias g git
-alias ga "git add"
-alias gA "git add -A"
-alias gcm "git commit -m"
-alias gp "git pull"
-alias gP "git push"
-alias gr "git rebase"
-alias gc "git checkout"
-alias grc "git rebase --continue"
-alias grm "git rebase master"
-alias gR "git reset"
-alias gb "git branch"
-alias gs "git switch"
-alias gsm git_switch_main
+abbr --add g git
+abbr --add ga "git add"
+abbr --add gA "git add -A"
+abbr --add gcm "git commit -m"
+abbr --add gp "git pull"
+abbr --add gP "git push"
+abbr --add gr "git rebase"
+abbr --add gc "git checkout"
+abbr --add grc "git rebase --continue"
+abbr --add grm "git rebase master"
+abbr --add gR "git reset"
+abbr --add gb "git branch"
+abbr --add gs "git switch"
+abbr --add gsm git_switch_main
 
 # Watson
 if type -q watson
-  alias w watson
-  alias ws "watson start"
-  alias wS "watson stop"
-  alias wC "watson cancel"
-  alias wr "watson report"
-  alias wl "watson log"
-  alias we "watson edit"
-  alias wst "watson status"
-  alias wR "watson remove"
+  abbr --add w watson
+  abbr --add ws "watson start"
+  abbr --add wS "watson stop"
+  abbr --add wC "watson cancel"
+  abbr --add wr "watson report"
+  abbr --add wl "watson log"
+  abbr --add we "watson edit"
+  abbr --add wst "watson status"
+  abbr --add wR "watson remove"
 end
 
 # Yarn
-alias y yarn
-alias yi "yarn install"
-alias ya "yarn add"
-alias yR "yarn remove"
-alias ys "yarn start"
-alias ysd "yarn start:dev"
-alias yp "yarn preview"
-alias yt "yarn test"
-alias yl "yarn lint"
-alias yL "yarn lint:fix"
-alias yS "yarn style --write"
-alias yb "yarn build"
-alias yd "yarn dev"
-alias yw "yarn watch"
-alias yf "yarn format"
-alias yF "yarn format:write"
+abbr --add y yarn
+abbr --add yi "yarn install"
+abbr --add ya "yarn add"
+abbr --add yR "yarn remove"
+abbr --add ys "yarn start"
+abbr --add ysd "yarn start:dev"
+abbr --add yp "yarn preview"
+abbr --add yt "yarn test"
+abbr --add yl "yarn lint"
+abbr --add yL "yarn lint:fix"
+abbr --add yS "yarn style --write"
+abbr --add yb "yarn build"
+abbr --add yd "yarn dev"
+abbr --add yw "yarn watch"
+abbr --add yf "yarn format"
+abbr --add yF "yarn format:write"
 
 # Bun
-alias b bun
-alias bi "bun install"
-alias ba "bun add"
-alias bR "bun remove"
-alias bs "bun start"
-alias bsd "bun start:dev"
-alias bp "bun preview"
-alias bt "bun test"
-alias bl "bun lint"
-alias bL "bun lint:fix"
-alias bS "bun style --write"
-alias bb "bun run build"
-alias bd "bun dev"
-alias bw "bun watch"
-alias bx "bunx"
-alias bf "bun format"
-alias bF "bun format:write"
+abbr --add b bun
+abbr --add bi "bun install"
+abbr --add ba "bun add"
+abbr --add bR "bun remove"
+abbr --add bs "bun start"
+abbr --add bsd "bun start:dev"
+abbr --add bp "bun preview"
+abbr --add bt "bun test"
+abbr --add bl "bun lint"
+abbr --add bL "bun lint:fix"
+abbr --add bS "bun style --write"
+abbr --add bb "bun run build"
+abbr --add bd "bun dev"
+abbr --add bw "bun watch"
+abbr --add bx "bunx"
+abbr --add bf "bun format"
+abbr --add bF "bun format:write"
 
 # Docker
-alias d docker
-alias db "docker build"
-alias dc "docker compose"
-alias dcp "docker compose pull"
-alias dcps "docker compose ps"
-alias dcl "docker compose logs"
-alias dcu "docker compose up"
-alias dcD "docker compose down"
-alias dcS "docker compose stop"
-alias dcb "docker compose build"
+abbr --add d docker
+abbr --add db "docker build"
+abbr --add dc "docker compose"
+abbr --add dcp "docker compose pull"
+abbr --add dcps "docker compose ps"
+abbr --add dcl "docker compose logs"
+abbr --add dcu "docker compose up"
+abbr --add dcD "docker compose down"
+abbr --add dcS "docker compose stop"
+abbr --add dcb "docker compose build"
 
 # cd
-alias cdp "cd ~/programming"
+abbr --add cdp "cd ~/programming"
 if test -d ~/programming/sanity
-  alias cdps "cd ~/programming/sanity"
+  abbr --add cdps "cd ~/programming/sanity"
 end
 if test -d ~/programming/zws
-  alias cdpz "cd ~/programming/zws"
+  abbr --add cdpz "cd ~/programming/zws"
 end
 if test -d ~/programming/team581
-  alias cdpt "cd ~/programming/team581"
+  abbr --add cdpt "cd ~/programming/team581"
 end
 
 # Brew
 if type -q brew
-  alias br brew
-  alias bru "brew update"
-  alias brU "brew upgrade"
-  alias brt "brew tap"
-  alias bri "brew install"
+  abbr --add br brew
+  abbr --add bru "brew update"
+  abbr --add brU "brew upgrade"
+  abbr --add brt "brew tap"
+  abbr --add bri "brew install"
 end
 
 # apt
 if type -q apt; and test (uname) != "Darwin"
-  alias a apt
-  alias ai "apt install"
-  alias aR "apt remove"
-  alias au "apt update"
-alias aU "apt upgrade"
+  abbr --add a apt
+  abbr --add ai "apt install"
+  abbr --add aR "apt remove"
+  abbr --add au "apt update"
+  abbr --add aU "apt upgrade"
 end
 
 # sudo
-alias s sudo
+abbr --add s sudo
 
 # open
-alias o open
+abbr --add o open
 
 # FFMPEG
-alias ff ffmpeg
+abbr --add ff ffmpeg
 
 # squoosh
-alias sq squoosh
+abbr --add sq squoosh
 
 # nano
-alias N nano
+abbr --add N nano
 
 # cURL
-alias cu curl
+abbr --add cu curl
 
 # clear
-alias c "clear -x"
+abbr --add c "clear -x"
 
 # Biome
-alias biome "yarn biome"
-alias r "yarn biome"
-alias rc "yarn biome check"
-alias rC "yarn biome check --apply"
-alias rt "yarn biome test"
+abbr --add biome "yarn biome"
+abbr --add r "yarn biome"
+abbr --add rc "yarn biome check"
+abbr --add rC "yarn biome check --apply"
+abbr --add rt "yarn biome test"
 
 # Turbo
-# alias turbo "yarn turbo"
-alias t "turbo"
-alias tr "turbo run"
+# abbr --add turbo "yarn turbo"
+abbr --add t "turbo"
+abbr --add tr "turbo run"
 
 if test -d ~/programming/voiceflow/database-cli
-  alias dbcli ~/programming/voiceflow/database-cli/bin/run
-  alias vfdb ~/programming/voiceflow/database-cli/bin/run
+  abbr --add dbcli ~/programming/voiceflow/database-cli/bin/run
+  abbr --add vfdb ~/programming/voiceflow/database-cli/bin/run
 end
 
 # Python
-alias py python
+abbr --add py python
 
 # Ruby
-alias rb ruby
+abbr --add rb ruby
 
 # Node.js
-alias n node
+abbr --add n node
 
 # Gradle wrapper
-alias gw ./gradlew
-alias gwa "./gradlew assemble"
-alias gwb "./gradlew build"
-alias gwS "./gradlew spotlessApply"
-alias gwt "./gradlew test"
+abbr --add gw ./gradlew
+abbr --add gwa "./gradlew assemble"
+abbr --add gwb "./gradlew build"
+abbr --add gwS "./gradlew spotlessApply"
+abbr --add gwt "./gradlew test"
 
 # Go
-alias gor "go run"
-alias gom "go mod"
-alias gob "go build"
-alias gomt "go mod tidy"
+abbr --add gor "go run"
+abbr --add gom "go mod"
+abbr --add gob "go build"
+abbr --add gomt "go mod tidy"
 
 # Just
-alias j just
-alias jb "just build"
-alias jt "just test"
-alias jl "just lint"
-alias jL "just lint-fix"
+abbr --add j just
+abbr --add jb "just build"
+abbr --add jt "just test"
+abbr --add jl "just lint"
+abbr --add jL "just lint-fix"
 
 # yt-dlp
-alias ytdlp "yt-dlp"
+abbr --add ytdlp "yt-dlp"
 
 # EdgeDB
-alias edb "edgedb"
+abbr --add edb "edgedb"
 
 # Kaitai Struct Compiler
-alias ksc "kaitai-struct-compiler"
+abbr --add ksc "kaitai-struct-compiler"
 
 # Google Java Format
-alias gjf "google-java-format"
+abbr --add gjf "google-java-format"
 
 # Swift
-alias sw swift
+abbr --add sw swift
 
 # Mise
-alias m mise
-alias ml "mise lint"
-alias mL "mise lint:fix"
-alias mb "mise build"
-alias mt "mise test"
-alias mf "mise format"
-alias mF "mise format:fix"
-alias md "mise dev"
-alias mr "mise run"
+abbr --add m mise
+abbr --add ml "mise lint"
+abbr --add mL "mise lint:fix"
+abbr --add mb "mise build"
+abbr --add mt "mise test"
+abbr --add mf "mise format"
+abbr --add mF "mise format:fix"
+abbr --add md "mise dev"
+abbr --add mr "mise run"
 
 # Cursor
-alias cur cursor
+abbr --add cur cursor
