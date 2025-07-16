@@ -17,6 +17,9 @@ abbr --add gb "git branch"
 abbr --add gs "git switch"
 abbr --add gsm git_switch_main
 
+# GitHub
+abbr --add gpc "gh pr create --web"
+
 # Watson
 if type -q watson
   abbr --add w watson
