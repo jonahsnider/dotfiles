@@ -19,6 +19,7 @@ abbr --add gsm git_switch_main
 
 # GitHub
 abbr --add gpc "gh pr create --web"
+abbr --add gpv "gh pr view --web"
 
 # Watson
 if type -q watson
