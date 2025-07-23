@@ -71,6 +71,25 @@ abbr --add bx "bunx"
 abbr --add bf "bun format"
 abbr --add bF "bun format:write"
 
+# pnpm
+abbr --add p pnpm
+abbr --add pi "pnpm install"
+abbr --add pa "pnpm add"
+abbr --add pR "pnpm remove"
+abbr --add ps "pnpm start"
+abbr --add psd "pnpm start:dev"
+abbr --add pp "pnpm preview"
+abbr --add pt "pnpm test"
+abbr --add pl "pnpm lint"
+abbr --add pL "pnpm lint:fix"
+abbr --add pS "pnpm style --write"
+abbr --add pb "pnpm build"
+abbr --add pd "pnpm dev"
+abbr --add pw "pnpm watch"
+abbr --add px "pnpx"
+abbr --add pf "pnpm format"
+abbr --add pF "pnpm format:write"
+
 # Docker
 abbr --add d docker
 abbr --add db "docker build"
