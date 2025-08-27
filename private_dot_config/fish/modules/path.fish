@@ -27,3 +27,7 @@ fish_add_path -g ~/.bun/bin
 #region tsgo
 fish_add_path -g ~/programming/typescript-go/built/local
 #endregion
+
+#region Claude Code
+fish_add_path -g ~/.claude/local
+#endregion
