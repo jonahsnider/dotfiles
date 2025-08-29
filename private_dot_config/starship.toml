@@ -159,3 +159,6 @@ disabled = true
 
 [golang]
 symbol = " "
+
+[gcloud]
+disabled = true
