@@ -229,3 +229,6 @@ abbr --add mr "mise run"
 
 # Cursor
 abbr --add cur cursor
+
+# scc
+abbr --add sloc scc
