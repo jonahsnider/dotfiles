@@ -6,6 +6,7 @@ node = "24"
 python = "3.11"
 ruff = "latest"
 rust = "latest"
+"ubi:railwayapp/railpack" = "latest"
 uv = "latest"
 
 [settings]
