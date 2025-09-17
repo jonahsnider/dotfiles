@@ -1,5 +1,5 @@
-# Defined in /Users/jonah/.config/fish/functions/up-or-search.fish @ line 2
-function up-or-search --description 'Depending on cursor position and current mode, either search backward or move up one line'
+# Take the original up-or-search with `functions up-or-search`, then add a `history merge` after the `commandline -f history-search-backward`
+function up-or-search --description 'Search back or move cursor up 1 line'
     # If we are already in search mode, continue
     if commandline --search-mode
         commandline -f history-search-backward
