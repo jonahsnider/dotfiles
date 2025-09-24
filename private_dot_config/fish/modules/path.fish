@@ -31,3 +31,7 @@ fish_add_path -g ~/programming/typescript-go/built/local
 #region Claude Code
 fish_add_path -g ~/.claude/local
 #endregion
+
+#region pnpm
+fish_add_path -g $PNPM_HOME
+#endregion

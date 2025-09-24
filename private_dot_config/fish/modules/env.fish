@@ -44,3 +44,7 @@ set -gx MISE_NODE_COREPACK true
 cache_mise_output "mise env --shell fish" ~/.cache/mise_env.fish
 cache_mise_output "mise activate fish" ~/.cache/mise_activate.fish
 #endregion
+
+#region pnpm
+set -gx PNPM_HOME "/Users/jonah.snider/Library/pnpm"
+#endregion
