@@ -1,3 +1,9 @@
+# Auto-Warpify
+if status is-interactive
+  printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "fish"}}\x9c'
+end
+
+
 set modules_dir (dirname (status --current-filename))/modules
 
 # Stage 1 - No dependencies
