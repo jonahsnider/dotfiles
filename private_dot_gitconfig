@@ -44,7 +44,7 @@
 	useHttpPath = true
 [credential "https://github.com"]
 	helper =
-	helper = !/usr/bin/env gh auth git-credential
+	helper = !/opt/homebrew/bin/gh auth git-credential
 
 # Delta pager https://github.com/dandavison/delta
 [delta]
@@ -56,3 +56,6 @@
 
 [log]
   date = local
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
