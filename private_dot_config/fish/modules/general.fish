@@ -10,3 +10,6 @@ abbr --add squoosh squoosh-cli
 
 # 1Password plugins
 source ~/.config/op/plugins.sh
+
+# Zoxide
+zoxide init fish | source
