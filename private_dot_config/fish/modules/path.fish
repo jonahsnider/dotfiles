@@ -35,3 +35,7 @@ fish_add_path -g ~/.claude/local
 #region pnpm
 fish_add_path -g $PNPM_HOME
 #endregion
+
+#region Composer
+fish_add_path -g ~/.composer/vendor/bin
+#endregion
