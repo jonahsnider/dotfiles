@@ -16,7 +16,8 @@ abbr --add gs "git switch"
 abbr --add gsm git_switch_main
 
 # GitHub
-abbr --add gpc "gh pr create --web"
+abbr --add gpc "gh pr checkout"
+abbr --add gpC "gh pr create --web"
 abbr --add gpv "gh pr view --web"
 abbr --add grv "gh repo view --web"
 abbr --add grc "gh repo clone"
