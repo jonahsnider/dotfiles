@@ -15,6 +15,12 @@ abbr --add gb "git branch"
 abbr --add gs "git switch"
 abbr --add gsm git_switch_main
 
+# Graphite
+abbr --add gtA "gt add -A"
+abbr --add gtm "gt modify"
+abbr --add gts "gt sync"
+abbr --add gtS "gt submit"
+
 # GitHub
 abbr --add gpc "gh pr checkout"
 abbr --add gpC "gh pr create --web"
