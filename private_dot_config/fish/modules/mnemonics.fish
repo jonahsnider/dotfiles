@@ -20,6 +20,7 @@ abbr --add gtA "gt add -A"
 abbr --add gtm "gt modify"
 abbr --add gts "gt sync"
 abbr --add gtS "gt submit"
+abbr --add gtc "gt continue"
 
 # GitHub
 abbr --add gpc "gh pr checkout"
@@ -238,3 +239,5 @@ abbr --add cur cursor
 
 # scc
 abbr --add sloc scc
+
+alias clod claude
