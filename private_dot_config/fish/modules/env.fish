@@ -12,7 +12,6 @@ set -gx NODE_ENV development
 
 #region Secrets
 # GitHub token
-set -gx GITHUB_TOKEN (cat ~/.gh_token)
 set -gx HOMEBREW_GITHUB_API_TOKEN $GITHUB_TOKEN
 
 # npm token
