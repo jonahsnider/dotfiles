@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+# https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#run-a-script-when-the-contents-of-another-file-changes
+
+# Brewfile hash: {{ include "dot_Brewfile" | sha256sum }}
+brew bundle install --global
