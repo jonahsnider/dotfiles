@@ -23,6 +23,8 @@ abbr --add gtA "gt add -A"
 abbr --add gtm "gt modify"
 abbr --add gts "gt sync"
 abbr --add gtS "gt submit"
+abbr --add gtSS "gt submit --stack"
+abbr --add gtSs "gt submit --stack"
 abbr --add gtc "gt continue"
 
 # GitHub
