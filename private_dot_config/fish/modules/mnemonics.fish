@@ -26,6 +26,7 @@ abbr --add gtS "gt submit"
 abbr --add gtSS "gt submit --stack"
 abbr --add gtSs "gt submit --stack"
 abbr --add gtc "gt continue"
+abbr --add gtr "gt restack"
 
 # GitHub
 abbr --add gpc "gh pr checkout"
