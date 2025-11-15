@@ -4,6 +4,8 @@ if status is-interactive
 end
 
 
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
 set modules_dir (dirname (status --current-filename))/modules
 
 # Stage 1 - No dependencies
