@@ -34,3 +34,7 @@ set -gx MISE_NODE_COREPACK true
 #region pnpm
 set -gx PNPM_HOME "/Users/jonah.snider/Library/pnpm"
 #endregion
+
+#region Sanity Nix
+set -gx SANITY_NIX_PATH "/Users/jonah.snider/programming/sanity/sanity-nix-config"
+#endregion
