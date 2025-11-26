@@ -1,0 +1,14 @@
+theme = dracula
+
+font-family = "Cascadia Code NF"
+font-size = 16
+
+background-opacity = 0.9
+background-blur = true
+
+shell-integration = fish
+
+macos-icon = custom-style
+macos-icon-frame = aluminum
+macos-icon-ghost-color = #ffffff
+macos-icon-screen-color = #000000
