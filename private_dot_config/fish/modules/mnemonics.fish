@@ -4,6 +4,11 @@ abbr --add lg lazygit
 # lazydocker
 abbr --add ld lazydocker
 
+# Chezmoi
+abbr --add ch chezmoi
+abbr --add chr chezmoi re-add
+abbr --add cha chezmoi apply
+
 # Git
 abbr --add g git
 abbr --add ga "git add"
