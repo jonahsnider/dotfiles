@@ -39,3 +39,7 @@ fish_add_path -g $PNPM_HOME
 #region Composer
 fish_add_path -g ~/.composer/vendor/bin
 #endregion
+
+#region gcloud
+fish_add_path -g /opt/homebrew/share/google-cloud-sdk/bin
+#endregion
