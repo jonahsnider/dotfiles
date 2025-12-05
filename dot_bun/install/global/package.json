@@ -2,7 +2,7 @@
   "dependencies": {
     "@biomejs/biome": "^2.2.2",
     "@devcontainers/cli": "^0.77.0",
-    "@modelcontextprotocol/inspector": "^0.17.1",
+    "@modelcontextprotocol/inspector": "^0.17.5",
     "aws-cdk": "^2.1017.1",
     "ccusage": "^16.2.0",
     "fish-lsp": "^1.0.10",
