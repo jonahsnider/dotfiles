@@ -1,10 +1,13 @@
 {
-  "credHelpers": {
-    "gcr.io": "gcloud",
-    "us.gcr.io": "gcloud",
-    "eu.gcr.io": "gcloud",
-    "asia.gcr.io": "gcloud",
-    "staging-k8s.gcr.io": "gcloud",
-    "marketplace.gcr.io": "gcloud"
-  }
+	"auths": {},
+	"credHelpers": {
+		"asia.gcr.io": "gcr",
+		"eu.gcr.io": "gcr",
+		"europe-docker.pkg.dev": "gcloud",
+		"gcr.io": "gcr",
+		"marketplace.gcr.io": "gcloud",
+		"staging-k8s.gcr.io": "gcr",
+		"us.gcr.io": "gcr"
+	},
+	"currentContext": "desktop-linux"
 }
