@@ -43,3 +43,8 @@ fish_add_path -g ~/.composer/vendor/bin
 #region gcloud
 fish_add_path -g /opt/homebrew/share/google-cloud-sdk/bin
 #endregion
+
+#region Sanity Nix
+# See https://github.com/sanity-io/sanity-nix-config#enable-global-shims
+fish_add_path -g /Users/jonah.snider/programming/sanity/sanity-nix-config/.devenv/bin
+#endregion
