@@ -38,3 +38,8 @@ set -gx PNPM_HOME "/Users/jonah.snider/Library/pnpm"
 #region Sanity Nix
 set -gx SANITY_NIX_PATH "/Users/jonah.snider/programming/sanity/sanity-nix-config"
 #endregion
+
+#region Docker
+# See https://github.com/railwayapp/railpack#getting-started
+set -gx BUILDKIT_HOST "docker-container://buildkit"
+#endregion
