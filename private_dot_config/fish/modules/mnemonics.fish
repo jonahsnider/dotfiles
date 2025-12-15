@@ -239,6 +239,8 @@ abbr --add sw swift
 
 # Mise
 abbr --add m mise
+abbr --add mu "mise upgrade"
+abbr --add mi "mise install"
 abbr --add ml "mise lint"
 abbr --add mL "mise lint:fix"
 abbr --add mb "mise build"
