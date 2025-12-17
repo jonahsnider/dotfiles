@@ -35,6 +35,7 @@ abbr --add gtc "gt continue"
 abbr --add gtC "gt create"
 abbr --add gtr "gt restack"
 abbr --add gtco "gt checkout"
+abbr --add gtp "gt pr"
 
 # GitHub
 abbr --add gpc "gh pr checkout"
