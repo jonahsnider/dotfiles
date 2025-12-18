@@ -14,3 +14,5 @@ macos-icon-ghost-color = #ffffff
 macos-icon-screen-color = #000000
 
 keybind = super+enter=unbind
+
+quit-after-last-window-closed = true
