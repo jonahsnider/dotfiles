@@ -48,3 +48,7 @@ fish_add_path -g /opt/homebrew/share/google-cloud-sdk/bin
 # See https://github.com/sanity-io/sanity-nix-config#enable-global-shims
 fish_add_path -g /Users/jonah.snider/programming/sanity/sanity-nix-config/.devenv/bin
 #endregion
+
+#region Ghostty
+fish_add_path -g /Applications/Ghostty.app/Contents/MacOS
+#endregion
