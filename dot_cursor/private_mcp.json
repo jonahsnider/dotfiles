@@ -3,12 +3,6 @@
     "GitHub": {
       "url": "https://api.githubcopilot.com/mcp/"
     },
-    "Sanity": {
-      "url": "http://127.0.0.1:3003"
-    },
-    "Sanity Prod": {
-      "url": "https://mcp.sanity.io"
-    },
     "Linear": {
       "url": "https://mcp.linear.app/mcp",
       "headers": {}
