@@ -1,3 +1,5 @@
+# https://ghostty.org/docs/config/reference
+
 theme = dracula
 
 font-family = "Cascadia Code NF"
@@ -16,3 +18,4 @@ macos-icon-screen-color = #000000
 keybind = super+enter=unbind
 
 quit-after-last-window-closed = true
+window-save-state = always
