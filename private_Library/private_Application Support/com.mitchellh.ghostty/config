@@ -18,4 +18,5 @@ macos-icon-screen-color = #000000
 keybind = super+enter=unbind
 
 quit-after-last-window-closed = true
-window-save-state = always
+maximize = true
+window-colorspace = display-p3
