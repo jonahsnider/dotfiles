@@ -257,4 +257,6 @@ abbr --add cur cursor
 # scc
 abbr --add sloc scc
 
+abbr --add da "direnv allow"
+
 alias clod claude
