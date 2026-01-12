@@ -1,5 +1,5 @@
 tap "encoredev/tap"
-tap "jonahsnider/frc", "https://github.com/jonahsnider/homebrew-frc.git"
+tap "jonahsnider/frc"
 tap "nrlquaker/createzap"
 tap "withgraphite/tap"
 # Static checker for GitHub Actions workflow files
