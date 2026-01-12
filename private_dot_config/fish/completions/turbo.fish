@@ -1,99 +1,99 @@
 # Print an optspec for argparse to handle cmd's options that are independent of any subcommand.
 function __fish_turbo_global_optspecs
-	string join \n version skip-infer no-update-notifier api= color cwd= heap= ui= login= no-color preflight remote-cache-timeout= team= token= trace= verbosity= v check-for-update __test-run dangerously-disable-package-manager-check experimental-allow-no-turbo-json root-turbo-json= cache= force= remote-only= remote-cache-read-only= no-cache cache-workers= dry-run= graph= daemon no-daemon profile= anon-profile= summarize= parallel cache-dir= concurrency= continue= single-package framework-inference= global-deps= env-mode= F/filter= affected output-logs= log-order= only pkg-inference-root= log-prefix= h/help
+    string join \n version skip-infer no-update-notifier api= color cwd= heap= ui= login= no-color preflight remote-cache-timeout= team= token= trace= verbosity= v check-for-update __test-run dangerously-disable-package-manager-check experimental-allow-no-turbo-json root-turbo-json= cache= force= remote-only= remote-cache-read-only= no-cache cache-workers= dry-run= graph= daemon no-daemon profile= anon-profile= summarize= parallel cache-dir= concurrency= continue= single-package framework-inference= global-deps= env-mode= F/filter= affected output-logs= log-order= only pkg-inference-root= log-prefix= h/help
 end
 
 function __fish_turbo_needs_command
-	# Figure out if the current invocation already has a command.
-	set -l cmd (commandline -opc)
-	set -e cmd[1]
-	argparse -s (__fish_turbo_global_optspecs) -- $cmd 2>/dev/null
-	or return
-	if set -q argv[1]
-		# Also print the command, so this can be used to figure out what it is.
-		echo $argv[1]
-		return 1
-	end
-	return 0
+    # Figure out if the current invocation already has a command.
+    set -l cmd (commandline -opc)
+    set -e cmd[1]
+    argparse -s (__fish_turbo_global_optspecs) -- $cmd 2>/dev/null
+    or return
+    if set -q argv[1]
+        # Also print the command, so this can be used to figure out what it is.
+        echo $argv[1]
+        return 1
+    end
+    return 0
 end
 
 function __fish_turbo_using_subcommand
-	set -l cmd (__fish_turbo_needs_command)
-	test -z "$cmd"
-	and return 1
-	contains -- $cmd[1] $argv
+    set -l cmd (__fish_turbo_needs_command)
+    test -z "$cmd"
+    and return 1
+    contains -- $cmd[1] $argv
 end
 
-complete -c turbo -n "__fish_turbo_needs_command" -l api -d 'Override the endpoint for API calls' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l cwd -d 'The directory in which to run turbo' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l heap -d 'Specify a file to save a pprof heap profile' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l ui -d 'Specify whether to use the streaming UI or TUI' -r -f -a "{tui\t'Use the terminal user interface',stream\t'Use the standard output stream',web\t'Use the web user interface (experimental)'}"
-complete -c turbo -n "__fish_turbo_needs_command" -l login -d 'Override the login endpoint' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l remote-cache-timeout -d 'Set a timeout for all HTTP requests' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l team -d 'Set the team slug for API calls' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l token -d 'Set the auth token for API calls' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l trace -d 'Specify a file to save a pprof trace' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l verbosity -d 'Verbosity level' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l root-turbo-json -d 'Use the `turbo.json` located at the provided path instead of one at the root of the repository' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l cache -d 'Set the cache behavior for this run. Pass a list of comma-separated key, value pairs to enable reading and writing to either the local or remote cache' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l force -d 'Ignore the existing cache (to force execution). Equivalent to `--cache=local:w,remote:w`' -r -f -a "{true\t'',false\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -l remote-only -d 'Ignore the local filesystem cache for all tasks. Only allow reading and caching artifacts using the remote cache. Equivalent to `--cache=remote:rw`' -r -f -a "{true\t'',false\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -l remote-cache-read-only -d 'Treat remote cache as read only. Equivalent to `--cache=remote:r;local:rw`' -r -f -a "{true\t'',false\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -l cache-workers -d 'Set the number of concurrent cache operations (default 10)' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l dry-run -r -f -a "{text\t'',json\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -l graph -d 'Generate a graph of the task execution and output to a file when a filename is specified (.svg, .png, .jpg, .pdf, .json, .html, .mermaid, .dot). Outputs dot graph to stdout when if no filename is provided' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l profile -d 'File to write turbo\'s performance profile output into. You can load the file up in chrome://tracing to see which parts of your build were slow' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l anon-profile -d 'File to write turbo\'s performance profile output into. All identifying data omitted from the profile' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l summarize -d 'Generate a summary of the turbo run' -r -f -a "{true\t'',false\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -l cache-dir -d 'Override the filesystem cache directory' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l concurrency -d 'Limit the concurrency of task execution. Use 1 for serial (i.e. one-at-a-time) execution' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l continue -d 'Specify how task execution should proceed when an error occurs. Use "never" to cancel all tasks. Use "dependencies-successful" to continue running tasks whose dependencies have succeeded. Use "always" to continue running all tasks, even those whose dependencies have failed' -r -f -a "{never\t'',dependencies-successful\t'',always\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -l framework-inference -d 'Specify whether or not to do framework inference for tasks' -r -f -a "{true\t'',false\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -l global-deps -d 'Specify glob of global filesystem dependencies to be hashed. Useful for .env and files' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l env-mode -d 'Environment variable mode. Use "loose" to pass the entire existing environment. Use "strict" to use an allowlist specified in turbo.json' -r -f -a "{loose\t'',strict\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -s F -l filter -d 'Use the given selector to specify package(s) to act as entry points. The syntax mirrors pnpm\'s syntax, and additional documentation and examples can be found in turbo\'s documentation https://turbo.build/repo/docs/reference/command-line-reference/run#--filter' -r
-complete -c turbo -n "__fish_turbo_needs_command" -l output-logs -d 'Set type of process output logging. Use "full" to show all output. Use "hash-only" to show only turbo-computed task hashes. Use "new-only" to show only new output with only hashes for cached tasks. Use "none" to hide process output. (default full)' -r -f -a "{full\t'',none\t'',hash-only\t'',new-only\t'',errors-only\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -l log-order -d 'Set type of task output order. Use "stream" to show output as soon as it is available. Use "grouped" to show output when a command has finished execution. Use "auto" to let turbo decide based on its own heuristics. (default auto)' -r -f -a "{auto\t'',stream\t'',grouped\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -l pkg-inference-root -r
-complete -c turbo -n "__fish_turbo_needs_command" -l log-prefix -d 'Use "none" to remove prefixes from task logs. Use "task" to get task id prefixing. Use "auto" to let turbo decide how to prefix the logs based on the execution environment. In most cases this will be the same as "task". Note that tasks running in parallel interleave their logs, so removing prefixes can make it difficult to associate logs with tasks. Use --log-order=grouped to prevent interleaving. (default auto)' -r -f -a "{auto\t'',none\t'',task\t''}"
-complete -c turbo -n "__fish_turbo_needs_command" -l version
-complete -c turbo -n "__fish_turbo_needs_command" -l skip-infer -d 'Skip any attempts to infer which version of Turbo the project is configured to use'
-complete -c turbo -n "__fish_turbo_needs_command" -l no-update-notifier -d 'Disable the turbo update notification'
-complete -c turbo -n "__fish_turbo_needs_command" -l color -d 'Force color usage in the terminal'
-complete -c turbo -n "__fish_turbo_needs_command" -l no-color -d 'Suppress color usage in the terminal'
-complete -c turbo -n "__fish_turbo_needs_command" -l preflight -d 'When enabled, turbo will precede HTTP requests with an OPTIONS request for authorization'
-complete -c turbo -n "__fish_turbo_needs_command" -s v
-complete -c turbo -n "__fish_turbo_needs_command" -l check-for-update -d 'Force a check for a new version of turbo'
-complete -c turbo -n "__fish_turbo_needs_command" -l __test-run
-complete -c turbo -n "__fish_turbo_needs_command" -l dangerously-disable-package-manager-check -d 'Allow for missing `packageManager` in `package.json`'
-complete -c turbo -n "__fish_turbo_needs_command" -l experimental-allow-no-turbo-json
-complete -c turbo -n "__fish_turbo_needs_command" -l no-cache -d 'Avoid saving task results to the cache. Useful for development/watch tasks. Equivalent to `--cache=local:r,remote:r`'
-complete -c turbo -n "__fish_turbo_needs_command" -l daemon -d 'Force turbo to use the local daemon. If unset turbo will use the default detection logic'
-complete -c turbo -n "__fish_turbo_needs_command" -l no-daemon -d 'Force turbo to not use the local daemon. If unset turbo will use the default detection logic'
-complete -c turbo -n "__fish_turbo_needs_command" -l parallel -d 'Execute all tasks in parallel'
-complete -c turbo -n "__fish_turbo_needs_command" -l single-package -d 'Run turbo in single-package mode'
-complete -c turbo -n "__fish_turbo_needs_command" -l affected -d 'Filter to only packages that are affected by changes between the current branch and `main`'
-complete -c turbo -n "__fish_turbo_needs_command" -l only -d 'Only executes the tasks specified, does not execute parent tasks'
-complete -c turbo -n "__fish_turbo_needs_command" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c turbo -n "__fish_turbo_needs_command" -a "bin" -d 'Get the path to the Turbo binary'
-complete -c turbo -n "__fish_turbo_needs_command" -a "boundaries"
-complete -c turbo -n "__fish_turbo_needs_command" -a "clone"
-complete -c turbo -n "__fish_turbo_needs_command" -a "completion" -d 'Generate the autocompletion script for the specified shell'
-complete -c turbo -n "__fish_turbo_needs_command" -a "daemon" -d 'Runs the Turborepo background daemon'
-complete -c turbo -n "__fish_turbo_needs_command" -a "generate" -d 'Generate a new app / package'
-complete -c turbo -n "__fish_turbo_needs_command" -a "telemetry" -d 'Enable or disable anonymous telemetry'
-complete -c turbo -n "__fish_turbo_needs_command" -a "scan" -d 'Turbo your monorepo by running a number of \'repo lints\' to identify common issues, suggest fixes, and improve performance'
-complete -c turbo -n "__fish_turbo_needs_command" -a "config"
-complete -c turbo -n "__fish_turbo_needs_command" -a "ls" -d 'EXPERIMENTAL: List packages in your monorepo'
-complete -c turbo -n "__fish_turbo_needs_command" -a "link" -d 'Link your local directory to a Vercel organization and enable remote caching'
-complete -c turbo -n "__fish_turbo_needs_command" -a "login" -d 'Login to your Vercel account'
-complete -c turbo -n "__fish_turbo_needs_command" -a "logout" -d 'Logout to your Vercel account'
-complete -c turbo -n "__fish_turbo_needs_command" -a "info" -d 'Print debugging information'
-complete -c turbo -n "__fish_turbo_needs_command" -a "prune" -d 'Prepare a subset of your monorepo'
-complete -c turbo -n "__fish_turbo_needs_command" -a "run" -d 'Run tasks across projects in your monorepo'
-complete -c turbo -n "__fish_turbo_needs_command" -a "query" -d 'Query your monorepo using GraphQL. If no query is provided, spins up a GraphQL server with GraphiQL'
-complete -c turbo -n "__fish_turbo_needs_command" -a "watch" -d 'Arguments used in run and watch'
-complete -c turbo -n "__fish_turbo_needs_command" -a "unlink" -d 'Unlink the current directory from your Vercel organization and disable Remote Caching'
+complete -c turbo -n __fish_turbo_needs_command -l api -d 'Override the endpoint for API calls' -r
+complete -c turbo -n __fish_turbo_needs_command -l cwd -d 'The directory in which to run turbo' -r
+complete -c turbo -n __fish_turbo_needs_command -l heap -d 'Specify a file to save a pprof heap profile' -r
+complete -c turbo -n __fish_turbo_needs_command -l ui -d 'Specify whether to use the streaming UI or TUI' -r -f -a "{tui\t'Use the terminal user interface',stream\t'Use the standard output stream',web\t'Use the web user interface (experimental)'}"
+complete -c turbo -n __fish_turbo_needs_command -l login -d 'Override the login endpoint' -r
+complete -c turbo -n __fish_turbo_needs_command -l remote-cache-timeout -d 'Set a timeout for all HTTP requests' -r
+complete -c turbo -n __fish_turbo_needs_command -l team -d 'Set the team slug for API calls' -r
+complete -c turbo -n __fish_turbo_needs_command -l token -d 'Set the auth token for API calls' -r
+complete -c turbo -n __fish_turbo_needs_command -l trace -d 'Specify a file to save a pprof trace' -r
+complete -c turbo -n __fish_turbo_needs_command -l verbosity -d 'Verbosity level' -r
+complete -c turbo -n __fish_turbo_needs_command -l root-turbo-json -d 'Use the `turbo.json` located at the provided path instead of one at the root of the repository' -r
+complete -c turbo -n __fish_turbo_needs_command -l cache -d 'Set the cache behavior for this run. Pass a list of comma-separated key, value pairs to enable reading and writing to either the local or remote cache' -r
+complete -c turbo -n __fish_turbo_needs_command -l force -d 'Ignore the existing cache (to force execution). Equivalent to `--cache=local:w,remote:w`' -r -f -a "{true\t'',false\t''}"
+complete -c turbo -n __fish_turbo_needs_command -l remote-only -d 'Ignore the local filesystem cache for all tasks. Only allow reading and caching artifacts using the remote cache. Equivalent to `--cache=remote:rw`' -r -f -a "{true\t'',false\t''}"
+complete -c turbo -n __fish_turbo_needs_command -l remote-cache-read-only -d 'Treat remote cache as read only. Equivalent to `--cache=remote:r;local:rw`' -r -f -a "{true\t'',false\t''}"
+complete -c turbo -n __fish_turbo_needs_command -l cache-workers -d 'Set the number of concurrent cache operations (default 10)' -r
+complete -c turbo -n __fish_turbo_needs_command -l dry-run -r -f -a "{text\t'',json\t''}"
+complete -c turbo -n __fish_turbo_needs_command -l graph -d 'Generate a graph of the task execution and output to a file when a filename is specified (.svg, .png, .jpg, .pdf, .json, .html, .mermaid, .dot). Outputs dot graph to stdout when if no filename is provided' -r
+complete -c turbo -n __fish_turbo_needs_command -l profile -d 'File to write turbo\'s performance profile output into. You can load the file up in chrome://tracing to see which parts of your build were slow' -r
+complete -c turbo -n __fish_turbo_needs_command -l anon-profile -d 'File to write turbo\'s performance profile output into. All identifying data omitted from the profile' -r
+complete -c turbo -n __fish_turbo_needs_command -l summarize -d 'Generate a summary of the turbo run' -r -f -a "{true\t'',false\t''}"
+complete -c turbo -n __fish_turbo_needs_command -l cache-dir -d 'Override the filesystem cache directory' -r
+complete -c turbo -n __fish_turbo_needs_command -l concurrency -d 'Limit the concurrency of task execution. Use 1 for serial (i.e. one-at-a-time) execution' -r
+complete -c turbo -n __fish_turbo_needs_command -l continue -d 'Specify how task execution should proceed when an error occurs. Use "never" to cancel all tasks. Use "dependencies-successful" to continue running tasks whose dependencies have succeeded. Use "always" to continue running all tasks, even those whose dependencies have failed' -r -f -a "{never\t'',dependencies-successful\t'',always\t''}"
+complete -c turbo -n __fish_turbo_needs_command -l framework-inference -d 'Specify whether or not to do framework inference for tasks' -r -f -a "{true\t'',false\t''}"
+complete -c turbo -n __fish_turbo_needs_command -l global-deps -d 'Specify glob of global filesystem dependencies to be hashed. Useful for .env and files' -r
+complete -c turbo -n __fish_turbo_needs_command -l env-mode -d 'Environment variable mode. Use "loose" to pass the entire existing environment. Use "strict" to use an allowlist specified in turbo.json' -r -f -a "{loose\t'',strict\t''}"
+complete -c turbo -n __fish_turbo_needs_command -s F -l filter -d 'Use the given selector to specify package(s) to act as entry points. The syntax mirrors pnpm\'s syntax, and additional documentation and examples can be found in turbo\'s documentation https://turbo.build/repo/docs/reference/command-line-reference/run#--filter' -r
+complete -c turbo -n __fish_turbo_needs_command -l output-logs -d 'Set type of process output logging. Use "full" to show all output. Use "hash-only" to show only turbo-computed task hashes. Use "new-only" to show only new output with only hashes for cached tasks. Use "none" to hide process output. (default full)' -r -f -a "{full\t'',none\t'',hash-only\t'',new-only\t'',errors-only\t''}"
+complete -c turbo -n __fish_turbo_needs_command -l log-order -d 'Set type of task output order. Use "stream" to show output as soon as it is available. Use "grouped" to show output when a command has finished execution. Use "auto" to let turbo decide based on its own heuristics. (default auto)' -r -f -a "{auto\t'',stream\t'',grouped\t''}"
+complete -c turbo -n __fish_turbo_needs_command -l pkg-inference-root -r
+complete -c turbo -n __fish_turbo_needs_command -l log-prefix -d 'Use "none" to remove prefixes from task logs. Use "task" to get task id prefixing. Use "auto" to let turbo decide how to prefix the logs based on the execution environment. In most cases this will be the same as "task". Note that tasks running in parallel interleave their logs, so removing prefixes can make it difficult to associate logs with tasks. Use --log-order=grouped to prevent interleaving. (default auto)' -r -f -a "{auto\t'',none\t'',task\t''}"
+complete -c turbo -n __fish_turbo_needs_command -l version
+complete -c turbo -n __fish_turbo_needs_command -l skip-infer -d 'Skip any attempts to infer which version of Turbo the project is configured to use'
+complete -c turbo -n __fish_turbo_needs_command -l no-update-notifier -d 'Disable the turbo update notification'
+complete -c turbo -n __fish_turbo_needs_command -l color -d 'Force color usage in the terminal'
+complete -c turbo -n __fish_turbo_needs_command -l no-color -d 'Suppress color usage in the terminal'
+complete -c turbo -n __fish_turbo_needs_command -l preflight -d 'When enabled, turbo will precede HTTP requests with an OPTIONS request for authorization'
+complete -c turbo -n __fish_turbo_needs_command -s v
+complete -c turbo -n __fish_turbo_needs_command -l check-for-update -d 'Force a check for a new version of turbo'
+complete -c turbo -n __fish_turbo_needs_command -l __test-run
+complete -c turbo -n __fish_turbo_needs_command -l dangerously-disable-package-manager-check -d 'Allow for missing `packageManager` in `package.json`'
+complete -c turbo -n __fish_turbo_needs_command -l experimental-allow-no-turbo-json
+complete -c turbo -n __fish_turbo_needs_command -l no-cache -d 'Avoid saving task results to the cache. Useful for development/watch tasks. Equivalent to `--cache=local:r,remote:r`'
+complete -c turbo -n __fish_turbo_needs_command -l daemon -d 'Force turbo to use the local daemon. If unset turbo will use the default detection logic'
+complete -c turbo -n __fish_turbo_needs_command -l no-daemon -d 'Force turbo to not use the local daemon. If unset turbo will use the default detection logic'
+complete -c turbo -n __fish_turbo_needs_command -l parallel -d 'Execute all tasks in parallel'
+complete -c turbo -n __fish_turbo_needs_command -l single-package -d 'Run turbo in single-package mode'
+complete -c turbo -n __fish_turbo_needs_command -l affected -d 'Filter to only packages that are affected by changes between the current branch and `main`'
+complete -c turbo -n __fish_turbo_needs_command -l only -d 'Only executes the tasks specified, does not execute parent tasks'
+complete -c turbo -n __fish_turbo_needs_command -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c turbo -n __fish_turbo_needs_command -a bin -d 'Get the path to the Turbo binary'
+complete -c turbo -n __fish_turbo_needs_command -a boundaries
+complete -c turbo -n __fish_turbo_needs_command -a clone
+complete -c turbo -n __fish_turbo_needs_command -a completion -d 'Generate the autocompletion script for the specified shell'
+complete -c turbo -n __fish_turbo_needs_command -a daemon -d 'Runs the Turborepo background daemon'
+complete -c turbo -n __fish_turbo_needs_command -a generate -d 'Generate a new app / package'
+complete -c turbo -n __fish_turbo_needs_command -a telemetry -d 'Enable or disable anonymous telemetry'
+complete -c turbo -n __fish_turbo_needs_command -a scan -d 'Turbo your monorepo by running a number of \'repo lints\' to identify common issues, suggest fixes, and improve performance'
+complete -c turbo -n __fish_turbo_needs_command -a config
+complete -c turbo -n __fish_turbo_needs_command -a ls -d 'EXPERIMENTAL: List packages in your monorepo'
+complete -c turbo -n __fish_turbo_needs_command -a link -d 'Link your local directory to a Vercel organization and enable remote caching'
+complete -c turbo -n __fish_turbo_needs_command -a login -d 'Login to your Vercel account'
+complete -c turbo -n __fish_turbo_needs_command -a logout -d 'Logout to your Vercel account'
+complete -c turbo -n __fish_turbo_needs_command -a info -d 'Print debugging information'
+complete -c turbo -n __fish_turbo_needs_command -a prune -d 'Prepare a subset of your monorepo'
+complete -c turbo -n __fish_turbo_needs_command -a run -d 'Run tasks across projects in your monorepo'
+complete -c turbo -n __fish_turbo_needs_command -a query -d 'Query your monorepo using GraphQL. If no query is provided, spins up a GraphQL server with GraphiQL'
+complete -c turbo -n __fish_turbo_needs_command -a watch -d 'Arguments used in run and watch'
+complete -c turbo -n __fish_turbo_needs_command -a unlink -d 'Unlink the current directory from your Vercel organization and disable Remote Caching'
 complete -c turbo -n "__fish_turbo_using_subcommand bin" -l api -d 'Override the endpoint for API calls' -r
 complete -c turbo -n "__fish_turbo_using_subcommand bin" -l cwd -d 'The directory in which to run turbo' -r
 complete -c turbo -n "__fish_turbo_using_subcommand bin" -l heap -d 'Specify a file to save a pprof heap profile' -r
@@ -216,12 +216,12 @@ complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -l dangerously-disable-package-manager-check -d 'Allow for missing `packageManager` in `package.json`'
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -l experimental-allow-no-turbo-json
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a "restart" -d 'Restarts the turbo daemon'
-complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a "start" -d 'Ensures that the turbo daemon is running'
-complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a "status" -d 'Reports the status of the turbo daemon'
-complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a "stop" -d 'Stops the turbo daemon'
-complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a "clean" -d 'Stops the turbo daemon if it is already running, and removes any stale daemon state'
-complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a "logs" -d 'Shows the daemon logs'
+complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a restart -d 'Restarts the turbo daemon'
+complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a start -d 'Ensures that the turbo daemon is running'
+complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a status -d 'Reports the status of the turbo daemon'
+complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a stop -d 'Stops the turbo daemon'
+complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a clean -d 'Stops the turbo daemon if it is already running, and removes any stale daemon state'
+complete -c turbo -n "__fish_turbo_using_subcommand daemon; and not __fish_seen_subcommand_from restart start status stop clean logs" -f -a logs -d 'Shows the daemon logs'
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from restart" -l api -d 'Override the endpoint for API calls' -r
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from restart" -l cwd -d 'The directory in which to run turbo' -r
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from restart" -l heap -d 'Specify a file to save a pprof heap profile' -r
@@ -326,7 +326,7 @@ complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subc
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from clean" -l trace -d 'Specify a file to save a pprof trace' -r
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from clean" -l verbosity -d 'Verbosity level' -r
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from clean" -l root-turbo-json -d 'Use the `turbo.json` located at the provided path instead of one at the root of the repository' -r
-complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from clean" -l clean-logs -d 'Clean'
+complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from clean" -l clean-logs -d Clean
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from clean" -l version
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from clean" -l skip-infer -d 'Skip any attempts to infer which version of Turbo the project is configured to use'
 complete -c turbo -n "__fish_turbo_using_subcommand daemon; and __fish_seen_subcommand_from clean" -l no-update-notifier -d 'Disable the turbo update notification'
@@ -389,8 +389,8 @@ complete -c turbo -n "__fish_turbo_using_subcommand generate; and not __fish_see
 complete -c turbo -n "__fish_turbo_using_subcommand generate; and not __fish_seen_subcommand_from workspace run" -l dangerously-disable-package-manager-check -d 'Allow for missing `packageManager` in `package.json`'
 complete -c turbo -n "__fish_turbo_using_subcommand generate; and not __fish_seen_subcommand_from workspace run" -l experimental-allow-no-turbo-json
 complete -c turbo -n "__fish_turbo_using_subcommand generate; and not __fish_seen_subcommand_from workspace run" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c turbo -n "__fish_turbo_using_subcommand generate; and not __fish_seen_subcommand_from workspace run" -a "workspace" -d 'Add a new package or app to your project'
-complete -c turbo -n "__fish_turbo_using_subcommand generate; and not __fish_seen_subcommand_from workspace run" -a "run"
+complete -c turbo -n "__fish_turbo_using_subcommand generate; and not __fish_seen_subcommand_from workspace run" -a workspace -d 'Add a new package or app to your project'
+complete -c turbo -n "__fish_turbo_using_subcommand generate; and not __fish_seen_subcommand_from workspace run" -a run
 complete -c turbo -n "__fish_turbo_using_subcommand generate; and __fish_seen_subcommand_from workspace" -s n -l name -d 'Name for the new workspace' -r
 complete -c turbo -n "__fish_turbo_using_subcommand generate; and __fish_seen_subcommand_from workspace" -s c -l copy -d 'Generate a workspace using an existing workspace as a template. Can be the name of a local workspace within your monorepo, or a fully qualified GitHub URL with any branch and/or subdirectory' -r
 complete -c turbo -n "__fish_turbo_using_subcommand generate; and __fish_seen_subcommand_from workspace" -s d -l destination -d 'Where the new workspace should be created' -r
@@ -471,9 +471,9 @@ complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and not __fish_se
 complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and not __fish_seen_subcommand_from enable disable status" -l dangerously-disable-package-manager-check -d 'Allow for missing `packageManager` in `package.json`'
 complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and not __fish_seen_subcommand_from enable disable status" -l experimental-allow-no-turbo-json
 complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and not __fish_seen_subcommand_from enable disable status" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and not __fish_seen_subcommand_from enable disable status" -f -a "enable" -d 'Enables anonymous telemetry'
-complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and not __fish_seen_subcommand_from enable disable status" -f -a "disable" -d 'Disables anonymous telemetry'
-complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and not __fish_seen_subcommand_from enable disable status" -f -a "status" -d 'Reports the status of telemetry'
+complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and not __fish_seen_subcommand_from enable disable status" -f -a enable -d 'Enables anonymous telemetry'
+complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and not __fish_seen_subcommand_from enable disable status" -f -a disable -d 'Disables anonymous telemetry'
+complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and not __fish_seen_subcommand_from enable disable status" -f -a status -d 'Reports the status of telemetry'
 complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and __fish_seen_subcommand_from enable" -l api -d 'Override the endpoint for API calls' -r
 complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and __fish_seen_subcommand_from enable" -l cwd -d 'The directory in which to run turbo' -r
 complete -c turbo -n "__fish_turbo_using_subcommand telemetry; and __fish_seen_subcommand_from enable" -l heap -d 'Specify a file to save a pprof heap profile' -r

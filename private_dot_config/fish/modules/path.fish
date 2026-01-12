@@ -3,7 +3,7 @@ fish_add_path -g ~/.local/bin
 
 #region macOS
 if test -d /Applications
-  fish_add_path -g /Applications
+    fish_add_path -g /Applications
 end
 #endregion
 

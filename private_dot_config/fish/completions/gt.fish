@@ -29,4 +29,3 @@ complete -c gt -x -n "__fish_seen_subcommand_from checkout co bco delete dl rena
 
 # gt downstack get takes remote branches
 complete -c gt -x -n "__fish_seen_subcommand_from ds dsg get g" -n "__fish_seen_subcommand_from get dsg" -a "(__fish_git_remote_branches)"
-

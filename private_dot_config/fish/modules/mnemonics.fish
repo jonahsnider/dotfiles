@@ -47,15 +47,15 @@ abbr --add gpl "gh pr list"
 
 # Watson
 if type -q watson
-  abbr --add w watson
-  abbr --add ws "watson start"
-  abbr --add wS "watson stop"
-  abbr --add wC "watson cancel"
-  abbr --add wr "watson report"
-  abbr --add wl "watson log"
-  abbr --add we "watson edit"
-  abbr --add wst "watson status"
-  abbr --add wR "watson remove"
+    abbr --add w watson
+    abbr --add ws "watson start"
+    abbr --add wS "watson stop"
+    abbr --add wC "watson cancel"
+    abbr --add wr "watson report"
+    abbr --add wl "watson log"
+    abbr --add we "watson edit"
+    abbr --add wst "watson status"
+    abbr --add wR "watson remove"
 end
 
 # Yarn
@@ -91,7 +91,7 @@ abbr --add bS "bun style --write"
 abbr --add bb "bun run build"
 abbr --add bd "bun dev"
 abbr --add bw "bun watch"
-abbr --add bx "bunx"
+abbr --add bx bunx
 abbr --add bf "bun format"
 abbr --add bF "bun format:write"
 
@@ -110,7 +110,7 @@ abbr --add pS "pnpm style --write"
 abbr --add pb "pnpm build"
 abbr --add pd "pnpm dev"
 abbr --add pw "pnpm watch"
-abbr --add px "pnpx"
+abbr --add px pnpx
 abbr --add pf "pnpm format"
 abbr --add pF "pnpm format:write"
 
@@ -129,31 +129,31 @@ abbr --add dcb "docker compose build"
 # cd
 abbr --add cdp "cd ~/programming"
 if test -d ~/programming/sanity
-  abbr --add cdps "cd ~/programming/sanity"
+    abbr --add cdps "cd ~/programming/sanity"
 end
 if test -d ~/programming/zws
-  abbr --add cdpz "cd ~/programming/zws"
+    abbr --add cdpz "cd ~/programming/zws"
 end
 if test -d ~/programming/team581
-  abbr --add cdpt "cd ~/programming/team581"
+    abbr --add cdpt "cd ~/programming/team581"
 end
 
 # Brew
 if type -q brew
-  abbr --add br brew
-  abbr --add bru "brew update"
-  abbr --add brU "brew upgrade"
-  abbr --add brt "brew tap"
-  abbr --add bri "brew install"
+    abbr --add br brew
+    abbr --add bru "brew update"
+    abbr --add brU "brew upgrade"
+    abbr --add brt "brew tap"
+    abbr --add bri "brew install"
 end
 
 # apt
-if type -q apt; and test (uname) != "Darwin"
-  abbr --add a apt
-  abbr --add ai "apt install"
-  abbr --add aR "apt remove"
-  abbr --add au "apt update"
-  abbr --add aU "apt upgrade"
+if type -q apt; and test (uname) != Darwin
+    abbr --add a apt
+    abbr --add ai "apt install"
+    abbr --add aR "apt remove"
+    abbr --add au "apt update"
+    abbr --add aU "apt upgrade"
 end
 
 # sudo
@@ -186,12 +186,12 @@ abbr --add rt "yarn biome test"
 
 # Turbo
 # abbr --add turbo "yarn turbo"
-abbr --add t "turbo"
+abbr --add t turbo
 abbr --add tr "turbo run"
 
 if test -d ~/programming/voiceflow/database-cli
-  abbr --add dbcli ~/programming/voiceflow/database-cli/bin/run
-  abbr --add vfdb ~/programming/voiceflow/database-cli/bin/run
+    abbr --add dbcli ~/programming/voiceflow/database-cli/bin/run
+    abbr --add vfdb ~/programming/voiceflow/database-cli/bin/run
 end
 
 # Python
@@ -224,16 +224,16 @@ abbr --add jl "just lint"
 abbr --add jL "just lint-fix"
 
 # yt-dlp
-abbr --add ytdlp "yt-dlp"
+abbr --add ytdlp yt-dlp
 
 # EdgeDB
-abbr --add edb "edgedb"
+abbr --add edb edgedb
 
 # Kaitai Struct Compiler
-abbr --add ksc "kaitai-struct-compiler"
+abbr --add ksc kaitai-struct-compiler
 
 # Google Java Format
-abbr --add gjf "google-java-format"
+abbr --add gjf google-java-format
 
 # Swift
 abbr --add sw swift

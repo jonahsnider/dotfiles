@@ -19,12 +19,16 @@ set -gx NPM_TOKEN (cat ~/.npm_token)
 #endregion
 
 #region Brew
-set -gx HOMEBREW_PREFIX "/opt/homebrew"
+set -gx HOMEBREW_PREFIX /opt/homebrew
 set -gx HOMEBREW_CELLAR "$HOMEBREW_PREFIX/Cellar"
 set -gx HOMEBREW_REPOSITORY "$HOMEBREW_PREFIX/homebrew"
 fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin"
-! set -q MANPATH; and set MANPATH ''; set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH;
-! set -q INFOPATH; and set INFOPATH ''; set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH;
+! set -q MANPATH; and set MANPATH ''
+set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH
+
+! set -q INFOPATH; and set INFOPATH ''
+set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH
+
 #endregion
 
 #region Mise

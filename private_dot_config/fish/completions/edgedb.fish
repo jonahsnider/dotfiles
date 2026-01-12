@@ -1,92 +1,92 @@
 # Print an optspec for argparse to handle cmd's options that are independent of any subcommand.
 function __fish_edgedb_global_optspecs
-	string join \n debug-print-frames debug-print-descriptors debug-print-codecs test-output-conn-params help-connect t/tab-separated j/json c= V/version no-version-check no-cli-update-check I/instance= dsn= credentials-file= H/host= P/port= unix-path= u/user= d/database= b/branch= password no-password password-from-stdin secret-key= tls-ca-file= tls-verify-hostname no-tls-verify-hostname tls-security= tls-server-name= wait-until-available= admin connect-timeout= cloud-api-endpoint= cloud-secret-key= cloud-profile= h/help
+    string join \n debug-print-frames debug-print-descriptors debug-print-codecs test-output-conn-params help-connect t/tab-separated j/json c= V/version no-version-check no-cli-update-check I/instance= dsn= credentials-file= H/host= P/port= unix-path= u/user= d/database= b/branch= password no-password password-from-stdin secret-key= tls-ca-file= tls-verify-hostname no-tls-verify-hostname tls-security= tls-server-name= wait-until-available= admin connect-timeout= cloud-api-endpoint= cloud-secret-key= cloud-profile= h/help
 end
 
 function __fish_edgedb_needs_command
-	# Figure out if the current invocation already has a command.
-	set -l cmd (commandline -opc)
-	set -e cmd[1]
-	argparse -s (__fish_edgedb_global_optspecs) -- $cmd 2>/dev/null
-	or return
-	if set -q argv[1]
-		# Also print the command, so this can be used to figure out what it is.
-		echo $argv[1]
-		return 1
-	end
-	return 0
+    # Figure out if the current invocation already has a command.
+    set -l cmd (commandline -opc)
+    set -e cmd[1]
+    argparse -s (__fish_edgedb_global_optspecs) -- $cmd 2>/dev/null
+    or return
+    if set -q argv[1]
+        # Also print the command, so this can be used to figure out what it is.
+        echo $argv[1]
+        return 1
+    end
+    return 0
 end
 
 function __fish_edgedb_using_subcommand
-	set -l cmd (__fish_edgedb_needs_command)
-	test -z "$cmd"
-	and return 1
-	contains -- $cmd[1] $argv
+    set -l cmd (__fish_edgedb_needs_command)
+    test -z "$cmd"
+    and return 1
+    contains -- $cmd[1] $argv
 end
 
-complete -c edgedb -n "__fish_edgedb_needs_command" -s c -d 'Execute a query instead of starting REPL' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
-complete -c edgedb -n "__fish_edgedb_needs_command" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
-complete -c edgedb -n "__fish_edgedb_needs_command" -s H -l host -d 'EdgeDB instance host' -r -f -a "(__fish_print_hostnames)"
-complete -c edgedb -n "__fish_edgedb_needs_command" -s P -l port -d 'Port to connect to EdgeDB' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -l unix-path -d 'A path to a Unix socket for EdgeDB connection' -r -F
-complete -c edgedb -n "__fish_edgedb_needs_command" -s u -l user -d 'EdgeDB user name' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -s d -l database -d 'Database name to connect to' -r -f
-complete -c edgedb -n "__fish_edgedb_needs_command" -s b -l branch -d 'Branch to connect with' -r -f
-complete -c edgedb -n "__fish_edgedb_needs_command" -l secret-key -d 'Secret key to authenticate with' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -l tls-ca-file -d 'Certificate to match server against' -r -F
-complete -c edgedb -n "__fish_edgedb_needs_command" -l tls-security -d 'Specifications for client-side TLS security mode:' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -l tls-server-name -d 'Override server name used for TLS connections and certificate verification' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -l wait-until-available -d 'Retry up to WAIT_TIME (e.g. \'30s\') in case EdgeDB connection cannot be established' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -l connect-timeout -d 'Fail when no response from EdgeDB for TIMEOUT (default \'10s\'); alternatively will retry if --wait-until-available is also specified' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -l cloud-api-endpoint -d 'Specify the API endpoint. Defaults to the current logged-in server, or <https://api.g.aws.edgedb.cloud> if unauthorized' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -l cloud-secret-key -d 'Specify the API secret key to use instead of loading key from a remembered authentication' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -l cloud-profile -d 'Specify the authenticated profile. Defaults to "default"' -r
-complete -c edgedb -n "__fish_edgedb_needs_command" -l debug-print-frames
-complete -c edgedb -n "__fish_edgedb_needs_command" -l debug-print-descriptors
-complete -c edgedb -n "__fish_edgedb_needs_command" -l debug-print-codecs
-complete -c edgedb -n "__fish_edgedb_needs_command" -l test-output-conn-params
-complete -c edgedb -n "__fish_edgedb_needs_command" -l help-connect -d 'Print all available connection options for interactive shell along with subcommands'
-complete -c edgedb -n "__fish_edgedb_needs_command" -s t -l tab-separated -d 'Tab-separated output for queries'
-complete -c edgedb -n "__fish_edgedb_needs_command" -s j -l json -d 'JSON output for queries (single JSON list per query)'
-complete -c edgedb -n "__fish_edgedb_needs_command" -s V -l version -d 'Show command-line tool version'
-complete -c edgedb -n "__fish_edgedb_needs_command" -l no-version-check
-complete -c edgedb -n "__fish_edgedb_needs_command" -l no-cli-update-check -d 'Disable check for new available CLI version'
-complete -c edgedb -n "__fish_edgedb_needs_command" -l password -d 'Ask for password on terminal (TTY)'
-complete -c edgedb -n "__fish_edgedb_needs_command" -l no-password -d 'Don\'t ask for password'
-complete -c edgedb -n "__fish_edgedb_needs_command" -l password-from-stdin -d 'Read password from stdin rather than TTY (useful for scripts)'
-complete -c edgedb -n "__fish_edgedb_needs_command" -l tls-verify-hostname -d 'Verify server hostname using provided certificate'
-complete -c edgedb -n "__fish_edgedb_needs_command" -l no-tls-verify-hostname -d 'Do not verify server hostname'
-complete -c edgedb -n "__fish_edgedb_needs_command" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
-complete -c edgedb -n "__fish_edgedb_needs_command" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "dump" -d 'Create database backup'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "restore" -d 'Restore database from backup file'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "configure" -d 'Modify database configuration'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "migration" -d 'Migration management subcommands'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "migrate" -d 'Apply migration (alias for edgedb migration apply)'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "database" -d 'Database commands'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "branching"
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "describe" -d 'Describe database schema or object'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "list" -d 'List name and related info of database objects (types, scalars, modules, etc.)'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "analyze" -d 'Analyze performance of query in quotes (e.g. "select 9;")'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "pgaddr" -d 'Show PostgreSQL address. Works on dev-mode database only'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "psql" -d 'Run psql shell. Works on dev-mode database only'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "query" -d 'Execute EdgeQL query in quotes (e.g. "select 9;")'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "ui" -d 'Launch EdgeDB instance in browser web UI'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "info" -d 'Show paths for EdgeDB installation'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "project" -d 'Manage project installation'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "instance" -d 'Manage local EdgeDB instances'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "server" -d 'Manage local EdgeDB installations'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "extension" -d 'Manage local extensions'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "_gen_completions" -d 'Generate shell completions'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "cli" -d 'Self-installation commands'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "_self_install" -d 'Install EdgeDB'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "cloud" -d 'EdgeDB Cloud authentication'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "watch" -d 'Start a long-running process that watches for changes in schema files in a project\'s dbschema directory, applying them in real time'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "branch" -d 'Manage branches'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "hash-password" -d 'Generate a SCRAM-SHA-256 hash for a password'
-complete -c edgedb -n "__fish_edgedb_needs_command" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n __fish_edgedb_needs_command -s c -d 'Execute a query instead of starting REPL' -r
+complete -c edgedb -n __fish_edgedb_needs_command -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
+complete -c edgedb -n __fish_edgedb_needs_command -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
+complete -c edgedb -n __fish_edgedb_needs_command -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
+complete -c edgedb -n __fish_edgedb_needs_command -s H -l host -d 'EdgeDB instance host' -r -f -a "(__fish_print_hostnames)"
+complete -c edgedb -n __fish_edgedb_needs_command -s P -l port -d 'Port to connect to EdgeDB' -r
+complete -c edgedb -n __fish_edgedb_needs_command -l unix-path -d 'A path to a Unix socket for EdgeDB connection' -r -F
+complete -c edgedb -n __fish_edgedb_needs_command -s u -l user -d 'EdgeDB user name' -r
+complete -c edgedb -n __fish_edgedb_needs_command -s d -l database -d 'Database name to connect to' -r -f
+complete -c edgedb -n __fish_edgedb_needs_command -s b -l branch -d 'Branch to connect with' -r -f
+complete -c edgedb -n __fish_edgedb_needs_command -l secret-key -d 'Secret key to authenticate with' -r
+complete -c edgedb -n __fish_edgedb_needs_command -l tls-ca-file -d 'Certificate to match server against' -r -F
+complete -c edgedb -n __fish_edgedb_needs_command -l tls-security -d 'Specifications for client-side TLS security mode:' -r
+complete -c edgedb -n __fish_edgedb_needs_command -l tls-server-name -d 'Override server name used for TLS connections and certificate verification' -r
+complete -c edgedb -n __fish_edgedb_needs_command -l wait-until-available -d 'Retry up to WAIT_TIME (e.g. \'30s\') in case EdgeDB connection cannot be established' -r
+complete -c edgedb -n __fish_edgedb_needs_command -l connect-timeout -d 'Fail when no response from EdgeDB for TIMEOUT (default \'10s\'); alternatively will retry if --wait-until-available is also specified' -r
+complete -c edgedb -n __fish_edgedb_needs_command -l cloud-api-endpoint -d 'Specify the API endpoint. Defaults to the current logged-in server, or <https://api.g.aws.edgedb.cloud> if unauthorized' -r
+complete -c edgedb -n __fish_edgedb_needs_command -l cloud-secret-key -d 'Specify the API secret key to use instead of loading key from a remembered authentication' -r
+complete -c edgedb -n __fish_edgedb_needs_command -l cloud-profile -d 'Specify the authenticated profile. Defaults to "default"' -r
+complete -c edgedb -n __fish_edgedb_needs_command -l debug-print-frames
+complete -c edgedb -n __fish_edgedb_needs_command -l debug-print-descriptors
+complete -c edgedb -n __fish_edgedb_needs_command -l debug-print-codecs
+complete -c edgedb -n __fish_edgedb_needs_command -l test-output-conn-params
+complete -c edgedb -n __fish_edgedb_needs_command -l help-connect -d 'Print all available connection options for interactive shell along with subcommands'
+complete -c edgedb -n __fish_edgedb_needs_command -s t -l tab-separated -d 'Tab-separated output for queries'
+complete -c edgedb -n __fish_edgedb_needs_command -s j -l json -d 'JSON output for queries (single JSON list per query)'
+complete -c edgedb -n __fish_edgedb_needs_command -s V -l version -d 'Show command-line tool version'
+complete -c edgedb -n __fish_edgedb_needs_command -l no-version-check
+complete -c edgedb -n __fish_edgedb_needs_command -l no-cli-update-check -d 'Disable check for new available CLI version'
+complete -c edgedb -n __fish_edgedb_needs_command -l password -d 'Ask for password on terminal (TTY)'
+complete -c edgedb -n __fish_edgedb_needs_command -l no-password -d 'Don\'t ask for password'
+complete -c edgedb -n __fish_edgedb_needs_command -l password-from-stdin -d 'Read password from stdin rather than TTY (useful for scripts)'
+complete -c edgedb -n __fish_edgedb_needs_command -l tls-verify-hostname -d 'Verify server hostname using provided certificate'
+complete -c edgedb -n __fish_edgedb_needs_command -l no-tls-verify-hostname -d 'Do not verify server hostname'
+complete -c edgedb -n __fish_edgedb_needs_command -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
+complete -c edgedb -n __fish_edgedb_needs_command -s h -l help -d 'Print help (see more with \'--help\')'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a dump -d 'Create database backup'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a restore -d 'Restore database from backup file'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a configure -d 'Modify database configuration'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a migration -d 'Migration management subcommands'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a migrate -d 'Apply migration (alias for edgedb migration apply)'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a database -d 'Database commands'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a branching
+complete -c edgedb -n __fish_edgedb_needs_command -f -a describe -d 'Describe database schema or object'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a list -d 'List name and related info of database objects (types, scalars, modules, etc.)'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a analyze -d 'Analyze performance of query in quotes (e.g. "select 9;")'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a pgaddr -d 'Show PostgreSQL address. Works on dev-mode database only'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a psql -d 'Run psql shell. Works on dev-mode database only'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a query -d 'Execute EdgeQL query in quotes (e.g. "select 9;")'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a ui -d 'Launch EdgeDB instance in browser web UI'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a info -d 'Show paths for EdgeDB installation'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a project -d 'Manage project installation'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a instance -d 'Manage local EdgeDB instances'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a server -d 'Manage local EdgeDB installations'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a extension -d 'Manage local extensions'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a _gen_completions -d 'Generate shell completions'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a cli -d 'Self-installation commands'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a _self_install -d 'Install EdgeDB'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a cloud -d 'EdgeDB Cloud authentication'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a watch -d 'Start a long-running process that watches for changes in schema files in a project\'s dbschema directory, applying them in real time'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a branch -d 'Manage branches'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a hash-password -d 'Generate a SCRAM-SHA-256 hash for a password'
+complete -c edgedb -n __fish_edgedb_needs_command -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand dump" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand dump" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand dump" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -159,10 +159,10 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -f -a "insert" -d 'Insert another configuration entry to the list setting'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -f -a "reset" -d 'Reset configuration entry (empty the list for list settings)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -f -a "set" -d 'Set scalar configuration value'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -f -a insert -d 'Insert another configuration entry to the list setting'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -f -a reset -d 'Reset configuration entry (empty the list for list settings)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -f -a set -d 'Set scalar configuration value'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and not __fish_seen_subcommand_from insert reset set help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from insert" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from insert" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from insert" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -185,8 +185,8 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from insert" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from insert" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from insert" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from insert" -f -a "Auth" -d 'Insert a client authentication rule'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from insert" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from insert" -f -a Auth -d 'Insert a client authentication rule'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from insert" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -209,32 +209,32 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "listen_addresses" -d 'Reset listen addresses to 127.0.0.1'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "listen_port" -d 'Reset port to 5656'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "Auth" -d 'Clear authentication table (only admin socket can be used to connect)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "shared_buffers" -d 'Reset shared_buffers PostgreSQL configuration parameter to default value'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "query_work_mem" -d 'Reset work_mem PostgreSQL configuration parameter to default value'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "maintenance_work_mem" -d 'Reset PostgreSQL configuration parameter of the same name'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "effective_cache_size" -d 'Reset PostgreSQL configuration parameter of the same name'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "default_statistics_target" -d 'Reset PostgreSQL configuration parameter of the same name'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "effective_io_concurrency" -d 'Reset PostgreSQL configuration parameter of the same name'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "session_idle_timeout" -d 'Reset session idle timeout'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "session_idle_transaction_timeout" -d 'Reset session idle transaction timeout'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "query_execution_timeout" -d 'Reset query execution timeout'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "allow_bare_ddl" -d 'Reset allow_bare_ddl parameter to AlwaysAllow'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "apply_access_policies" -d 'Reset apply_access_policies parameter to true'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "apply_access_policies_pg" -d 'Reset apply_access_policies_pg parameter to false'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "allow_user_specified_id" -d 'Reset allow_user_specified_id parameter to false'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "cors_allow_origins" -d 'Reset cors_allow_origins to an empty set'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "auto_rebuild_query_cache" -d 'Reset auto_rebuild_query_cache to true'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "auto_rebuild_query_cache_timeout" -d 'Reset auto_rebuild_query_cache_timeout'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "store_migration_sdl" -d 'When to store resulting SDL of a Migration'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "http_max_connections" -d 'The maximum number of concurrent HTTP connections'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "current_email_provider_name" -d 'The name of the current email provider'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "simple_scoping" -d 'Whether to use the new simple scoping behavior'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "warn_old_scoping" -d 'Whether to warn when depending on old scoping behavior'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "track_query_stats" -d 'Select what queries are tracked in sys::QueryStats'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a listen_addresses -d 'Reset listen addresses to 127.0.0.1'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a listen_port -d 'Reset port to 5656'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a Auth -d 'Clear authentication table (only admin socket can be used to connect)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a shared_buffers -d 'Reset shared_buffers PostgreSQL configuration parameter to default value'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a query_work_mem -d 'Reset work_mem PostgreSQL configuration parameter to default value'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a maintenance_work_mem -d 'Reset PostgreSQL configuration parameter of the same name'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a effective_cache_size -d 'Reset PostgreSQL configuration parameter of the same name'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a default_statistics_target -d 'Reset PostgreSQL configuration parameter of the same name'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a effective_io_concurrency -d 'Reset PostgreSQL configuration parameter of the same name'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a session_idle_timeout -d 'Reset session idle timeout'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a session_idle_transaction_timeout -d 'Reset session idle transaction timeout'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a query_execution_timeout -d 'Reset query execution timeout'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a allow_bare_ddl -d 'Reset allow_bare_ddl parameter to AlwaysAllow'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a apply_access_policies -d 'Reset apply_access_policies parameter to true'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a apply_access_policies_pg -d 'Reset apply_access_policies_pg parameter to false'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a allow_user_specified_id -d 'Reset allow_user_specified_id parameter to false'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a cors_allow_origins -d 'Reset cors_allow_origins to an empty set'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a auto_rebuild_query_cache -d 'Reset auto_rebuild_query_cache to true'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a auto_rebuild_query_cache_timeout -d 'Reset auto_rebuild_query_cache_timeout'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a store_migration_sdl -d 'When to store resulting SDL of a Migration'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a http_max_connections -d 'The maximum number of concurrent HTTP connections'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a current_email_provider_name -d 'The name of the current email provider'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a simple_scoping -d 'Whether to use the new simple scoping behavior'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a warn_old_scoping -d 'Whether to warn when depending on old scoping behavior'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a track_query_stats -d 'Select what queries are tracked in sys::QueryStats'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from reset" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -257,35 +257,35 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "listen_addresses" -d 'Specifies the TCP/IP address(es) on which the server is to listen for connections from client applications'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "listen_port" -d 'The TCP port the server listens on; 5656 by default. Note that the same port number is used for all IP addresses the server listens on'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "shared_buffers" -d 'The amount of memory the database uses for shared memory buffers'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "query_work_mem" -d 'The amount of memory used by internal query operations such as sorting'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "maintenance_work_mem" -d 'The maximum amount of memory to be used by maintenance operations'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "effective_cache_size" -d 'Sets the planner’s assumption about the effective size of the disk cache available to a single query'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "default_statistics_target" -d 'Sets the default data statistics target for the planner'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "effective_io_concurrency" -d 'Sets the number of concurrent disk I/O operations that PostgreSQL expects can be executed simultaneously'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "session_idle_timeout" -d 'How long client connections can stay inactive before being closed by the server. Defaults to 60 seconds; set to 0s to disable'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "session_idle_transaction_timeout" -d 'How long client connections can stay inactive while in a transaction. Defaults to 10 seconds; set to 0s to disable'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "query_execution_timeout" -d 'How long an individual query can run before being aborted. A value of 0s disables the mechanism; it is disabled by default'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "allow_bare_ddl" -d 'Defines whether to allow DDL commands outside of migrations'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "apply_access_policies" -d 'Apply access policies'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "apply_access_policies_pg" -d 'Apply access policies in SQL queries'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "allow_user_specified_id" -d 'Allow setting user-specified object identifiers'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "cors_allow_origins" -d 'Web origins that are allowed to send HTTP requests to this server'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "auto_rebuild_query_cache" -d 'Recompile all cached queries on DDL if enabled'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "auto_rebuild_query_cache_timeout" -d 'Timeout to recompile the cached queries on DDL'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "store_migration_sdl" -d 'When to store resulting SDL of a Migration. This may be slow'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "http_max_connections" -d 'The maximum number of concurrent HTTP connections'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "current_email_provider_name" -d 'The name of the current email provider'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "simple_scoping" -d 'Whether to use the new simple scoping behavior (disable path factoring)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "warn_old_scoping" -d 'Whether to warn when depending on old scoping behavior'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "track_query_stats" -d 'Select what queries are tracked in sys::QueryStats'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from help" -f -a "insert" -d 'Insert another configuration entry to the list setting'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from help" -f -a "reset" -d 'Reset configuration entry (empty the list for list settings)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from help" -f -a "set" -d 'Set scalar configuration value'
-complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a listen_addresses -d 'Specifies the TCP/IP address(es) on which the server is to listen for connections from client applications'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a listen_port -d 'The TCP port the server listens on; 5656 by default. Note that the same port number is used for all IP addresses the server listens on'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a shared_buffers -d 'The amount of memory the database uses for shared memory buffers'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a query_work_mem -d 'The amount of memory used by internal query operations such as sorting'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a maintenance_work_mem -d 'The maximum amount of memory to be used by maintenance operations'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a effective_cache_size -d 'Sets the planner’s assumption about the effective size of the disk cache available to a single query'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a default_statistics_target -d 'Sets the default data statistics target for the planner'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a effective_io_concurrency -d 'Sets the number of concurrent disk I/O operations that PostgreSQL expects can be executed simultaneously'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a session_idle_timeout -d 'How long client connections can stay inactive before being closed by the server. Defaults to 60 seconds; set to 0s to disable'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a session_idle_transaction_timeout -d 'How long client connections can stay inactive while in a transaction. Defaults to 10 seconds; set to 0s to disable'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a query_execution_timeout -d 'How long an individual query can run before being aborted. A value of 0s disables the mechanism; it is disabled by default'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a allow_bare_ddl -d 'Defines whether to allow DDL commands outside of migrations'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a apply_access_policies -d 'Apply access policies'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a apply_access_policies_pg -d 'Apply access policies in SQL queries'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a allow_user_specified_id -d 'Allow setting user-specified object identifiers'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a cors_allow_origins -d 'Web origins that are allowed to send HTTP requests to this server'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a auto_rebuild_query_cache -d 'Recompile all cached queries on DDL if enabled'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a auto_rebuild_query_cache_timeout -d 'Timeout to recompile the cached queries on DDL'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a store_migration_sdl -d 'When to store resulting SDL of a Migration. This may be slow'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a http_max_connections -d 'The maximum number of concurrent HTTP connections'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a current_email_provider_name -d 'The name of the current email provider'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a simple_scoping -d 'Whether to use the new simple scoping behavior (disable path factoring)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a warn_old_scoping -d 'Whether to warn when depending on old scoping behavior'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a track_query_stats -d 'Select what queries are tracked in sys::QueryStats'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from set" -f -a help -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from help" -f -a insert -d 'Insert another configuration entry to the list setting'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from help" -f -a reset -d 'Reset configuration entry (empty the list for list settings)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from help" -f -a set -d 'Set scalar configuration value'
+complete -c edgedb -n "__fish_edgedb_using_subcommand configure; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -308,15 +308,15 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a "apply" -d 'Apply migration from latest migration script'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a "create" -d 'Create migration script inside /migrations'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a "status" -d 'Show current migration status'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a "log" -d 'Show all migration versions'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a "edit" -d 'Edit migration file'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a "upgrade-check" -d 'Check if current schema is compatible with new EdgeDB version'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a "extract" -d 'Extract migration history from the database and write it to <schema-dir>/migrations'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a "upgrade-format" -d 'Upgrades the format of migration files'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a apply -d 'Apply migration from latest migration script'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a create -d 'Create migration script inside /migrations'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a status -d 'Show current migration status'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a log -d 'Show all migration versions'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a edit -d 'Edit migration file'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a upgrade-check -d 'Check if current schema is compatible with new EdgeDB version'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a extract -d 'Extract migration history from the database and write it to <schema-dir>/migrations'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a upgrade-format -d 'Upgrades the format of migration files'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and not __fish_seen_subcommand_from apply create status log edit upgrade-check extract upgrade-format help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from apply" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from apply" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from apply" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -525,15 +525,15 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from upgrade-format" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from upgrade-format" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from upgrade-format" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a "apply" -d 'Apply migration from latest migration script'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a "create" -d 'Create migration script inside /migrations'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a "status" -d 'Show current migration status'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a "log" -d 'Show all migration versions'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a "edit" -d 'Edit migration file'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a "upgrade-check" -d 'Check if current schema is compatible with new EdgeDB version'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a "extract" -d 'Extract migration history from the database and write it to <schema-dir>/migrations'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a "upgrade-format" -d 'Upgrades the format of migration files'
-complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a apply -d 'Apply migration from latest migration script'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a create -d 'Create migration script inside /migrations'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a status -d 'Show current migration status'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a log -d 'Show all migration versions'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a edit -d 'Edit migration file'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a upgrade-check -d 'Check if current schema is compatible with new EdgeDB version'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a extract -d 'Extract migration history from the database and write it to <schema-dir>/migrations'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a upgrade-format -d 'Upgrades the format of migration files'
+complete -c edgedb -n "__fish_edgedb_using_subcommand migration; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand migrate" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand migrate" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand migrate" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -583,10 +583,10 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_s
 complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -f -a "create" -d 'Create a new database'
-complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -f -a "drop" -d 'Delete a database along with its data'
-complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -f -a "wipe" -d 'Delete a database\'s data and reset its schema while preserving the database itself (its cfg::DatabaseConfig) and existing migration scripts'
-complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -f -a create -d 'Create a new database'
+complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -f -a drop -d 'Delete a database along with its data'
+complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -f -a wipe -d 'Delete a database\'s data and reset its schema while preserving the database itself (its cfg::DatabaseConfig) and existing migration scripts'
+complete -c edgedb -n "__fish_edgedb_using_subcommand database; and not __fish_seen_subcommand_from create drop wipe help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from create" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from create" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from create" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -655,10 +655,10 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_
 complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from wipe" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from wipe" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from wipe" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from help" -f -a "create" -d 'Create a new database'
-complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from help" -f -a "drop" -d 'Delete a database along with its data'
-complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from help" -f -a "wipe" -d 'Delete a database\'s data and reset its schema while preserving the database itself (its cfg::DatabaseConfig) and existing migration scripts'
-complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from help" -f -a create -d 'Create a new database'
+complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from help" -f -a drop -d 'Delete a database along with its data'
+complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from help" -f -a wipe -d 'Delete a database\'s data and reset its schema while preserving the database itself (its cfg::DatabaseConfig) and existing migration scripts'
+complete -c edgedb -n "__fish_edgedb_using_subcommand database; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -681,13 +681,13 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a "create" -d 'Create a new branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a "drop" -d 'Delete a branch along with its data'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a "wipe" -d 'Delete a branch\'s data and reset its schema while preserving the branch itself (its cfg::DatabaseConfig) and existing migration scripts'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a "list" -d 'List all branches'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a "switch" -d 'Switches the current branch to a different one'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a "rename" -d 'Renames a branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a create -d 'Create a new branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a drop -d 'Delete a branch along with its data'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a wipe -d 'Delete a branch\'s data and reset its schema while preserving the branch itself (its cfg::DatabaseConfig) and existing migration scripts'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a list -d 'List all branches'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a switch -d 'Switches the current branch to a different one'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a rename -d 'Renames a branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and not __fish_seen_subcommand_from create drop wipe list switch rename help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from create" -l from -d 'The optional \'base\' of the branch to create' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from create" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from create" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
@@ -831,13 +831,13 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from rename" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from rename" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from rename" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a "create" -d 'Create a new branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a "drop" -d 'Delete a branch along with its data'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a "wipe" -d 'Delete a branch\'s data and reset its schema while preserving the branch itself (its cfg::DatabaseConfig) and existing migration scripts'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a "list" -d 'List all branches'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a "switch" -d 'Switches the current branch to a different one'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a "rename" -d 'Renames a branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a create -d 'Create a new branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a drop -d 'Delete a branch along with its data'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a wipe -d 'Delete a branch\'s data and reset its schema while preserving the branch itself (its cfg::DatabaseConfig) and existing migration scripts'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a list -d 'List all branches'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a switch -d 'Switches the current branch to a different one'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a rename -d 'Renames a branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branching; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -860,9 +860,9 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_s
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -f -a "object" -d 'Describe a database object'
-complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -f -a "schema" -d 'Describe current database schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -f -a object -d 'Describe a database object'
+complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -f -a schema -d 'Describe current database schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and not __fish_seen_subcommand_from object schema help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from object" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from object" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from object" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -908,9 +908,9 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from schema" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from schema" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from schema" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from help" -f -a "object" -d 'Describe a database object'
-complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from help" -f -a "schema" -d 'Describe current database schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from help" -f -a object -d 'Describe a database object'
+complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from help" -f -a schema -d 'Describe current database schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand describe; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -933,16 +933,16 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a "aliases" -d 'Display list of aliases defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a "casts" -d 'Display list of casts defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a "databases" -d 'On EdgeDB < 5.x: Display list of databases for an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a "branches" -d 'On EdgeDB/Gel >= 5.x: Display list of branches for an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a "indexes" -d 'Display list of indexes defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a "modules" -d 'Display list of modules defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a "roles" -d 'Display list of roles for an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a "scalars" -d 'Display list of scalar types defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a "types" -d 'Display list of object types defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a aliases -d 'Display list of aliases defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a casts -d 'Display list of casts defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a databases -d 'On EdgeDB < 5.x: Display list of databases for an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a branches -d 'On EdgeDB/Gel >= 5.x: Display list of branches for an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a indexes -d 'Display list of indexes defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a modules -d 'Display list of modules defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a roles -d 'Display list of roles for an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a scalars -d 'Display list of scalar types defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a types -d 'Display list of object types defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and not __fish_seen_subcommand_from aliases casts databases branches indexes modules roles scalars types help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from aliases" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from aliases" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from aliases" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -1154,16 +1154,16 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subc
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from types" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from types" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from types" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a "aliases" -d 'Display list of aliases defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a "casts" -d 'Display list of casts defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a "databases" -d 'On EdgeDB < 5.x: Display list of databases for an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a "branches" -d 'On EdgeDB/Gel >= 5.x: Display list of branches for an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a "indexes" -d 'Display list of indexes defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a "modules" -d 'Display list of modules defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a "roles" -d 'Display list of roles for an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a "scalars" -d 'Display list of scalar types defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a "types" -d 'Display list of object types defined in the schema'
-complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a aliases -d 'Display list of aliases defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a casts -d 'Display list of casts defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a databases -d 'On EdgeDB < 5.x: Display list of databases for an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a branches -d 'On EdgeDB/Gel >= 5.x: Display list of branches for an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a indexes -d 'Display list of indexes defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a modules -d 'Display list of modules defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a roles -d 'Display list of roles for an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a scalars -d 'Display list of scalar types defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a types -d 'Display list of object types defined in the schema'
+complete -c edgedb -n "__fish_edgedb_using_subcommand list; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand analyze" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand analyze" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand analyze" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -1243,11 +1243,11 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand ui" -s h -l help -d 'Print
 complete -c edgedb -n "__fish_edgedb_using_subcommand info" -l get -d 'Get specific value:' -r -f -a "{install-dir\t'',config-dir\t'',cache-dir\t'',data-dir\t'',service-dir\t''}"
 complete -c edgedb -n "__fish_edgedb_using_subcommand info" -s h -l help -d 'Print help (see more with \'--help\')'
 complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -s h -l help -d 'Print help'
-complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -f -a "init" -d 'Initialize project or link to existing unlinked project'
-complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -f -a "unlink" -d 'Clean up project configuration'
-complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -f -a "info" -d 'Get various metadata about project instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -f -a "upgrade" -d 'Upgrade EdgeDB instance used for current project'
-complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -f -a init -d 'Initialize project or link to existing unlinked project'
+complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -f -a unlink -d 'Clean up project configuration'
+complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -f -a info -d 'Get various metadata about project instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -f -a upgrade -d 'Upgrade EdgeDB instance used for current project'
+complete -c edgedb -n "__fish_edgedb_using_subcommand project; and not __fish_seen_subcommand_from init unlink info upgrade help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from init" -l cloud-api-endpoint -d 'Specify the API endpoint. Defaults to the current logged-in server, or <https://api.g.aws.edgedb.cloud> if unauthorized' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from init" -l cloud-secret-key -d 'Specify the API secret key to use instead of loading key from a remembered authentication' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from init" -l cloud-profile -d 'Specify the authenticated profile. Defaults to "default"' -r
@@ -1282,31 +1282,31 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_s
 complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from upgrade" -l force -d 'Force upgrade process even if there is no new version'
 complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from upgrade" -l non-interactive -d 'Do not ask questions, assume user wants to upgrade instance'
 complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from upgrade" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from help" -f -a "init" -d 'Initialize project or link to existing unlinked project'
-complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from help" -f -a "unlink" -d 'Clean up project configuration'
-complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from help" -f -a "info" -d 'Get various metadata about project instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from help" -f -a "upgrade" -d 'Upgrade EdgeDB instance used for current project'
-complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from help" -f -a init -d 'Initialize project or link to existing unlinked project'
+complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from help" -f -a unlink -d 'Clean up project configuration'
+complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from help" -f -a info -d 'Get various metadata about project instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from help" -f -a upgrade -d 'Upgrade EdgeDB instance used for current project'
+complete -c edgedb -n "__fish_edgedb_using_subcommand project; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -s h -l help -d 'Print help'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "create" -d 'Initialize a new EdgeDB instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "list" -d 'Show all instances'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "status" -d 'Show status of an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "start" -d 'Start an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "stop" -d 'Stop an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "restart" -d 'Restart an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "destroy" -d 'Destroy an instance and remove the data'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "link" -d 'Link to a remote EdgeDB instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "unlink" -d 'Unlink from a remote EdgeDB instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "logs" -d 'Show logs for an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "resize" -d 'Resize an instance (EdgeDB Cloud only)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "backup" -d 'Create a backup for an instance (EdgeDB Cloud only)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "restore" -d 'Restore an instance from a backup (EdgeDB Cloud only)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "list-backups" -d 'Restore an instance from a backup (EdgeDB Cloud only)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "upgrade" -d 'Upgrade installations and instances'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "revert" -d 'Revert a major instance upgrade'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "reset-password" -d 'Generate new password for instance user (randomly generated by default)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "credentials" -d 'Display instance credentials (add --json for verbose)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a create -d 'Initialize a new EdgeDB instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a list -d 'Show all instances'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a status -d 'Show status of an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a start -d 'Start an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a stop -d 'Stop an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a restart -d 'Restart an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a destroy -d 'Destroy an instance and remove the data'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a link -d 'Link to a remote EdgeDB instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a unlink -d 'Unlink from a remote EdgeDB instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a logs -d 'Show logs for an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a resize -d 'Resize an instance (EdgeDB Cloud only)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a backup -d 'Create a backup for an instance (EdgeDB Cloud only)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a restore -d 'Restore an instance from a backup (EdgeDB Cloud only)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a list-backups -d 'Restore an instance from a backup (EdgeDB Cloud only)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a upgrade -d 'Upgrade installations and instances'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a revert -d 'Revert a major instance upgrade'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a reset-password -d 'Generate new password for instance user (randomly generated by default)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a credentials -d 'Display instance credentials (add --json for verbose)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and not __fish_seen_subcommand_from create list status start stop restart destroy link unlink logs resize backup restore list-backups upgrade revert reset-password credentials help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from create" -l cloud-api-endpoint -d 'Specify the API endpoint. Defaults to the current logged-in server, or <https://api.g.aws.edgedb.cloud> if unauthorized' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from create" -l cloud-secret-key -d 'Specify the API secret key to use instead of loading key from a remembered authentication' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from create" -l cloud-profile -d 'Specify the authenticated profile. Defaults to "default"' -r
@@ -1477,31 +1477,31 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_
 complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from credentials" -l json -d 'Output in JSON format (password is included in cleartext)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from credentials" -l insecure-dsn -d 'Output a DSN with password in cleartext'
 complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from credentials" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "create" -d 'Initialize a new EdgeDB instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "list" -d 'Show all instances'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "status" -d 'Show status of an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "start" -d 'Start an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "stop" -d 'Stop an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "restart" -d 'Restart an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "destroy" -d 'Destroy an instance and remove the data'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "link" -d 'Link to a remote EdgeDB instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "unlink" -d 'Unlink from a remote EdgeDB instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "logs" -d 'Show logs for an instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "resize" -d 'Resize an instance (EdgeDB Cloud only)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "backup" -d 'Create a backup for an instance (EdgeDB Cloud only)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "restore" -d 'Restore an instance from a backup (EdgeDB Cloud only)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "list-backups" -d 'Restore an instance from a backup (EdgeDB Cloud only)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "upgrade" -d 'Upgrade installations and instances'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "revert" -d 'Revert a major instance upgrade'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "reset-password" -d 'Generate new password for instance user (randomly generated by default)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "credentials" -d 'Display instance credentials (add --json for verbose)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a create -d 'Initialize a new EdgeDB instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a list -d 'Show all instances'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a status -d 'Show status of an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a start -d 'Start an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a stop -d 'Stop an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a restart -d 'Restart an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a destroy -d 'Destroy an instance and remove the data'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a link -d 'Link to a remote EdgeDB instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a unlink -d 'Unlink from a remote EdgeDB instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a logs -d 'Show logs for an instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a resize -d 'Resize an instance (EdgeDB Cloud only)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a backup -d 'Create a backup for an instance (EdgeDB Cloud only)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a restore -d 'Restore an instance from a backup (EdgeDB Cloud only)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a list-backups -d 'Restore an instance from a backup (EdgeDB Cloud only)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a upgrade -d 'Upgrade installations and instances'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a revert -d 'Revert a major instance upgrade'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a reset-password -d 'Generate new password for instance user (randomly generated by default)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a credentials -d 'Display instance credentials (add --json for verbose)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand instance; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -s h -l help -d 'Print help'
-complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -f -a "info" -d 'Show locally installed server versions'
-complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -f -a "install" -d 'Install a server version locally'
-complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -f -a "uninstall" -d 'Uninstall a server version locally'
-complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -f -a "list-versions" -d 'List available and installed versions of the server'
-complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -f -a info -d 'Show locally installed server versions'
+complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -f -a install -d 'Install a server version locally'
+complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -f -a uninstall -d 'Uninstall a server version locally'
+complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -f -a list-versions -d 'List available and installed versions of the server'
+complete -c edgedb -n "__fish_edgedb_using_subcommand server; and not __fish_seen_subcommand_from info install uninstall list-versions help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from info" -l version -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from info" -l channel -r -f -a "{stable\t'',testing\t'',nightly\t''}"
 complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from info" -l get -d 'Get specific value:' -r -f -a "{bin-path\t'',version\t''}"
@@ -1525,17 +1525,17 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_su
 complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from list-versions" -l installed-only
 complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from list-versions" -l json -d 'Output in JSON format'
 complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from list-versions" -s h -l help -d 'Print help'
-complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from help" -f -a "info" -d 'Show locally installed server versions'
-complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from help" -f -a "install" -d 'Install a server version locally'
-complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from help" -f -a "uninstall" -d 'Uninstall a server version locally'
-complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from help" -f -a "list-versions" -d 'List available and installed versions of the server'
-complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from help" -f -a info -d 'Show locally installed server versions'
+complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from help" -f -a install -d 'Install a server version locally'
+complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from help" -f -a uninstall -d 'Uninstall a server version locally'
+complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from help" -f -a list-versions -d 'List available and installed versions of the server'
+complete -c edgedb -n "__fish_edgedb_using_subcommand server; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -s h -l help -d 'Print help'
-complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -f -a "list" -d 'List installed extensions for a local instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -f -a "list-available" -d 'List available extensions for a local instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -f -a "install" -d 'Install an extension for a local instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -f -a "uninstall" -d 'Uninstall an extension from a local instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -f -a list -d 'List installed extensions for a local instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -f -a list-available -d 'List available extensions for a local instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -f -a install -d 'Install an extension for a local instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -f -a uninstall -d 'Uninstall an extension from a local instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and not __fish_seen_subcommand_from list list-available install uninstall help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from list" -s I -l instance -d 'Specify local instance name' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from list" -s h -l help -d 'Print help'
 complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from list-available" -s I -l instance -d 'Specify local instance name' -r -f
@@ -1551,20 +1551,20 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen
 complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from uninstall" -s I -l instance -d 'Specify local instance name' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from uninstall" -s E -l extension -d 'The name of the extension to uninstall' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from uninstall" -s h -l help -d 'Print help'
-complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from help" -f -a "list" -d 'List installed extensions for a local instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from help" -f -a "list-available" -d 'List available extensions for a local instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from help" -f -a "install" -d 'Install an extension for a local instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from help" -f -a "uninstall" -d 'Uninstall an extension from a local instance'
-complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from help" -f -a list -d 'List installed extensions for a local instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from help" -f -a list-available -d 'List available extensions for a local instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from help" -f -a install -d 'Install an extension for a local instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from help" -f -a uninstall -d 'Uninstall an extension from a local instance'
+complete -c edgedb -n "__fish_edgedb_using_subcommand extension; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand _gen_completions" -l shell -d 'Shell to print out completions for' -r -f -a "{bash\t'',elvish\t'',fish\t'',power-shell\t'',zsh\t''}"
 complete -c edgedb -n "__fish_edgedb_using_subcommand _gen_completions" -l prefix -d 'Install all completions into the prefix' -r -F
 complete -c edgedb -n "__fish_edgedb_using_subcommand _gen_completions" -l home -d 'Install all completions into the prefix'
 complete -c edgedb -n "__fish_edgedb_using_subcommand _gen_completions" -s h -l help -d 'Print help'
 complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and not __fish_seen_subcommand_from upgrade install migrate help" -s h -l help -d 'Print help'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and not __fish_seen_subcommand_from upgrade install migrate help" -f -a "upgrade" -d 'Upgrade the edgedb command-line tool'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and not __fish_seen_subcommand_from upgrade install migrate help" -f -a "install" -d 'Install the edgedb command-line tool'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and not __fish_seen_subcommand_from upgrade install migrate help" -f -a "migrate" -d 'Migrate files from ~/.edgedb to the new directory layout'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and not __fish_seen_subcommand_from upgrade install migrate help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and not __fish_seen_subcommand_from upgrade install migrate help" -f -a upgrade -d 'Upgrade the edgedb command-line tool'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and not __fish_seen_subcommand_from upgrade install migrate help" -f -a install -d 'Install the edgedb command-line tool'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and not __fish_seen_subcommand_from upgrade install migrate help" -f -a migrate -d 'Migrate files from ~/.edgedb to the new directory layout'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and not __fish_seen_subcommand_from upgrade install migrate help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from upgrade" -l to-channel -d 'Upgrade specified instance to specified channel' -r -f -a "{stable\t'',testing\t'',nightly\t''}"
 complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from upgrade" -s v -l verbose -d 'Enable verbose output'
 complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from upgrade" -s q -l quiet -d 'Disable progress output'
@@ -1585,10 +1585,10 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subco
 complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from migrate" -s n -l dry-run -d 'Dry run: do not actually move anything'
 complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from migrate" -s v -l verbose -d 'Dry run: do not actually move anything (with increased verbosity)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from migrate" -s h -l help -d 'Print help'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from help" -f -a "upgrade" -d 'Upgrade the edgedb command-line tool'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from help" -f -a "install" -d 'Install the edgedb command-line tool'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from help" -f -a "migrate" -d 'Migrate files from ~/.edgedb to the new directory layout'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from help" -f -a upgrade -d 'Upgrade the edgedb command-line tool'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from help" -f -a install -d 'Install the edgedb command-line tool'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from help" -f -a migrate -d 'Migrate files from ~/.edgedb to the new directory layout'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cli; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand _self_install" -l nightly
 complete -c edgedb -n "__fish_edgedb_using_subcommand _self_install" -l testing
 complete -c edgedb -n "__fish_edgedb_using_subcommand _self_install" -s v -l verbose -d 'Enable verbose output'
@@ -1602,10 +1602,10 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen
 complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -l cloud-secret-key -d 'Specify the API secret key to use instead of loading key from a remembered authentication' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -l cloud-profile -d 'Specify the authenticated profile. Defaults to "default"' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -s h -l help -d 'Print help'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -f -a "login" -d 'Authenticate to EdgeDB Cloud and remember secret key locally'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -f -a "logout" -d 'Forget the stored access token'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -f -a "secretkey" -d 'Secret key management'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -f -a login -d 'Authenticate to EdgeDB Cloud and remember secret key locally'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -f -a logout -d 'Forget the stored access token'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -f -a secretkey -d 'Secret key management'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and not __fish_seen_subcommand_from login logout secretkey help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from login" -l cloud-api-endpoint -d 'Specify the API endpoint. Defaults to the current logged-in server, or <https://api.g.aws.edgedb.cloud> if unauthorized' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from login" -l cloud-secret-key -d 'Specify the API secret key to use instead of loading key from a remembered authentication' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from login" -l cloud-profile -d 'Specify the authenticated profile. Defaults to "default"' -r
@@ -1621,14 +1621,14 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_sub
 complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -l cloud-secret-key -d 'Specify the API secret key to use instead of loading key from a remembered authentication' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -l cloud-profile -d 'Specify the authenticated profile. Defaults to "default"' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -s h -l help -d 'Print help'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -f -a "list" -d 'List existing secret keys'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -f -a "create" -d 'Create a new secret key'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -f -a "revoke" -d 'Revoke a secret key'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from help" -f -a "login" -d 'Authenticate to EdgeDB Cloud and remember secret key locally'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from help" -f -a "logout" -d 'Forget the stored access token'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from help" -f -a "secretkey" -d 'Secret key management'
-complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -f -a list -d 'List existing secret keys'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -f -a create -d 'Create a new secret key'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -f -a revoke -d 'Revoke a secret key'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from secretkey" -f -a help -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from help" -f -a login -d 'Authenticate to EdgeDB Cloud and remember secret key locally'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from help" -f -a logout -d 'Forget the stored access token'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from help" -f -a secretkey -d 'Secret key management'
+complete -c edgedb -n "__fish_edgedb_using_subcommand cloud; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand watch" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand watch" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand watch" -l credentials-file -d 'Path to JSON file to read credentials from' -r -F
@@ -1674,16 +1674,16 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_see
 complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a "create" -d 'Creates a new branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a "switch" -d 'Switches the current branch to a different one'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a "list" -d 'List all branches'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a "current" -d 'Prints the current branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a "rebase" -d 'Creates a new branch that is based on the target branch, but also contains any new migrations on the current branch. Warning: data stored in current branch will be deleted'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a "merge" -d 'Merges a branch into this one via a fast-forward merge'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a "rename" -d 'Renames a branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a "drop" -d 'Drops an existing branch, removing it and its data'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a "wipe" -d 'Wipes all data within a branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a create -d 'Creates a new branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a switch -d 'Switches the current branch to a different one'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a list -d 'List all branches'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a current -d 'Prints the current branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a rebase -d 'Creates a new branch that is based on the target branch, but also contains any new migrations on the current branch. Warning: data stored in current branch will be deleted'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a merge -d 'Merges a branch into this one via a fast-forward merge'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a rename -d 'Renames a branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a drop -d 'Drops an existing branch, removing it and its data'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a wipe -d 'Wipes all data within a branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and not __fish_seen_subcommand_from create switch list current rebase merge rename drop wipe help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from create" -l from -d 'The optional \'base\' of the branch to create' -r
 complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from create" -s I -l instance -d 'Instance name (use edgedb instance list to list local, remote and EdgeDB Cloud instances available to you)' -r -f
 complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from create" -l dsn -d 'DSN for EdgeDB to connect to (overrides all other options except password)' -r
@@ -1896,14 +1896,14 @@ complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_su
 complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from wipe" -l no-tls-verify-hostname -d 'Do not verify server hostname'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from wipe" -l admin -d 'Connect to a passwordless Unix socket with superuser privileges by default'
 complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from wipe" -s h -l help -d 'Print help (see more with \'--help\')'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a "create" -d 'Creates a new branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a "switch" -d 'Switches the current branch to a different one'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a "list" -d 'List all branches'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a "current" -d 'Prints the current branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a "rebase" -d 'Creates a new branch that is based on the target branch, but also contains any new migrations on the current branch. Warning: data stored in current branch will be deleted'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a "merge" -d 'Merges a branch into this one via a fast-forward merge'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a "rename" -d 'Renames a branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a "drop" -d 'Drops an existing branch, removing it and its data'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a "wipe" -d 'Wipes all data within a branch'
-complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a "help" -d 'Print this message or the help of the given subcommand(s)'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a create -d 'Creates a new branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a switch -d 'Switches the current branch to a different one'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a list -d 'List all branches'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a current -d 'Prints the current branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a rebase -d 'Creates a new branch that is based on the target branch, but also contains any new migrations on the current branch. Warning: data stored in current branch will be deleted'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a merge -d 'Merges a branch into this one via a fast-forward merge'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a rename -d 'Renames a branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a drop -d 'Drops an existing branch, removing it and its data'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a wipe -d 'Wipes all data within a branch'
+complete -c edgedb -n "__fish_edgedb_using_subcommand branch; and __fish_seen_subcommand_from help" -f -a help -d 'Print this message or the help of the given subcommand(s)'
 complete -c edgedb -n "__fish_edgedb_using_subcommand hash-password" -s h -l help -d 'Print help'
