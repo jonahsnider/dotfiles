@@ -1,11 +1,14 @@
 {
   "mcpServers": {
     "GitHub": {
+      "headers": {
+        "Authorization": "Bearer ${env:GITHUB_TOKEN}"
+      },
       "url": "https://api.githubcopilot.com/mcp/"
     },
     "Linear": {
-      "url": "https://mcp.linear.app/mcp",
-      "headers": {}
+      "headers": {},
+      "url": "https://mcp.linear.app/mcp"
     }
   }
 }
