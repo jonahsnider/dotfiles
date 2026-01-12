@@ -43,3 +43,7 @@ set -gx SANITY_NIX_PATH "/Users/jonah.snider/programming/sanity/sanity-nix-confi
 # See https://github.com/railwayapp/railpack#getting-started
 set -gx BUILDKIT_HOST "docker-container://buildkit"
 #endregion
+
+if test -f ~/.gh_token
+    set -gx GITHUB_TOKEN (cat ~/.gh_token)
+end
