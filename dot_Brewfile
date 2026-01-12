@@ -1,48 +1,106 @@
 tap "encoredev/tap"
+tap "jonahsnider/frc", "https://github.com/jonahsnider/homebrew-frc.git"
+tap "nrlquaker/createzap"
 tap "withgraphite/tap"
-
+# Static checker for GitHub Actions workflow files
+brew "actionlint"
+# Toolchain of the web
 brew "biome"
+# Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
-brew "ripgrep"
-brew "emscripten"
-brew "fastfetch"
-brew "ffmpeg"
-brew "fish"
-brew "fzf"
-brew "gh"
-brew "git-delta"
-brew "git-lfs"
-brew "gnupg"
-brew "google-java-format"
-brew "graphviz"
-brew "just"
-brew "lazydocker"
-brew "lazygit"
-brew "mise"
-brew "nmap"
-brew "scc"
-brew "shfmt"
-brew "sops"
-brew "starship"
-brew "temporal"
-brew "tree"
-brew "wget"
-brew "yt-dlp"
-brew "zoxide"
-brew "encoredev/tap/encore"
-brew "withgraphite/tap/graphite"
-cask "1password-cli"
-cask "gcloud-cli"
-cask "keycastr"
-cask "claude-code"
-brew "direnv"
-brew "git"
+# Cross-platform make
 brew "cmake"
-cask "ghostty"
-brew "onefetch"
-cask "codex"
-brew "kubectx"
-brew "mole"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# LLVM bytecode to JavaScript compiler
+brew "emscripten"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# User-friendly command-line shell for UNIX-like operating systems
+brew "fish"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# Git extension for versioning large files
+brew "git-lfs"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
+# Reformats Java source code to comply with Google Java Style
+brew "google-java-format"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
+# Handy way to save and run project-specific commands
+brew "just"
+# Compiler for generating binary data parsers
 brew "kaitai-struct-compiler"
+# Tool that can switch between kubectl contexts easily and create aliases
+brew "kubectx"
+# Lazier way to manage everything docker
+brew "lazydocker"
+# Simple terminal UI for git commands
+brew "lazygit"
+# YAML Parser
+brew "libyaml"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Deep clean and optimize your Mac
+brew "mole"
+# Port scanning utility for large networks
+brew "nmap"
+# Command-line Git information tool
+brew "onefetch"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Fast and accurate code counter with complexity and COCOMO estimates
+brew "scc"
+# Autoformat shell script source code
+brew "shfmt"
+# Editor of encrypted files
+brew "sops"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Command-line interface for running and interacting with Temporal Server and UI
+brew "temporal"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Internet file retriever
+brew "wget"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# The static analysis-powered Go framework for building backend applications
+brew "encoredev/tap/encore"
+# Allows you to manage your stacked changes and submit them for review on GitHub
+brew "withgraphite/tap/graphite"
+# Command-line interface for 1Password
+cask "1password-cli"
+# FRC log analysis tool
 cask "advantagescope"
+# Network scanner
 cask "angry-ip-scanner"
+# Time-optimal drivetrain trajectory planner for the FIRST Robotics Competition
+cask "choreo"
+# Terminal-based AI coding assistant
+cask "claude-code"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
+# Simple and modern dashboard for FRC
+cask "elastic"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Open-source keystroke visualiser
+cask "keycastr"
+# Simple yet powerful path planning tool for FRC robots
+cask "pathplanner"
+# Configuration and firmware update utility for REV Robotics hardware
+cask "rev-hardware-client"
