@@ -92,6 +92,8 @@ cask "advantagescope"
 cask "claude-code"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# UI for creating Windows installer ISO from UUPDump
+cask "crystalfetch"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
@@ -100,5 +102,7 @@ cask "ghostty"
 cask "keycastr"
 # Simple yet powerful path planning tool for FRC robots
 cask "pathplanner"
+# Virtual machines UI using QEMU
+cask "utm"
 # Standard software library provided for FRC teams to write robot code
 cask "wpilib"
