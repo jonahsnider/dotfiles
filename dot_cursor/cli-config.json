@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Shell(ls)"
+      "Shell(ls)",
+      "Shell(git fetch)",
+      "Shell(git status)",
+      "Shell(git tag)",
+      "Shell(sort)",
+      "Shell(head)",
+      "Shell(git log)",
+      "Shell(pnpm build)",
+      "Shell(pnpm prebuild)",
+      "Shell(git diff)"
     ],
     "deny": []
   },
@@ -10,17 +19,21 @@
     "vimMode": false
   },
   "model": {
-    "modelId": "composer-1",
-    "displayModelId": "composer-1",
-    "displayName": "Composer 1",
-    "displayNameShort": "Composer 1",
-    "aliases": []
+    "modelId": "claude-4.5-opus-high-thinking",
+    "displayModelId": "opus-4.5-thinking",
+    "displayName": "Claude 4.5 Opus (Thinking)",
+    "displayNameShort": "Opus 4.5 (Thinking)",
+    "aliases": [
+      "opus-4.5-thinking",
+      "claude-4.5-opus-thinking"
+    ],
+    "maxMode": false
   },
   "hasChangedDefaultModel": false,
   "privacyCache": {
     "ghostMode": true,
     "privacyMode": 2,
-    "updatedAt": 1766899889074
+    "updatedAt": 1768607893693
   },
   "network": {
     "useHttp1ForAgent": false
