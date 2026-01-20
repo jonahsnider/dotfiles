@@ -1,12 +1,12 @@
 [tools]
 bun = "latest"
+"github:railwayapp/railpack" = "latest"
 go = "latest"
 java = "17"
 node = "24"
 python = "3.11"
 ruff = "latest"
 rust = "latest"
-"ubi:railwayapp/railpack" = "latest"
 uv = "latest"
 
 [settings]
