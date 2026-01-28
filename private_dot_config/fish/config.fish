@@ -18,3 +18,6 @@ source $modules_dir/path.fish
 source $modules_dir/mnemonics.fish
 source $modules_dir/general.fish
 source $modules_dir/prompt.fish
+
+# Added by Yarn Switch
+source "/Users/jonah.snider/.yarn/switch/env.fish"
