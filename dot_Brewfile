@@ -1,5 +1,5 @@
 tap "encoredev/tap"
-tap "jonahsnider/frc"
+tap "jonahsnider/frc", "https://github.com/jonahsnider/homebrew-frc.git"
 tap "nrlquaker/createzap"
 tap "withgraphite/tap"
 # Static checker for GitHub Actions workflow files
@@ -18,7 +18,7 @@ brew "emscripten"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Play, record, convert, and stream audio and video
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
@@ -74,6 +74,8 @@ brew "starship"
 brew "temporal"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Command-line unarchiving tools supporting multiple formats
+brew "unar"
 # Internet file retriever
 brew "wget"
 # Feature-rich command-line audio/video downloader
@@ -101,8 +103,8 @@ cask "ghostty"
 # Open-source keystroke visualiser
 cask "keycastr"
 # Simple yet powerful path planning tool for FRC robots
-cask "pathplanner"
+cask "jonahsnider/frc/pathplanner"
 # Virtual machines UI using QEMU
 cask "utm"
 # Standard software library provided for FRC teams to write robot code
-cask "wpilib"
+cask "jonahsnider/frc/wpilib"
