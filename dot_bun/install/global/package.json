@@ -4,7 +4,7 @@
     "@devcontainers/cli": "^0.77.0",
     "@modelcontextprotocol/inspector": "^0.17.5",
     "aws-cdk": "^2.1017.1",
-    "ccusage": "^16.2.0",
+    "ccusage": "^18.0.5",
     "fish-lsp": "^1.0.10",
     "prettier": "^3.5.3",
     "serve": "^14.2.4",

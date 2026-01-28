@@ -8,7 +8,7 @@
         "@devcontainers/cli": "^0.77.0",
         "@modelcontextprotocol/inspector": "^0.17.5",
         "aws-cdk": "^2.1017.1",
-        "ccusage": "^16.2.0",
+        "ccusage": "^18.0.5",
         "fish-lsp": "^1.0.10",
         "prettier": "^3.5.3",
         "serve": "^14.2.4",
@@ -412,7 +412,7 @@
 
     "camelcase": ["camelcase@7.0.1", "", {}, "sha512-xlx1yCK2Oc1APsPXDL2LdlNP6+uu8OCDdhOBSVT279M/S+y75O30C2VuD8T2ogdePBBl7PfPF4504tnLgX3zfw=="],
 
-    "ccusage": ["ccusage@16.2.0", "", { "bin": { "ccusage": "dist/index.js" } }, "sha512-eP7RosNkL44L4N0tAevlQxbgwfihNQ6jsGdtK00JXe89KmXaoLawm2nDrW+R/sAJv3Yk2+S0uS7K/sidYtYQdg=="],
+    "ccusage": ["ccusage@18.0.5", "", { "bin": { "ccusage": "dist/index.js" } }, "sha512-bnZrVbGm5h7hIIOH3FZFaDxKgJLLHhWDWIv7/9M6/O373YM6RAwsG9hxZXA1ep+C2ISiNEX6MYVoXgkoSuFf9Q=="],
 
     "chalk": ["chalk@5.0.1", "", {}, "sha512-Fo07WOYGqMfCWHOzSXOt2CxDbC6skS/jO9ynEcmpANMoPrD+W1r1K6Vx7iNm+AQmETU1Xr2t+n8nzkV9t6xh3w=="],
 
