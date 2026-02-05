@@ -25,7 +25,7 @@ abbr --add gsm git_switch_main
 
 # Graphite
 abbr --add gtA "gt add -A"
-abbr --add gtm "gt modify"
+abbr --add gtm "gt modify --commit --message"
 abbr --add gts "gt sync"
 abbr --add gtS "gt submit"
 abbr --add gtSS "gt submit --stack"
