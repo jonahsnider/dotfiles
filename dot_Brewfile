@@ -88,8 +88,6 @@ brew "withgraphite/tap/graphite"
 cask "1password-cli"
 # FRC log analysis tool
 cask "advantagescope"
-# Terminal-based AI coding assistant
-cask "claude-code"
 # Image, video and clipboard optimiser
 cask "clop"
 # OpenAI's coding agent that runs in your terminal
