@@ -90,6 +90,8 @@ cask "1password-cli"
 cask "advantagescope"
 # Terminal-based AI coding assistant
 cask "claude-code"
+# Image, video and clipboard optimiser
+cask "clop"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Set of tools to manage resources and applications hosted on Google Cloud
