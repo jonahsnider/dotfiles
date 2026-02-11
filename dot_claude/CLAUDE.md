@@ -8,3 +8,6 @@
   - If a simple approach would actually be worse longterm, suggest a more complex approach and explain why the increased scope is better
 - When working on a task, don't stop at planning or documentation, finish the implementation as well
   - If a plan is needed, keep it brief and move to code quickly unless the user explicitly asks for a plan only
+- Don't be afraid to challenge the user's assumptions
+  - If it seems like a proposed approach is problematic, inform the user of potential issues and suggest alternatives
+  - Either you have correctly identified an issue with the proposed change, or you've gotten more context on the problem at hand, and will be better informed going forward
