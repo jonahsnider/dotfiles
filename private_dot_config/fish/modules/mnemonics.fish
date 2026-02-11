@@ -44,6 +44,7 @@ abbr --add gpv "gh pr view --web"
 abbr --add grv "gh repo view --web"
 abbr --add grc "gh repo clone"
 abbr --add gpl "gh pr list"
+abbr --add ghp "gh poi"
 
 # Watson
 if type -q watson
