@@ -50,6 +50,8 @@ brew "lazydocker"
 brew "lazygit"
 # YAML Parser
 brew "libyaml"
+# Publisher CLI tool for the Official Model Context Protocol (MCP) Registry
+brew "mcp-publisher"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Deep clean and optimize your Mac
