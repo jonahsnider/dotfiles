@@ -1,16 +1,28 @@
 {
-  "preferences": {
-    "quickEntryShortcut": "off",
-    "menuBarEnabled": false
-  },
   "mcpServers": {
     "sanity-local": {
       "command": "/Users/jonah.snider/.local/share/mise/installs/bun/1.3.6/bin/bunx",
-      "args": ["mcp-remote", "http://127.0.0.1:3003", "--transport", "http-only"]
+      "args": [
+        "mcp-remote",
+        "http://127.0.0.1:3003",
+        "--transport",
+        "http-only"
+      ]
     },
     "sanity-staging": {
       "command": "/Users/jonah.snider/.local/share/mise/installs/bun/1.3.6/bin/bunx",
-      "args": ["mcp-remote", "https://mcp.sanity.work", "--transport", "http-only"]
+      "args": [
+        "mcp-remote",
+        "https://mcp.sanity.work",
+        "--transport",
+        "http-only"
+      ]
     }
+  },
+  "preferences": {
+    "menuBarEnabled": false,
+    "quickEntryShortcut": "off",
+    "sidebarMode": "chat",
+    "coworkScheduledTasksEnabled": false
   }
 }
