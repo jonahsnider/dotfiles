@@ -1,3 +1,4 @@
+tap "anomalyco/tap"
 tap "encoredev/tap"
 tap "jonahsnider/frc", "https://github.com/jonahsnider/homebrew-frc.git"
 tap "nrlquaker/createzap"
@@ -82,6 +83,8 @@ brew "wget"
 brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# The AI coding agent built for the terminal.
+brew "anomalyco/tap/opencode"
 # The static analysis-powered Go framework for building backend applications
 brew "encoredev/tap/encore"
 # Allows you to manage your stacked changes and submit them for review on GitHub
@@ -100,6 +103,8 @@ cask "gcloud-cli"
 cask "ghostty"
 # Open-source keystroke visualiser
 cask "keycastr"
+# AI coding agent desktop client
+cask "opencode-desktop"
 # Simple yet powerful path planning tool for FRC robots
 cask "jonahsnider/frc/pathplanner"
 # Standard software library provided for FRC teams to write robot code
