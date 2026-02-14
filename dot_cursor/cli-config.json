@@ -19,13 +19,13 @@
     "vimMode": false
   },
   "model": {
-    "modelId": "claude-4.5-opus-high-thinking",
-    "displayModelId": "opus-4.5-thinking",
-    "displayName": "Claude 4.5 Opus (Thinking)",
-    "displayNameShort": "Opus 4.5 (Thinking)",
+    "modelId": "claude-4.6-opus-high-thinking",
+    "displayModelId": "opus-4.6-thinking",
+    "displayName": "Claude 4.6 Opus (Thinking)",
+    "displayNameShort": "Opus 4.6 (Thinking)",
     "aliases": [
-      "opus-4.5-thinking",
-      "claude-4.5-opus-thinking"
+      "opus-4.6-thinking",
+      "claude-4.6-opus-thinking"
     ],
     "maxMode": false
   },
@@ -33,7 +33,7 @@
   "privacyCache": {
     "ghostMode": true,
     "privacyMode": 2,
-    "updatedAt": 1768607893693
+    "updatedAt": 1771033192846
   },
   "network": {
     "useHttp1ForAgent": false
