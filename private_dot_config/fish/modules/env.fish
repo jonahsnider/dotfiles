@@ -18,6 +18,12 @@ set -gx HOMEBREW_GITHUB_API_TOKEN $GITHUB_TOKEN
 set -gx NPM_TOKEN (cat ~/.npm_token)
 #endregion
 
+#region Homebrew
+set -gx HOMEBREW_BUNDLE_DUMP_DESCRIBE 1
+set -gx HOMEBREW_BUNDLE_DUMP_NO_VSCODE 1
+set -gx HOMEBREW_BUNDLE_DUMP_NO_GO 1
+#endregion
+
 #region Mise
 set -gx MISE_NODE_COREPACK true
 #endregion
