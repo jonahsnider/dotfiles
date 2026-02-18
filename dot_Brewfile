@@ -103,6 +103,8 @@ cask "gcloud-cli"
 cask "ghostty"
 # Open-source keystroke visualiser
 cask "keycastr"
+# Flash and find Limelight devices
+cask "jonahsnider/frc/limelight-hardware-manager"
 # AI coding agent desktop client
 cask "opencode-desktop"
 # Simple yet powerful path planning tool for FRC robots
