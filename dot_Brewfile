@@ -107,5 +107,7 @@ cask "keycastr"
 cask "opencode-desktop"
 # Simple yet powerful path planning tool for FRC robots
 cask "jonahsnider/frc/pathplanner"
+# CLI to create, run, and deploy Slack apps
+cask "slack-cli"
 # Standard software library provided for FRC teams to write robot code
 cask "jonahsnider/frc/wpilib"
