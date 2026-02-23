@@ -1,0 +1,15 @@
+{
+    "theme.default.syncWithOS": true,
+    "theme.default.mode": "Dark",
+    "theme.default.frostedGlassEffect": true,
+    "theme.default.colorizeBackground": false,
+    "theme.type": "Default",
+    "zoomLevel": 1.0,
+    "warn.before.quitting": true,
+    "editor.fontFamily": "Cascadia Code NF",
+    "keymap": "air",
+    "editor.indentStyle": "Tabs",
+	"editor.tabSize": 2,
+	"editor.honorCamelHumps": true,
+	"git.autoFetch": true
+}
