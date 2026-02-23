@@ -1,3 +1,8 @@
+---
+name: setup-autofix-ci
+description: Add autofix.ci to a project. Use when setting up automatic code fixing in CI via autofix.ci, creating the autofix.yml GitHub Actions workflow.
+---
+
 # Setup autofix.ci
 
 Add autofix.ci to the project.
@@ -84,7 +89,7 @@ Check what version of Java to use by looking at existing CI pipelines.
 
 ### General
 
-Check project metadat (ex. `package.json`) for context on what tooling is used for linting and formatting.
+Check project metadata (ex. `package.json`) for context on what tooling is used for linting and formatting.
 
 ### Biome
 

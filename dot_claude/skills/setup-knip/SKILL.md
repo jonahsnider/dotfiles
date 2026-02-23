@@ -1,3 +1,8 @@
+---
+name: setup-knip
+description: Setup Knip in a project for detecting unused files, dependencies, and exports. Use when adding Knip to a project, configuring entry points, or integrating Knip into CI.
+---
+
 # Setup Knip
 
 Setup Knip in this project.
@@ -70,7 +75,7 @@ const config = {
 ## Rules
 
 Generally rules should be kept enabled.
-Some make sense to ignore (ex. `enumMembers`) since they are more opionionated.
+Some make sense to ignore (ex. `enumMembers`) since they are more opinionated.
 
 ```ts
 const config = {
