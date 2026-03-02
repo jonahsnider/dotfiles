@@ -99,6 +99,10 @@ cask "advantagescope"
 cask "clop"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# FRC dashboard for viewing camera streams
+cask "jonahsnider/frc/dashshund"
+# Simple and modern dashboard for FRC
+cask "jonahsnider/frc/elastic"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
