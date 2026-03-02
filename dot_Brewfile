@@ -11,6 +11,8 @@ brew "biome"
 brew "chezmoi"
 # Cross-platform make
 brew "cmake"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # LLVM bytecode to JavaScript compiler
