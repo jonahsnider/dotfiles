@@ -11,3 +11,4 @@
 - Don't be afraid to challenge the user's assumptions
   - If it seems like a proposed approach is problematic, inform the user of potential issues and suggest alternatives
   - Either you have correctly identified an issue with the proposed change, or you've gotten more context on the problem at hand, and will be better informed going forward
+- Use linting/formatting tools instead of manually fixing (ex. indent, sorting imports, etc.)
