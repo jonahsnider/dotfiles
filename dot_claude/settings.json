@@ -13,6 +13,7 @@
   "model": "opus[1m]",
   "sandbox": {
     "autoAllowBashIfSandboxed": true,
-    "enabled": true
+    "enabled": true,
+    "enableWeakerNetworkIsolation": true
   }
 }
