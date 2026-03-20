@@ -42,6 +42,10 @@ set -gx SANITY_NIX_PATH "/Users/jonah.snider/programming/sanity/sanity-nix-confi
 set -gx BUILDKIT_HOST "docker-container://buildkit"
 #endregion
 
+#region Vite+
+source ~/.vite-plus/env.fish
+#endregion
+
 if test -f ~/.gh_token
     set -gx GITHUB_TOKEN (cat ~/.gh_token)
 end
