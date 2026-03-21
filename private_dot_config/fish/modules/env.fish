@@ -11,9 +11,6 @@ set -gx NODE_ENV development
 #endregion
 
 #region Secrets
-# GitHub token
-set -gx HOMEBREW_GITHUB_API_TOKEN $GITHUB_TOKEN
-
 # npm token
 set -gx NPM_TOKEN (cat ~/.npm_token)
 #endregion
@@ -46,6 +43,3 @@ set -gx BUILDKIT_HOST "docker-container://buildkit"
 source ~/.vite-plus/env.fish
 #endregion
 
-if test -f ~/.gh_token
-    set -gx GITHUB_TOKEN (cat ~/.gh_token)
-end
