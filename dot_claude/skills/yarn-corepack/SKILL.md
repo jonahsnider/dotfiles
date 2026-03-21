@@ -12,3 +12,4 @@ description: Manage Yarn versions with Corepack instead of a local version
      run: corepack enable
    ```
 3. Delete `.yarn/releases/`
+4. Run `yarn` to update the lockfile
