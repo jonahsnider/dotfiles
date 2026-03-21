@@ -6,6 +6,7 @@
     "aws-cdk": "^2.1017.1",
     "ccusage": "^18.0.5",
     "fish-lsp": "^1.0.10",
+    "growthbook": "^0.2.5",
     "prettier": "^3.5.3",
     "sanity": "^5.17.1",
     "serve": "^14.2.4",
