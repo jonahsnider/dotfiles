@@ -42,4 +42,3 @@ set -gx BUILDKIT_HOST "docker-container://buildkit"
 #region Vite+
 source ~/.vite-plus/env.fish
 #endregion
-
