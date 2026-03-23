@@ -16,7 +16,7 @@ set -gx NPM_TOKEN (cat ~/.npm_token)
 #endregion
 
 #region Homebrew
-set -gx HOMEBREW_BUNDLE_DUMP_DESCRIBE 1
+set -gx HOMEBREW_BUNDLE_DESCRIBE 1
 set -gx HOMEBREW_BUNDLE_DUMP_NO_VSCODE 1
 set -gx HOMEBREW_BUNDLE_DUMP_NO_GO 1
 set -gx HOMEBREW_NO_ENV_HINTS 1
