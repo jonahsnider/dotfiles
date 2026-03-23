@@ -1,15 +1,5 @@
 {
-  "mcpServers": {
-    "sanity-staging": {
-      "command": "/Users/jonah.snider/.local/share/mise/installs/bun/1.3.6/bin/bunx",
-      "args": [
-        "mcp-remote",
-        "https://mcp.sanity.work",
-        "--transport",
-        "http-only"
-      ]
-    }
-  },
+  "mcpServers": {},
   "preferences": {
     "menuBarEnabled": false,
     "quickEntryShortcut": "off",
