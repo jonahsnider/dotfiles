@@ -9,7 +9,6 @@
     "clangd-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "ai-growth-toolkit@sanity-plugins": true,
     "sanity-internal-skills@sanity-plugins": true
   },
   "extraKnownMarketplaces": {
@@ -18,7 +17,7 @@
         "source": "github",
         "repo": "sanity-labs/claude-plugins"
       },
-      "autoUpdate": true
+      "autoUpdate": false
     }
   },
   "sandbox": {
