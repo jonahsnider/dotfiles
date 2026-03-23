@@ -109,6 +109,8 @@ cask "jonahsnider/frc/elastic"
 cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Apple tool to create multi-platform icons
+cask "icon-composer"
 # Open-source keystroke visualiser
 cask "keycastr"
 # Flash and find Limelight devices
