@@ -1,29 +1,29 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
-  "includeCoAuthoredBy": false,
-  "model": "opus[1m]",
+  "alwaysThinkingEnabled": true,
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "sanity-internal-skills@sanity-plugins": true
   },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "extraKnownMarketplaces": {
     "sanity-plugins": {
+      "autoUpdate": false,
       "source": {
-        "source": "github",
-        "repo": "sanity-labs/claude-plugins"
-      },
-      "autoUpdate": false
+        "repo": "sanity-labs/claude-plugins",
+        "source": "github"
+      }
     }
   },
+  "includeCoAuthoredBy": false,
+  "model": "opus[1m]",
   "sandbox": {
-    "enabled": true,
     "autoAllowBashIfSandboxed": true,
+    "enabled": true,
     "enableWeakerNetworkIsolation": true
-  },
-  "alwaysThinkingEnabled": true
+  }
 }
