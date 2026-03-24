@@ -24,6 +24,10 @@
   "sandbox": {
     "autoAllowBashIfSandboxed": true,
     "enabled": true,
-    "enableWeakerNetworkIsolation": true
+    "enableWeakerNetworkIsolation": true,
+    "filesystem": {
+      "allowRead": ["~/.gradle"],
+      "allowWrite": ["~/.gradle"]
+    }
   }
 }
