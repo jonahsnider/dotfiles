@@ -4,8 +4,8 @@
     "menuBarEnabled": false,
     "quickEntryShortcut": "off",
     "coworkScheduledTasksEnabled": true,
-    "ccdScheduledTasksEnabled": false,
-    "sidebarMode": "chat",
+    "ccdScheduledTasksEnabled": true,
+    "sidebarMode": "code",
     "coworkWebSearchEnabled": true
   }
 }
