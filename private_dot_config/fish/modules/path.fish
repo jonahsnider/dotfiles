@@ -52,3 +52,5 @@ fish_add_path -g /Users/jonah.snider/programming/sanity/sanity-nix-config/.deven
 #region Ghostty
 fish_add_path -g /Applications/Ghostty.app/Contents/MacOS
 #endregion
+
+alias braintrust /Users/jonah.snider/.local/bin/bt
