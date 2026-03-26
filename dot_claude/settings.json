@@ -1,33 +1,39 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "alwaysThinkingEnabled": true,
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "includeCoAuthoredBy": false,
+  "model": "opus[1m]",
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "sanity-internal-skills@sanity-plugins": true
-  },
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "sanity-internal-skills@sanity-plugins": true,
+    "code-review@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "sanity-plugins": {
-      "autoUpdate": false,
       "source": {
-        "repo": "sanity-labs/claude-plugins",
-        "source": "github"
-      }
+        "source": "github",
+        "repo": "sanity-labs/claude-plugins"
+      },
+      "autoUpdate": false
     }
   },
-  "includeCoAuthoredBy": false,
-  "model": "opus[1m]",
   "sandbox": {
-    "autoAllowBashIfSandboxed": true,
     "enabled": true,
-    "enableWeakerNetworkIsolation": true,
+    "autoAllowBashIfSandboxed": true,
     "filesystem": {
-      "allowRead": ["~/.gradle"],
-      "allowWrite": ["~/.gradle"]
-    }
-  }
+      "allowWrite": [
+        "~/.gradle"
+      ],
+      "allowRead": [
+        "~/.gradle"
+      ]
+    },
+    "enableWeakerNetworkIsolation": true
+  },
+  "alwaysThinkingEnabled": true
 }
