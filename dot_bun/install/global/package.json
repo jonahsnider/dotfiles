@@ -2,6 +2,7 @@
   "dependencies": {
     "@biomejs/biome": "^2.2.2",
     "@devcontainers/cli": "^0.77.0",
+    "@gltf-transform/cli": "^4.3.0",
     "@modelcontextprotocol/inspector": "^0.21.1",
     "aws-cdk": "^2.1017.1",
     "ccusage": "^18.0.5",
