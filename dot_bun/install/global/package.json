@@ -8,7 +8,6 @@
     "ccusage": "^18.0.5",
     "fish-lsp": "^1.0.10",
     "growthbook": "^0.2.5",
-    "portless": "^0.7.2",
     "prettier": "^3.5.3",
     "sanity": "^5.19.0",
     "serve": "^14.2.4",
