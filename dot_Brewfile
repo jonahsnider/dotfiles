@@ -127,5 +127,9 @@ cask "opencode-desktop"
 cask "jonahsnider/frc/pathplanner"
 # CLI to create, run, and deploy Slack apps
 cask "slack-cli"
+# JDK from the Eclipse Foundation (Adoptium)
+cask "temurin"
+# All-in-One Java Troubleshooting Tool
+cask "visualvm"
 # Standard software library provided for FRC teams to write robot code
 cask "jonahsnider/frc/wpilib"
