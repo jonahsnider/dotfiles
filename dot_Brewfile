@@ -42,6 +42,8 @@ brew "glow"
 brew "gnupg"
 # Reformats Java source code to comply with Google Java Style
 brew "google-java-format"
+# CLI for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more
+brew "googleworkspace-cli"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # Handy way to save and run project-specific commands
