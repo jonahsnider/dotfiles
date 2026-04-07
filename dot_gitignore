@@ -1,3 +1,4 @@
 mise.local.toml
 .claude/settings.local.json
 .turbo
+.junie/memory
