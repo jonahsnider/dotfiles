@@ -127,6 +127,8 @@ cask "opencode-desktop"
 cask "jonahsnider/frc/pathplanner"
 # CLI to create, run, and deploy Slack apps
 cask "slack-cli"
+# Minimal GUI for AI code agents
+cask "t3-code"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin"
 # All-in-One Java Troubleshooting Tool
