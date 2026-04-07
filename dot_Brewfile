@@ -117,6 +117,8 @@ cask "font-jetbrains-mono"
 cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Web browser
+cask "google-chrome"
 # Apple tool to create multi-platform icons
 cask "icon-composer"
 # Open-source keystroke visualiser
