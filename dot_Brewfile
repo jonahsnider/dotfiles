@@ -104,6 +104,8 @@ brew "withgraphite/tap/graphite"
 cask "1password-cli"
 # FRC log analysis tool
 cask "advantagescope"
+# Dynamic Island-style notifications for Claude Code CLI sessions
+cask "claude-island"
 # Image, video and clipboard optimiser
 cask "clop"
 # OpenAI's coding agent that runs in your terminal
