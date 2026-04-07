@@ -11,5 +11,6 @@
     "editor.indentStyle": "Tabs",
 	"editor.tabSize": 2,
 	"editor.honorCamelHumps": true,
-	"git.autoFetch": true
+	"git.autoFetch": true,
+	"showShortcuts": true
 }
