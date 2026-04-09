@@ -1,0 +1,23 @@
+{
+    "defaultBehavior": "ask",
+    "allowReadonlyCommands": true,
+    "rules": {
+        "fileEditing": {
+            "rules": []
+        },
+        "readOutsideProject": {
+            "rules": []
+        },
+        "executables": {
+            "rules": [
+                {
+                    "prefix": "npm info",
+                    "action": "allow"
+                }
+            ]
+        },
+        "mcpTools": {
+            "rules": []
+        }
+    }
+}
