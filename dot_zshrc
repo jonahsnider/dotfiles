@@ -1,2 +1,4 @@
+# Added by ForgeCode installer
+export PATH="/Users/jonah.snider/.local/bin:$PATH"
 # Added by Yarn Switch
 source "/Users/jonah.snider/.yarn/switch/env"
