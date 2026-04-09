@@ -1,0 +1,33 @@
+{
+    "mcpServers": {
+    	"chrome-devtools": {
+    		"type": "stdio",
+    		"command": "bunx",
+    		"args": ["chrome-devtools-mcp@latest"]
+    	},
+    	"sanity": {
+    		"type": "remote",
+    		"url": "https://mcp.sanity.io",
+    		"enabled": false
+    	},
+    	"github": {
+    		"type": "remote",
+    		"url": "https://api.githubcopilot.com/mcp",
+    		"headers": {
+    			"Authorization": "Bearer {{ onepasswordRead "op://Personal/GitHub PAT - JetBrains/password" "my.1password.com" }}"
+    		}
+    	},
+    	"circleci": {
+    		"type": "stdio",
+    		"command": "bunx",
+    		"args": ["@circleci/mcp-server-circleci@latest"],
+    		"env": {
+    			"CIRCLECI_TOKEN": "{{ onepasswordRead "op://Employee/CircleCI Personal API Token/password" "sanity.1password.com" }}"
+    		}
+    	},
+    	"linear": {
+    		"type": "remote",
+    		"url": "https://mcp.linear.app/mcp"
+    	}
+    }
+}
