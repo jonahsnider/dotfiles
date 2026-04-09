@@ -1,11 +1,3 @@
-# Auto-Warpify
-if status is-interactive
-  printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "fish"}}\x9c'
-end
-
-
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
 set modules_dir (dirname (status --current-filename))/modules
 
 # Stage 1 - No dependencies
