@@ -14,8 +14,6 @@ set -gx NODE_ENV development
 # npm token
 set -gx NPM_TOKEN (cat ~/.npm_token)
 
-# Droid Anthropic API key
-set -gx DROID_ANTHROPIC_API_KEY (cat ~/.droid_anthropic_api_key)
 #endregion
 
 #region Homebrew
