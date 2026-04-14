@@ -1,8 +1,7 @@
 {
-  "autonomyMode": "auto-low",
-  "commandAllowlist": [
-    "vp check"
-  ],
+  "enabledPlugins": {
+    "core@factory-plugins": true
+  },
   "customModels": [
     {
       "model": "claude-opus-4-6",
@@ -16,17 +15,18 @@
       "provider": "anthropic"
     }
   ],
-  "enabledPlugins": {
-    "core@factory-plugins": true
-  },
+  "includeCoAuthoredByDroid": false,
+  "showThinkingInMainView": true,
+  "commandAllowlist": [
+    "vp check"
+  ],
+  "logoAnimation": "off",
   "ideExtensionPromptedAt": {
     "vscode": 1775715347496
   },
-  "includeCoAuthoredByDroid": false,
-  "logoAnimation": "off",
   "sessionDefaultSettings": {
     "model": "custom:Opus-4.6-[Custom]-0",
-    "reasoningEffort": "medium"
-  },
-  "showThinkingInMainView": true
+    "reasoningEffort": "medium",
+    "autonomyMode": "auto-low"
+  }
 }
