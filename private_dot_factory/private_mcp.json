@@ -1,9 +1,3 @@
 {
-  "mcpServers": {
-    "sanity": {
-      "type": "http",
-      "url": "https://mcp.sanity.io",
-      "disabled": true
-    }
-  }
+  "mcpServers": {}
 }
