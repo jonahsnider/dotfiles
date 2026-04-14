@@ -1,0 +1,30 @@
+{
+	"auths": {},
+	"credHelpers": {
+		"asia.gcr.io": "gcr",
+		"eu.gcr.io": "gcr",
+		"europe-docker.pkg.dev": "gcloud",
+		"gcr.io": "gcr",
+		"marketplace.gcr.io": "gcloud",
+		"staging-k8s.gcr.io": "gcr",
+		"us.gcr.io": "gcr"
+	},
+	"currentContext": "desktop-linux",
+	"plugins": {
+		"-x-cli-hints": {
+			"enabled": "true"
+		},
+		"ai": {
+			"hooks": "build,buildx build,run,compose"
+		},
+		"debug": {
+			"hooks": "exec"
+		},
+		"scout": {
+			"hooks": "pull,buildx build"
+		}
+	},
+	"features": {
+		"hooks": "true"
+	}
+}
