@@ -136,7 +136,7 @@ cask "slack-cli"
 # Minimal GUI for AI code agents
 cask "t3-code"
 # JDK from the Eclipse Foundation (Adoptium)
-cask "temurin"
+cask "temurin@25"
 # All-in-One Java Troubleshooting Tool
 cask "visualvm"
 # Standard software library provided for FRC teams to write robot code
