@@ -115,8 +115,6 @@ cask "jonahsnider/frc/dashshund"
 # Simple and modern dashboard for FRC
 cask "jonahsnider/frc/elastic"
 cask "font-jetbrains-mono"
-# Set of tools to manage resources and applications hosted on Google Cloud
-cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Web browser
