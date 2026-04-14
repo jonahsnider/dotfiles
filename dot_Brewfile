@@ -16,6 +16,8 @@ brew "biome"
 brew "chezmoi"
 # Cross-platform make
 brew "cmake"
+# Create and run Linux containers using lightweight virtual machines
+brew "container"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Load/unload environment variables based on $PWD
@@ -125,6 +127,8 @@ cask "keycastr"
 cask "jonahsnider/frc/limelight-hardware-manager"
 # AI coding agent desktop client
 cask "opencode-desktop"
+# Native GUI for Apple Containers
+cask "orchard"
 # Convert CTR Electronics hoot (.hoot) files into other logging file formats
 cask "jonahsnider/frc/owlet"
 # Simple yet powerful path planning tool for FRC robots
