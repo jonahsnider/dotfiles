@@ -12,5 +12,11 @@ uv = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
-trusted_config_paths = ["/Users/jonah.snider/conductor/workspaces/"]
+trusted_config_paths = [
+  "/Users/jonah.snider/conductor/workspaces/",
+  "/Users/jonah.snider/programming/sanity",
+]
 env_file = ".env"
+
+[env]
+SANITY_WORKSPACE = "/Users/jonah.snider/programming/sanity"
