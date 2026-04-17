@@ -1,3 +1,14 @@
 {
-  "mcpServers": {}
+  "mcpServers": {
+    "sanity": {
+      "type": "http",
+      "url": "https://mcp.sanity.io",
+      "disabled": false
+    },
+    "slack": {
+      "type": "http",
+      "url": "https://mcp.slack.com/mcp",
+      "disabled": true
+    }
+  }
 }
