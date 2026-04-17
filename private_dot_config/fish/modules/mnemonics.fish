@@ -116,6 +116,18 @@ abbr --add px pnpx
 abbr --add pf "pnpm format"
 abbr --add pF "pnpm format:write"
 
+# Vite+
+abbr --add vpi "vp install"
+abbr --add vpd "vp dev"
+abbr --add vpb "vp build"
+abbr --add vpp "vp pack"
+abbr --add vpt "vp test"
+abbr --add vpc "vp check"
+abbr --add vpC "vp check --fix"
+abbr --add vpl "vp lint"
+abbr --add vpL "vp lint --fix"
+abbr --add vpF "vp fmt"
+
 # Docker
 abbr --add d docker
 abbr --add db "docker build"
