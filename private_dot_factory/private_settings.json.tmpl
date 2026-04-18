@@ -13,6 +13,17 @@
       "maxOutputTokens": 128000,
       "noImageSupport": false,
       "provider": "anthropic"
+    },
+    {
+      "model": "claude-opus-4-6",
+      "id": "custom:Opus-4.6-0",
+      "index": 0,
+      "baseUrl": "https://api.anthropic.com",
+      "apiKey": "{{ onepasswordRead "op://Employee/Anthropic API key for Factory/password" "sanity.1password.com" }}",
+      "displayName": "Opus 4.6",
+      "maxOutputTokens": 128000,
+      "noImageSupport": false,
+      "provider": "anthropic"
     }
   ],
   "includeCoAuthoredByDroid": false,
@@ -30,8 +41,8 @@
     "vscode": 1775715347496
   },
   "sessionDefaultSettings": {
-    "model": "custom:Opus-4.7-0",
-    "reasoningEffort": "medium",
+    "model": "custom:Opus-4.6-0",
+    "reasoningEffort": "high",
     "autonomyMode": "auto-low"
   }
 }
