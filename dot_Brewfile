@@ -88,6 +88,8 @@ brew "temporal"
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
+# Unified toolchain and entry point for web development
+brew "vite-plus"
 # Internet file retriever
 brew "wget"
 # Feature-rich command-line audio/video downloader
