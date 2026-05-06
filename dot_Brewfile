@@ -70,6 +70,8 @@ brew "mise"
 brew "mole"
 # Command-line Git information tool
 brew "onefetch"
+# CLI for the Pkl programming language
+brew "pkl"
 # Develop and deploy code with zero configuration
 brew "railway"
 # Search tool like grep and The Silver Searcher
