@@ -117,6 +117,8 @@ cask "jonahsnider/frc/dashshund"
 # Simple and modern dashboard for FRC
 cask "jonahsnider/frc/elastic"
 cask "font-jetbrains-mono"
+# Visualisation and debugging tool for robotics
+cask "foxglove"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Web browser
