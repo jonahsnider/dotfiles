@@ -110,6 +110,8 @@ brew "withgraphite/tap/graphite"
 cask "1password-cli"
 # FRC log analysis tool
 cask "advantagescope"
+# Screen recorder
+cask "bettercapture"
 # Image, video and clipboard optimiser
 cask "clop"
 # OpenAI's coding agent that runs in your terminal
