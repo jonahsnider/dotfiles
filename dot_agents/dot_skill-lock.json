@@ -1,0 +1,32 @@
+{
+  "version": 3,
+  "skills": {
+    "graphite": {
+      "source": "withgraphite/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/withgraphite/agent-skills.git",
+      "skillPath": "skills/graphite/SKILL.md",
+      "skillFolderHash": "404bf8d36e67273abeb7fbbf66efb2ba3ef15375",
+      "installedAt": "2026-05-08T23:00:50.626Z",
+      "updatedAt": "2026-05-08T23:00:50.626Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "antigravity",
+    "cline",
+    "codex",
+    "cursor",
+    "deepagents",
+    "dexto",
+    "firebender",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-cli",
+    "opencode",
+    "warp"
+  ]
+}
