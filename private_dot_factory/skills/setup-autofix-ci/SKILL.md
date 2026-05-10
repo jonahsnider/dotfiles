@@ -85,6 +85,17 @@ Check what version of Java to use by looking at existing CI pipelines.
     cache: "gradle"
 ```
 
+### Vite+
+
+Vite+ projects use the `vp` CLI, which manages its own runtime. No separate Node/Bun setup or install step is needed: `setup-vp` runs `vp install` automatically (`run-install` defaults to `true`).
+
+```yaml
+- name: Setup Vite+
+  uses: voidzero-dev/setup-vp@v1
+  with:
+    cache: true
+```
+
 ## Applying fixes
 
 ### General
@@ -100,4 +111,15 @@ For example, with Yarn:
 ```yaml
 - name: Migrate Biome schema
   run: yarn biome migrate --write
+```
+
+### Vite+
+
+Vite+ bundles linting and formatting via `vp check`. Knip can be run through `vp exec`.
+
+```yaml
+- name: Apply lint and formatting fixes
+  run: vp check --fix
+- name: Apply Knip fixes
+  run: vp exec knip --fix
 ```
