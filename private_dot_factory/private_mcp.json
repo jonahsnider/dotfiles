@@ -5,10 +5,28 @@
       "url": "https://mcp.sanity.io",
       "disabled": false
     },
-    "slack": {
+    "sentry": {
       "type": "http",
-      "url": "https://mcp.slack.com/mcp",
-      "disabled": true
+      "url": "https://mcp.sentry.dev/mcp",
+      "disabled": false
+    },
+    "railway": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@railway/mcp-server"
+      ],
+      "disabled": false
+    },
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest"
+      ],
+      "disabled": false
     }
   }
 }
