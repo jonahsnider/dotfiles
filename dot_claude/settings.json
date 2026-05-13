@@ -152,5 +152,6 @@
     },
     "enableWeakerNetworkIsolation": true
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "teammateMode": "auto"
 }
