@@ -54,3 +54,4 @@ fish_add_path -g /Applications/Ghostty.app/Contents/MacOS
 #endregion
 
 alias braintrust /Users/jonah.snider/.local/bin/bt
+alias san /Users/jonah.snider/programming/sanity/cli/packages/@sanity/cli/bin/run.js
