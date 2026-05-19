@@ -1,3 +1,4 @@
+{{ $secrets := include "secrets.json.age" | decrypt | fromJson -}}
 {
     "mcpServers": {
     	"chrome-devtools": {
@@ -14,7 +15,7 @@
     		"type": "remote",
     		"url": "https://api.githubcopilot.com/mcp",
     		"headers": {
-    			"Authorization": "Bearer {{ onepasswordRead "op://Personal/GitHub PAT - JetBrains/password" "my.1password.com" }}"
+    			"Authorization": "Bearer {{ $secrets.GITHUB_PAT_JETBRAINS }}"
     		}
     	},
     	"circleci": {
@@ -22,7 +23,7 @@
     		"command": "bunx",
     		"args": ["@circleci/mcp-server-circleci@latest"],
     		"env": {
-    			"CIRCLECI_TOKEN": "{{ onepasswordRead "op://Employee/CircleCI Personal API Token/password" "sanity.1password.com" }}"
+    			"CIRCLECI_TOKEN": {{ $secrets.CIRCLECI_PERSONAL_API_TOKEN | toJson }}
     		}
     	},
     	"linear": {

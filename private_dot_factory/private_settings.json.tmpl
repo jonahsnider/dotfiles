@@ -1,3 +1,4 @@
+{{ $secrets := include "secrets.json.age" | decrypt | fromJson -}}
 {
   "enabledPlugins": {
     "core@factory-plugins": true
@@ -8,7 +9,7 @@
       "id": "custom:Opus-4.7-0",
       "index": 0,
       "baseUrl": "https://api.anthropic.com",
-      "apiKey": "{{ onepasswordRead "op://Employee/Anthropic API key for Factory/password" "sanity.1password.com" }}",
+      "apiKey": {{ $secrets.ANTHROPIC_API_KEY_FACTORY | toJson }},
       "displayName": "Opus 4.7",
       "maxOutputTokens": 128000,
       "noImageSupport": false,
@@ -19,7 +20,7 @@
       "id": "custom:Opus-4.6-0",
       "index": 0,
       "baseUrl": "https://api.anthropic.com",
-      "apiKey": "{{ onepasswordRead "op://Employee/Anthropic API key for Factory/password" "sanity.1password.com" }}",
+      "apiKey": {{ $secrets.ANTHROPIC_API_KEY_FACTORY | toJson }},
       "displayName": "Opus 4.6",
       "maxOutputTokens": 128000,
       "noImageSupport": false,
@@ -30,7 +31,7 @@
       "id": "custom:GPT-5.5-0",
       "index": 0,
       "baseUrl": "https://api.openai.com/v1",
-      "apiKey": "{{ onepasswordRead "op://Employee/OpenAI API key for Factory/password" "sanity.1password.com" }}",
+      "apiKey": {{ $secrets.OPENAI_API_KEY_FACTORY | toJson }},
       "displayName": "GPT-5.5",
       "maxOutputTokens": 128000,
       "noImageSupport": false,

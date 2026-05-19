@@ -1,0 +1,10 @@
+[providers]
+personal = { type = "1password", vault = "Personal", account = "my.1password.com" }
+sanity = { type = "1password", vault = "Employee", account = "sanity.1password.com" }
+
+[secrets]
+ANTHROPIC_API_KEY_FACTORY = { provider = "sanity", value = "Anthropic API key for Factory/password" }
+CIRCLECI_PERSONAL_API_TOKEN = { provider = "sanity", value = "CircleCI Personal API Token/password" }
+GITHUB_PAT_JETBRAINS = { provider = "personal", value = "GitHub PAT - JetBrains/password" }
+NPM_TOKEN = { provider = "personal", value = "npm Token/password" }
+OPENAI_API_KEY_FACTORY = { provider = "sanity", value = "OpenAI API key for Factory/password" }
