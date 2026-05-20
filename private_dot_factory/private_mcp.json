@@ -27,6 +27,11 @@
         "chrome-devtools-mcp@latest"
       ],
       "disabled": false
+    },
+    "sanity-staging": {
+      "type": "http",
+      "url": "https://mcp.sanity.work",
+      "disabled": false
     }
   }
 }
