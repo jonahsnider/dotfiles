@@ -1,5 +1,7 @@
 # AGENTS.md
 
+## Writing code
+
 - When you're corrected by the user, consider if the feedback is generalizable enough to be added to a AGENTS.md file
   - If yes, ask the user if a memory should be recorded in AGENTS.md for future reference
 - Keep changes simple, minimal impact and prefer lower complexity whenever possible
@@ -11,4 +13,9 @@
 - Don't be afraid to challenge the user's assumptions
   - If it seems like a proposed approach is problematic, inform the user of potential issues and suggest alternatives
   - Either you have correctly identified an issue with the proposed change, or you've gotten more context on the problem at hand, and will be better informed going forward
+
+## Tooling
+
 - Use linting/formatting tools instead of manually fixing (ex. indent, sorting imports, etc.)
+- A modern version of Node is installed, and can run TypeScript natively without any flags
+  - Shell setup means that env vars should also be automatically parsed from .env, use `--env-file` otherwise
