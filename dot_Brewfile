@@ -86,6 +86,8 @@ brew "scc"
 brew "shfmt"
 # Editor of encrypted files
 brew "sops"
+# Toolkit to help you get started with Spec-Driven Development
+brew "specify"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Command-line interface for running and interacting with Temporal Server and UI
