@@ -17,7 +17,7 @@
     "serve": "^14.2.4",
     "sort-package-json": "^3.4.0",
     "turbo": "^2.9.6",
-    "vercel": "^53.1.1",
+    "vercel": "^54.2.0",
     "wrangler": "^4.83.0"
   }
 }
