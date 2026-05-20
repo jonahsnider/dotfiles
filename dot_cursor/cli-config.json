@@ -18,22 +18,49 @@
   "editor": {
     "vimMode": false
   },
+  "notifications": true,
+  "hints": true,
+  "rewind": false,
+  "suggestNextPrompt": false,
   "model": {
-    "modelId": "claude-4.6-opus-high-thinking",
-    "displayModelId": "opus-4.6-thinking",
-    "displayName": "Claude 4.6 Opus (Thinking)",
-    "displayNameShort": "Opus 4.6 (Thinking)",
-    "aliases": [
-      "opus-4.6-thinking",
-      "claude-4.6-opus-thinking"
-    ],
+    "modelId": "composer-2.5",
+    "displayModelId": "composer-2.5",
+    "displayName": "Composer 2.5 Fast",
+    "displayNameShort": "Composer 2.5 Fast",
+    "aliases": [],
     "maxMode": false
   },
   "hasChangedDefaultModel": false,
+  "maxMode": false,
+  "modelParameters": {
+    "composer-2.5": [
+      {
+        "id": "fast",
+        "value": "true"
+      }
+    ]
+  },
+  "selectedModel": {
+    "modelId": "composer-2.5",
+    "parameters": [
+      {
+        "id": "fast",
+        "value": "true"
+      }
+    ]
+  },
   "privacyCache": {
     "ghostMode": true,
     "privacyMode": 2,
-    "updatedAt": 1771033192846
+    "updatedAt": 1779309344348
+  },
+  "authInfo": {
+    "email": "jonah.snider@sanity.io",
+    "displayName": "Jonah Snider",
+    "teamId": 6565794,
+    "teamName": "Sanity",
+    "userId": 249045677,
+    "authId": "auth0|user_01K078VHTH5H5VDM4PHYHC83PS"
   },
   "network": {
     "useHttp1ForAgent": false
