@@ -22,6 +22,8 @@ brew "container"
 brew "coreutils"
 # Load/unload environment variables based on $PWD
 brew "direnv"
+# Select default apps for documents and URL schemes on macOS
+brew "duti"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
 # Like neofetch, but much faster because written mostly in C
