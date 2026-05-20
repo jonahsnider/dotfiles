@@ -4,6 +4,9 @@
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "includeCoAuthoredBy": false,
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "model": "opus[1m]",
   "hooks": {
     "Notification": [
@@ -153,5 +156,7 @@
     "enableWeakerNetworkIsolation": true
   },
   "alwaysThinkingEnabled": true,
-  "teammateMode": "auto"
+  "teammateMode": "auto",
+  "skipAutoPermissionPrompt": true,
+  "effortLevel": "xhigh"
 }
