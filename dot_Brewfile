@@ -14,8 +14,12 @@ brew "agent-browser"
 brew "bat"
 # Toolchain of the web
 brew "biome"
+# CLI tool for analyzing Claude Code usage from local JSONL files
+brew "ccusage"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# CLI tool for Cloudflare Workers
+brew "cloudflare-wrangler"
 # Cross-platform make
 brew "cmake"
 # Create and run Linux containers using lightweight virtual machines
@@ -36,6 +40,8 @@ brew "fd"
 brew "ffmpeg"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# LSP implementation for the fish shell language
+brew "fish-lsp"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
@@ -66,6 +72,8 @@ brew "lazydocker"
 brew "lazygit"
 # YAML Parser
 brew "libyaml"
+# Visual testing tool for MCP servers
+brew "mcp-inspector"
 # Publisher CLI tool for the Official Model Context Protocol (MCP) Registry
 brew "mcp-publisher"
 # Polyglot runtime manager (asdf rust clone)
@@ -76,6 +84,10 @@ brew "mole"
 brew "onefetch"
 # CLI for the Pkl programming language
 brew "pkl"
+# Replace port numbers with stable, named local URLs for humans and agents
+brew "portless"
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+brew "prettier"
 # Develop and deploy code with zero configuration
 brew "railway"
 # Search tool like grep and The Silver Searcher
@@ -96,6 +108,8 @@ brew "temporal"
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
+# Command-line interface for Vercel
+brew "vercel-cli"
 # Unified toolchain and entry point for web development
 brew "vite-plus"
 # Internet file retriever
