@@ -9,7 +9,7 @@
         "@gltf-transform/cli": "^4.3.0",
         "@modelcontextprotocol/inspector": "^0.21.1",
         "aws-cdk": "^2.1017.1",
-        "ccusage": "^18.0.5",
+        "ccusage": "^19.0.3",
         "cf": "^0.0.5",
         "fish-lsp": "^1.0.10",
         "growthbook": "^0.2.5",
@@ -1391,7 +1391,7 @@
 
     "castable-video": ["castable-video@1.1.12", "", { "dependencies": { "custom-media-element": "~1.4.6" } }, "sha512-fSHLEq6cUb+5TMMxTrYV9Yc7RJvcyz0IvjQpGFmjX55CTNZ/OzPlp0GLQl3YWligG57H80q6FrbgOJ9+jFeIgA=="],
 
-    "ccusage": ["ccusage@18.0.5", "", { "bin": { "ccusage": "dist/index.js" } }, "sha512-bnZrVbGm5h7hIIOH3FZFaDxKgJLLHhWDWIv7/9M6/O373YM6RAwsG9hxZXA1ep+C2ISiNEX6MYVoXgkoSuFf9Q=="],
+    "ccusage": ["ccusage@19.0.3", "", { "bin": { "ccusage": "./dist/cli.js" } }, "sha512-10dKbFiRtqYThjl6L3CcAusSp+VDH9IX64S/fg8DJvaJcfADAXwqFHJCjWJXGoI6EAlc9eWThj43XIchWengpw=="],
 
     "ce-la-react": ["ce-la-react@0.3.2", "", { "peerDependencies": { "react": ">=17.0.0" } }, "sha512-QJ6k4lOD/btI08xG8jBPxRCGXvCnusGGkTsiXk0u3NqUu/W+BXRnFD4PYjwtqh8AWmGa5LDbGk0fLQsqr0nSMA=="],
 
