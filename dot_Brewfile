@@ -140,6 +140,8 @@ cask "codex"
 cask "jonahsnider/frc/dashshund"
 # Simple and modern dashboard for FRC
 cask "jonahsnider/frc/elastic"
+# Driver station for the FIRST Robotics Competition
+cask "jonahsnider/frc/first-driver-station"
 cask "font-jetbrains-mono"
 # Visualisation and debugging tool for robotics
 cask "foxglove"
