@@ -3,3 +3,6 @@ source ~/.config/op/plugins.sh
 
 # direnv
 direnv hook fish | source
+
+# zoxide
+zoxide init fish | source
