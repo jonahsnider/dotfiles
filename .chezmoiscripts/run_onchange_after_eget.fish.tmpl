@@ -1,0 +1,16 @@
+#!/usr/bin/env fish
+
+# https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#run-a-script-when-the-contents-of-another-file-changes
+
+# eget.toml hash: {{ include "dot_eget.toml" | sha256sum }}
+eget -D
+
+# Extract infer (eget downloads the tarball, we extract preserving directory structure)
+if test -d ~/.cache/eget
+    set -l tarball (find ~/.cache/eget -name 'infer-osx-arm64-*.tar.xz' -print -quit)
+    if test -n "$tarball"
+        rm -rf ~/.local/share/infer
+        mkdir -p ~/.local/share/infer
+        tar -xf $tarball -C ~/.local/share/infer --strip-components=1
+    end
+end

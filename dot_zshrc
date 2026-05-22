@@ -1,4 +1,6 @@
 # Added by ForgeCode installer
 export PATH="/Users/jonah.snider/.local/bin:$PATH"
+# eget
+export PATH="/Users/jonah.snider/.local/share/infer/bin:$PATH"
 # Added by Yarn Switch
 source "/Users/jonah.snider/.yarn/switch/env"

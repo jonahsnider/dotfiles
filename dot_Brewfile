@@ -30,6 +30,8 @@ brew "coreutils"
 brew "direnv"
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
+# Easily install prebuilt binaries from GitHub
+brew "eget"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
 # Like neofetch, but much faster because written mostly in C
