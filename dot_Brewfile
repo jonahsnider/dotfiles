@@ -72,6 +72,8 @@ brew "ladder"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Terminal Markdown previewer with a GUI-like experience
+brew "leaf-md"
 # YAML Parser
 brew "libyaml"
 # Visual testing tool for MCP servers
