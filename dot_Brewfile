@@ -126,6 +126,8 @@ brew "anomalyco/tap/opencode"
 brew "charmbracelet/tap/freeze"
 # The static analysis-powered Go framework for building backend applications
 brew "encoredev/tap/encore"
+# Convert CTR Electronics hoot (.hoot) files into other logging file formats
+brew "jonahsnider/frc/owlet"
 # Allows you to manage your stacked changes and submit them for review on GitHub
 brew "withgraphite/tap/graphite"
 # Command-line interface for 1Password
@@ -163,8 +165,6 @@ cask "music-decoy"
 cask "opencode-desktop"
 # Native GUI for Apple Containers
 cask "orchard"
-# Convert CTR Electronics hoot (.hoot) files into other logging file formats
-cask "jonahsnider/frc/owlet"
 # Simple yet powerful path planning tool for FRC robots
 cask "jonahsnider/frc/pathplanner"
 # CLI to create, run, and deploy Slack apps
