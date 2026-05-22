@@ -13,11 +13,11 @@ jobs:
       - name: Checkout Git repository
         uses: actions/checkout@v6
 
-      - name: Install fish
-        uses: fish-actions/install-fish@v1.2.0
+      - name: Install Fish shell
+        uses: fish-shop/install-fish-shell@v2
 
-      - name: Format fish files
-        run: fish_indent -w private_dot_config/fish/**/*.fish
+      - name: Fix formatting
+        run: fish_indent --write **/*.fish
 
       - name: Run autofix.ci
         uses: autofix-ci/action@v1
