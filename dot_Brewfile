@@ -66,6 +66,8 @@ brew "just"
 brew "kaitai-struct-compiler"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
+# Selfhosted alternative to 12ft.io and 1ft.io HTTP web proxies
+brew "ladder"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Simple terminal UI for git commands
