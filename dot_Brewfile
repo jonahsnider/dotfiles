@@ -45,6 +45,8 @@ brew "ffmpeg"
 brew "fish"
 # LSP implementation for the fish shell language
 brew "fish-lsp"
+# Plugin manager for the Fish shell
+brew "fisher"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
