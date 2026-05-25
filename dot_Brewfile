@@ -2,6 +2,7 @@ tap "anomalyco/tap"
 tap "charmbracelet/tap"
 tap "encoredev/tap"
 tap "jonahsnider/frc", "https://github.com/jonahsnider/homebrew-frc.git"
+tap "jonahsnider/tap", "https://github.com/jonahsnider/homebrew-tap.git"
 tap "nrlquaker/createzap"
 tap "withgraphite/tap"
 # Static checker for GitHub Actions workflow files
@@ -132,6 +133,8 @@ brew "charmbracelet/tap/freeze"
 brew "encoredev/tap/encore"
 # Convert CTR Electronics hoot (.hoot) files into other logging file formats
 brew "jonahsnider/frc/owlet"
+# Learn how to use CLI apps
+brew "jonahsnider/tap/how"
 # Allows you to manage your stacked changes and submit them for review on GitHub
 brew "withgraphite/tap/graphite"
 # Command-line interface for 1Password
