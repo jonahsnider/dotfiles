@@ -65,6 +65,8 @@ brew "google-java-format"
 brew "googleworkspace-cli"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
+# Tool for glamorous shell scripts
+brew "gum"
 # Handy way to save and run project-specific commands
 brew "just"
 # Compiler for generating binary data parsers
