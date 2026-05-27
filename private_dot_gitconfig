@@ -64,3 +64,5 @@
 	prune = true
 [rerere]
 	enabled = true
+[push]
+	autoSetupRemote = false
