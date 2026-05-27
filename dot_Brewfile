@@ -153,8 +153,12 @@ cask "clop"
 cask "codex"
 # FRC dashboard for viewing camera streams
 cask "jonahsnider/frc/dashshund"
+# AI-powered software engineering agent by Factory
+cask "droid"
 # Simple and modern dashboard for FRC
 cask "jonahsnider/frc/elastic"
+# Native AI agent interface to build, manage, and ship software by Factory
+cask "factory"
 # Driver station for the FIRST Robotics Competition
 cask "jonahsnider/frc/first-driver-station"
 cask "font-jetbrains-mono"
