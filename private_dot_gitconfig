@@ -62,3 +62,5 @@
 	helper = !~/.local/share/mise/shims/gh auth git-credential
 [fetch]
 	prune = true
+[rerere]
+	enabled = true
