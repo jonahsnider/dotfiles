@@ -1,0 +1,17 @@
+#!/usr/bin/env fish
+
+# Droid LaunchAgent hash: {{ include "private_Library/LaunchAgents/ai.factory.droid.daemon.plist" | sha256sum }}
+# Brewfile hash: {{ include "dot_Brewfile" | sha256sum }}
+
+set -l label ai.factory.droid.daemon
+set -l plist "$HOME/Library/LaunchAgents/$label.plist"
+set -l gui_domain "gui/"(id -u)
+
+if not test -x /opt/homebrew/bin/droid -a -f $plist
+    echo "Skipping Droid daemon launch"
+    exit 0
+end
+
+launchctl bootout "$gui_domain/$label" 2>/dev/null
+launchctl bootstrap "$gui_domain" "$plist"
+launchctl kickstart -k "$gui_domain/$label"
