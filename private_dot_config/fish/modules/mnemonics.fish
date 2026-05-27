@@ -39,11 +39,10 @@ abbr --add gtp "gt pr"
 abbr --add gtt "gt track"
 
 # gh stack
-abbr --add ghs "gh stack"
+abbr --add ghs "gh stack sync"
 abbr --add ghsi "gh stack init"
 abbr --add ghsa "gh stack add"
-abbr --add ghss "gh stack sync"
-abbr --add ghsS "gh stack submit"
+abbr --add ghss "gh stack submit"
 abbr --add ghsc "gh stack checkout"
 abbr --add ghsm "gh stack modify"
 abbr --add ghsr "gh stack rebase"
