@@ -20,3 +20,10 @@
 - A modern version of Node is installed, and can run TypeScript natively without any flags
   - Shell setup means that env vars should also be automatically parsed from .env, use `--env-file` otherwise
   - Use top level await instead of wrapping everything in a giant async function
+
+## External platforms
+
+- Never post new comments, open issues, etc. without explicit permission from the user
+- Slack URLs can't be accessed with WebFetch, use the MCP instead
+- GitHub data should always be viewed using the `gh` CLI instead of WebFetch
+  - Generally prefer MCPs and CLIs over WebFetch when possible
