@@ -11,6 +11,35 @@ function __gh_repo_configure_available_checks -a repo
     printf '%s\n' $checks | sort -u
 end
 
+function __gh_repo_configure_repository_ruleset_ids -a repo name
+    gh api repos/$repo/rulesets \
+        --method GET \
+        --paginate \
+        -F includes_parents=false \
+        -F per_page=100 \
+        --jq ".[] | select(.name == \"$name\" and .target == \"branch\") | .id"
+end
+
+function __gh_repo_configure_upsert_ruleset -a repo name
+    read -lz payload
+    or return
+
+    set -l ruleset_ids (__gh_repo_configure_repository_ruleset_ids $repo $name)
+    or return
+
+    if test (count $ruleset_ids) -eq 0
+        printf '%s\n' $payload \
+            | gh api repos/$repo/rulesets --method POST --input - --silent
+        return
+    end
+
+    for ruleset_id in $ruleset_ids
+        printf '%s\n' $payload \
+            | gh api repos/$repo/rulesets/$ruleset_id --method PUT --input - --silent
+        or return
+    end
+end
+
 function gh_repo_configure -d "Configure opinionated defaults for the current GitHub repo"
     argparse --name=gh_repo_configure h/help l/list-checks -- $argv
     or return
@@ -68,15 +97,15 @@ function gh_repo_configure -d "Configure opinionated defaults for the current Gi
 
     # Protect default branch from deletion and force pushes (no bypass)
     echo '{"name":"main","target":"branch","enforcement":"active","conditions":{"ref_name":{"exclude":[],"include":["~DEFAULT_BRANCH"]}},"rules":[{"type":"deletion"},{"type":"non_fast_forward"}],"bypass_actors":[]}' \
-        | gh api repos/$repo/rulesets --method POST --input - --silent
+        | __gh_repo_configure_upsert_ruleset $repo main
 
-    # Require status checks for automerge (bypassable by maintainers)
+    # Require status checks for automerge (bypassable by maintainers and autofix.ci)
     set -l checks
     for check in $selected_checks
         set -a checks (printf '{"context":"%s","integration_id":15368}' $check)
     end
     set -l checks_json (string join ',' $checks)
 
-    printf '{"name":"automerge","target":"branch","enforcement":"active","conditions":{"ref_name":{"exclude":[],"include":["~DEFAULT_BRANCH"]}},"rules":[{"type":"required_status_checks","parameters":{"strict_required_status_checks_policy":false,"do_not_enforce_on_create":false,"required_status_checks":[%s]}}],"bypass_actors":[{"actor_id":5,"actor_type":"RepositoryRole","bypass_mode":"always"}]}' $checks_json \
-        | gh api repos/$repo/rulesets --method POST --input - --silent
+    printf '{"name":"automerge","target":"branch","enforcement":"active","conditions":{"ref_name":{"exclude":[],"include":["~DEFAULT_BRANCH"]}},"rules":[{"type":"required_status_checks","parameters":{"strict_required_status_checks_policy":false,"do_not_enforce_on_create":false,"required_status_checks":[%s]}}],"bypass_actors":[{"actor_id":5,"actor_type":"RepositoryRole","bypass_mode":"always"},{"actor_id":243519,"actor_type":"Integration","bypass_mode":"always"}]}' $checks_json \
+        | __gh_repo_configure_upsert_ruleset $repo automerge
 end
