@@ -5,6 +5,17 @@
   },
   "customModels": [
     {
+      "model": "claude-opus-4-8",
+      "id": "custom:Opus-4.8-0",
+      "index": 0,
+      "baseUrl": "https://api.anthropic.com",
+      "apiKey": {{ $secrets.ANTHROPIC_API_KEY_FACTORY | toJson }},
+      "displayName": "Opus 4.8",
+      "maxOutputTokens": 128000,
+      "noImageSupport": false,
+      "provider": "anthropic"
+    },
+    {
       "model": "claude-opus-4-7",
       "id": "custom:Opus-4.7-0",
       "index": 0,
