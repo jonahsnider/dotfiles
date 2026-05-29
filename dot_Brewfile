@@ -103,6 +103,8 @@ brew "prettier"
 brew "railway"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Command-line interface for Sanity
+brew "sanity"
 # Fast and accurate code counter with complexity and COCOMO estimates
 brew "scc"
 # Autoformat shell script source code
