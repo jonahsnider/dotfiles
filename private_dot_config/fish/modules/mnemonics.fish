@@ -55,6 +55,9 @@ abbr --add ghsb "gh stack bottom"
 abbr --add ghsw "gh stack switch"
 abbr --add ghsU "gh stack unstack"
 
+# git-spice
+abbr --add gsp "git spice"
+
 # GitHub
 abbr --add gpc "gh pr checkout"
 abbr --add gpC "gh pr create --web"
