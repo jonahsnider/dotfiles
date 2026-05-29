@@ -19,6 +19,8 @@ brew "biome"
 brew "ccusage"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
+# Enables you to reproduce the CircleCI environment locally
+brew "circleci"
 # CLI tool for Cloudflare Workers
 brew "cloudflare-wrangler"
 # Cross-platform make
