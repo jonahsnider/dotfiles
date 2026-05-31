@@ -32,6 +32,11 @@
       "type": "http",
       "url": "https://mcp.sanity.work",
       "disabled": false
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp",
+      "disabled": false
     }
   }
 }
