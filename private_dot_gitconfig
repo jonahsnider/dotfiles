@@ -66,3 +66,7 @@
 	enabled = true
 [push]
 	autoSetupRemote = false
+[spice "repoSync"]
+	restack = upstack
+[spice "submit"]
+	web = created
