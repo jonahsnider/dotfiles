@@ -11,6 +11,8 @@ brew "actionlint"
 brew "openssl@3"
 # Browser automation CLI for AI agents
 brew "agent-browser"
+# Fast Node.js package manager
+brew "aube"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Toolchain of the web

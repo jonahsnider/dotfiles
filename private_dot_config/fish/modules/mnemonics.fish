@@ -117,6 +117,27 @@ abbr --add bx bunx
 abbr --add bf "bun format"
 abbr --add bF "bun format:write"
 
+# Aube
+abbr --add a aube
+abbr --add ai "aube install"
+abbr --add aa "aube add"
+abbr --add aR "aube remove"
+abbr --add as "aube start"
+abbr --add asd "aubr start:dev"
+abbr --add ap "aubr preview"
+abbr --add at "aube test"
+abbr --add al "aubr lint"
+abbr --add aL "aubr lint:fix"
+abbr --add aS "aubr style --write"
+abbr --add ab "aubr build"
+abbr --add ad "aubr dev"
+abbr --add aw "aubr watch"
+abbr --add ar aubr
+abbr --add ax aubx
+abbr --add af "aubr format"
+abbr --add aF "aubr format:write"
+abbr --add au "aube update"
+
 # pnpm
 abbr --add p pnpm
 abbr --add pi "pnpm install"
