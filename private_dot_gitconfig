@@ -68,5 +68,7 @@
 	autoSetupRemote = false
 [spice "repoSync"]
 	restack = upstack
+[spice "logShort"]
+	crFormat = url
 [spice "submit"]
 	web = created
