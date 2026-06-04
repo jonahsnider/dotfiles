@@ -4,4 +4,4 @@
 run = "droid daemon --remote-access"
 retry = true
 boot_start = true
-ready_output = "[droid daemon] Daemon is running"
+ready_output = "\\[droid daemon\\] Daemon is running"
