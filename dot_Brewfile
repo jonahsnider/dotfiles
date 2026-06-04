@@ -99,6 +99,8 @@ brew "mise"
 brew "mole"
 # Command-line Git information tool
 brew "onefetch"
+# CLI for managing daemons with a focus on developer experience
+brew "pitchfork"
 # CLI for the Pkl programming language
 brew "pkl"
 # Replace port numbers with stable, named local URLs for humans and agents
