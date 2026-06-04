@@ -15,7 +15,7 @@
     	},
     	"circleci": {
     		"type": "stdio",
-    		"command": "bunx",
+    		"command": "aubx",
     		"args": ["@circleci/mcp-server-circleci@latest"],
     		"env": {
     			"CIRCLECI_TOKEN": {{ $secrets.CIRCLECI_PERSONAL_API_TOKEN | toJson }}

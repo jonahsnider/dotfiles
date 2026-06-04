@@ -12,9 +12,8 @@
     },
     "railway": {
       "type": "stdio",
-      "command": "npx",
+      "command": "aubx",
       "args": [
-        "-y",
         "@railway/mcp-server"
       ],
       "disabled": false
