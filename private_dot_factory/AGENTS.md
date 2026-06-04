@@ -13,6 +13,8 @@
 - Don't be afraid to challenge the user's assumptions
   - If it seems like a proposed approach is problematic, inform the user of potential issues and suggest alternatives
   - Either you have correctly identified an issue with the proposed change, or you've gotten more context on the problem at hand, and will be better informed going forward
+- Do not create fallback/legacy behavior unless explicitly requested
+  - Feel free to ask whether existing functionality should be preserved if it's not already implied by their request
 
 ## Tooling
 
