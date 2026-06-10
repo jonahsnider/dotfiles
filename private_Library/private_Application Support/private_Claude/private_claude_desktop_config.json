@@ -5,8 +5,12 @@
     "quickEntryShortcut": "off",
     "coworkScheduledTasksEnabled": true,
     "ccdScheduledTasksEnabled": true,
-    "sidebarMode": "chat",
+    "sidebarMode": "epitaxy",
+    "bypassPermissionsGateByAccount": {
+      "db1872f9-9884-4f72-ad3d-fb2365936312": true
+    },
     "coworkWebSearchEnabled": true,
+    "remoteToolsDeviceName": "jonah-mbp-sanity",
     "epitaxyPrefs": {
       "starred-local-code-sessions": [],
       "starred-cowork-spaces": [],
@@ -16,6 +20,11 @@
         "customGroupAssignments": {},
         "customGroupOrder": {}
       }
+    },
+    "coworkHipaaRestricted": false,
+    "coworkModelAutoFallbackByAccount": {
+      "db1872f9-9884-4f72-ad3d-fb2365936312": true
     }
-  }
+  },
+  "coworkUserFilesPath": "/Users/jonah.snider/Claude"
 }
