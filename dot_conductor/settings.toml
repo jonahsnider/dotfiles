@@ -1,0 +1,13 @@
+"$schema" = "https://conductor.build/schemas/settings.schema.json"
+
+[git]
+archive_on_merge = true
+branch_prefix_type = "none"
+delete_branch_on_archive = true
+
+[models]
+default = "gpt-5.5"
+
+[models.codex]
+default_thinking_level = "high"
+review_thinking_level = "high"
