@@ -19,5 +19,9 @@ trusted_config_paths = [
 ]
 env_file = ".env"
 
+[settings.github]
+credential_command = "gh auth token"
+
 [env]
 SANITY_WORKSPACE = "/Users/jonah.snider/programming/sanity"
+SANITY_MISE_BOOTSTRAP_VERSION = "2"
