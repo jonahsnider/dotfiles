@@ -1,0 +1,23 @@
+#:schema https://pitchfork.en.dev/schema.json
+
+[settings.supervisor]
+user = "{{ .chezmoi.username }}"
+
+[daemons.droid]
+run = "droid daemon --remote-access"
+retry = true
+boot_start = true
+ready_output = "\\[droid daemon\\] Daemon is running"
+
+[daemons.portless]
+run = "portless proxy start --foreground --port 443 --https"
+retry = true
+boot_start = true
+ready_port = 443
+user = "root"
+
+[daemons.portless.env]
+PORTLESS_STATE_DIR = "{{ .chezmoi.homeDir }}/.portless"
+SUDO_USER = "{{ .chezmoi.username }}"
+SUDO_UID = "{{ .chezmoi.uid }}"
+SUDO_GID = "{{ .chezmoi.gid }}"
