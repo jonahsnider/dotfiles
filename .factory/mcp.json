@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "homebrew": {
+      "type": "stdio",
+      "command": "brew",
+      "args": ["mcp-server"],
+      "disabled": false
+    },
+    "mise": {
+      "type": "stdio",
+      "command": "mise",
+      "args": ["mcp"],
+      "env": {
+        "MISE_EXPERIMENTAL": "1"
+      },
+      "disabled": false
+    },
+    "pitchfork": {
+      "type": "stdio",
+      "command": "pitchfork",
+      "args": ["mcp"],
+      "disabled": false
+    }
+  }
+}
