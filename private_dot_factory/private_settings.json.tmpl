@@ -1,7 +1,8 @@
 {{ $secrets := include "secrets.json.age" | decrypt | fromJson -}}
 {
   "enabledPlugins": {
-    "core@factory-plugins": true
+    "core@factory-plugins": true,
+    "droid-control@factory-plugins": true
   },
   "customModels": [
     {
@@ -70,5 +71,6 @@
     "autonomyMode": "auto-low"
   },
   "windowZoomLevel": 0,
-  "remoteAccessEnabled": true
+  "remoteAccessEnabled": true,
+  "reauthBannerShownTui": true
 }
