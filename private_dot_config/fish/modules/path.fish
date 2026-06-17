@@ -57,4 +57,6 @@ fish_add_path -g /Applications/Ghostty.app/Contents/MacOS
 fish_add_path -g ~/.local/share/infer/bin
 #endregion
 
+mise activate fish | source
+
 alias san /Users/jonah.snider/programming/sanity/cli/packages/@sanity/cli/bin/run.js
