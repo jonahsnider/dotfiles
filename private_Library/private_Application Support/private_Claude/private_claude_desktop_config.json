@@ -1,15 +1,20 @@
 {
   "mcpServers": {},
+  "coworkUserFilesPath": "/Users/jonah.snider/Claude",
   "preferences": {
     "menuBarEnabled": false,
     "quickEntryShortcut": "off",
     "coworkScheduledTasksEnabled": true,
+    "coworkHipaaRestricted": false,
     "ccdScheduledTasksEnabled": true,
-    "sidebarMode": "epitaxy",
+    "sidebarMode": "chat",
     "bypassPermissionsGateByAccount": {
       "db1872f9-9884-4f72-ad3d-fb2365936312": true
     },
     "coworkWebSearchEnabled": true,
+    "coworkModelAutoFallbackByAccount": {
+      "db1872f9-9884-4f72-ad3d-fb2365936312": true
+    },
     "remoteToolsDeviceName": "jonah-mbp-sanity",
     "epitaxyPrefs": {
       "starred-local-code-sessions": [],
@@ -20,11 +25,6 @@
         "customGroupAssignments": {},
         "customGroupOrder": {}
       }
-    },
-    "coworkHipaaRestricted": false,
-    "coworkModelAutoFallbackByAccount": {
-      "db1872f9-9884-4f72-ad3d-fb2365936312": true
     }
-  },
-  "coworkUserFilesPath": "/Users/jonah.snider/Claude"
+  }
 }
