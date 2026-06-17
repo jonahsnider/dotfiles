@@ -8,6 +8,10 @@ function __gh_repo_configure_available_checks -a repo
         --jq '.check_runs[] | select(.app.id == 15368) | .name')
     or return
 
+    if test (count $checks) -eq 0
+        return 0
+    end
+
     printf '%s\n' $checks | sort -u
 end
 
@@ -62,25 +66,25 @@ function gh_repo_configure -d "Configure opinionated defaults for the current Gi
         return
     end
 
-    if not command -q gum
-        echo "gh_repo_configure: gum is required (brew install gum)" >&2
-        return 1
-    end
-
     set -l available_checks (__gh_repo_configure_available_checks $repo)
-    if test (count $available_checks) -eq 0
-        echo "gh_repo_configure: no GitHub Actions checks found on the default branch" >&2
-        return 1
-    end
+    or return
 
-    set -l selected_checks (printf '%s\n' $available_checks | gum choose --no-limit --header "Select automerge checks")
-    if test $status -ne 0
-        return $status
-    end
+    set -l selected_checks
+    if test (count $available_checks) -gt 0
+        if not command -q gum
+            echo "gh_repo_configure: gum is required (brew install gum)" >&2
+            return 1
+        end
 
-    if test (count $selected_checks) -eq 0
-        echo "gh_repo_configure: no checks selected" >&2
-        return 1
+        set selected_checks (printf '%s\n' $available_checks | gum choose --no-limit --header "Select automerge checks")
+        if test $status -ne 0
+            return $status
+        end
+
+        if test (count $selected_checks) -eq 0
+            echo "gh_repo_configure: no checks selected" >&2
+            return 1
+        end
     end
 
     gh repo edit \
@@ -99,13 +103,15 @@ function gh_repo_configure -d "Configure opinionated defaults for the current Gi
     echo '{"name":"main","target":"branch","enforcement":"active","conditions":{"ref_name":{"exclude":[],"include":["~DEFAULT_BRANCH"]}},"rules":[{"type":"deletion"},{"type":"non_fast_forward"}],"bypass_actors":[]}' \
         | __gh_repo_configure_upsert_ruleset $repo main
 
-    # Require status checks for automerge (bypassable by maintainers and autofix.ci)
-    set -l checks
-    for check in $selected_checks
-        set -a checks (printf '{"context":"%s","integration_id":15368}' $check)
-    end
-    set -l checks_json (string join ',' $checks)
+    if test (count $selected_checks) -gt 0
+        # Require status checks for automerge (bypassable by maintainers and autofix.ci)
+        set -l checks
+        for check in $selected_checks
+            set -a checks (printf '{"context":"%s","integration_id":15368}' $check)
+        end
+        set -l checks_json (string join ',' $checks)
 
-    printf '{"name":"automerge","target":"branch","enforcement":"active","conditions":{"ref_name":{"exclude":[],"include":["~DEFAULT_BRANCH"]}},"rules":[{"type":"required_status_checks","parameters":{"strict_required_status_checks_policy":false,"do_not_enforce_on_create":false,"required_status_checks":[%s]}}],"bypass_actors":[{"actor_id":5,"actor_type":"RepositoryRole","bypass_mode":"always"},{"actor_id":243519,"actor_type":"Integration","bypass_mode":"always"}]}' $checks_json \
-        | __gh_repo_configure_upsert_ruleset $repo automerge
+        printf '{"name":"automerge","target":"branch","enforcement":"active","conditions":{"ref_name":{"exclude":[],"include":["~DEFAULT_BRANCH"]}},"rules":[{"type":"required_status_checks","parameters":{"strict_required_status_checks_policy":false,"do_not_enforce_on_create":false,"required_status_checks":[%s]}}],"bypass_actors":[{"actor_id":5,"actor_type":"RepositoryRole","bypass_mode":"always"},{"actor_id":243519,"actor_type":"Integration","bypass_mode":"always"}]}' $checks_json \
+            | __gh_repo_configure_upsert_ruleset $repo automerge
+    end
 end
