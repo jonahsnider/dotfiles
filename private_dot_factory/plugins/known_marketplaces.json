@@ -1,0 +1,20 @@
+{
+  "factory-plugins": {
+    "source": {
+      "source": "github",
+      "repo": "Factory-AI/factory-plugins"
+    },
+    "installLocation": "/Users/jonah.snider/.factory/plugins/marketplaces/factory-plugins",
+    "lastUpdated": "2026-06-17T21:53:58.082Z",
+    "autoUpdate": true
+  },
+  "claude-plugins": {
+    "source": {
+      "source": "github",
+      "repo": "sanity-labs/claude-plugins"
+    },
+    "installLocation": "/Users/jonah.snider/.factory/plugins/marketplaces/claude-plugins",
+    "lastUpdated": "2026-06-17T22:23:07.111Z",
+    "autoUpdate": true
+  }
+}

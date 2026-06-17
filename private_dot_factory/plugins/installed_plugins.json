@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "plugins": {
+    "core@factory-plugins": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jonah.snider/.factory/plugins/cache/factory-plugins/core/0c10b397a80c",
+        "version": "0c10b397a80c",
+        "installedAt": "2026-06-12T15:21:53.790Z",
+        "lastUpdated": "2026-06-12T15:21:53.790Z",
+        "source": "factory-plugins"
+      }
+    ],
+    "droid-control@factory-plugins": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jonah.snider/.factory/plugins/cache/factory-plugins/droid-control/0c10b397a80c",
+        "version": "0c10b397a80c",
+        "installedAt": "2026-06-12T15:21:54.385Z",
+        "lastUpdated": "2026-06-12T15:21:54.385Z",
+        "source": "factory-plugins"
+      }
+    ],
+    "ai-growth-toolkit@claude-plugins": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jonah.snider/.factory/plugins/cache/claude-plugins/ai-growth-toolkit/c7b03461f96f",
+        "version": "c7b03461f96f",
+        "installedAt": "2026-06-17T22:23:22.518Z",
+        "lastUpdated": "2026-06-17T22:23:22.518Z",
+        "source": "claude-plugins"
+      }
+    ]
+  }
+}
