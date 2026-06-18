@@ -12,9 +12,9 @@
     },
     "railway": {
       "type": "stdio",
-      "command": "aubx",
+      "command": "railway",
       "args": [
-        "@railway/mcp-server"
+        "mcp"
       ],
       "disabled": false
     },
