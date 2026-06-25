@@ -35,6 +35,11 @@
       "disabled": false,
       "type": "http",
       "url": "https://mcp.sentry.dev/mcp"
+    },
+    "uptimerobot": {
+      "disabled": false,
+      "type": "http",
+      "url": "https://mcp.uptimerobot.com/mcp"
     }
   },
   "persistentPermissions": {
