@@ -1,37 +1,35 @@
 {
   "mcpServers": {
-    "sanity": {
+    "figma": {
+      "disabled": false,
       "type": "http",
-      "url": "https://mcp.sanity.io",
-      "disabled": false
-    },
-    "sentry": {
-      "type": "http",
-      "url": "https://mcp.sentry.dev/mcp",
-      "disabled": false
+      "url": "https://mcp.figma.com/mcp"
     },
     "railway": {
-      "type": "stdio",
+      "args": ["mcp"],
       "command": "railway",
-      "args": [
-        "mcp"
-      ],
-      "disabled": false
+      "disabled": false,
+      "type": "stdio"
     },
-    "sanity-staging": {
+    "sanity": {
+      "disabled": false,
       "type": "http",
-      "url": "https://mcp.sanity.work",
-      "disabled": false
-    },
-    "figma": {
-      "type": "http",
-      "url": "https://mcp.figma.com/mcp",
-      "disabled": false
+      "url": "https://mcp.sanity.io"
     },
     "sanity-local": {
+      "disabled": false,
       "type": "http",
-      "url": "http://127.0.0.1:3003",
-      "disabled": false
+      "url": "http://127.0.0.1:3003"
+    },
+    "sanity-staging": {
+      "disabled": false,
+      "type": "http",
+      "url": "https://mcp.sanity.work"
+    },
+    "sentry": {
+      "disabled": false,
+      "type": "http",
+      "url": "https://mcp.sentry.dev/mcp"
     }
   },
   "persistentPermissions": {
