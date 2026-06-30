@@ -158,5 +158,6 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "teammateMode": "auto",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "tui": "fullscreen"
 }
