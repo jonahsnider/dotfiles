@@ -4,6 +4,9 @@
   "preferences": {
     "menuBarEnabled": false,
     "quickEntryShortcut": "off",
+    "localAgentModeTrustedFolders": [
+      "/Users/jonah.snider/programming/sanity"
+    ],
     "coworkScheduledTasksEnabled": true,
     "coworkHipaaRestricted": false,
     "ccdScheduledTasksEnabled": true,
@@ -24,6 +27,21 @@
         "pinnedOrder": [],
         "customGroupAssignments": {},
         "customGroupOrder": {}
+      },
+      "desktop-frame.paneStore.v1": {
+        "state": {
+          "extraPanesByMode": {},
+          "colWeightsByMode": {},
+          "rowSplit": 0.5,
+          "draftNonce": 0
+        },
+        "version": 4
+      },
+      "ccd-sessions-filter": {
+        "state": {
+          "selectedProjects": []
+        },
+        "version": 0
       }
     }
   }
