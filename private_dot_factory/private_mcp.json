@@ -11,7 +11,9 @@
       "url": "https://mcp.figma.com/mcp"
     },
     "railway": {
-      "args": ["mcp"],
+      "args": [
+        "mcp"
+      ],
       "command": "railway",
       "disabled": false,
       "type": "stdio"
@@ -48,6 +50,57 @@
         "approvedAt": "2026-06-08T20:28:43.825Z",
         "impactLevel": "high",
         "serverIdentity": "bb295b76e6adc8a486cb2039ee99c586"
+      }
+    },
+    "tools": {
+      "railway": {
+        "list_projects": {
+          "approvedAt": "2026-06-25T17:55:41.390Z",
+          "impactLevel": "high",
+          "serverIdentity": "f72bec47df5ee34bf6b4bbfa5063b419"
+        },
+        "list_services": {
+          "approvedAt": "2026-06-25T17:55:55.981Z",
+          "impactLevel": "high",
+          "serverIdentity": "f72bec47df5ee34bf6b4bbfa5063b419"
+        },
+        "environment_status": {
+          "approvedAt": "2026-06-25T17:55:55.985Z",
+          "impactLevel": "high",
+          "serverIdentity": "f72bec47df5ee34bf6b4bbfa5063b419"
+        },
+        "get_service_config": {
+          "approvedAt": "2026-06-25T17:56:14.526Z",
+          "impactLevel": "high",
+          "serverIdentity": "f72bec47df5ee34bf6b4bbfa5063b419"
+        },
+        "list_deployments": {
+          "approvedAt": "2026-06-25T17:56:14.529Z",
+          "impactLevel": "high",
+          "serverIdentity": "f72bec47df5ee34bf6b4bbfa5063b419"
+        },
+        "get_logs": {
+          "approvedAt": "2026-06-25T17:57:34.256Z",
+          "impactLevel": "high",
+          "serverIdentity": "f72bec47df5ee34bf6b4bbfa5063b419"
+        },
+        "docs_search": {
+          "approvedAt": "2026-06-25T18:02:09.495Z",
+          "impactLevel": "high",
+          "serverIdentity": "f72bec47df5ee34bf6b4bbfa5063b419"
+        },
+        "docs_fetch": {
+          "approvedAt": "2026-06-25T18:02:53.684Z",
+          "impactLevel": "high",
+          "serverIdentity": "f72bec47df5ee34bf6b4bbfa5063b419"
+        }
+      },
+      "clickhouse-logs": {
+        "list_databases": {
+          "approvedAt": "2026-06-29T17:36:26.385Z",
+          "impactLevel": "high",
+          "serverIdentity": "5872fa43a4c2d2251335ba7d3ab7ea55"
+        }
       }
     }
   }
