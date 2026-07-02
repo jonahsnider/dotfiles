@@ -164,6 +164,8 @@ cask "bettercapture"
 cask "clop"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# OpenAI's Codex desktop app for managing coding agents
+cask "codex-app"
 # FRC dashboard for viewing camera streams
 cask "jonahsnider/frc/dashshund"
 # AI-powered software engineering agent by Factory
@@ -181,6 +183,8 @@ cask "foxglove"
 cask "ghostty"
 # Apple tool to create multi-platform icons
 cask "icon-composer"
+# HTTP and GraphQL Client
+cask "insomnia"
 # Open-source keystroke visualiser
 cask "keycastr"
 # Flash and find Limelight devices
