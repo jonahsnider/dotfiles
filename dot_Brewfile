@@ -87,6 +87,8 @@ brew "lazydocker"
 brew "lazygit"
 # Terminal Markdown previewer with a GUI-like experience
 brew "leaf-md"
+# Postgres C API library
+brew "libpq"
 # YAML Parser
 brew "libyaml"
 # Visual testing tool for MCP servers

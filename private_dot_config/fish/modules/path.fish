@@ -60,3 +60,5 @@ fish_add_path -g ~/.local/share/infer/bin
 mise activate fish | source
 
 alias san /Users/jonah.snider/programming/sanity/cli/packages/@sanity/cli/bin/run.js
+
+fish_add_path /opt/homebrew/opt/libpq/bin
