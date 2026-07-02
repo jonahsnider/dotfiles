@@ -6,7 +6,7 @@
       "url": "https://mcp.betterstack.com/"
     },
     "figma": {
-      "disabled": false,
+      "disabled": true,
       "type": "http",
       "url": "https://mcp.figma.com/mcp"
     },
