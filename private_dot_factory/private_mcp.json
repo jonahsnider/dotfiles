@@ -42,6 +42,11 @@
       "disabled": false,
       "type": "http",
       "url": "https://mcp.uptimerobot.com/mcp"
+    },
+    "bigquery": {
+      "type": "http",
+      "url": "https://mcp-bigquery.sanityinternal.ts.net/mcp",
+      "disabled": false
     }
   },
   "persistentPermissions": {
