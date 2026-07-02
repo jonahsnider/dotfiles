@@ -5,7 +5,6 @@ tap "homebrew/core"
 tap "jonahsnider/frc", "https://github.com/jonahsnider/homebrew-frc.git", trusted: true
 tap "jonahsnider/tap", "https://github.com/jonahsnider/homebrew-tap.git", trusted: true
 tap "nrlquaker/createzap", trusted: true
-tap "withgraphite/tap", trusted: true
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
 # Cryptography and SSL/TLS Toolkit
@@ -154,8 +153,6 @@ brew "jonahsnider/tap/bt", trusted: true
 brew "jonahsnider/tap/github-mcp-server", trusted: true
 # Learn how to use CLI apps
 brew "jonahsnider/tap/how"
-# Allows you to manage your stacked changes and submit them for review on GitHub
-brew "withgraphite/tap/graphite"
 # Command-line interface for 1Password
 cask "1password-cli"
 # FRC log analysis tool

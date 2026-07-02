@@ -23,21 +23,6 @@ abbr --add gb "git branch"
 abbr --add gs "git switch"
 abbr --add gsm git_switch_main
 
-# Graphite
-abbr --add gtA "gt add -A"
-abbr --add gtm "gt modify --commit --message"
-abbr --add gts "gt sync"
-abbr --add gtS "gt submit"
-abbr --add gtSS "gt submit --stack"
-abbr --add gtSs "gt submit --stack"
-abbr --add gtss "gt submit --stack"
-abbr --add gtc "gt continue"
-abbr --add gtC "gt create"
-abbr --add gtr "gt restack"
-abbr --add gtco "gt checkout"
-abbr --add gtp "gt pr"
-abbr --add gtt "gt track"
-
 # gh stack
 abbr --add ghs "gh stack sync"
 abbr --add ghsi "gh stack init"
