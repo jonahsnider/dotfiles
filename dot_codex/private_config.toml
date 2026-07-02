@@ -34,7 +34,7 @@ code = "Cascadia Code NF"
 code = "Cascadia Code NF"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-02T18:40:02Z"
+last_updated = "2026-07-02T20:43:20Z"
 source_type = "local"
 source = "/Users/jonah.snider/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
@@ -154,6 +154,9 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/sanity/cli"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/how"]
+trust_level = "trusted"
+
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 
@@ -162,3 +165,6 @@ enabled = false
 
 [sandbox_workspace_write]
 network_access = true
+
+[features]
+js_repl = false
