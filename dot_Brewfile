@@ -162,6 +162,8 @@ cask "1password-cli"
 cask "advantagescope"
 # Screen recorder
 cask "bettercapture"
+# Apple SuperDrive, Apple Keyboard, and Improved iPhone/iPad Charging
+cask "caldigit-usb-hub-support-driver"
 # Image, video and clipboard optimiser
 cask "clop"
 # OpenAI's coding agent that runs in your terminal
