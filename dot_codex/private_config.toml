@@ -39,10 +39,6 @@ skill = "#751ed9"
 [desktop.open-in-target-preferences]
 global = "vscode"
 
-[desktop.open-in-target-preferences.perPath]
-"/Users/jonah.snider/programming/sanity/mellon" = "vscode"
-"/Users/jonah.snider/programming/team581/frc-2026" = "vscode"
-
 [features]
 js_repl = false
 
