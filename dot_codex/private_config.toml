@@ -79,12 +79,6 @@ BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
 BROWSER_USE_CODEX_APP_VERSION = "26.623.81905"
 CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
 
-[mcp_servers.linear]
-url = "https://mcp.linear.app/mcp"
-
-[mcp_servers.braintrust]
-url = "https://api.braintrust.dev/mcp"
-
 [notice]
 fast_default_opt_out = true
 hide_full_access_warning = true

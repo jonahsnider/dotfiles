@@ -9,3 +9,9 @@ url = "https://mcp.sentry.dev/mcp/sanity/mellon"
 
 [mcp_servers.bigquery]
 url = "https://mcp-bigquery.sanityinternal.ts.net/mcp"
+
+[mcp_servers.linear]
+url = "https://mcp.linear.app/mcp"
+
+[mcp_servers.braintrust]
+url = "https://api.braintrust.dev/mcp"
