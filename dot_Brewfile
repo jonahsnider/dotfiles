@@ -150,6 +150,8 @@ brew "encoredev/tap/encore"
 brew "jonahsnider/frc/owlet"
 # Braintrust command-line interface
 brew "jonahsnider/tap/bt", trusted: true
+# GitHub Model Context Protocol server for AI tools
+brew "jonahsnider/tap/github-mcp-server", trusted: true
 # Learn how to use CLI apps
 brew "jonahsnider/tap/how"
 # Allows you to manage your stacked changes and submit them for review on GitHub
