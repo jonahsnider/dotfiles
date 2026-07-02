@@ -1,0 +1,183 @@
+model = "gpt-5.5"
+model_reasoning_effort = "high"
+notify = [
+    "/Users/jonah.snider/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
+    "turn-ended",
+]
+personality = "pragmatic"
+sandbox_mode = "workspace-write"
+service_tier = "default"
+approvals_reviewer = "auto_review"
+
+[desktop]
+appearanceLightCodeThemeId = "codex"
+appearanceTheme = "system"
+composerEnterBehavior = "enter"
+followUpQueueMode = "steer"
+git-branch-prefix = ""
+git-pull-request-merge-method = "squash"
+localeOverride = "en-US"
+mac-menu-bar-enabled = false
+notifications-turn-mode = "unfocused"
+show-context-window-usage = true
+usePointerCursors = false
+
+[desktop.appearanceLightChromeTheme]
+accent = "#0169cc"
+contrast = 45
+ink = "#0d0d0d"
+opaqueWindows = false
+surface = "#ffffff"
+
+[desktop.appearanceLightChromeTheme.fonts]
+
+[desktop.appearanceLightChromeTheme.semanticColors]
+diffAdded = "#00a240"
+diffRemoved = "#e02e2a"
+skill = "#751ed9"
+
+[desktop.open-in-target-preferences]
+global = "vscode"
+
+[desktop.open-in-target-preferences.perPath]
+"/Users/jonah.snider/programming/sanity/mellon" = "vscode"
+"/Users/jonah.snider/programming/team581/frc-2026" = "vscode"
+
+[features]
+js_repl = false
+
+[marketplaces.openai-bundled]
+last_updated = "2026-07-02T18:40:02Z"
+source_type = "local"
+source = "/Users/jonah.snider/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-07-01T08:38:22Z"
+source_type = "local"
+source = "/Users/jonah.snider/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[mcp_servers.railway]
+command = "railway"
+args = ["mcp"]
+
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/jonah.snider/.codex"
+CODEX_HOME = "/Users/jonah.snider/.codex"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "cb79053fda6deb0f3b5d6f0d90d4257305ebdbd1e378a12e8fbc5bde782eb59b"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.623.81905"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+
+[mcp_servers.linear]
+url = "https://mcp.linear.app/mcp"
+
+[mcp_servers.braintrust]
+url = "https://api.braintrust.dev/mcp"
+
+[notice]
+fast_default_opt_out = true
+hide_full_access_warning = true
+"hide_gpt-5.1-codex-max_migration_prompt" = true
+hide_rate_limit_model_nudge = true
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
+"gpt-5.4" = "gpt-5.5"
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."sanity@sanity"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[projects."/Users/jonah.snider/programming/19hz.jonahsnider.com"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/codex"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/convert"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/interval.so"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/jonahsnider.com"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/next-api-utils"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/sanity/agent-e2e-evals"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/sanity/agent-toolkit"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/sanity/mellon"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/sanity/sanity-agent"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/sanity/www-sanity-io"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/team581/bolt"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/team581/frc-2026"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/team581/offseason-2025"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/vendor-json-repo"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/zws/zws"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/doglog"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/sanity/cli"]
+trust_level = "trusted"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[apps.connector_20205bf7d4e99a89d7154bb849718324]
+enabled = false
+
+[sandbox_workspace_write]
+network_access = true

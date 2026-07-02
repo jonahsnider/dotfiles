@@ -1,0 +1,11 @@
+[mcp_servers.clickhouse-logs]
+url = "https://mcp-clickhouse-logs.sanityinternal.ts.net/mcp"
+
+[mcp_servers.grafana]
+url = "https://mcp-grafana.sanityinternal.ts.net/sse"
+
+[mcp_servers.sentry]
+url = "https://mcp.sentry.dev/mcp/sanity/mellon"
+
+[mcp_servers.bigquery]
+url = "https://mcp-bigquery.sanityinternal.ts.net/mcp"
