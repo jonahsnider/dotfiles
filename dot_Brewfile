@@ -1,8 +1,9 @@
 tap "anomalyco/tap", trusted: true
 tap "charmbracelet/tap", trusted: true
 tap "encoredev/tap", trusted: true
-tap "jonahsnider/frc", trusted: true
-tap "jonahsnider/tap", trusted: true
+tap "homebrew/core"
+tap "jonahsnider/frc", "https://github.com/jonahsnider/homebrew-frc.git", trusted: true
+tap "jonahsnider/tap", "https://github.com/jonahsnider/homebrew-tap.git", trusted: true
 tap "nrlquaker/createzap", trusted: true
 tap "withgraphite/tap", trusted: true
 # Static checker for GitHub Actions workflow files
@@ -140,7 +141,7 @@ brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # The AI coding agent built for the terminal.
-brew "anomalyco/tap/opencode"
+brew "anomalyco/tap/opencode", trusted: true
 # Generate images of code and terminal output.
 brew "charmbracelet/tap/freeze"
 # The static analysis-powered Go framework for building backend applications
@@ -172,7 +173,7 @@ cask "jonahsnider/frc/elastic"
 # Native AI agent interface to build, manage, and ship software by Factory
 cask "factory"
 # Driver station for the FIRST Robotics Competition
-cask "jonahsnider/frc/first-driver-station"
+cask "jonahsnider/frc/first-driver-station", trusted: true
 cask "font-jetbrains-mono"
 # Visualisation and debugging tool for robotics
 cask "foxglove"
