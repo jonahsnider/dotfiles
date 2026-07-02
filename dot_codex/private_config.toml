@@ -24,25 +24,8 @@ notifications-turn-mode = "unfocused"
 show-context-window-usage = true
 usePointerCursors = false
 
-[desktop.appearanceLightChromeTheme]
-accent = "#0169cc"
-contrast = 45
-ink = "#0d0d0d"
-opaqueWindows = false
-surface = "#ffffff"
-
-[desktop.appearanceLightChromeTheme.fonts]
-
-[desktop.appearanceLightChromeTheme.semanticColors]
-diffAdded = "#00a240"
-diffRemoved = "#e02e2a"
-skill = "#751ed9"
-
 [desktop.open-in-target-preferences]
 global = "vscode"
-
-[features]
-js_repl = false
 
 [marketplaces.openai-bundled]
 last_updated = "2026-07-02T18:40:02Z"
