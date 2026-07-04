@@ -1,0 +1,13 @@
+{{ $secrets := include "secrets.json.age" | decrypt | fromJson -}}
+contexts:
+- name: argocd.sanity.tools
+  server: argocd.sanity.tools
+  user: argocd.sanity.tools
+current-context: argocd.sanity.tools
+prompts-enabled: false
+servers:
+- grpc-web-root-path: ""
+  server: argocd.sanity.tools
+users:
+- auth-token: {{ $secrets.ARGOCD_AUTH_TOKEN | quote }}
+  name: argocd.sanity.tools

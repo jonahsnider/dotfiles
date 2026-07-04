@@ -8,3 +8,4 @@ CIRCLECI_PERSONAL_API_TOKEN = { provider = "sanity", value = "CircleCI Personal 
 GITHUB_PAT_JETBRAINS = { provider = "personal", value = "GitHub PAT - JetBrains/password" }
 NPM_TOKEN = { provider = "personal", value = "npm Token/password" }
 OPENAI_API_KEY_FACTORY = { provider = "sanity", value = "OpenAI API key for Factory/password" }
+ARGOCD_AUTH_TOKEN = { provider = "sanity", value = "ArgoCD auth-token/password"}
