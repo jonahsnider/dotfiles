@@ -77,8 +77,12 @@ brew "gum"
 brew "just"
 # Compiler for generating binary data parsers
 brew "kaitai-struct-compiler"
+# Flexible Kustomize Plugin for SOPS Encrypted Resources
+brew "ksops"
 # Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
+# Template-free customization of Kubernetes YAML manifests
+brew "kustomize"
 # Selfhosted alternative to 12ft.io and 1ft.io HTTP web proxies
 brew "ladder"
 # Lazier way to manage everything docker
