@@ -5,7 +5,7 @@
       "repo": "Factory-AI/factory-plugins"
     },
     "installLocation": "/Users/jonah.snider/.factory/plugins/marketplaces/factory-plugins",
-    "lastUpdated": "2026-07-06T15:09:23.494Z",
+    "lastUpdated": "2026-07-08T04:17:40.718Z",
     "autoUpdate": true
   },
   "claude-plugins": {
@@ -14,7 +14,7 @@
       "repo": "sanity-labs/claude-plugins"
     },
     "installLocation": "/Users/jonah.snider/.factory/plugins/marketplaces/claude-plugins",
-    "lastUpdated": "2026-07-06T15:09:24.420Z",
+    "lastUpdated": "2026-07-08T04:17:41.540Z",
     "autoUpdate": true
   }
 }
