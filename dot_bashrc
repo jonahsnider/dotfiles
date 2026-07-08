@@ -1,11 +1,7 @@
 # Added by ForgeCode installer
 export PATH="/Users/jonah.snider/.local/bin:$PATH"
-# eget
-export PATH="/Users/jonah.snider/.local/share/infer/bin:$PATH"
 # Added by Yarn Switch
 source "/Users/jonah.snider/.yarn/switch/env"
-# psql
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # Vite+ bin (https://viteplus.dev)
 . "$HOME/.vite-plus/env"

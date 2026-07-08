@@ -137,8 +137,6 @@ brew "tree"
 brew "unar"
 # Command-line interface for Vercel
 brew "vercel-cli"
-# Unified toolchain and entry point for web development
-brew "vite-plus"
 # Internet file retriever
 brew "wget"
 # Feature-rich command-line audio/video downloader
