@@ -171,6 +171,12 @@ enabled = false
 
 [sandbox_workspace_write]
 network_access = true
+writable_roots = [
+    "/Users/jonah.snider/Library/Caches/mise",
+    "/Users/jonah.snider/Library/Caches/pnpm",
+    "/Users/jonah.snider/Library/Preferences/pnpm",
+    "/Users/jonah.snider/Library/pnpm",
+]
 
 [features]
 js_repl = false
