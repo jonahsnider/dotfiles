@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@gltf-transform/cli": "^4.4.1",
+    "@typespec/compiler": "^1.13.0",
     "cf": "^0.1.0",
     "growthbook": "^0.2.5",
     "pathflip": "^4.1.3",
