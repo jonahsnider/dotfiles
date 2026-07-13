@@ -23,6 +23,9 @@ mac-menu-bar-enabled = false
 notifications-turn-mode = "unfocused"
 show-context-window-usage = true
 usePointerCursors = false
+dock-icon-preference = "app-default"
+enabled-reasoning-efforts = ["low", "medium", "high", "xhigh"]
+keepRemoteControlAwakeWhilePluggedIn = true
 
 [desktop.open-in-target-preferences]
 global = "vscode"
@@ -58,12 +61,12 @@ diffRemoved = "#fa423e"
 skill = "#ad7bf9"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-08T18:41:52Z"
+last_updated = "2026-07-13T15:17:33Z"
 source_type = "local"
 source = "/Users/jonah.snider/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-07-01T08:38:22Z"
+last_updated = "2026-07-10T07:28:13Z"
 source_type = "local"
 source = "/Users/jonah.snider/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
@@ -73,22 +76,32 @@ args = ["mcp"]
 
 [mcp_servers.node_repl]
 args = []
-command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
+command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
 startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
-NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
-NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/jonah.snider/.codex"
 CODEX_HOME = "/Users/jonah.snider/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "97669f77b3ca7114a2df05d55646416ea34b28100c07213ef9f643803449ef2f"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f,e2cad16d8d9f60f09c9f0951ec7dfdd9e8f59dedd06045c0b6827dc8fa8322f0"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.623.141536"
-CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+BROWSER_USE_CODEX_APP_VERSION = "26.707.62119"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
+
+[mcp_servers.computer-use]
+command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+args = ["mcp"]
+cwd = "."
+enabled = false
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
 
 [notice]
 fast_default_opt_out = true
@@ -119,6 +132,9 @@ enabled = true
 enabled = true
 
 [plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
 enabled = true
 
 [projects."/Users/jonah.snider/programming/19hz.jonahsnider.com"]
@@ -196,6 +212,9 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/sanity/ai-growth-toolkit"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/team581/pibble"]
+trust_level = "trusted"
+
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 
@@ -203,13 +222,10 @@ trust_level = "trusted"
 enabled = false
 
 [sandbox_workspace_write]
+exclude_tmpdir_env_var = false
+writable_roots = ["/Users/jonah.snider/Library/Caches/mise", "/Users/jonah.snider/Library/Caches/pnpm", "/Users/jonah.snider/Library/Preferences/pnpm", "/Users/jonah.snider/Library/pnpm"]
+exclude_slash_tmp = false
 network_access = true
-writable_roots = [
-    "/Users/jonah.snider/Library/Caches/mise",
-    "/Users/jonah.snider/Library/Caches/pnpm",
-    "/Users/jonah.snider/Library/Preferences/pnpm",
-    "/Users/jonah.snider/Library/pnpm",
-]
 
 [features]
 js_repl = false

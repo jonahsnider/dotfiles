@@ -165,12 +165,12 @@ cask "advantagescope"
 cask "bettercapture"
 # Apple SuperDrive, Apple Keyboard, and Improved iPhone/iPad Charging
 cask "caldigit-usb-hub-support-driver"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # Image, video and clipboard optimiser
 cask "clop"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# OpenAI's Codex desktop app for managing coding agents
-cask "codex-app"
 # FRC dashboard for viewing camera streams
 cask "jonahsnider/frc/dashshund"
 # AI-powered software engineering agent by Factory
