@@ -59,8 +59,6 @@ brew "git"
 brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
-# Manage stacked Git branches
-brew "git-spice"
 # Render markdown on the CLI
 brew "glow"
 # GNU Privacy Guard (OpenPGP)
