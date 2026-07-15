@@ -102,6 +102,9 @@ enabled = false
 [mcp_servers.openaiDeveloperDocs]
 url = "https://developers.openai.com/mcp"
 
+[mcp_servers.codspeed]
+url = "https://mcp.codspeed.io/mcp"
+
 [notice]
 fast_default_opt_out = true
 hide_full_access_warning = true
