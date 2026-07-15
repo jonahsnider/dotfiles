@@ -123,6 +123,8 @@ brew "sanity"
 brew "scc"
 # Autoformat shell script source code
 brew "shfmt"
+# Open agent skills ecosystem
+brew "skills"
 # Editor of encrypted files
 brew "sops"
 # Toolkit to help you get started with Spec-Driven Development
