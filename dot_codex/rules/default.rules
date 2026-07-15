@@ -2,4 +2,9 @@ prefix_rule(pattern=["./gradlew"], decision="allow")
 prefix_rule(pattern=["railway", "status"], decision="allow")
 prefix_rule(pattern=["gh", "run", "view"], decision="allow")
 prefix_rule(pattern=["gh", "pr", "list"], decision="allow")
+prefix_rule(
+    pattern=["gh", "api"],
+    decision="prompt",
+    justification="Every gh api call requires fresh human verification",
+)
 prefix_rule(pattern=["vp", "info"], decision="allow")
