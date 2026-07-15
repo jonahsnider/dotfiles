@@ -5,7 +5,7 @@ url = "https://mcp-clickhouse-logs.sanityinternal.ts.net/mcp"
 url = "https://mcp-grafana.sanityinternal.ts.net/sse"
 
 [mcp_servers.sentry]
-url = "https://mcp.sentry.dev/mcp/sanity/mellon"
+url = "https://mcp.sentry.dev/mcp/sanity"
 
 [mcp_servers.bigquery]
 url = "https://mcp-bigquery.sanityinternal.ts.net/mcp"
