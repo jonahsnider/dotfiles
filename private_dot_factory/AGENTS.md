@@ -29,3 +29,5 @@
 - Slack URLs can't be accessed with FetchUrl, and MCP isn't available
 - GitHub data should always be viewed using the `gh` CLI instead of FetchUrl
   - Generally prefer MCPs and CLIs over FetchUrl when possible
+- Before any bulk mutations, ask the user explicitly if the changes should be made
+  - Explain the full context of what is being modified, the risks associated, and the scope of what's being updated

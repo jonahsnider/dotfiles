@@ -26,6 +26,7 @@
 ## External platforms
 
 - Never post new comments, open issues, etc. without explicit permission from the user
-- Slack URLs can't be accessed with WebFetch, use the MCP instead
 - GitHub data should always be viewed using the `gh` CLI instead of WebFetch
   - Generally prefer MCPs and CLIs over WebFetch when possible
+- Before any bulk mutations, ask the user explicitly if the changes should be made
+  - Explain the full context of what is being modified, the risks associated, and the scope of what's being updated
