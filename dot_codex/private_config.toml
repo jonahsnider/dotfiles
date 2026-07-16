@@ -26,6 +26,7 @@ usePointerCursors = false
 dock-icon-preference = "app-default"
 enabled-reasoning-efforts = ["low", "medium", "high", "xhigh"]
 keepRemoteControlAwakeWhilePluggedIn = true
+conversationDetailMode = "STEPS_COMMANDS"
 
 [desktop.open-in-target-preferences]
 global = "vscode"
@@ -61,12 +62,12 @@ diffRemoved = "#fa423e"
 skill = "#ad7bf9"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-15T01:16:03Z"
+last_updated = "2026-07-16T05:54:22Z"
 source_type = "local"
 source = "/Users/jonah.snider/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-07-10T07:28:13Z"
+last_updated = "2026-07-16T14:58:31Z"
 source_type = "local"
 source = "/Users/jonah.snider/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
@@ -75,23 +76,24 @@ command = "railway"
 args = ["mcp"]
 
 [mcp_servers.node_repl]
+args = []
 command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
-startup_timeout_sec = 120.0
+startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
-BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
-BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.707.72221"
-CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
-CODEX_HOME = "/Users/jonah.snider/.codex"
-NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
-NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
-NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
 NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
 NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f,cf732b4a285497bfd7e75a2ac14879bce9ae644eb4e1babeb17bb6a840dfc9bd"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/jonah.snider/.codex"
+CODEX_HOME = "/Users/jonah.snider/.codex"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f,7abc8b22abade944bcd80135500416c7aee60c0e94290c7d644b54428a0013ab"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.707.91948"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
 
 [mcp_servers.computer-use]
 command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
@@ -236,9 +238,20 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/renovate"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/containerbase"]
+trust_level = "trusted"
+
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/team581/dashshund"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/stars"]
+trust_level = "trusted"
+
 [tui.model_availability_nux]
 "gpt-5.5" = 4
-"gpt-5.6-sol" = 2
+"gpt-5.6-sol" = 4
 
 [apps.connector_20205bf7d4e99a89d7154bb849718324]
 enabled = false
