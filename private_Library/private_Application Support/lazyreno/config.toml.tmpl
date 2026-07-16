@@ -1,0 +1,12 @@
+{{ $secrets := include "secrets.json.age" | decrypt | fromJson -}}
+[renovate]
+url = "https://renovate.jonahsnider.com"
+secret = {{ $secrets.LAZYRENO_RENOVATE_API_SECRET | quote }}
+
+[github]
+owner = "jonahsnider"
+token = {{ $secrets.LAZYRENO_GITHUB_ACCESS_TOKEN | quote }}
+
+# [ui]
+# refresh_interval = "30s"
+# accent = "cyan"

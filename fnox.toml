@@ -6,6 +6,8 @@ sanity = { type = "1password", vault = "Employee", account = "sanity.1password.c
 ANTHROPIC_API_KEY_FACTORY = { provider = "sanity", value = "Anthropic API key for Factory/password" }
 CIRCLECI_PERSONAL_API_TOKEN = { provider = "sanity", value = "CircleCI Personal API Token/password" }
 GITHUB_PAT_JETBRAINS = { provider = "personal", value = "GitHub PAT - JetBrains/password" }
+LAZYRENO_GITHUB_ACCESS_TOKEN = { provider = "personal", value = "lazyreno GitHub access token/token" }
+LAZYRENO_RENOVATE_API_SECRET = { provider = "personal", value = "Renovate CE API server secret/password" }
 NPM_TOKEN = { provider = "personal", value = "npm Token/password" }
 OPENAI_API_KEY_FACTORY = { provider = "sanity", value = "OpenAI API key for Factory/password" }
 ARGOCD_AUTH_TOKEN = { provider = "sanity", value = "ArgoCD auth-token/password"}
