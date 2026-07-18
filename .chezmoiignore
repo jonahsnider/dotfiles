@@ -2,3 +2,4 @@ secrets.json.age
 fnox.toml
 fnox.local.toml
 scripts/**
+renovate.json

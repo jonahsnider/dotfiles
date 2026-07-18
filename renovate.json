@@ -1,0 +1,17 @@
+{
+	"extends": ["github>jonahsnider/renovate-config"],
+	"customManagers": [
+		{
+			"customType": "jsonata",
+			"fileFormat": "yaml",
+			"managerFilePatterns": [
+				"/^dot_local\\/share\\/gh\\/extensions\\/[^/]+\\/private_manifest\\.yml$/"
+			],
+			"matchStrings": [
+				"$map($, function($manifest) { { \"depName\": $manifest.owner & \"/\" & $manifest.name, \"currentValue\": $manifest.tag } })"
+			],
+			"datasourceTemplate": "github-releases",
+			"depTypeTemplate": "github-cli-extension"
+		}
+	]
+}
