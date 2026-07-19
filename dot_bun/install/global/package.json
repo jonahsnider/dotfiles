@@ -9,5 +9,8 @@
     "serve": "^14.2.6",
     "sort-package-json": "^4.0.0",
     "turbo": "^2.10.4"
-  }
+  },
+  "trustedDependencies": [
+    "growthbook"
+  ]
 }
