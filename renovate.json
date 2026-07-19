@@ -1,5 +1,12 @@
 {
 	"extends": ["github>jonahsnider/renovate-config"],
+	"packageRules": [
+		{
+			"description": "Preserve mise version selectors",
+			"matchManagers": ["mise"],
+			"enabled": false
+		}
+	],
 	"customManagers": [
 		{
 			"customType": "jsonata",
