@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+
+# https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#run-a-script-when-the-contents-of-another-file-changes
+
+# Bun global package.json hash: {{ include "dot_bun/install/global/package.json" | sha256sum }}
+set -l package_json "$HOME/.bun/install/global/package.json"
+set -l packages (jq -r '.dependencies // {} | to_entries[] | "\(.key)@\(.value)"' "$package_json")
+
+bun add --global $packages

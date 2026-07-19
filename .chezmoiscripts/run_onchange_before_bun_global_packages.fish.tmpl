@@ -1,0 +1,18 @@
+#!/usr/bin/env fish
+
+# https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#run-a-script-when-the-contents-of-another-file-changes
+
+# Bun global package.json hash: {{ include "dot_bun/install/global/package.json" | sha256sum }}
+set -l package_json "$HOME/.bun/install/global/package.json"
+set -l desired_packages{{ range $package, $version := (include "dot_bun/install/global/package.json" | fromJson).dependencies }} "{{ $package }}"{{ end }}
+set -l packages_to_remove
+
+for package in (jq -r '.dependencies // {} | keys[]' "$package_json")
+    if not contains -- "$package" $desired_packages
+        set -a packages_to_remove "$package"
+    end
+end
+
+if test (count $packages_to_remove) -gt 0
+    bun remove --global $packages_to_remove
+end
