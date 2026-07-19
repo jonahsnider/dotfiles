@@ -1,5 +1,9 @@
-secrets.json.age
-fnox.toml
+.conductor
+.factory
+AGENTS.md
+README.md
 fnox.local.toml
-scripts/**
+fnox.toml
 renovate.json
+scripts
+secrets.json.age
