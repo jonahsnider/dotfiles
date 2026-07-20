@@ -27,6 +27,7 @@ dock-icon-preference = "app-default"
 enabled-reasoning-efforts = ["low", "medium", "high", "xhigh"]
 keepRemoteControlAwakeWhilePluggedIn = true
 conversationDetailMode = "STEPS_COMMANDS"
+preventSleepWhileRunning = true
 
 [desktop.open-in-target-preferences]
 global = "vscode"
@@ -62,7 +63,7 @@ diffRemoved = "#fa423e"
 skill = "#ad7bf9"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-07-18T17:44:26Z"
+last_updated = "2026-07-20T14:55:57Z"
 source_type = "local"
 source = "/Users/jonah.snider/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
@@ -86,13 +87,14 @@ NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_n
 NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/jonah.snider/.codex"
 CODEX_HOME = "/Users/jonah.snider/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "461c4ba94b821ec805da79c8e8138fe510b1b3358609fc93da47387a2cf3fbf3,6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "583bf903a6cfb9b00a01e1583381ce921c71d7585085c6fa6b805baa0f60230b,6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
 NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = "Control desktop apps on macOS through Computer Use."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.715.31925"
+BROWSER_USE_CODEX_APP_VERSION = "26.715.52143"
+SKY_CUA_SERVICE_PATH = "/Users/jonah.snider/.codex/plugins/cache/openai-bundled/computer-use/1.0.1000451/Codex Computer Use.app"
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
 
 [mcp_servers.computer-use]
@@ -247,6 +249,24 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/stars"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/prettier-config-xo"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/frc.sh"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/Documents/Codex"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/.sentientos-vault-staging-6C80623B-1B8F-4578-B1DF-5C46992923CC"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/Sentient OS - Knowledge Base"]
+trust_level = "trusted"
+
+[projects."/opt/homebrew/Library/Taps/homebrew/homebrew-cask"]
+trust_level = "trusted"
+
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 "gpt-5.6-sol" = 4
@@ -265,5 +285,8 @@ js_repl = false
 
 [shell_environment_policy.set]
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "461c4ba94b821ec805da79c8e8138fe510b1b3358609fc93da47387a2cf3fbf3,6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "583bf903a6cfb9b00a01e1583381ce921c71d7585085c6fa6b805baa0f60230b,6d25aa7656feac858f3a3bdaea5bcbab0dbfd426c9de8e6931ce90c399ee8e4f"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/jonah.snider/.codex"
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
