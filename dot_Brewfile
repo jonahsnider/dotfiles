@@ -119,6 +119,8 @@ brew "ripgrep"
 brew "sanity"
 # Fast and accurate code counter with complexity and COCOMO estimates
 brew "scc"
+# Command-line utility to interact with Sentry
+brew "sentry-cli"
 # Autoformat shell script source code
 brew "shfmt"
 # Open agent skills ecosystem
@@ -204,6 +206,10 @@ cask "orbstack"
 cask "orchard"
 # Simple yet powerful path planning tool for FRC robots
 cask "jonahsnider/frc/pathplanner"
+# On-device AI that reads your life and proactively acts on it
+cask "jonahsnider/tap/sentient-os"
+# System monitor for Apple Silicon with ANE, Media Engine and bandwidth tracking
+cask "siliconscope"
 # CLI to create, run, and deploy Slack apps
 cask "slack-cli"
 # JDK from the Eclipse Foundation (Adoptium)
