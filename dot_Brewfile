@@ -198,6 +198,8 @@ cask "keycastr"
 cask "jonahsnider/frc/limelight-hardware-manager"
 # Music app blocker utility
 cask "music-decoy"
+# Replacement for Docker Desktop
+cask "orbstack"
 # Native GUI for Apple Containers
 cask "orchard"
 # Simple yet powerful path planning tool for FRC robots

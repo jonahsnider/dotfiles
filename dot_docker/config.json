@@ -9,7 +9,7 @@
 		"staging-k8s.gcr.io": "gcr",
 		"us.gcr.io": "gcr"
 	},
-	"currentContext": "desktop-linux",
+	"currentContext": "orbstack",
 	"plugins": {
 		"-x-cli-hints": {
 			"enabled": "true"
