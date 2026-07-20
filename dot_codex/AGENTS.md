@@ -30,3 +30,5 @@
   - Generally prefer MCPs and CLIs over URL fetches when possible
 - Before any bulk mutations, ask the user explicitly if the changes should be made
   - Explain the full context of what is being modified, the risks associated, and the scope of what's being updated
+- If API keys or other external config work is needed, stop and prompt the user rather than trying to do it yourself
+  - This avoids going on wild goose chases trying to do things like use a browser to create an API key
