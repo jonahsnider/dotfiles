@@ -1,1 +1,2 @@
+packageManagerStrict = "off"
 strictDepBuilds = true
