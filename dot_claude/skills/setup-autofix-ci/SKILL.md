@@ -102,6 +102,8 @@ Vite+ projects use the `vp` CLI, which manages its own runtime. No separate Node
 
 Check project metadata (ex. `package.json`) for context on what tooling is used for linting and formatting.
 
+Set `continue-on-error: true` on every step that applies fixes. A fixer can modify files and still exit non-zero when issues remain; the workflow must continue so `autofix-ci/action` can commit the partial fixes.
+
 ### Biome
 
 In addition to running Biome fixes, the Biome schema can be automatically migrated by running `biome migrate --write`.
@@ -110,6 +112,7 @@ For example, with Yarn:
 
 ```yaml
 - name: Migrate Biome schema
+  continue-on-error: true
   run: yarn biome migrate --write
 ```
 
@@ -119,7 +122,9 @@ Vite+ bundles linting and formatting via `vp check`. Knip can be run through `vp
 
 ```yaml
 - name: Apply lint and formatting fixes
+  continue-on-error: true
   run: vp check --fix
 - name: Apply Knip fixes
+  continue-on-error: true
   run: vp exec knip --fix
 ```
