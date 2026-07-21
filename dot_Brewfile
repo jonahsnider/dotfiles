@@ -103,6 +103,10 @@ brew "mise"
 brew "mole"
 # Command-line Git information tool
 brew "onefetch"
+# High-performance formatting tool for JavaScript and TypeScript
+brew "oxfmt"
+# High-performance linter for JavaScript and TypeScript written in Rust
+brew "oxlint"
 # CLI for managing daemons with a focus on developer experience
 brew "pitchfork"
 # CLI for the Pkl programming language
