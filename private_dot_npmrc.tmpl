@@ -1,0 +1,2 @@
+{{ $secrets := include "secrets.json.age" | decrypt | fromJson -}}
+//registry.npmjs.org/:_authToken={{ $secrets.NPM_TOKEN }}
