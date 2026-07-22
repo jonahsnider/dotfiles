@@ -4,6 +4,8 @@
   "preferences": {
     "menuBarEnabled": false,
     "quickEntryShortcut": "off",
+    "launchPreviewPersistedWorkspaces": [],
+    "launchPreviewSessionScopedSessions": [],
     "localAgentModeTrustedFolders": [
       "/Users/jonah.snider/programming/sanity"
     ],
@@ -25,8 +27,7 @@
       "starred-session-groups": [],
       "dframe-local-slice": {
         "pinnedOrder": [],
-        "customGroupAssignments": {},
-        "customGroupOrder": {}
+        "homeProjectsPinnedOrder": []
       },
       "desktop-frame.paneStore.v1": {
         "state": {
@@ -42,7 +43,8 @@
           "selectedProjects": []
         },
         "version": 0
-      }
+      },
+      "dframe-group-scopes": {}
     }
   }
 }
