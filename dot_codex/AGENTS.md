@@ -2,8 +2,6 @@
 
 ## Writing code
 
-- When you're corrected by the user, consider if the feedback is generalizable enough to be added to a AGENTS.md file
-  - If yes, ask the user if a memory should be recorded in AGENTS.md for future reference
 - Keep changes simple, minimal impact and prefer lower complexity whenever possible
   - Do not add unrequested features, refactors, or abstractions
   - When given an example API or pattern to follow, match its simplicity closely
