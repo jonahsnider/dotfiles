@@ -3,12 +3,6 @@
 [settings.supervisor]
 user = "{{ .chezmoi.username }}"
 
-[daemons.droid]
-run = "droid daemon --remote-access"
-retry = true
-boot_start = true
-ready_output = "\\[droid daemon\\] Daemon is running"
-
 [daemons.portless]
 run = "portless proxy start --foreground --port 443 --https"
 retry = true
