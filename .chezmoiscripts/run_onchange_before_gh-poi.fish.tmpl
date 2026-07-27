@@ -1,0 +1,9 @@
+{{- $manifest := include "dot_local/share/gh/extensions/gh-poi/private_manifest.yml" | fromYaml -}}
+#!/usr/bin/env fish
+
+# Reinstall so gh updates the executable and its manifest together.
+if contains -- "gh {{ $manifest.name | trimPrefix "gh-" }}" (gh extension list | string split \t)
+    gh extension remove "{{ $manifest.name }}"
+end
+
+gh extension install "{{ $manifest.owner }}/{{ $manifest.name }}" --pin "{{ $manifest.tag }}"

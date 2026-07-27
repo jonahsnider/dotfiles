@@ -172,6 +172,8 @@ brew "jonahsnider/tap/lazyreno"
 cask "1password-cli"
 # FRC log analysis tool
 cask "advantagescope"
+# Official launcher for Balatro Multiplayer
+cask "jonahsnider/tap/balatro-multiplayer"
 # Screen recorder
 cask "bettercapture"
 # Apple SuperDrive, Apple Keyboard, and Improved iPhone/iPad Charging
