@@ -40,6 +40,8 @@ brew "duti"
 brew "eget"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
+# Codebase intelligence for TypeScript and JavaScript
+brew "fallow"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
@@ -140,6 +142,8 @@ brew "specify"
 brew "starship"
 # Easiest, most secure way to use WireGuard and 2FA
 brew "tailscale"
+# Modern cli tool that keeps your deps fresh
+brew "taze"
 # Command-line interface for running and interacting with Temporal Server and UI
 brew "temporal"
 # Display directories as trees (with optional color/HTML output)
