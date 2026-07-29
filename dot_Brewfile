@@ -52,6 +52,8 @@ brew "fish"
 brew "fish-lsp"
 # Plugin manager for the Fish shell
 brew "fisher"
+# Text editor for your terminal: easy, powerful and fast
+brew "fresh-editor"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
