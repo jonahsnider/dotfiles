@@ -89,7 +89,7 @@ brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Terminal Markdown previewer with a GUI-like experience
-brew "leaf-md"
+brew "leaf-markdown-viewer"
 # Postgres C API library
 brew "libpq"
 # YAML Parser
