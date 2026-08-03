@@ -5,6 +5,8 @@ git:
   overrideGpg: true
 gui:
   authorColors:
+    "Claude": "#d97757"
+    "claude[bot]": "#d97757"
     "Jonah Snider": "#ffbbcc"
   nerdFontsVersion: "3"
   showRandomTip: false
