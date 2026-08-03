@@ -3,8 +3,8 @@
 model = "gpt-5.6-sol"
 model_reasoning_effort = "high"
 notify = [
-    "/Users/jonah.snider/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
-    "turn-ended",
+  "/Users/jonah.snider/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient",
+  "turn-ended",
 ]
 personality = "pragmatic"
 sandbox_mode = "workspace-write"
@@ -327,7 +327,13 @@ enabled = false
 
 [sandbox_workspace_write]
 exclude_tmpdir_env_var = false
-writable_roots = ["/Users/jonah.snider/Library/Caches/mise", "/Users/jonah.snider/Library/Caches/pnpm", "/Users/jonah.snider/Library/Preferences/pnpm", "/Users/jonah.snider/Library/pnpm"]
+writable_roots = [
+  "/Users/jonah.snider/.npm/_logs",
+  "/Users/jonah.snider/Library/Caches/mise",
+  "/Users/jonah.snider/Library/Caches/pnpm",
+  "/Users/jonah.snider/Library/Preferences/pnpm",
+  "/Users/jonah.snider/Library/pnpm",
+]
 exclude_slash_tmp = false
 network_access = true
 
