@@ -7,7 +7,12 @@ gui:
   authorColors:
     "Claude": "#d97757"
     "claude[bot]": "#d97757"
+    "Copilot": "#8534f3"
+    "copilot-swe-agent[bot]": "#8534f3"
     "Jonah Snider": "#ffbbcc"
+    "jonahsnider[bot]": "#7ffa7b"
+    "renovate[bot]": "#308be4"
+    "squiggler[bot]": "#ffffff"
   nerdFontsVersion: "3"
   showRandomTip: false
   showCommandLog: false
