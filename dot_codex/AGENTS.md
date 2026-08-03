@@ -17,6 +17,8 @@
 ## Tooling
 
 - Use linting/formatting tools instead of manually fixing (ex. indent, sorting imports, etc.)
+- Codex protects `.git` metadata in the workspace sandbox
+  - When an authorized Git operation needs to update `.git`, rerun the smallest relevant command with sandbox escalation instead of treating the denial as a blocker
 - A modern version of Node is installed, and can run TypeScript natively without any flags
   - Shell setup means that env vars should also be automatically parsed from .env, use `--env-file` otherwise
   - Use top level await instead of wrapping everything in a giant async function
