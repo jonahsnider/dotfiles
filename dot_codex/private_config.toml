@@ -315,6 +315,18 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/cyberpunk"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/team581/fms-2026"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/sanity/renovate-config"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/sanity/so"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 
