@@ -339,6 +339,7 @@ network_access = true
 
 [features]
 js_repl = false
+prevent_idle_sleep = true
 
 [shell_environment_policy.set]
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
