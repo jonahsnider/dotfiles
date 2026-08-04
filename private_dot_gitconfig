@@ -49,6 +49,7 @@
 
 # Delta pager https://github.com/dandavison/delta
 [delta]
+	side-by-side = true
 	syntax-theme = Dracula
 
 [diff "lockb"]
