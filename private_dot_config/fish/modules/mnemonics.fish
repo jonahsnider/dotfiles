@@ -139,6 +139,8 @@ abbr --add pf "pnpm format"
 abbr --add pF "pnpm format:write"
 
 # Vite+
+abbr --add vpa "vp add"
+abbr --add vpR "vp remove"
 abbr --add vpi "vp install"
 abbr --add vpd "vp dev"
 abbr --add vpb "vp build"
