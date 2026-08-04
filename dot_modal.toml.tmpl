@@ -1,0 +1,5 @@
+{{ $secrets := include "secrets.json.age" | decrypt | fromJson -}}
+[jonahsnider]
+token_id = {{ $secrets.MODAL_TOKEN_ID | quote }}
+token_secret = {{ $secrets.MODAL_TOKEN_SECRET | quote }}
+active = true
