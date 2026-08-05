@@ -3,4 +3,11 @@
 # https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#run-a-script-when-the-contents-of-another-file-changes
 
 # pitchfork config hash: {{ include "private_dot_config/pitchfork/config.toml.tmpl" | sha256sum }}
-pitchfork restart --global
+# Only needed once per system, but it's idempotent
+sudo pitchfork boot enable
+# Restart the pitchfork supervisor
+sudo pitchfork supervisor start --force
+# Make sure the global daemons are running
+pitchfork start --global
+# Register pitchfork.localhost as localhost:3120 via portless
+portless alias pitchfork 3120 --force
