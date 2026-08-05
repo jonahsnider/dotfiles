@@ -194,8 +194,6 @@ cask "clop"
 cask "codex"
 # Menu bar usage monitor for Codex and Claude
 cask "codexbar"
-# Claude code parallelisation
-cask "conductor"
 # FRC dashboard for viewing camera streams
 cask "jonahsnider/frc/dashshund"
 # Simple and modern dashboard for FRC
