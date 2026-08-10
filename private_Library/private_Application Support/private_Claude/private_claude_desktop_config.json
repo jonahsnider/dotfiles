@@ -45,6 +45,8 @@
         "version": 0
       },
       "dframe-group-scopes": {}
-    }
+    },
+    "ccRemoteControlDefaultEnabled": true,
+    "chromeExtensionEnabled": false
   }
 }
