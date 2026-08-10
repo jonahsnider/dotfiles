@@ -9,3 +9,6 @@ fnox activate fish | source
 
 # zoxide
 zoxide init fish | source
+
+# daytona
+source /Users/jonah.snider/.config/fish/daytona.completion_script.fish
