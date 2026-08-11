@@ -2,6 +2,7 @@ tap "anomalyco/tap", trusted: true
 tap "charmbracelet/tap", trusted: true
 tap "daytonaio/cli"
 tap "encoredev/tap", trusted: true
+tap "getsentry/tools"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "jonahsnider/frc", "https://github.com/jonahsnider/homebrew-frc.git", trusted: true
@@ -131,8 +132,6 @@ brew "ripgrep"
 brew "sanity"
 # Fast and accurate code counter with complexity and COCOMO estimates
 brew "scc"
-# Command-line utility to interact with Sentry
-brew "sentry-cli"
 # Autoformat shell script source code
 brew "shfmt"
 # Open agent skills ecosystem
@@ -169,6 +168,8 @@ brew "charmbracelet/tap/freeze"
 brew "daytonaio/cli/daytona", trusted: true
 # The static analysis-powered Go framework for building backend applications
 brew "encoredev/tap/encore"
+# Sentry command-line tool for error monitoring and debugging
+brew "getsentry/tools/sentry", trusted: true
 # Convert CTR Electronics hoot (.hoot) files into other logging file formats
 brew "jonahsnider/frc/owlet"
 # Braintrust command-line interface
