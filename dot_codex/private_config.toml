@@ -354,6 +354,7 @@ writable_roots = [
   "/Users/jonah.snider/Library/Caches/pnpm",
   "/Users/jonah.snider/Library/Preferences/pnpm",
   "/Users/jonah.snider/Library/pnpm",
+  "/Users/jonah.snider/programming/sanity/sanity-nix-config",
 ]
 exclude_slash_tmp = false
 network_access = true
