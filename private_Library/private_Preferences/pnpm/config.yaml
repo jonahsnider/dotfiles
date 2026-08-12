@@ -1,1 +1,2 @@
 globalBinDir: /Users/jonah.snider/Library/pnpm/bin
+enableGlobalVirtualStore: true
