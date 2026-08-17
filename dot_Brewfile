@@ -108,8 +108,6 @@ brew "mcp-inspector"
 brew "mcp-publisher"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
-# Client library and CLI for Modal
-brew "modal"
 # Deep clean and optimize your Mac
 brew "mole"
 # Command-line Git information tool
