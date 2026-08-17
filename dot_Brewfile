@@ -241,6 +241,8 @@ cask "slack-cli"
 cask "tailscale-app"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin@25"
+# Open-source code editor
+cask "visual-studio-code"
 # All-in-One Java Troubleshooting Tool
 cask "visualvm"
 # Standard software library provided for FRC teams to write robot code
