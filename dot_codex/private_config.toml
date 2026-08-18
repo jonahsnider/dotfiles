@@ -11,6 +11,14 @@ sandbox_mode = "workspace-write"
 service_tier = "default"
 approvals_reviewer = "auto_review"
 
+default_permissions = "home_read"
+
+[permissions.home_read]
+extends = ":workspace"
+
+[permissions.home_read.filesystem]
+"~/.mastra" = "read"
+
 [desktop]
 appearanceLightCodeThemeId = "codex"
 appearanceTheme = "system"
