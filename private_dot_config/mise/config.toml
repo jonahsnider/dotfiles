@@ -10,9 +10,10 @@ python = "3.11"
 ruff = "latest"
 rust = "latest"
 uv = "latest"
+yarn = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["node"]
+idiomatic_version_file_enable_tools = ["node", "pnpm", "yarn"]
 trusted_config_paths = [
   "/Users/jonah.snider/conductor/workspaces/",
   "/Users/jonah.snider/programming/sanity",
