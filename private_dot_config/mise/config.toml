@@ -1,6 +1,7 @@
 [tools]
 bun = "latest"
 fnox = "latest"
+gh = "latest"
 "github:railwayapp/railpack" = "latest"
 go = "latest"
 java = "temurin-25"
