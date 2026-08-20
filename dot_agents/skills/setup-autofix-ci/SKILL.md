@@ -55,21 +55,29 @@ Some projects might use Bun just for package management
 
 ### Yarn
 
-If the existing CI pipeline is missing the step for `corepack enable`, it's probably because it's still using an in-repo version of the Yarn binary.
-
-Check what version of Node to use by looking at existing CI pipelines.
+Keep the Yarn version pinned in `package.json#packageManager`. Check what Node version to use by looking at the project's existing configuration.
 
 ```yaml
-- name: Enable Corepack
-  # Required due to a limitation in setup-node https://github.com/actions/setup-node/issues/480#issuecomment-1820622085
-  run: corepack enable
+- name: Setup Yarn
+  uses: yarnpkg/setup-action@main
 - name: Setup Node.js
-  uses: actions/setup-node@v6
+  uses: actions/setup-node@v7
   with:
     node-version: "lts/*"
-    cache: "yarn"
+    cache: yarn
 - name: Install dependencies
   run: yarn install --immutable
+```
+
+### pnpm
+
+Use the versions declared by `packageManager` and `devEngines.runtime` in `package.json`. If the runtime is not declared there, set the `runtime` input to match the project's existing configuration.
+
+```yaml
+- name: Setup pnpm
+  uses: pnpm/setup@v2
+  with:
+    cache: true
 ```
 
 ### Java
