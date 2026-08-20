@@ -30,6 +30,14 @@
   "terminal": {
     "resume_agents": false
   },
+  "keybindings": [
+    {
+      "key": "Backspace",
+      "modifiers": ["alt"],
+      "action": "delete_word_backward",
+      "when": "normal"
+    }
+  ],
   "plugins": {
     "devcontainer": { "enabled": false },
     "diagnostics_panel": { "enabled": false },
