@@ -80,7 +80,7 @@ diffRemoved = "#fa423e"
 skill = "#ad7bf9"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-08-19T17:33:45Z"
+last_updated = "2026-08-19T22:56:13Z"
 source_type = "local"
 source = "/Users/jonah.snider/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
@@ -382,6 +382,9 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/jonah.snider/programming/sanity/export"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/sanity/ci"]
 trust_level = "trusted"
 
 [tui]
