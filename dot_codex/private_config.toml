@@ -23,6 +23,7 @@ extends = ":workspace"
 "~/Library/Caches/pnpm" = "write"
 "~/Library/Preferences/pnpm" = "write"
 "~/Library/pnpm" = "write"
+"~/.yarn" = "write"
 "~/programming/sanity/sanity-nix-config" = "write"
 
 [permissions.dev.network]
