@@ -20,6 +20,7 @@ trusted_config_paths = [
   "/Users/jonah.snider/programming/sanity",
 ]
 env_file = ".env"
+auto_update = true
 
 [settings.github]
 credential_command = "gh auth token"
