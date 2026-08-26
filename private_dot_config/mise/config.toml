@@ -27,4 +27,4 @@ credential_command = "gh auth token"
 
 [env]
 SANITY_WORKSPACE = "/Users/jonah.snider/programming/sanity"
-SANITY_MISE_BOOTSTRAP_VERSION = "3"
+SANITY_MISE_BOOTSTRAP_VERSION = "4"
