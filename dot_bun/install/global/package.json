@@ -10,7 +10,8 @@
     "sandbox": "^4.0.0",
     "serve": "^14.2.6",
     "sort-package-json": "^4.0.0",
-    "turbo": "^2.10.4"
+    "turbo": "^2.10.4",
+    "wpilog-parser": "^2.3.0"
   },
   "trustedDependencies": [
     "growthbook"
