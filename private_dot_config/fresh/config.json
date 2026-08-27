@@ -36,6 +36,12 @@
       "modifiers": ["alt"],
       "action": "delete_word_backward",
       "when": "normal"
+    },
+    {
+      "key": "a",
+      "modifiers": ["ctrl"],
+      "action": "select_all",
+      "when": "normal"
     }
   ],
   "plugins": {
