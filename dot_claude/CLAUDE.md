@@ -16,6 +16,12 @@
 - Do not create fallback/legacy behavior unless explicitly requested
   - Feel free to ask whether existing functionality should be preserved if it's not already implied by their request
 
+## Testing
+
+- Bad tests are worse than no tests at all
+- Do not write change detector tests, ensure that any tests created are actually producing value and improving reliability
+- Not writing any tests is okay, just be mindful of the pros/cons of writing them
+
 ## Tooling
 
 - Use linting/formatting tools instead of manually fixing (ex. indent, sorting imports, etc.)
