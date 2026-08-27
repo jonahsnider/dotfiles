@@ -299,3 +299,6 @@ abbr --add sloc scc
 abbr --add da "direnv allow"
 
 alias clod claude
+
+# Sanity sup
+abbr --add upd "up -D"
