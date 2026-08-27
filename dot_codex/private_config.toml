@@ -390,6 +390,9 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/wpilog-parser"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/logos.frc.sh"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
