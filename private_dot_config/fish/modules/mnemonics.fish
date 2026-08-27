@@ -50,19 +50,6 @@ abbr --add grc "gh repo clone"
 abbr --add gpl "gh pr list"
 abbr --add ghp "gh poi --state closed"
 
-# Watson
-if type -q watson
-    abbr --add w watson
-    abbr --add ws "watson start"
-    abbr --add wS "watson stop"
-    abbr --add wC "watson cancel"
-    abbr --add wr "watson report"
-    abbr --add wl "watson log"
-    abbr --add we "watson edit"
-    abbr --add wst "watson status"
-    abbr --add wR "watson remove"
-end
-
 # Yarn
 abbr --add y yarn
 abbr --add yi "yarn install"
@@ -167,33 +154,16 @@ abbr --add dcb "docker compose build"
 
 # cd
 abbr --add cdp "cd ~/programming"
-if test -d ~/programming/sanity
-    abbr --add cdps "cd ~/programming/sanity"
-end
-if test -d ~/programming/zws
-    abbr --add cdpz "cd ~/programming/zws"
-end
-if test -d ~/programming/team581
-    abbr --add cdpt "cd ~/programming/team581"
-end
+abbr --add cdps "cd ~/programming/sanity"
+abbr --add cdpz "cd ~/programming/zws"
+abbr --add cdpt "cd ~/programming/team581"
 
 # Brew
-if type -q brew
-    abbr --add br brew
-    abbr --add bru "brew update"
-    abbr --add brU "brew upgrade"
-    abbr --add brt "brew tap"
-    abbr --add bri "brew install"
-end
-
-# apt
-if type -q apt; and test (uname) != Darwin
-    abbr --add a apt
-    abbr --add ai "apt install"
-    abbr --add aR "apt remove"
-    abbr --add au "apt update"
-    abbr --add aU "apt upgrade"
-end
+abbr --add br brew
+abbr --add bru "brew update"
+abbr --add brU "brew upgrade"
+abbr --add brt "brew tap"
+abbr --add bri "brew install"
 
 # sudo
 abbr --add s sudo
@@ -227,11 +197,6 @@ abbr --add rt "yarn biome test"
 # abbr --add turbo "yarn turbo"
 abbr --add t turbo
 abbr --add tr "turbo run"
-
-if test -d ~/programming/voiceflow/database-cli
-    abbr --add dbcli ~/programming/voiceflow/database-cli/bin/run
-    abbr --add vfdb ~/programming/voiceflow/database-cli/bin/run
-end
 
 # Python
 abbr --add py python
