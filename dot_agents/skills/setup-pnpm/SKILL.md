@@ -40,7 +40,7 @@ Projects using mise should be updated to stop having mise manage the pnpm versio
    [settings]
    idiomatic_version_file_enable_tools = ["node", "pnpm"]
    ```
-3. In `package.json`, set `devEngines.runtime.onFail` is set to `"error"` instead of `"download"`
+3. In `package.json`, set `devEngines.runtime.onFail` is set to `"warn"` instead of `"download"`
 4. Run `mise install`
 
 ## GitHub Actions
