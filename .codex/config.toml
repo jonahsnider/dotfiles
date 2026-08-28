@@ -1,0 +1,17 @@
+[mcp_servers.homebrew]
+command = "brew"
+args = ["mcp-server"]
+enabled = true
+
+[mcp_servers.mise]
+command = "mise"
+args = ["mcp"]
+enabled = true
+
+[mcp_servers.mise.env]
+MISE_EXPERIMENTAL = "1"
+
+[mcp_servers.pitchfork]
+command = "pitchfork"
+args = ["mcp"]
+enabled = true
