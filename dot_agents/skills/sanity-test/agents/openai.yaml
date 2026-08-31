@@ -1,0 +1,8 @@
+interface:
+  display_name: Test Sanity
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "sanity-local"
+      transport: "streamable-http"
+      url: "http://127.0.0.1:3003"
