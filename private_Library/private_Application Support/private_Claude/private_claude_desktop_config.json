@@ -3,6 +3,7 @@
   "coworkUserFilesPath": "/Users/jonah.snider/Claude",
   "preferences": {
     "menuBarEnabled": false,
+    "chromeExtensionEnabled": false,
     "quickEntryShortcut": "off",
     "launchPreviewPersistedWorkspaces": [],
     "launchPreviewSessionScopedSessions": [],
@@ -21,6 +22,7 @@
       "db1872f9-9884-4f72-ad3d-fb2365936312": true
     },
     "remoteToolsDeviceName": "jonah-mbp-sanity",
+    "ccRemoteControlDefaultEnabled": true,
     "epitaxyPrefs": {
       "starred-local-code-sessions": [],
       "starred-cowork-spaces": [],
@@ -46,7 +48,8 @@
       },
       "dframe-group-scopes": {}
     },
-    "ccRemoteControlDefaultEnabled": true,
-    "chromeExtensionEnabled": false
+    "orgWorkAcrossAppsDisabled": false,
+    "coworkBrowserToolsEnabled": false,
+    "coworkPreferredBrowser": "built_in"
   }
 }
