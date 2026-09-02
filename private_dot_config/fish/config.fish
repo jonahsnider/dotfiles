@@ -14,4 +14,6 @@ source $modules_dir/prompt.fish
 # Added by Yarn Switch
 source "/Users/jonah.snider/.yarn/switch/env.fish"
 
+/Users/jonah.snider/.local/bin/mise activate fish | source
+
 test -f "/Users/jonah.snider/programming/sanity/mise-config/shell-hooks/loaded.fish"; and source "/Users/jonah.snider/programming/sanity/mise-config/shell-hooks/loaded.fish"
