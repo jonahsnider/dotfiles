@@ -26,6 +26,7 @@ extends = ":workspace"
 "~/.yarn" = "write"
 "~/programming/sanity/sanity-nix-config" = "write"
 "~/Library/Preferences/.wrangler" = "write"
+"~/.sentry" = "write"
 
 [permissions.dev.network]
 enabled = true
