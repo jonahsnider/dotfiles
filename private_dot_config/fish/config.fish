@@ -6,14 +6,14 @@ source $modules_dir/env.fish
 # Stage 2 - Depends on env
 source $modules_dir/path.fish
 
-# Stage 3 - Everything else
-source $modules_dir/mnemonics.fish
-source $modules_dir/general.fish
-source $modules_dir/prompt.fish
-
 # Added by Yarn Switch
 source "/Users/jonah.snider/.yarn/switch/env.fish"
 
 /Users/jonah.snider/.local/bin/mise activate fish | source
+
+# Stage 3 - Everything else
+source $modules_dir/mnemonics.fish
+source $modules_dir/general.fish
+source $modules_dir/prompt.fish
 
 test -f "/Users/jonah.snider/programming/sanity/mise-config/shell-hooks/loaded.fish"; and source "/Users/jonah.snider/programming/sanity/mise-config/shell-hooks/loaded.fish"
