@@ -412,6 +412,9 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/sanity/migrate"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/sanity/get-it"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
