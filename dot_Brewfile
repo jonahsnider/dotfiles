@@ -247,3 +247,5 @@ cask "visual-studio-code"
 cask "visualvm"
 # Standard software library provided for FRC teams to write robot code
 cask "jonahsnider/frc/wpilib"
+# REST, GraphQL and gRPC client
+cask "yaak"
