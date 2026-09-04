@@ -1,7 +1,0 @@
-[global]
-target = "~/.local/bin"
-
-["facebook/infer"]
-asset_filters = ["osx-arm64"]
-download_only = true
-target = "~/.cache/eget"

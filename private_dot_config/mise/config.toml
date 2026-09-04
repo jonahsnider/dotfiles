@@ -2,6 +2,7 @@
 bun = "latest"
 fnox = "latest"
 gh = "latest"
+"github:facebook/infer" = "latest"
 "github:railwayapp/railpack" = "latest"
 go = "latest"
 java = "temurin-25"
