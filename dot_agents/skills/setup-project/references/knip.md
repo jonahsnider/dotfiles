@@ -1,11 +1,6 @@
----
-name: setup-knip
-description: Setup Knip in a project for detecting unused files, dependencies, and exports. Use when adding Knip to a project, configuring entry points, or integrating Knip into CI.
----
+# Knip
 
-# Setup Knip
-
-Setup Knip in this project.
+Knip is used to lint dependencies and package exports.
 
 ## Setup steps
 
@@ -13,9 +8,8 @@ Follow these steps to setup Knip.
 Ensure that it runs properly.
 Resolve any errors caused from misconfigurations, but don't make refactors unless necessary.
 
-1. Install Knip with the configured project manager
-   If in a monorepo, install it once at the root
-2. Create a `knip.config.ts` file in the root of the project
+1. `pnpm add -ED knip`
+2. Create `knip.config.ts`
 
    ```ts
    import type { KnipConfig } from "knip";
@@ -30,15 +24,16 @@ Resolve any errors caused from misconfigurations, but don't make refactors unles
 ## Entry points
 
 Knip is generally pretty smart at figuring out entrypoints.
-When you provide the entrypoints array, it overwrites the default enabled ones, so only set that value when necessary.
+Providing a custom `entrypoints` overwrites the default enabled ones, so only use when necessary.
 Each entrypoint can go on a line, with blank lines to separate different groups of entrypoints (ex. frontend and backend).
-Each line should have a brief comment describing what it's for
+Each line should have a brief comment describing what it's for.
 
 Most issues related to unused imports/dependencies are actually just the result of files not being marked as entrypoints.
 
 ## Project source files
 
 Ensure that CSS files are considered part of the project source when relevant.
+Knip plugins may do this automatically.
 
 ```ts
 const config = {
@@ -83,21 +78,4 @@ const config = {
     enumMembers: "off",
   },
 };
-```
-
-## CI
-
-Ensure that Knip is run in the CI pipeline.
-Run using the configured package manager (ex. `bun run knip`):
-
-```yaml
-- name: Run Knip
-  run: bun run knip
-```
-
-If the repo has autofix.ci configured, add a step for `knip --fix`:
-
-```yaml
-- name: Fix Knip issues
-  run: bun run knip --fix
 ```
