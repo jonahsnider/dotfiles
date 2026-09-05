@@ -110,8 +110,8 @@ BROWSER_USE_TINYSKY_ENABLED = "1"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.831.21537"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.831.21537/scripts/browser-service.mjs"}'
+BROWSER_USE_CODEX_APP_VERSION = "26.901.31953"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.901.31953/scripts/browser-service.mjs"}'
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
 
 [mcp_servers.openaiDeveloperDocs]
@@ -415,6 +415,9 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/sanity/get-it"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/sanity/runtime-cli"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
@@ -440,4 +443,7 @@ NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "9230e2bd8b24b7ac7a0ba6774c64bf0d78ec
 enabled = true
 
 [plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
 enabled = true
