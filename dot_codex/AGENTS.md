@@ -28,6 +28,9 @@
 - A modern version of Node is installed, and can run TypeScript natively without any flags
   - Shell setup means that env vars should also be automatically parsed from .env, use `--env-file` otherwise
   - Use top level await instead of wrapping everything in a giant async function
+- Use MCP servers and CLIs to interact with external platforms
+  - If one needs to be added/installed, ask the user
+  - Never use the browser for anything other than local development
 
 ## External platforms
 
