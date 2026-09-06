@@ -27,7 +27,9 @@ For frameworks and libraries that are more situational:
   - Works with Vite+ for a frontend
 - Drizzle, for working with existing non-Convex DBs
 - Railway, for hosting apps that can't be serverless or DBs (likely Redis or PostgreSQL)
+  - Use config-as-code until their infrastructure-as-code is out of beta
 - Cloudflare Workers, for hosting static frontends
+  - Use wrangler.jsonc for everything if possible
 - TanStack Start, for frontend apps
 - Astro, for non-interactive static sites
 - Sentry, for error monitoring, observability, and tracing
