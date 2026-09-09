@@ -1,12 +1,13 @@
 # mise
 
 Use mise for managing tool versions, especially Node.js and pnpm.
+Vite+ and pnpm can manage pnpm and Node.js versions, but we prefer to use mise for that.
 Assume that it is globally installed for contributors.
 Generally don't use mise to install tools in CI, prefer more specific options (ex. `actions/setup-java`)
 
 ## mise.toml
 
-Projects using mise should be updated to stop having mise manage the pnpm version.
+Projects using mise should declare Node.js and package manager versions in `package.json` instead of directly in `mise.toml`.
 
 1. Remove `node` and `pnpm` (or any other package managers) from mise.toml
 2. Update `mise.toml` to use `devEngines` as the source of truth
