@@ -16,8 +16,6 @@ brew "openssl@3"
 brew "agent-browser"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Toolchain of the web
-brew "biome"
 # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ccusage"
 # Manage your dotfiles across multiple diverse machines, securely
@@ -92,8 +90,6 @@ brew "ladder"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Terminal Markdown previewer with a GUI-like experience
-brew "leaf-markdown-viewer"
 # Postgres C API library
 brew "libpq"
 # YAML Parser
@@ -172,8 +168,6 @@ brew "jonahsnider/tap/bt", trusted: true
 brew "jonahsnider/tap/github-mcp-server", trusted: true
 # Learn how to use CLI apps
 brew "jonahsnider/tap/how"
-# TUI dashboard for self-hosted Renovate CE
-brew "jonahsnider/tap/lazyreno"
 # Command-line interface for 1Password
 cask "1password-cli"
 # FRC log analysis tool
@@ -215,8 +209,6 @@ cask "github"
 cask "icon-composer"
 # HTTP and GraphQL Client
 cask "insomnia"
-# Agentic development environment
-cask "jetbrains-air"
 # Open-source keystroke visualiser
 cask "keycastr"
 # Flash and find Limelight devices
@@ -227,8 +219,6 @@ cask "music-decoy"
 cask "ollama-app"
 # Replacement for Docker Desktop
 cask "orbstack"
-# Native GUI for Apple Containers
-cask "orchard"
 # Simple yet powerful path planning tool for FRC robots
 cask "jonahsnider/frc/pathplanner"
 # System monitor for Apple Silicon with ANE, Media Engine and bandwidth tracking
