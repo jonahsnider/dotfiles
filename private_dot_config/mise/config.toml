@@ -1,4 +1,5 @@
 [tools]
+age = "latest"
 bun = "latest"
 fnox = "latest"
 gh = "latest"
