@@ -23,7 +23,7 @@ Use Oxlint and Oxfmt for linting and formatting code.
        }
      }
      ```
-   - `.oxfmt.json`
+   - `.oxfmtrc.json`
      ```json
      {
        "singleQuote": true,
