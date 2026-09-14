@@ -130,6 +130,10 @@ url = "https://api.latticehq.com/mcp"
 [mcp_servers.sanity]
 url = "http://127.0.0.1:3003"
 
+[mcp_servers.safari]
+command = "/usr/bin/safaridriver"
+args = ["--mcp"]
+
 [notice]
 fast_default_opt_out = true
 hide_full_access_warning = true
