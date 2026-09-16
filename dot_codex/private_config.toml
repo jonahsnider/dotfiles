@@ -97,23 +97,24 @@ command = "railway"
 args = ["mcp"]
 
 [mcp_servers.node_repl]
+args = []
 command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
-startup_timeout_sec = 120.0
+startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
-BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
-BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.908.40834"
-BROWSER_USE_TINYSKY_ENABLED = "1"
-CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
-CODEX_HOME = "/Users/jonah.snider/.codex"
-NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
-NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
 NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
 NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/jonah.snider/.codex:/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.908.40834/scripts/browser-service.mjs"}'
+CODEX_HOME = "/Users/jonah.snider/.codex"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_TINYSKY_ENABLED = "1"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.908.70816"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.908.70816/scripts/browser-service.mjs"}'
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
 
 [mcp_servers.openaiDeveloperDocs]
 url = "https://developers.openai.com/mcp"
