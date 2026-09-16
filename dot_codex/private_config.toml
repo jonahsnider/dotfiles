@@ -444,6 +444,7 @@ trust_level = "trusted"
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
+whimsy = false
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
