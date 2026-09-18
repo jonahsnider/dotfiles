@@ -1,5 +1,6 @@
 tap "anomalyco/tap", trusted: true
 tap "charmbracelet/tap", trusted: true
+tap "desert-ant-labs/tap", trusted: true
 tap "encoredev/tap", trusted: true
 tap "getsentry/tools"
 tap "homebrew/cask"
@@ -121,8 +122,6 @@ brew "shfmt"
 brew "skills"
 # Editor of encrypted files
 brew "sops"
-# Toolkit to help you get started with Spec-Driven Development
-brew "specify"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Easiest, most secure way to use WireGuard and 2FA
@@ -186,7 +185,7 @@ cask "cursor-cli"
 # FRC dashboard for viewing camera streams
 cask "jonahsnider/frc/dashshund"
 # Simple and modern dashboard for FRC
-cask "jonahsnider/frc/elastic"
+cask "jonahsnider/frc/elastic", trusted: true
 # Driver station for the FIRST Robotics Competition
 cask "jonahsnider/frc/first-driver-station", trusted: true
 cask "font-jetbrains-mono"
@@ -196,6 +195,8 @@ cask "foxglove"
 cask "ghostty"
 # Desktop client for GitHub repositories
 cask "github"
+# Homebrew's official GUI
+cask "homebrew-app"
 # Apple tool to create multi-platform icons
 cask "icon-composer"
 # HTTP and GraphQL Client
@@ -210,8 +211,10 @@ cask "music-decoy"
 cask "ollama-app"
 # Replacement for Docker Desktop
 cask "orbstack"
+# Native GUI for Apple Containers
+cask "orchard"
 # Simple yet powerful path planning tool for FRC robots
-cask "jonahsnider/frc/pathplanner"
+cask "jonahsnider/frc/pathplanner", trusted: true
 # System monitor for Apple Silicon with ANE, Media Engine and bandwidth tracking
 cask "siliconscope"
 # CLI to create, run, and deploy Slack apps
