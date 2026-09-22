@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: voidzero-dev/setup-vp@v1.21.1
         with:
           cache: true
       - run: vp check
@@ -88,7 +88,7 @@ jobs:
           release-type: node
       - uses: actions/checkout@v7
         if: ${{ steps.release.outputs.release_created }}
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: voidzero-dev/setup-vp@v1.21.1
         with:
           cache: true
         if: ${{ steps.release.outputs.release_created }}

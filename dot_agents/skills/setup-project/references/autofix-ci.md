@@ -36,7 +36,7 @@ Omit the `commit-message` option if the project isn't using conventional commits
 For Vite+ projects, the setup and fix scripts are different:
 
 ```yaml
-- uses: voidzero-dev/setup-vp@v1
+- uses: voidzero-dev/setup-vp@v1.21.1
   with:
     cache: true
 - run: vp check --fix

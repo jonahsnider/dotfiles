@@ -43,7 +43,7 @@ If already using Vite+, use `setup-vp` instead of `pnpm/setup`:
 
 ```yaml
 - name: Setup Vite+
-  uses: voidzero-dev/setup-vp@v1
+  uses: voidzero-dev/setup-vp@v1.21.1
   with:
     cache: true
 ```
