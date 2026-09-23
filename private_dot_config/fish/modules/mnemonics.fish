@@ -246,3 +246,8 @@ alias clod claude
 
 # Sanity sup
 abbr --add upd "up -D"
+
+# Codex
+abbr --add ca "codex app"
+
+abbr --add c. "code ."
