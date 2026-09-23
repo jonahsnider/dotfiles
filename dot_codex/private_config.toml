@@ -126,9 +126,6 @@ url = "https://mcp.codspeed.io/mcp"
 [mcp_servers.incident_io]
 url = "https://mcp.incident.io/mcp"
 
-[mcp_servers.lattice]
-url = "https://api.latticehq.com/mcp"
-
 [mcp_servers.sanity]
 url = "http://127.0.0.1:3003"
 
