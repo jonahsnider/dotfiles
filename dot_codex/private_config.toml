@@ -112,9 +112,11 @@ BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 BROWSER_USE_TINYSKY_ENABLED = "1"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.911.61220"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.911.61220/scripts/browser-service.mjs"}'
+BROWSER_USE_CODEX_APP_VERSION = "26.917.71314"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.917.71314/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+SKY_CUA_SERVICE_PATH = "/Users/jonah.snider/.codex/computer-use/Codex Computer Use.app"
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
 
 [mcp_servers.openaiDeveloperDocs]
@@ -132,6 +134,12 @@ url = "http://127.0.0.1:3003"
 [mcp_servers.safari]
 command = "/usr/bin/safaridriver"
 args = ["--mcp"]
+
+[mcp_servers.computer-use]
+command = "./Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient"
+args = ["mcp"]
+cwd = "."
+enabled = false
 
 [notice]
 fast_default_opt_out = true
@@ -443,10 +451,35 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/match14.com"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/Documents/Codex/2026-09-19/prior-conversation-with-codex-conversation-role"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/Documents/Codex/2026-09-19/files-mentioned-by-the-user-pit"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/Documents/Codex/2026-09-19/if-x20"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/vod-seek"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/Documents/Codex/2026-09-20/wou"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/Documents/Codex/2026-09-20/go-x20"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/kaitai-wpilog"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/Documents/Codex/2026-09-24/i-m-ev"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
 whimsy = false
+screen_reader_detection_done = true
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
@@ -457,6 +490,10 @@ gpt-6-astra = 4
 enabled = false
 
 [apps.connector_openai_codex_document_control]
+enabled = false
+
+# Sanity app
+[apps.asdk_app_69ceae6d8d78819192e59f76b8e170b5]
 enabled = false
 
 [features]
@@ -475,4 +512,7 @@ enabled = true
 enabled = true
 
 [plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
 enabled = true
