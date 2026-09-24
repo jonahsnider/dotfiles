@@ -1,5 +1,7 @@
 # Added by Yarn Switch
 source "/Users/jonah.snider/.yarn/switch/env"
 
+export MISE_IGNORED_CONFIG_PATHS="$HOME/programming/dotfiles/private_dot_config/mise"
+
 # Vite+ bin (https://viteplus.dev)
 . "$HOME/.config/vite-plus/env"
