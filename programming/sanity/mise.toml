@@ -1,0 +1,2 @@
+[env]
+SENTRY_CONFIG_DIR = "/Users/jonah.snider/.sentry/sanity"
