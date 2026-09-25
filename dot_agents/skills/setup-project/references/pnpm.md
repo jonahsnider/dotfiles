@@ -32,7 +32,7 @@ Use `pnpm/setup` to install pnpm, Node, and project dependencies:
 
 ```yaml
 - name: Setup pnpm
-  uses: pnpm/setup@v2
+  uses: pnpm/setup@v3
   with:
     cache: true
 ```
