@@ -51,6 +51,9 @@ enabled-reasoning-efforts = ["low", "medium", "high", "xhigh"]
 keepRemoteControlAwakeWhilePluggedIn = true
 conversationDetailMode = "STEPS_COMMANDS"
 preventSleepWhileRunning = true
+avatar-overlay-pet-visible = false
+ambient-suggestions-enabled = false
+toys-audio-visualizer-enabled = false
 
 [desktop.open-in-target-preferences]
 global = "vscode"
@@ -114,10 +117,10 @@ NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.917.71314"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.917.71314/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+BROWSER_USE_CODEX_APP_VERSION = "26.924.20706"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.924.20706/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
 SKY_CUA_SERVICE_PATH = "/Users/jonah.snider/.codex/computer-use/Codex Computer Use.app"
-CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
 
 [mcp_servers.openaiDeveloperDocs]
 url = "https://developers.openai.com/mcp"
@@ -475,6 +478,15 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/Documents/Codex/2026-09-24/i-m-ev"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/team581/part-tracker"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/sanity/learn"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/categorize-stars"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
@@ -494,7 +506,7 @@ enabled = false
 
 # Sanity app
 [apps.asdk_app_69ceae6d8d78819192e59f76b8e170b5]
-enabled = false
+enabled = true
 
 [features]
 js_repl = false
