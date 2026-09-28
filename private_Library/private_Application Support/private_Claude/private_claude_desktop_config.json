@@ -5,6 +5,8 @@
     "menuBarEnabled": false,
     "chromeExtensionEnabled": false,
     "quickEntryShortcut": "off",
+    "coworkBrowserToolsEnabled": true,
+    "coworkPreferredBrowser": "built_in",
     "launchPreviewPersistedWorkspaces": [],
     "launchPreviewSessionScopedSessions": [],
     "localAgentModeTrustedFolders": [
@@ -12,8 +14,10 @@
     ],
     "coworkScheduledTasksEnabled": true,
     "coworkHipaaRestricted": false,
+    "orgWorkAcrossAppsDisabled": false,
     "ccdScheduledTasksEnabled": true,
-    "sidebarMode": "chat",
+    "earlyWindowShowLatched": true,
+    "sidebarMode": "epitaxy",
     "bypassPermissionsGateByAccount": {
       "db1872f9-9884-4f72-ad3d-fb2365936312": true
     },
@@ -36,7 +40,8 @@
           "extraPanesByMode": {},
           "colWeightsByMode": {},
           "rowSplit": 0.5,
-          "draftNonce": 0
+          "draftNonce": 0,
+          "lastPrimaryCodeSession": null
         },
         "version": 4
       },
@@ -46,10 +51,10 @@
         },
         "version": 0
       },
-      "dframe-group-scopes": {}
+      "dframe-group-scopes": {},
+      "starred-local-routines": []
     },
-    "orgWorkAcrossAppsDisabled": false,
-    "coworkBrowserToolsEnabled": false,
-    "coworkPreferredBrowser": "built_in"
+    "coworkLegacyRootGrantsPruned": true,
+    "storeReadCacheLatched": true
   }
 }
