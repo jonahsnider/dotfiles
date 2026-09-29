@@ -1,7 +1,9 @@
 ---
 name: braintrust
-version: 1.0.0
 description: Use the Braintrust `bt` CLI for projects, traces, prompts, and key Braintrust workflows.
+metadata:
+  version: "1.0.0"
+  source: https://github.com/braintrustdata/bt/tree/v0.22.1
 ---
 
 ## Purpose
@@ -18,6 +20,7 @@ Use the Braintrust `bt` CLI for projects, traces, prompts, and sync workflows.
 
 1. Confirm auth and context:
    - `bt status`
+   - `bt profiles list`
    - `bt projects list`
 2. Run the smallest command that answers the question:
    - `bt prompts list --project <name>`
@@ -29,7 +32,7 @@ Use the Braintrust `bt` CLI for projects, traces, prompts, and sync workflows.
 ## Guardrails
 
 - Prefer `bt` commands over direct API calls when both can accomplish the task.
-- Respect existing login/profile settings from `bt auth`.
+- Respect existing login/profile settings from `bt login`.
 
 ## Key Workflows
 
@@ -71,7 +74,7 @@ Core reference docs are also prefetched, including SQL reference:
 - `bt eval "tests/**/*.eval.ts"` — glob pattern
 - `bt eval a.eval.ts b.eval.ts` — one or more explicit files
 
-Files inside `node_modules`, `.venv`, `venv`, `site-packages`, `dist-packages`, and `__pycache__` are excluded from automatic discovery. Explicit paths and globs bypass these exclusions.
+Files inside `node_modules`, `.venv`, `venv`, `site-packages`, `dist-packages`, `__pycache__`, and `vendor` are excluded from automatic discovery. Explicit paths and globs bypass these exclusions.
 
 **Runners:**
 
@@ -82,6 +85,31 @@ Files inside `node_modules`, `.venv`, `venv`, `site-packages`, `dist-packages`, 
 - `bt` resolves local `node_modules/.bin` entries automatically — no need for a full path.
 - If eval execution fails with ESM/top-level-await related errors, retry with:
   - `bt eval --runner vite-node tutorial.eval.ts`
+
+**Go evals:**
+
+Go works differently from JavaScript and Python. There is no runtime loading in Go, so `bt` does not
+supply the program — your compiled package _is_ the eval runner. Write it with the
+[Go SDK](https://github.com/braintrustdata/braintrust-sdk-go)'s `evalrunner` package, then:
+
+- `bt eval ./cmd/evals` — point `bt` at the **package directory**. Go's compilation unit is a
+  directory, not a file, so all inputs must resolve to a single package.
+- `bt eval` — with no arguments, `bt` asks `go list` which packages in the module import the SDK's
+  `evalrunner`, and runs those. Eval files need no special name.
+- `bt eval --language go ./cmd/evals` — force Go when a directory holds evals for more than one
+  language.
+- `bt eval --runner ./bin/evals` — run a prebuilt binary instead of compiling, for environments with
+  no Go toolchain. The binary is spawned with no arguments; the Go runner takes all its input from
+  the environment.
+- `BT_EVAL_GO_BIN` / `BT_EVAL_GO` override which `go` toolchain is used; otherwise `bt` looks at
+  `GOROOT` and then `PATH`.
+
+Package layout comes from `go list -json`, so build constraints, `go.work`, and vendoring are
+handled by the toolchain rather than guessed from file paths.
+
+Two caveats. The first `go run` of a package with real dependencies pays compile time before
+anything is reported. And `--watch` re-runs on changes to the package's own `*.go` files — `bt`
+cannot follow Go imports into other packages.
 
 **Passing arguments to the eval file:**
 
@@ -96,6 +124,8 @@ bt eval foo.eval.ts -- --description "Prod" --shard=1/4
 - `bt eval --first 20 qa.eval.ts` — run the first 20 examples and clearly label the summary as a non-final smoke run.
 - `bt eval --sample 20 --sample-seed 7 qa.eval.ts` — run a deterministic random sample and clearly label the summary as a non-final smoke run.
 - If you do not pass a sampling flag, `bt eval` runs the full dataset and marks the summary as final.
+
+Use `--max-concurrency <n>` to limit how many evaluators run at once. This does not change the concurrency configured inside an individual evaluator.
 
 ### `bt sql`
 
@@ -142,40 +172,44 @@ bt eval foo.eval.ts -- --description "Prod" --shard=1/4
   - Detail view: `t` span/thread, `Left/Right` switch panes, `Backspace`/`Esc` back
   - Global: `q` quit
 
-### `bt auth`
+### `bt login` and `bt logout`
 
-- Authenticate interactively (prompts for auth method, profile name defaults to org name):
-  - `bt auth login`
+- Authenticate interactively:
+  - `bt login`
   - First prompt chooses: `OAuth (browser)` (default) or `API key`.
-  - If your API key can access multiple orgs, `bt` uses a searchable picker (alphabetized) and lets you choose a specific org or no default org (cross-org mode).
-  - `bt` confirms the resolved API URL before saving.
+  - Login stores an identity and its app URL. OAuth login does not select an organization unless `--org` is passed explicitly.
+  - Use `bt switch` to select the active profile, organization, and project context.
 - Login with OAuth (browser-based, stores refresh token in secure credential store):
-  - `bt auth login --oauth --profile work`
+  - `bt login --oauth --profile work`
   - You can pass `--no-browser` to print the URL without auto-opening.
   - On remote/SSH hosts, paste the final callback URL from your local browser if localhost callback cannot be delivered.
-- List profiles:
-  - `bt auth profiles`
+- Manage saved profiles:
+  - `bt profiles` or `bt profiles list`
+  - `bt profiles delete work`
+  - `bt profiles rename work renamed-work`
+- Check every profile's connection status and the current context:
+  - `bt status --all`
 - Log out (remove a saved profile):
-  - `bt auth logout`
-  - `bt auth logout --force` (skip confirmation)
-- Show current auth source/profile:
-  - `bt auth status`
+  - `bt logout`
+  - `bt logout --force` (skip confirmation)
 - Force-refresh OAuth access token for debugging:
-  - `bt auth refresh --profile work`
+  - `bt login --refresh --profile work`
 
 Auth resolution order for commands is:
 
 1. Explicit `--profile`
-2. `--api-key` or `BRAINTRUST_API_KEY` (unless `--prefer-profile` is set)
+2. `BRAINTRUST_API_KEY` (unless `--prefer-profile` is set)
 3. `BRAINTRUST_PROFILE`
-4. Org-based profile match (profile whose org matches `--org`/config org)
-5. Single-profile auto-select (if only one profile exists)
+4. Compatible profile for the selected app URL and organization
+5. Single-profile auto-select (if only one compatible profile exists)
+6. Interactive profile picker (if multiple compatible profiles exist and a TTY is available)
 
 On Linux, secure storage uses `secret-tool` (libsecret) with a running Secret Service daemon. On macOS, it uses the `security` keychain utility. If a secure store is unavailable, `bt` falls back to a plaintext secrets file with `0600` permissions.
 
-### `bt setup` and `bt docs`
+### Legacy `bt setup` and `bt docs`
 
-Use setup/docs commands to configure coding-agent skills and workflow docs for Braintrust.
+The older `bt setup` and `bt docs` commands are deprecated. Their compatibility
+behavior is documented below.
 
 - Configure skills with default setup flow:
   - `bt setup --local`
