@@ -18,6 +18,15 @@
       "skillFolderHash": "ac9ba043f9dd3b3a8850de6624ec5bc12e375599",
       "installedAt": "2026-09-06T22:01:07.822Z",
       "updatedAt": "2026-09-06T22:01:07.822Z"
+    },
+    "analyze-wpilog": {
+      "source": "jonahsnider/wpilog-parser",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/jonahsnider/wpilog-parser.git",
+      "skillPath": "skills/analyze-wpilog/SKILL.md",
+      "skillFolderHash": "0139f12818f9609644c4b119c327f5d0b6b0fe55",
+      "installedAt": "2026-09-29T06:40:48.556Z",
+      "updatedAt": "2026-09-29T06:40:48.556Z"
     }
   },
   "dismissed": {
