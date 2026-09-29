@@ -34,7 +34,7 @@
 
 ## External platforms
 
-- Never post new comments, open issues, etc. without explicit permission from the user
+- Never commit changes, post new comments, open issues, etc. without explicit permission from the user
 - GitHub data should always be viewed using the `gh` CLI instead of URL fetches
   - Generally prefer MCPs and CLIs over URL fetches when possible
 - Before any bulk mutations, ask the user explicitly if the changes should be made
