@@ -150,11 +150,8 @@ abbr --add s sudo
 # open
 abbr --add o open
 
-# FFMPEG
+# FFmpeg
 abbr --add ff ffmpeg
-
-# squoosh
-abbr --add sq squoosh
 
 # nano
 abbr --add N nano
@@ -165,15 +162,7 @@ abbr --add cu curl
 # clear
 abbr --add c "clear -x"
 
-# Biome
-abbr --add biome "yarn biome"
-abbr --add r "yarn biome"
-abbr --add rc "yarn biome check"
-abbr --add rC "yarn biome check --apply"
-abbr --add rt "yarn biome test"
-
 # Turbo
-# abbr --add turbo "yarn turbo"
 abbr --add t turbo
 abbr --add tr "turbo run"
 
