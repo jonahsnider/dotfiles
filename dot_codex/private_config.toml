@@ -131,7 +131,7 @@ url = "https://mcp.codspeed.io/mcp"
 [mcp_servers.incident_io]
 url = "https://mcp.incident.io/mcp"
 
-[mcp_servers.sanity]
+[mcp_servers.sanity_local]
 url = "http://127.0.0.1:3003"
 
 [mcp_servers.safari]

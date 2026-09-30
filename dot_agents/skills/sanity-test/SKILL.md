@@ -10,3 +10,6 @@ You can use `sup logs mellon --lines=50` or `sup logs mellon --follow` to view l
 
 The `k6xtz0tk` project in the `oEibUYrzC` organization on staging has lots of throwaway datasets that are created as part of evals.
 You can use those as a playground for testing the MCP server.
+
+If this session was started after the MCP server was started, you should be able to use the `sanity_local` MCP server to interact with it.
+Prompt the user if refreshing the session to pickup the MCP tools is needed.
