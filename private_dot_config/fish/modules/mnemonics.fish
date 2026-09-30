@@ -209,9 +209,6 @@ abbr --add jL "just lint-fix"
 # yt-dlp
 abbr --add ytdlp yt-dlp
 
-# EdgeDB
-abbr --add edb edgedb
-
 # Kaitai Struct Compiler
 abbr --add ksc kaitai-struct-compiler
 
