@@ -158,5 +158,7 @@
   "effortLevel": "high",
   "tui": "fullscreen",
   "teammateMode": "auto",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "agentPushNotifEnabled": true,
+  "inputNeededNotifEnabled": true
 }
