@@ -30,6 +30,7 @@ extends = ":workspace"
 "~/.cf" = "write"
 "~/Library/Preferences/cloudflare" = "write"
 "~/.growthbook" = "write"
+"~/.local/share/mise" = "write"
 
 [permissions.dev.network]
 enabled = true
