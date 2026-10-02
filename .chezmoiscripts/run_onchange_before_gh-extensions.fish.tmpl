@@ -1,9 +1,11 @@
-{{- $manifest := include "dot_local/share/gh/extensions/gh-poi/private_manifest.yml" | fromYaml -}}
 #!/usr/bin/env fish
 
-# Reinstall so gh updates the executable and its manifest together.
+# Reinstall so gh updates each executable and its manifest together.
+{{ range joinPath .chezmoi.sourceDir "dot_local/share/gh/extensions/*/private_manifest.yml" | glob }}
+{{- $manifest := include . | fromYaml }}
 if contains -- "gh {{ $manifest.name | trimPrefix "gh-" }}" (gh extension list | string split \t)
     gh extension remove "{{ $manifest.name }}"
 end
 
 gh extension install "{{ $manifest.owner }}/{{ $manifest.name }}" --pin "{{ $manifest.tag }}"
+{{ end -}}
