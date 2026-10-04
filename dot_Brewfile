@@ -199,8 +199,6 @@ cask "github"
 cask "homebrew-app"
 # Apple tool to create multi-platform icons
 cask "icon-composer"
-# HTTP and GraphQL Client
-cask "insomnia"
 # Open-source keystroke visualiser
 cask "keycastr"
 # Flash and find Limelight devices
