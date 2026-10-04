@@ -120,6 +120,8 @@ brew "scc"
 brew "shfmt"
 # Open agent skills ecosystem
 brew "skills"
+# Docker-compatible REST API on top of Apple container
+brew "socktainer", restart_service: :changed
 # Editor of encrypted files
 brew "sops"
 # Cross-shell prompt for astronauts
