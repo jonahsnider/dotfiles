@@ -30,6 +30,8 @@ brew "cmake"
 brew "container"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
+# Command-line csv viewer
+brew "csvlens"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Select default apps for documents and URL schemes on macOS
@@ -66,6 +68,8 @@ brew "glow"
 brew "gnupg"
 # Reformats Java source code to comply with Google Java Style
 brew "google-java-format"
+# CLI for Drive, Gmail, Calendar, Sheets, Docs, Chat, Admin, and more
+brew "googleworkspace-cli"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
 # Tool for glamorous shell scripts
