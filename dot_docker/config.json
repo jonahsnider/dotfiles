@@ -1,5 +1,6 @@
 {
 	"auths": {},
+	"cliPluginsExtraDirs": ["/opt/homebrew/lib/docker/cli-plugins"],
 	"credHelpers": {
 		"asia.gcr.io": "gcr",
 		"eu.gcr.io": "gcr",
