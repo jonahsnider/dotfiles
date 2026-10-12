@@ -176,8 +176,6 @@ cask "1password-cli"
 cask "advantagescope"
 # Menu bar app that automatically manages audio device priorities
 cask "jonahsnider/tap/audio-priority-bar"
-# Official launcher for Balatro Multiplayer
-cask "jonahsnider/tap/balatro-multiplayer"
 # Screen recorder
 cask "bettercapture"
 # Apple SuperDrive, Apple Keyboard, and Improved iPhone/iPad Charging
