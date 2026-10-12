@@ -29,7 +29,23 @@ For frameworks and libraries that are more situational:
 - Railway, for hosting apps that can't be serverless or DBs (likely Redis or PostgreSQL)
   - Use config-as-code until their infrastructure-as-code is out of beta
 - Cloudflare Workers, for hosting static frontends
-  - Use wrangler.jsonc for everything if possible
+  - Prefer `cloudflare.config.ts` where possible https://developers.cloudflare.com/cf/projects/cloudflare-config/index.md
+    ```ts
+    import { defineConfig } from "cf/config";
+
+    export default defineConfig({
+      upload_source_maps: true,
+      observability: {
+        enabled: true,
+        issues: { enabled: true },
+        logs: { enabled: true },
+        traces: {
+          enabled: true,
+          head_sampling_rate: 0.1,
+        },
+      },
+    });
+    ```
 - TanStack Start, for frontend apps
 - Astro, for non-interactive static sites
 - Sentry, for error monitoring, observability, and tracing
