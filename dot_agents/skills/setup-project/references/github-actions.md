@@ -22,11 +22,12 @@ jobs:
       - uses: pnpm/setup@v3
         with:
           cache: true
-      - run: pnpm format
-      - run: pnpm lint
-      - run: pnpm test
-      - run: pnpm knip
-      - run: pnpm build
+      - parallel:
+          - run: pnpm format
+          - run: pnpm lint
+          - run: pnpm test
+          - run: pnpm knip
+          - run: pnpm build
 ```
 
 ### Vite+
@@ -48,10 +49,11 @@ jobs:
       - uses: voidzero-dev/setup-vp@v1.21.1
         with:
           cache: true
-      - run: vp check
-      - run: vp test
-      - run: vp exec knip
-      - run: vp build
+      - parallel:
+          - run: vp check
+          - run: vp test
+          - run: vp exec knip
+          - run: vp build
 ```
 
 For libraries, replace `vp build` with `vp pack`.
