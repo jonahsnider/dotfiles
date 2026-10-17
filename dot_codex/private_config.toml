@@ -137,7 +137,7 @@ url = "https://mcp.sanity.tools/mcp"
 http_headers = { "X-MCP-Servers" = "bigquery,grafana" }
 
 [mcp_servers.sentry]
-url = "https://mcp.sentry.dev/mcp/sanity"
+url = "https://mcp.sentry.dev/mcp"
 
 [mcp_servers.linear]
 url = "https://mcp.linear.app/mcp"
