@@ -23,3 +23,15 @@ These are my dotfiles that I use on my personal/work MacBooks.
    sourceDir = "/Users/jonah.snider/programming/dotfiles"
    ```
 5. `chezmoi apply` 🫡
+
+## ChatGPT / Codex configuration
+
+`dot_codex/private_config.toml` manages `~/.codex/config.toml`, including the Sanity work MCP servers. Sentry and Grafana (through `sanity-tools`) are available from the main configuration without selecting the `sanity` profile. Server URLs, names, and the BigQuery/Grafana header remain the same; authentication is still managed separately by the app.
+
+When migrating from the old `sanity` profile:
+
+1. Apply the updated main config with Chezmoi.
+2. Remove any `--profile sanity` option from local launchers and use the main profile in the app.
+3. Review and remove the old `~/.codex/sanity.config.toml` if it remains. Removing its source file from this repo does not automatically remove an existing target file; preserve any local-only settings first.
+
+The repository-local `.codex/config.toml` is separate and remains unchanged.
