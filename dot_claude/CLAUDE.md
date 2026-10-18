@@ -37,3 +37,9 @@
 - If API keys or other external config work is needed, stop and prompt the user rather than trying to do it yourself
   - This avoids going on wild goose chases trying to do things like use a browser to create an API key
   - Don't ever try using the browser to obtain an API key or as a workaround if programmatic access isn't working
+
+## Feedback
+
+- After finishing a task, reflect on any roadblocks or process issues that occurred (ex. sandbox issues, missing tools, hacky workarounds etc.)
+  - Sandbox issues often manifest as obscure file I/O errors or CLIs being unauthenticated
+- Report these to the user so they can be improved for next time
