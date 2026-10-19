@@ -31,6 +31,8 @@ extends = ":workspace"
 "~/Library/Preferences/cloudflare" = "write"
 "~/.growthbook" = "write"
 "~/.local/share/mise" = "write"
+"~/.config/circleci" = "write"
+"~/.local/state/circleci" = "write"
 
 [permissions.dev.network]
 enabled = true
@@ -533,6 +535,7 @@ js_repl = false
 prevent_idle_sleep = true
 
 [shell_environment_policy.set]
+CIRCLE_NO_TELEMETRY = "1" # Avoid the sandbox-blocked system boot-time query.
 NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "9230e2bd8b24b7ac7a0ba6774c64bf0d78ecdabbdd91d0ed627b02a587bae2df"
 # Workaround for https://github.com/openai/codex/issues/15698
 CHOKIDAR_USEPOLLING = "1"
