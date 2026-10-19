@@ -43,3 +43,4 @@
 - After finishing a task, reflect on any roadblocks or process issues that occurred (ex. sandbox issues, missing tools, hacky workarounds etc.)
   - Sandbox issues often manifest as obscure file I/O errors or CLIs being unauthenticated
 - Report these to the user so they can be improved for next time
+  - Include the directories that should be added as exceptions or a minimal command to reproduce the error
