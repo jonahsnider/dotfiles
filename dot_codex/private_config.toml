@@ -38,6 +38,7 @@ extends = ":workspace"
 "~/.config/circleci" = "write"
 "~/.local/state/circleci" = "write"
 "~/.agent-browser" = "write"
+"~/.portless" = "write"
 
 [permissions.dev.network]
 enabled = true
