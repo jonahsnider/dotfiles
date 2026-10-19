@@ -35,6 +35,7 @@ extends = ":workspace"
 "~/.local/share/mise" = "write"
 "~/.config/circleci" = "write"
 "~/.local/state/circleci" = "write"
+"~/.agent-browser" = "write"
 
 [permissions.dev.network]
 enabled = true
