@@ -536,6 +536,9 @@ enabled = false
 enabled = true
 
 [features]
+# Reassess daemon use once https://github.com/openai/codex/issues/48195 is resolved.
+# Keep CLI sessions from silently starting a persistent background server.
+daemon_auto_start = false
 js_repl = false
 prevent_idle_sleep = true
 
