@@ -41,6 +41,7 @@ extends = ":workspace"
 "~/.portless" = "write"
 # https://yao-pkg.github.io/pkg/
 "~/.pkg-cache" = "write"
+"~/.docker/buildx" = "write"
 
 [permissions.dev.network]
 enabled = true
