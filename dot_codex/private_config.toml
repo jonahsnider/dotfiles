@@ -39,6 +39,8 @@ extends = ":workspace"
 "~/.local/state/circleci" = "write"
 "~/.agent-browser" = "write"
 "~/.portless" = "write"
+# https://yao-pkg.github.io/pkg/
+"~/.pkg-cache" = "write"
 
 [permissions.dev.network]
 enabled = true
