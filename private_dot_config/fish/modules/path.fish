@@ -49,10 +49,6 @@ fish_add_path -g /opt/homebrew/share/google-cloud-sdk/bin
 fish_add_path -g /Users/jonah.snider/programming/sanity/sanity-nix-config/.devenv/bin
 #endregion
 
-#region Ghostty
-fish_add_path -g /Applications/Ghostty.app/Contents/MacOS
-#endregion
-
 alias san /Users/jonah.snider/programming/sanity/cli/packages/@sanity/cli/bin/run.js
 
 fish_add_path /opt/homebrew/opt/libpq/bin

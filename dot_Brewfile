@@ -201,8 +201,6 @@ cask "jonahsnider/frc/first-driver-station", trusted: true
 cask "font-jetbrains-mono"
 # Visualisation and debugging tool for robotics
 cask "foxglove"
-# Terminal emulator that uses platform-native UI and GPU acceleration
-cask "ghostty"
 # Desktop client for GitHub repositories
 cask "github"
 # Homebrew's official GUI
