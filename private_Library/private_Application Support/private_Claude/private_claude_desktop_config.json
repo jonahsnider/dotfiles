@@ -5,6 +5,7 @@
     "menuBarEnabled": false,
     "chromeExtensionEnabled": false,
     "quickEntryShortcut": "off",
+    "dictationShortcut": "off",
     "coworkBrowserToolsEnabled": true,
     "coworkPreferredBrowser": "built_in",
     "launchPreviewPersistedWorkspaces": [],
@@ -17,7 +18,6 @@
     "coworkHipaaRestricted": false,
     "orgWorkAcrossAppsDisabled": false,
     "ccdScheduledTasksEnabled": true,
-    "earlyWindowShowLatched": true,
     "storeReadCacheLatched": true,
     "sidebarMode": "epitaxy",
     "bypassPermissionsGateByAccount": {
@@ -79,8 +79,63 @@
         "version": 0
       },
       "epitaxy-pr-create-mode": "draft",
-      "claude-code-preferred-editor": "vscode"
-    },
-    "dictationShortcut": "off"
+      "claude-code-preferred-editor": "vscode",
+      "dframe-code-sections": {
+        "db1872f9-9884-4f72-ad3d-fb2365936312/70536e9b-4830-4565-8b77-c9881c354e7f": {
+          "sections": [
+            {
+              "id": "pinned",
+              "kind": "pinned",
+              "v": 2,
+              "name": "",
+              "order": 0,
+              "sortBy": "recency",
+              "ascending": false,
+              "show": {
+                "metadata": false,
+                "emptyGroups": false,
+                "sideChats": false
+              },
+              "collapsed": false,
+              "shown": true
+            },
+            {
+              "id": "routines",
+              "kind": "routines",
+              "v": 2,
+              "name": "",
+              "order": 1,
+              "sortBy": "recency",
+              "ascending": false,
+              "show": {
+                "metadata": false,
+                "emptyGroups": false,
+                "sideChats": false
+              },
+              "collapsed": true,
+              "shown": false
+            },
+            {
+              "id": "sessions",
+              "kind": "sessions",
+              "v": 2,
+              "name": "",
+              "order": 2,
+              "sortBy": "recency",
+              "ascending": false,
+              "show": {
+                "metadata": false,
+                "emptyGroups": false,
+                "sideChats": false
+              },
+              "collapsed": false,
+              "shown": true
+            }
+          ],
+          "migratedFrom": 1,
+          "prefsSeeded": true
+        }
+      }
+    }
   }
 }
