@@ -44,6 +44,8 @@ extends = ":workspace"
 
 "~/.local/share/uv" = "write"
 
+"~/.cargo" = "write"
+
 "~/.config/circleci" = "write"
 
 "~/.agent-browser" = "write"
