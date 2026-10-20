@@ -16,34 +16,44 @@ default_permissions = "dev"
 extends = ":workspace"
 
 [permissions.dev.filesystem]
+"~/.cache" = "write"
+"~/Library/Caches" = "write"
+"~/.local/state" = "write"
+
 "~/.mastra" = "read"
+
+"~/.yarn" = "write"
 "~/.npm" = "write"
 "~/.vite-plus" = "write"
-"~/Library/Caches/mise" = "write"
+
 "~/.local/share/mise" = "write"
-"~/.local/state/mise" = "write"
-"~/Library/Caches/pnpm" = "write"
-# 502 is the macOS uid
-"~/Library/Caches/swc-native-502" = "write"
-"~/Library/Preferences/pnpm" = "write"
+
 "~/Library/pnpm" = "write"
-"~/.yarn" = "write"
+"~/Library/Preferences/pnpm" = "write"
+
 "~/programming/sanity/sanity-nix-config" = "write"
-"~/Library/Preferences/.wrangler" = "write"
+
 "~/.sentry" = "write"
+
 "~/.cf" = "write"
 "~/Library/Preferences/cloudflare" = "write"
+"~/Library/Preferences/.wrangler" = "write"
+
 "~/.growthbook" = "write"
-"~/.cache/uv" = "write"
+"~/.config/growthbook" = "write"
+
 "~/.local/share/uv" = "write"
+
 "~/.config/circleci" = "write"
-"~/.local/state/circleci" = "write"
+
 "~/.agent-browser" = "write"
+
 "~/.portless" = "write"
+
 # https://yao-pkg.github.io/pkg/
 "~/.pkg-cache" = "write"
+
 "~/.docker/buildx" = "write"
-"~/.config/growthbook" = "write"
 
 [permissions.dev.network]
 enabled = true
