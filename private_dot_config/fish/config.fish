@@ -16,4 +16,4 @@ source $modules_dir/mnemonics.fish
 source $modules_dir/general.fish
 source $modules_dir/prompt.fish
 
-test -f "/Users/jonah.snider/programming/sanity/mise-config/shell-hooks/loaded.fish"; and source "/Users/jonah.snider/programming/sanity/mise-config/shell-hooks/loaded.fish"
+source "/Users/jonah.snider/programming/sanity/mise-config/shell-hooks/loaded.fish"
