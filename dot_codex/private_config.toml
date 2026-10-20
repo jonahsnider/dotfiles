@@ -122,10 +122,6 @@ source = "/Users/jonah.snider/.codex/.tmp/bundled-marketplaces/openai-bundled"
 source_type = "local"
 source = "/Users/jonah.snider/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
-[mcp_servers.railway]
-command = "railway"
-args = ["mcp"]
-
 [mcp_servers.node_repl]
 args = []
 command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
@@ -157,21 +153,8 @@ url = "https://mcp.codspeed.io/mcp"
 [mcp_servers.incident_io]
 url = "https://mcp.incident.io/mcp"
 
-[mcp_servers.sanity-tools]
-url = "https://mcp.sanity.tools/mcp"
-http_headers = { "X-MCP-Servers" = "bigquery,grafana" }
-
-[mcp_servers.sentry]
-url = "https://mcp.sentry.dev/mcp"
-
-[mcp_servers.linear]
-url = "https://mcp.linear.app/mcp"
-
 [mcp_servers.braintrust]
 url = "https://api.braintrust.dev/mcp"
-
-[mcp_servers.sanity]
-url = "https://mcp.sanity.io"
 
 [mcp_servers.sanity_local]
 url = "http://127.0.0.1:3003"
