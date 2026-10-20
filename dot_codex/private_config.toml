@@ -519,6 +519,12 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/team581/java-playground"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/team581/spot-2026"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/team581/starlight-theme"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
