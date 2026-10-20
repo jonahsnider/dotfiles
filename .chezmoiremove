@@ -1,5 +1,6 @@
 .claude/skills/respond-to-review/SKILL.md
 .codex/sanity.config.toml
+.config/fish/conf.d/git-switch.fish
 .config/fish/completions/edgedb.fish
 .config/fish/completions/gel.fish
 .modal.toml

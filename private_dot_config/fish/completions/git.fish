@@ -1,5 +1,5 @@
 # Load Fish's Git completions before overriding their branch helper.
-complete -C "git -" >/dev/null 2>/dev/null
+status get-file completions/git.fish | source
 
 function __fish_git_branches
     __fish_git_local_branches
