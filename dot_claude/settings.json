@@ -124,6 +124,13 @@
       }
     ]
   },
+  "pluginConfigs": {
+    "cc-plugin-agents-md@builtin": {
+      "options": {
+        "instructionFiles": "claude-md-and-agents-md"
+      }
+    }
+  },
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
