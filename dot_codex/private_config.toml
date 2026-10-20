@@ -43,6 +43,7 @@ extends = ":workspace"
 # https://yao-pkg.github.io/pkg/
 "~/.pkg-cache" = "write"
 "~/.docker/buildx" = "write"
+"~/.config/growthbook" = "write"
 
 [permissions.dev.network]
 enabled = true
