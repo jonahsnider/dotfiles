@@ -1,5 +1,10 @@
 {
 	"extends": ["github>jonahsnider/renovate-config"],
+	"npm": {
+		"managerFilePatterns": [
+			"/^\\.chezmoitemplates\\/pnpm-global-packages\\.json$/"
+		]
+	},
 	"packageRules": [
 		{
 			"description": "Preserve mise version selectors",
