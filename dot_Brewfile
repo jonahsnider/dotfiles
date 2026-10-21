@@ -156,8 +156,8 @@ brew "wget"
 brew "yt-dlp"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# The AI coding agent built for the terminal.
-brew "anomalyco/tap/opencode", trusted: true
+# OpenCode V2 - the AI coding agent for the terminal
+brew "anomalyco/tap/opencode-v2", trusted: true
 # Generate images of code and terminal output.
 brew "charmbracelet/tap/freeze"
 # The static analysis-powered Go framework for building backend applications
