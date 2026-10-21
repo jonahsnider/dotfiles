@@ -10,10 +10,10 @@ tap "jonahsnider/tap", "https://github.com/jonahsnider/homebrew-tap.git", truste
 tap "nrlquaker/createzap", trusted: true
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Browser automation CLI for AI agents
 brew "agent-browser"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # CLI tool for analyzing Claude Code usage from local JSONL files
@@ -36,7 +36,7 @@ brew "coreutils"
 brew "csvlens"
 # Load/unload environment variables based on $PWD
 brew "direnv"
-# Docker command-line client
+# Pack, ship and run any application as a lightweight container
 brew "docker"
 # Docker CLI plugin for extended build capabilities with BuildKit
 brew "docker-buildx"
@@ -46,6 +46,8 @@ brew "docker-compose"
 brew "duti"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
 # Codebase intelligence for TypeScript and JavaScript
 brew "fallow"
 # Like neofetch, but much faster because written mostly in C
@@ -114,16 +116,20 @@ brew "oxfmt"
 brew "oxlint"
 # CLI for managing daemons with a focus on developer experience
 brew "pitchfork"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # CLI for the Pkl programming language
 brew "pkl"
 # Replace port numbers with stable, named local URLs for humans and agents
 brew "portless"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
-# Develop and deploy code with zero configuration
-brew "railway"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# AI-powered command-line workflow tool for developers
+brew "qwen-code"
+# Develop and deploy code with zero configuration
+brew "railway"
 # Command-line interface for Sanity
 brew "sanity"
 # Fast and accurate code counter with complexity and COCOMO estimates
@@ -138,6 +144,8 @@ brew "socktainer", restart_service: :changed
 brew "sops"
 # Cross-shell prompt for astronauts
 brew "starship"
+# BitTorrent Client in your Terminal
+brew "superseedr"
 # Easiest, most secure way to use WireGuard and 2FA
 brew "tailscale"
 # Modern cli tool that keeps your deps fresh
@@ -188,8 +196,6 @@ cask "chatgpt"
 cask "clop"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# Menu bar usage monitor for Codex and Claude
-cask "codexbar"
 # Write, edit, and chat about your code with AI
 cask "cursor"
 # Command-line agent for Cursor
@@ -225,6 +231,7 @@ cask "jonahsnider/frc/pathplanner", trusted: true
 cask "siliconscope"
 # CLI to create, run, and deploy Slack apps
 cask "slack-cli"
+cask "sprites"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
 # JDK from the Eclipse Foundation (Adoptium)
