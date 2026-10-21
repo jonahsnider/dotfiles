@@ -22,6 +22,8 @@ brew "ccusage"
 brew "chezmoi"
 # Official command-line tool for CircleCI
 brew "circleci"
+# Command-line interface for the Cloudflare API and Workers
+brew "cloudflare-cli"
 # CLI tool for Cloudflare Workers
 brew "cloudflare-wrangler"
 # Cross-platform make
