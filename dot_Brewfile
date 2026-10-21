@@ -231,6 +231,7 @@ cask "jonahsnider/frc/pathplanner", trusted: true
 cask "siliconscope"
 # CLI to create, run, and deploy Slack apps
 cask "slack-cli"
+# Command-line interface for Fly.io Sprites
 cask "sprites"
 # Mesh VPN based on WireGuard
 cask "tailscale-app"
