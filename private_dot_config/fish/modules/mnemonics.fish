@@ -149,6 +149,7 @@ abbr --add s sudo
 
 # open
 abbr --add o open
+abbr --add o. "open ."
 
 # FFmpeg
 abbr --add ff ffmpeg
