@@ -14,6 +14,8 @@ Libraries should be built with `zshy`, which wraps `tsc`.
 }
 ```
 
+Use Vite+ instead of zshy if it's already setup.
+
 ## Apps and scripts
 
 Ideally there is not an explicit build process needed, modern Node can run TS natively without flags.
