@@ -237,3 +237,12 @@ abbr --add upd "up -D"
 abbr --add ca "codex app"
 
 abbr --add c. "code ."
+
+# Sprites
+abbr --add sp "sprite"
+abbr --add spc "sprite console"
+
+# hunk
+abbr --add h "hunk"
+abbr --add hd "hunk diff"
+abbr --add hs "hunk show"
