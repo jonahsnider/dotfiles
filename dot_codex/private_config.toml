@@ -57,6 +57,8 @@ extends = ":workspace"
 
 "~/.docker/buildx" = "write"
 
+"~/.railway" = "write"
+
 [permissions.dev.network]
 enabled = true
 
