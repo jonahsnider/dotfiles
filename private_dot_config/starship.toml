@@ -80,3 +80,13 @@ symbol = " "
 
 [gcloud]
 disabled = true
+
+[custom.sup]
+description = "Sanity local stack status"
+when = 'test -n "$SUP_CONFIG" && command -v sup >/dev/null 2>&1'
+command = "sup prompt"
+shell = ["sh"]
+format = "running ([$symbol$output]($style) )"
+# Sanity devicon
+symbol = " "
+style = "bold #ff5500"
