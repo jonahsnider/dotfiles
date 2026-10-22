@@ -133,20 +133,14 @@
       }
     ]
   },
-  "pluginConfigs": {
-    "cc-plugin-agents-md@builtin": {
-      "options": {
-        "instructionFiles": "claude-md-and-agents-md"
-      }
-    }
-  },
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "sanity-internal-skills@sanity-plugins": true
+    "sanity-internal-skills@sanity-plugins": true,
+    "railway@anthropic-plugin-directory": true
   },
   "extraKnownMarketplaces": {
     "sanity-plugins": {
@@ -172,10 +166,17 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
+  "pluginConfigs": {
+    "cc-plugin-agents-md@builtin": {
+      "options": {
+        "instructionFiles": "claude-md-and-agents-md"
+      }
+    }
+  },
   "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
   "teammateMode": "auto",
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "skipDangerousModePermissionPrompt": true
+  "skipAutoPermissionPrompt": true
 }
