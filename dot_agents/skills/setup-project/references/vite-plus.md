@@ -13,3 +13,12 @@ And not good for:
 - APIs
 
 If it seems like a project is a good candidate for Vite+, ask the user before proceeding.
+
+## New projects
+
+Consider using `vp create` to create a new Vite+ project.
+
+## Migration
+
+Refer to Vite+'s [migration guide](https://viteplus.dev/guide/migrate) for guidance on how to migrate an existing project.
+Generally we want to shed any old tooling decisions we may have had in favor of the standard Vite+ project setup.
