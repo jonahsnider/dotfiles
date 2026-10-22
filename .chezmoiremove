@@ -1,4 +1,7 @@
-.claude/skills/respond-to-review/SKILL.md
+.codex/skills/hatch-pet
+.claude/skills/hatch-pet
+.codex/skills/pdf
+.claude/skills/pdf
 .codex/sanity.config.toml
 .config/fish/conf.d/git-switch.fish
 .config/fish/completions/edgedb.fish
