@@ -66,7 +66,6 @@ ssh_only = false
 style = "green"
 
 [java]
-symbol = " "
 style = "red"
 
 [aws]
@@ -74,9 +73,6 @@ disabled = true
 
 [docker_context]
 disabled = true
-
-[golang]
-symbol = " "
 
 [gcloud]
 disabled = true

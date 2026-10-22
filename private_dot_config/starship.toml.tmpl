@@ -1,0 +1,4 @@
+{{- $preset := output "starship" "preset" "nerd-font-symbols" | fromToml -}}
+{{- $config := includeTemplate "starship.toml" . | fromToml -}}
+{{- /* Personal settings override the preset, including nested module settings. */ -}}
+{{- mustMergeOverwrite $preset $config | toToml -}}
