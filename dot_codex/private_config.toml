@@ -25,6 +25,7 @@ extends = ":workspace"
 "~/.yarn" = "write"
 "~/.npm" = "write"
 "~/.vite-plus" = "write"
+"~/.local/share/vite-plus" = "write"
 
 "~/.local/share/mise" = "write"
 
