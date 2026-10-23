@@ -32,10 +32,10 @@
 [gpg]
 	program = gpg
 	format = ssh
+[commit]
+	gpgsign = false
 [include]
 	path = ~/.config/git/macos
-[commit]
-	gpgsign = true
 
 [credential]
 	credentialStore = gpg
