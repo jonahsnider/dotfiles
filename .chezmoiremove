@@ -7,6 +7,7 @@
 .config/fish/completions/edgedb.fish
 .config/fish/completions/gel.fish
 .modal.toml
+.t3
 .orbstack/config/docker.json
 Library/Application Support/com.mitchellh.ghostty/config
 programming/sanity/CLAUDE.md
