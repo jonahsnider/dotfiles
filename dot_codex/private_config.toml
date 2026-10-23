@@ -62,6 +62,8 @@ extends = ":workspace"
 
 "~/.config/gcloud" = "write"
 
+"~/Library/Application Support/com.vercel.cli" = "write"
+
 [permissions.dev.network]
 enabled = true
 
