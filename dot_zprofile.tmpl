@@ -1,7 +1,10 @@
+{{ if eq .chezmoi.os "darwin" -}}
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+{{ end -}}
 
 # mise
+export PATH="$HOME/.local/bin:$PATH"
 eval "$(mise activate zsh)"
 
 # direnv

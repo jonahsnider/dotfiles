@@ -1,2 +1,2 @@
-{{ $secrets := include "secrets.json.age" | decrypt | fromJson -}}
+{{ $secrets := includeTemplate "onepassword-secrets.json" . | fromJson -}}
 //registry.npmjs.org/:_authToken={{ $secrets.NPM_TOKEN }}

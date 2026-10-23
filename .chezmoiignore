@@ -1,7 +1,21 @@
 AGENTS.md
 README.md
-fnox.local.toml
-fnox.toml
 renovate.json
-scripts
-secrets.json.age
+.config/op/service-account-token
+
+{{ if ne .chezmoi.os "darwin" }}
+# macOS applications, services, and machine state.
+Library
+.Brewfile
+.conductor
+.docker/config.json
+.sprites/known_sprites.json
+.codex/config.toml
+.claude/settings.json
+.config/1Password
+.config/git/macos
+.ssh/config.d/macos
+.config/mole
+.config/raycast
+.local/share/direnv/allow
+{{ end }}

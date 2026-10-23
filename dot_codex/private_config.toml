@@ -64,6 +64,8 @@ extends = ":workspace"
 
 "~/Library/Application Support/com.vercel.cli" = "write"
 
+"~/.sprites" = "write"
+
 [permissions.dev.network]
 enabled = true
 

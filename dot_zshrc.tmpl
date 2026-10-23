@@ -1,7 +1,7 @@
-# Added by Yarn Switch
-. "$HOME/.yarn/switch/env"
+{{ if eq .chezmoi.os "darwin" -}}
 # psql
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+{{ end -}}
 
 # Vite+ bin (https://viteplus.dev)
 . "$HOME/.config/vite-plus/env"

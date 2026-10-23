@@ -1,23 +1,26 @@
+{{ $secrets := includeTemplate "onepassword-secrets.json" . | fromJson -}}
 set -gx EDITOR fresh
 
 #region GPG
 # Fix the "gpg: error building skey array: Inappropriate ioctl for device" error
 # Solution from https://github.com/keybase/keybase-issues/issues/1712#issuecomment-141226705
-export GPG_TTY=(tty)
+if isatty stdin
+    set -gx GPG_TTY (tty)
+end
 #endregion
 
 #region custom env
 set -gx NODE_ENV development
 #endregion
 
-{{ $secrets := include "secrets.json.age" | decrypt | fromJson -}}
-
 #region Secrets
-# npm token
-set -gx NPM_TOKEN {{ $secrets.NPM_TOKEN | quote }}
+{{ range $name, $value := $secrets -}}
+set -gx {{ $name }} {{ $value | shellQuote }}
+{{ end -}}
 set -gx NPMRC (cat ~/.npmrc)
 #endregion
 
+{{ if eq .chezmoi.os "darwin" -}}
 #region Homebrew
 /opt/homebrew/bin/brew shellenv | source
 
@@ -27,17 +30,24 @@ set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx HOMEBREW_NO_ASK 1
 set -gx HOMEBREW_NO_UPGRADE_QUIT_CASKS 1
 #endregion
+{{ end -}}
 
 #region pnpm
+{{ if eq .chezmoi.os "darwin" -}}
 set -gx PNPM_HOME "$HOME/Library/pnpm"
+{{ else -}}
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
+{{ end -}}
 set -gx PNPM_CONFIG_MANAGE_PACKAGE_MANAGER_VERSIONS false
 #endregion
 
 #region Sanity Nix
 set -gx SANITY_NIX_PATH "$HOME/programming/sanity/sanity-nix-config"
 #endregion
+{{- if eq .chezmoi.os "darwin" }}
 
 #region Docker
 # See https://github.com/railwayapp/railpack#getting-started
 set -gx BUILDKIT_HOST "docker-container://buildx_buildkit_socktainer"
 #endregion
+{{- end }}
