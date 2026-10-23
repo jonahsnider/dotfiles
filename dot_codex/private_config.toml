@@ -60,6 +60,8 @@ extends = ":workspace"
 
 "~/.railway" = "write"
 
+"~/.config/gcloud" = "write"
+
 [permissions.dev.network]
 enabled = true
 
