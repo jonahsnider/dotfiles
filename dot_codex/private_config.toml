@@ -528,6 +528,9 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/team581/starlight-theme"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/sanity/sanity-nix-config"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
