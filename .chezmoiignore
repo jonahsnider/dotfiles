@@ -1,7 +1,9 @@
 AGENTS.md
 README.md
+.env
 renovate.json
 .config/op/service-account-token
+.config/op/dotfiles.env
 
 {{ if ne .chezmoi.os "darwin" }}
 # macOS applications, services, and machine state.

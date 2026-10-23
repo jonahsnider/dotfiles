@@ -25,12 +25,13 @@ These dotfiles are shared between my macOS laptop and Linux development hosts.
    # ~/.config/chezmoi/chezmoi.toml
    sourceDir = "/Users/jonah.snider/programming/dotfiles"
    ```
-5. `chezmoi apply` 🫡
+5. Set up the 1Password-mounted `.env` file as described below
+6. `chezmoi apply` 🫡
 
 ## Setting up on Linux
 
 1. Install prerequisite tools
-   - Install Git, gh, Chezmoi, fish, mise, jq, Python 3, delta, fresh, direnv, zoxide, and starship (used during template rendering)
+   - Install Git, gh, Chezmoi, fish, mise, jq, delta, fresh, direnv, zoxide, and starship (used during template rendering)
    - `curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher`
    - `curl -fsSL https://vite.plus | bash` then `vp env setup`
 2. Clone this repo to `~/programming/dotfiles` and set Chezmoi's `sourceDir` to that path, as above
@@ -39,11 +40,12 @@ These dotfiles are shared between my macOS laptop and Linux development hosts.
 
 ## Secrets
 
-- Chezmoi fetches secrets from 1Password Environments and writes them to private config files which are loaded by fish
-- Requires 1Password CLI 2.41+ and Python 3
-  - macOS uses the Homebrew CLI with [desktop app integration](https://www.1password.dev/cli/app-integration)
-  - Sprites use a read-only service-account token saved to `~/.config/op/service-account-token` with mode `0600`
-- Environment IDs and token names are configured in [onepassword-secrets.json](.chezmoitemplates/onepassword-secrets.json)
+- Chezmoi reads secrets from 1Password Environments and writes them to private config files which are loaded by fish
+- On macOS, mount the local Environment at `~/.config/op/dotfiles.env` using [1Password's local .env file integration](https://www.1password.dev/environments/local-env-file)
+  - Chezmoi parses the `KEY=value` entries directly with `fromIni`
+- Linux hosts require the [1Password CLI beta](https://www.1password.dev/environments/read-environment-variables#get-environment-variables-beta) with `op environment read` (2.33.0-beta.02 or later)
+  - Service-account token at `~/.config/op/service-account-token` with mode `0600`
+- The Linux Environment ID and shared token names are configured in [onepassword-secrets.json](.chezmoitemplates/onepassword-secrets.json)
 - To refresh tokens, run `chezmoi apply` and start a new shell
 
 ## Making changes
