@@ -1,4 +1,4 @@
-{{ $secrets := include "secrets.json.age" | decrypt | fromJson -}}
+{{ $secrets := includeTemplate "onepassword-secrets.json" . | fromJson -}}
 contexts:
 - name: argocd.sanity.tools
   server: argocd.sanity.tools
@@ -9,5 +9,9 @@ servers:
 - grpc-web-root-path: ""
   server: argocd.sanity.tools
 users:
+{{ if index $secrets "ARGOCD_AUTH_TOKEN" -}}
 - auth-token: {{ $secrets.ARGOCD_AUTH_TOKEN | quote }}
   name: argocd.sanity.tools
+{{ else -}}
+- name: argocd.sanity.tools
+{{ end -}}

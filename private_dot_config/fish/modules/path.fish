@@ -1,12 +1,6 @@
 # Local binaries
 fish_add_path -g ~/.local/bin
 
-#region macOS
-if test -d /Applications
-    fish_add_path -g /Applications
-end
-#endregion
-
 #region Rust
 # Cargo binaries
 fish_add_path -g ~/.cargo/bin
@@ -33,15 +27,11 @@ fish_add_path -g ~/.claude/local
 #endregion
 
 #region pnpm
-fish_add_path -g ~/Library/pnpm/bin
+fish_add_path -g "$PNPM_HOME" "$PNPM_HOME/bin"
 #endregion
 
 #region Composer
 fish_add_path -g ~/.composer/vendor/bin
-#endregion
-
-#region gcloud
-fish_add_path -g /opt/homebrew/share/google-cloud-sdk/bin
 #endregion
 
 #region Sanity Nix
@@ -50,5 +40,3 @@ fish_add_path -g "$HOME/programming/sanity/sanity-nix-config/.devenv/bin"
 #endregion
 
 alias san "$HOME/programming/sanity/cli/packages/@sanity/cli/bin/run.js"
-
-fish_add_path /opt/homebrew/opt/libpq/bin

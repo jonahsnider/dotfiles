@@ -1,3 +1,4 @@
+{{ if or (eq .chezmoi.os "darwin") (and (eq .chezmoi.os "linux") (lstat "/run/systemd/system")) -}}
 #!/usr/bin/env fish
 
 # https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#run-a-script-when-the-contents-of-another-file-changes
@@ -9,3 +10,4 @@ sudo pitchfork boot enable
 sudo pitchfork supervisor start --force
 # Register pitchfork.localhost as localhost:3120 via portless
 portless alias pitchfork 3120 --force
+{{ end -}}
