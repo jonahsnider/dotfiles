@@ -8,4 +8,4 @@ fnox activate fish | source
 zoxide init fish | source
 
 # daytona
-source /Users/jonah.snider/.config/fish/daytona.completion_script.fish
+source "$HOME/.config/fish/daytona.completion_script.fish"

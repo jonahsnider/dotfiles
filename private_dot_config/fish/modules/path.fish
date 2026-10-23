@@ -46,9 +46,9 @@ fish_add_path -g /opt/homebrew/share/google-cloud-sdk/bin
 
 #region Sanity Nix
 # See https://github.com/sanity-io/sanity-nix-config#enable-global-shims
-fish_add_path -g /Users/jonah.snider/programming/sanity/sanity-nix-config/.devenv/bin
+fish_add_path -g "$HOME/programming/sanity/sanity-nix-config/.devenv/bin"
 #endregion
 
-alias san /Users/jonah.snider/programming/sanity/cli/packages/@sanity/cli/bin/run.js
+alias san "$HOME/programming/sanity/cli/packages/@sanity/cli/bin/run.js"
 
 fish_add_path /opt/homebrew/opt/libpq/bin

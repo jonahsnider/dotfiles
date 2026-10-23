@@ -53,7 +53,7 @@
 	syntax-theme = Dracula
 
 [diff "lockb"]
-	textconv = /Users/jonah/.bun/bin/bun
+	textconv = bun
 	binary = true
 
 [log]

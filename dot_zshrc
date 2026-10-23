@@ -1,5 +1,5 @@
 # Added by Yarn Switch
-source "/Users/jonah.snider/.yarn/switch/env"
+. "$HOME/.yarn/switch/env"
 # psql
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 

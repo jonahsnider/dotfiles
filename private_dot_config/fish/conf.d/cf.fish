@@ -1,4 +1,4 @@
 # CF CLI completions
-if test -f "/Users/jonah.snider/.config/cf/completions/cf.fish"
-    source "/Users/jonah.snider/.config/cf/completions/cf.fish"
+if test -f "$HOME/.config/cf/completions/cf.fish"
+    source "$HOME/.config/cf/completions/cf.fish"
 end
