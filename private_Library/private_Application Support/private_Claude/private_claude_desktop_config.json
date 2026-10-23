@@ -18,7 +18,6 @@
     "coworkHipaaRestricted": false,
     "orgWorkAcrossAppsDisabled": false,
     "ccdScheduledTasksEnabled": true,
-    "storeReadCacheLatched": true,
     "sidebarMode": "epitaxy",
     "bypassPermissionsGateByAccount": {
       "db1872f9-9884-4f72-ad3d-fb2365936312": true
@@ -43,10 +42,7 @@
           "colWeightsByMode": {},
           "rowSplit": 0.5,
           "draftNonce": 0,
-          "lastPrimaryCodeSession": {
-            "id": "local_b740939e-34ee-4796-a22c-b581277f6dd8",
-            "type": "local"
-          }
+          "lastPrimaryCodeSession": null
         },
         "version": 4
       },
@@ -78,7 +74,7 @@
         },
         "version": 0
       },
-      "epitaxy-pr-create-mode": "draft",
+      "epitaxy-pr-create-mode": "compose",
       "claude-code-preferred-editor": "vscode",
       "dframe-code-sections": {
         "db1872f9-9884-4f72-ad3d-fb2365936312/70536e9b-4830-4565-8b77-c9881c354e7f": {
@@ -135,7 +131,8 @@
           "migratedFrom": 1,
           "prefsSeeded": true
         }
-      }
+      },
+      "epitaxy-auto-mode-denial-count.db1872f9-9884-4f72-ad3d-fb2365936312": 3
     }
   }
 }
