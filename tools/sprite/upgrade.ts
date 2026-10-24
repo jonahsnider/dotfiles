@@ -1,36 +1,7 @@
 import { intro, log, note, outro } from '@clack/prompts';
 import type { ServiceWithState } from '@fly/sprites';
-import { cac } from 'cac';
 import spawn from 'nano-spawn';
-import oscStatus from 'osc-status';
-import { diagnostics, formatException } from './diagnostics.ts';
 import { task } from './output.ts';
-
-export function parseUpgradeOptions(args: string[]) {
-	const cli = cac('sprite_upgrade')
-		.usage('<name>')
-		.help((sections) => {
-			sections.push({
-				body: 'Updates dotfiles, configured packages, mise tools, and Rex. Restarts running Rex services, ending their sessions.',
-			});
-		});
-	const { options, args: names } = cli.parse(['node', 'sprite_upgrade', ...args]);
-	if (options['help']) return undefined;
-	try {
-		cli.globalCommand.checkUnknownOptions();
-		cli.globalCommand.checkOptionValue();
-	} catch (error) {
-		throw diagnostics.SPRITE_UPGRADE_FAILED({ message: error instanceof Error ? error.message : String(error) });
-	}
-	const [name] = [...names, ...(options['--'] as string[])];
-	if (
-		names.length + (options['--'] as string[]).length !== 1 ||
-		!name ||
-		!/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(name)
-	)
-		throw diagnostics.SPRITE_INVALID_NAME();
-	return name;
-}
 
 async function remote(name: string, args: string[], output?: (message: string) => void) {
 	const command = spawn('sprite', ['exec', '-s', name, '--no-stdin', '--no-port-forward', '--', ...args]);
@@ -91,30 +62,13 @@ end`,
 	return { rexVersion, restartedServices: runningRex.map((service) => service.name) };
 }
 
-if (import.meta.main) {
-	if (process.stdout.isTTY) process.stdout.write('\u001b]2;sprite_upgrade\u0007');
-	let name: string | undefined;
-	try {
-		name = parseUpgradeOptions(process.argv.slice(2));
-		if (name) {
-			intro(`Upgrade Sprite ${name}`);
-			log.warn('Running Rex services will restart, ending their terminal sessions and programs.');
-			const { rexVersion, restartedServices } = await upgrade(name);
-			note(
-				`${rexVersion}\n${restartedServices.length > 0 ? `Restarted: ${restartedServices.join(', ')}` : 'No running Rex services to restart.'}`,
-				'Rex',
-			);
-			outro('Sprite upgrade complete.');
-			oscStatus.done({ app: 'dotfiles-sprite', message: 'Sprite upgrade complete.' });
-		}
-	} catch (error) {
-		oscStatus.error({ app: 'dotfiles-sprite', message: 'Sprite upgrade failed.' });
-		if (name) {
-			log.error(formatException(error));
-			outro('Sprite upgrade failed. Fix the error and rerun the same command to retry.');
-		} else {
-			console.error(formatException(error));
-		}
-		process.exitCode = 1;
-	}
+export async function runUpgrade(name: string) {
+	intro(`Upgrade Sprite ${name}`);
+	log.warn('Running Rex services will restart, ending their terminal sessions and programs.');
+	const { rexVersion, restartedServices } = await upgrade(name);
+	note(
+		`${rexVersion}\n${restartedServices.length > 0 ? `Restarted: ${restartedServices.join(', ')}` : 'No running Rex services to restart.'}`,
+		'Rex',
+	);
+	outro('Sprite upgrade complete.');
 }

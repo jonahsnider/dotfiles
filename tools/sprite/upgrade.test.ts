@@ -1,23 +1,5 @@
-import spawn from 'nano-spawn';
 import { test, vi } from 'vitest';
-import { parseUpgradeOptions, upgrade } from './upgrade.ts';
-
-test.for([[], ['one', 'two'], ['UPPERCASE'], ['a/b'], ['dev', '--typo'], ['dev', '--', 'extra']])(
-	'rejects malformed upgrade invocation %j',
-	(args, { expect }) => {
-		expect(() => parseUpgradeOptions(args)).toThrow();
-	},
-);
-
-test('accepts a Sprite name and supports help without contacting a Sprite', async ({ expect }) => {
-	expect(parseUpgradeOptions(['dev3'])).toBe('dev3');
-	expect(parseUpgradeOptions(['--', 'dev3'])).toBe('dev3');
-	const { stdout, stderr } = await spawn(process.execPath, ['upgrade.ts', '--help'], { cwd: import.meta.dirname });
-	expect(stdout).toContain('sprite_upgrade <name>');
-	expect(stdout).toContain('ending their sessions');
-	expect(stdout).not.toContain('\u001b');
-	expect(stderr).toBe('');
-});
+import { upgrade } from './upgrade.ts';
 
 function fixture() {
 	const services = [

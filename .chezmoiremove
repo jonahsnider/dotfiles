@@ -4,6 +4,10 @@
 .claude/skills/pdf
 .codex/sanity.config.toml
 .config/fish/conf.d/git-switch.fish
+.config/fish/functions/sprite_create.fish
+.config/fish/functions/sprite_upgrade.fish
+.config/fish/completions/sprite_create.fish
+.config/fish/completions/sprite_upgrade.fish
 .config/fish/completions/edgedb.fish
 .config/fish/completions/gel.fish
 .modal.toml

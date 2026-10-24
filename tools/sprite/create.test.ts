@@ -1,7 +1,6 @@
 import { SpriteCommand, SpritesClient } from '@fly/sprites';
-import spawn from 'nano-spawn';
 import { test, vi } from 'vitest';
-import { parseOptions, provision } from './create.ts';
+import { provision } from './create.ts';
 
 function fixture() {
 	const sprite = new SpritesClient('test-api-token').sprite('test-sprite');
@@ -22,48 +21,6 @@ function fixture() {
 	const setup = (token: string, ref: string) => provision(sprite, token, ref, reportProgress);
 	return { child, exec, write, chmod, spawn, wait, close, reportProgress, setup };
 }
-
-test.for([
-	{ args: [] },
-	{ args: ['-bad'] },
-	{ args: ['UPPERCASE'] },
-	{ args: ['a/b'] },
-	{ args: ['a'.repeat(64)] },
-	{ args: ['one', 'two'] },
-	{ args: ['one', '--ref=-bad'] },
-	{ args: ['one', '--typo'] },
-	{ args: ['one', '--account', 'Personal'] },
-	{ args: ['one', '--ref'] },
-	{ args: ['one', '--sprites-token-ref', 'op://custom/item/token'] },
-	{ args: ['one', '--ref', 'main', '--ref', 'other'] },
-	{ args: ['one', '--', 'two'] },
-])('rejects malformed invocation $args before contacting either service', ({ args }, { expect }) => {
-	expect(() => parseOptions(args)).toThrow();
-});
-
-test.for([
-	{ args: ['dev', '--resume'], expected: { resume: true } },
-	{ args: ['dev'], expected: { rex: false } },
-	{ args: ['dev', '--rex'], expected: { rex: true } },
-	{ args: ['--', 'dev'], expected: { name: 'dev' } },
-	{ args: ['dev', '--ref', '123'], expected: { ref: '123' } },
-])('parses options for $args', ({ args, expected }, { expect }) => {
-	expect(parseOptions(args)).toMatchObject(expected);
-});
-
-test('prints generated help and actionable CLI errors without contacting services', async ({ expect }) => {
-	const { stdout, stderr } = await spawn(process.execPath, ['create.ts', '--help'], { cwd: import.meta.dirname });
-	expect(stdout).toContain('Usage:');
-	expect(stdout).toContain('--ref');
-	expect(stdout).toContain('--rex');
-	expect(stderr).toBe('');
-	const failure = spawn(process.execPath, ['create.ts', 'dev', '--typo'], { cwd: import.meta.dirname });
-	await expect(failure).rejects.toMatchObject({
-		exitCode: 1,
-		stderr: expect.stringMatching(/^\[SPRITE_INVALID_OPTIONS\][\s\S]*--help/),
-	});
-	await expect(failure).rejects.toHaveProperty('stderr', expect.not.stringContaining('\u001b]7501'));
-});
 
 test('transfers credentials with private permissions and keeps secrets out of command arguments', async ({
 	expect,
