@@ -1,0 +1,4 @@
+{
+	"extends": ["@tsconfig/strictest", "@tsconfig/node26", "@tsconfig/node-ts"],
+	"include": ["*.ts"]
+}

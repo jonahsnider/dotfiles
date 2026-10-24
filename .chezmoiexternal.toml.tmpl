@@ -1,0 +1,7 @@
+{{ if eq .chezmoi.os "linux" -}}
+# Available before the Fisher onchange script runs on a new Linux host.
+[".config/fish/functions/fisher.fish"]
+type = "file"
+url = "https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish"
+refreshPeriod = "168h"
+{{ end -}}

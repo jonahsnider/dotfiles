@@ -17,7 +17,20 @@ jobs:
         uses: fish-shop/install-fish-shell@v2
 
       - name: Fix formatting
-        run: fish_indent --write **/*.fish
+        run: fish_indent --write ./**/*.fish
+
+      - uses: pnpm/setup@v3
+        with:
+          working-directory: tools/sprite
+          cache: true
+
+      - run: pnpm format:fix
+        working-directory: tools/sprite
+        continue-on-error: true
+
+      - run: pnpm lint:fix
+        working-directory: tools/sprite
+        continue-on-error: true
 
       - name: Run autofix.ci
         uses: autofix-ci/action@v1

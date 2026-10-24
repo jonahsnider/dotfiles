@@ -1,0 +1,36 @@
+# #:schema https://mise.jdx.dev/schema/mise.json
+
+# Linux prerequisites for rendering and applying these dotfiles.
+# Apply explicitly with `mise bootstrap`; ordinary `mise install` only manages tools.
+[bootstrap.packages]
+"apt:build-essential" = "latest"
+"apt:ca-certificates" = "latest"
+"apt:curl" = "latest"
+"apt:direnv" = "latest"
+"apt:fish" = "latest"
+"apt:gh" = "latest"
+"apt:git" = "latest"
+"apt:git-delta" = "latest"
+"apt:git-lfs" = "latest"
+"apt:jq" = "latest"
+"apt:starship" = "latest"
+"apt:unzip" = "latest"
+"apt:zoxide" = "latest"
+
+[tools]
+chezmoi = "latest"
+"github:sinelaw/fresh" = { version = "latest", asset_pattern = 'fresh-editor-{{ arch(x64="x86_64", arm64="aarch64") }}-unknown-linux-musl.tar.gz' }
+"github:voidzero-dev/vite-plus" = { version = "latest", asset_pattern = 'vp-{{ arch(x64="x86_64", arm64="aarch64") }}-unknown-linux-gnu.tar.gz' }
+# Keep the bootstrap runtime aligned with the shared config, before its first apply.
+node = "26"
+
+# The vendor's pinned beta archive; no release-list API is needed.
+[tools."http:op"]
+version = "2.33.0-beta.02"
+url = 'https://cache.agilebits.com/dist/1P/op2/pkg/v{{ version }}/op_linux_{{ arch(x64="amd64") }}_v{{ version }}.zip'
+
+# Use our own rustup instead of the Sprite image's potentially incomplete wrapper.
+# mise installs rustup itself when installing the shared config's Rust toolchain.
+[settings.rust]
+cargo_home = "~/.cargo"
+rustup_home = "~/.rustup"

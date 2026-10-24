@@ -28,24 +28,16 @@ These dotfiles are shared between my macOS laptop and Linux development hosts.
 5. Set up the 1Password-mounted `.env` file as described below
 6. `chezmoi apply` 🫡
 
-## Setting up on Linux
+## Working with Sprites
 
-1. Install prerequisite tools
-   - Install Git, gh, Chezmoi, fish, mise, jq, delta, fresh, direnv, zoxide, and starship (used during template rendering)
-   - `curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher`
-   - `curl -fsSL https://vite.plus | bash` then `vp env setup`
-2. Clone this repo to `~/programming/dotfiles` and set Chezmoi's `sourceDir` to that path, as above
-3. Set up 1Password access as described below
-4. Run `chezmoi apply --exclude=scripts`, start a new fish shell to load the tokens, then run `chezmoi apply` to install tools and plugins
+Use the [Sprite setup CLI](tools/sprite/README.md) from macOS to create a Linux dev instance with these dotfiles, tools, secrets, and Rex configured automatically.
 
 ## Secrets
 
 - Chezmoi reads secrets from 1Password Environments and writes them to private config files which are loaded by fish
 - On macOS, mount the local Environment at `~/.config/op/dotfiles.env` using [1Password's local .env file integration](https://www.1password.dev/environments/local-env-file)
   - Chezmoi parses the `KEY=value` entries directly with `fromIni`
-- Linux hosts require the [1Password CLI beta](https://www.1password.dev/environments/read-environment-variables#get-environment-variables-beta) with `op environment read` (2.33.0-beta.02 or later)
-  - Service-account token at `~/.config/op/service-account-token` with mode `0600`
-  - The Sprite service-account token is stored at `op://Personal/x7wy664xb4ysha6gyzjdz5o454/credential` in the `my.1password.com` account
+- On Linux, Chezmoi uses `op environment read` with the service account configured by the setup CLI
 - The Linux Environment ID and shared token names are configured in [onepassword-secrets.json](.chezmoitemplates/onepassword-secrets.json)
 - To refresh tokens, run `chezmoi apply` and start a new shell
 

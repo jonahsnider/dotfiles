@@ -1,0 +1,27 @@
+name: CI
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  sprite:
+    name: Sprite tooling
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: tools/sprite
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/setup@v3
+        with:
+          working-directory: tools/sprite
+          cache: true
+      - parallel:
+          - run: pnpm format
+          - run: pnpm lint
+          - run: pnpm test
+          - run: pnpm knip
+          - run: pnpm build

@@ -1,0 +1,44 @@
+{
+	"name": "dotfiles-sprite",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"create": "node create.ts",
+		"build": "tsc --noEmit",
+		"test": "vitest run",
+		"lint": "oxlint",
+		"lint:fix": "oxlint --fix",
+		"format": "oxfmt --check",
+		"format:fix": "oxfmt",
+		"knip": "knip"
+	},
+	"dependencies": {
+		"@1password/sdk": "0.5.0",
+		"@fly/sprites": "0.2.4",
+		"cac": "7.1.0",
+		"nano-spawn": "2.1.0",
+		"nostics": "1.3.0",
+		"osc-status": "1.0.0"
+	},
+	"devDependencies": {
+		"@tsconfig/node-ts": "23.6.4",
+		"@tsconfig/node26": "26.0.1",
+		"@tsconfig/strictest": "2.0.8",
+		"@types/node": "26.6.5",
+		"knip": "6.42.1",
+		"oxfmt": "0.74.0",
+		"oxlint": "1.89.0",
+		"oxlint-tsgolint": "7.0.2005",
+		"typescript": "7.0.2",
+		"vitest": "5.0.5"
+	},
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": "26.x",
+			"onFail": "warn"
+		}
+	},
+	"packageManager": "pnpm@12.15.0"
+}
