@@ -50,7 +50,7 @@ export async function parseOptions(args: string[]) {
 			validateName(name);
 			result = { command: 'upgrade', name };
 		});
-	cli.command('wake [name]', 'Wake a Sprite so you can connect through Rex (default: dev)').action((name = 'dev') => {
+	cli.command('wake [name]', 'Wake a Sprite and open its session in Rex (default: dev)').action((name = 'dev') => {
 		validateName(name);
 		result = { command: 'wake', name };
 	});

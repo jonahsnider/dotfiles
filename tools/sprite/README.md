@@ -21,7 +21,7 @@ sprite exec -s dev --tty -- fish -l
 
 Sign in to Claude/Codex and check out your project inside the Sprite.
 
-To wake a sleeping Sprite before connecting through Rex:
+To wake a sleeping Sprite and switch to it in Rex:
 
 ```sh
 sprite_dev wake

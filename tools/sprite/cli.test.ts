@@ -123,9 +123,17 @@ test.for([
 		await writeFile(
 			join(directory, 'sprite'),
 			`#!/bin/sh
-[ "$#" = 7 ] && [ "$1" = exec ] && [ "$2" = -s ] && [ "$3" = ${name} ] &&
-[ "$4" = --no-stdin ] && [ "$5" = --no-port-forward ] && [ "$6" = -- ] && [ "$7" = true ] || exit 2
-exit ${exitCode}
+[ "$#" -ge 8 ] && [ "$1" = exec ] && [ "$2" = -s ] && [ "$3" = ${name} ] &&
+[ "$4" = --no-stdin ] && [ "$5" = --no-port-forward ] && [ "$6" = -- ] &&
+[ "$7" = /usr/bin/rex ] && [ "$8" = --autostart=false ] || exit 2
+[ ${exitCode} = 0 ] || exit ${exitCode}
+shift 8
+case "$*" in
+  'client ls --json') printf '%s' '{"clients":[{"client_id":"app","info":{"kind":"app"},"connection_state":"connected"}]}' ;;
+  'ls --json') printf '%s' '{"sessions":[{"session_id":"session:existing","label":"work"}]}' ;;
+  '-C app do session.select session_id=session:existing') printf '%s' null ;;
+  *) exit 2 ;;
+esac
 `,
 			{ mode: 0o700 },
 		);
@@ -136,6 +144,7 @@ exit ${exitCode}
 		if (exitCode === 0) {
 			const { stdout, stderr } = await operation;
 			expect(stdout).toContain(`Sprite ${name} is awake.`);
+			expect(stdout).toContain('Opened Rex session work.');
 			expect(stderr).toBe('');
 		} else {
 			await expect(operation).rejects.toMatchObject({
