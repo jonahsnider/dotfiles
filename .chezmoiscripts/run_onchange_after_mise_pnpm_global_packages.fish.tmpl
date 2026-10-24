@@ -3,6 +3,10 @@
 # https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#run-a-script-when-the-contents-of-another-file-changes
 
 # pnpm global packages hash: {{ includeTemplate "pnpm-global-packages.json" . | sha256sum }}
+# pnpm 12 needs $PNPM_HOME/bin in path, even if it doesn't exist yet (ex. a fresh install)
+mkdir -p "$PNPM_HOME/bin"
+fish_add_path --path "$PNPM_HOME/bin"
+
 set -l desired_packages{{ range $package, $version := (includeTemplate "pnpm-global-packages.json" . | fromJson).dependencies }} "{{ $package }}"{{ end }}
 set -l packages{{ range $package, $version := (includeTemplate "pnpm-global-packages.json" . | fromJson).dependencies }} "{{ $package }}@{{ $version }}"{{ end }}
 set -l allow_builds{{ range $package := (includeTemplate "pnpm-global-packages.json" . | fromJson).allowBuilds }} "--allow-build={{ $package }}"{{ end }}
