@@ -10,19 +10,22 @@ jobs:
     name: Autofix
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Git repository
-        uses: actions/checkout@v7
-
       - name: Install Fish shell
         uses: fish-shop/install-fish-shell@v2
+        background: true
 
-      - name: Fix formatting
-        run: fish_indent --write ./**/*.fish
+      - name: Checkout Git repository
+        uses: actions/checkout@v7
 
       - uses: pnpm/setup@v3
         with:
           working-directory: tools/sprite
           cache: true
+
+      - wait-all:
+
+      - name: Fix formatting
+        run: fish_indent --write ./**/*.fish
 
       - run: pnpm format:fix
         working-directory: tools/sprite
