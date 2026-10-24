@@ -117,19 +117,29 @@ test('completes existing Sprite names for upgrades, wakes, and resumed creates',
 });
 
 test.for([
-	{ args: ['wake'], name: 'dev', exitCode: 0 },
-	{ args: ['wake', 'other-dev'], name: 'other-dev', exitCode: 0 },
-	{ args: ['wake'], name: 'dev', exitCode: 1 },
-])('wakes the selected Sprite and propagates failures: %j', async ({ args, name, exitCode }, { expect }) => {
+	{ args: ['wake'], name: 'dev', exitCode: 0, helper: 'ready' },
+	{ args: ['wake', 'other-dev'], name: 'other-dev', exitCode: 0, helper: 'ready' },
+	{ args: ['wake'], name: 'dev', exitCode: 1, helper: 'ready' },
+	{ args: ['wake'], name: 'dev', exitCode: 0, helper: 'existing' },
+	{ args: ['wake'], name: 'dev', exitCode: 0, helper: 'failed' },
+])('wakes the selected Sprite and propagates failures: %j', async ({ args, name, exitCode, helper }, { expect }) => {
 	const directory = await mkdtemp(join(tmpdir(), 'sprite-wake-'));
 	try {
 		await writeFile(
 			join(directory, 'sprite'),
 			`#!/bin/sh
 [ "$#" -ge 8 ] && [ "$1" = exec ] && [ "$2" = -s ] && [ "$3" = ${name} ] &&
-[ "$4" = --no-stdin ] && [ "$5" = --no-port-forward ] && [ "$6" = -- ] &&
-[ "$7" = /usr/bin/rex ] && [ "$8" = --autostart=false ] || exit 2
+[ "$4" = --no-stdin ] && [ "$5" = --no-port-forward ] && [ "$6" = -- ] || exit 2
 [ ${exitCode} = 0 ] || exit ${exitCode}
+if [ "$7" = sh ]; then
+  case ${helper} in
+    ready) printf 'sprite-rex-keepawake ready\n' ;;
+    existing) exit 0 ;;
+    failed) printf 'Rex keep-awake failed\n' >&2; exit 1 ;;
+  esac
+  exit 0
+fi
+[ "$7" = /usr/bin/rex ] && [ "$8" = --autostart=false ] || exit 2
 shift 8
 case "$*" in
   'client ls --json') printf '%s' '{"clients":[{"client_id":"app","info":{"kind":"app"},"connection_state":"connected"}]}' ;;
@@ -144,7 +154,7 @@ esac
 			cwd: import.meta.dirname,
 			env: { PATH: `${directory}${delimiter}${process.env['PATH']}` },
 		});
-		if (exitCode === 0) {
+		if (exitCode === 0 && helper !== 'failed') {
 			const { stdout, stderr } = await operation;
 			expect(stdout).toContain(`Sprite ${name} is awake.`);
 			expect(stdout).toContain('Opened Rex session work.');

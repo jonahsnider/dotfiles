@@ -28,6 +28,8 @@ sprite_dev wake
 # Or: sprite_dev wake my-dev
 ```
 
+Wake also starts a small [Rex Lua helper](../../private_dot_config/rex/sprite-keepawake.lua) through a Sprite-managed exec after Rex selects its terminal. It keeps the Sprite awake while a connected Rex app has a terminal tab on it, regardless of what runs in the terminal. When the last terminal closes or disconnects, the helper exits on its next check (every three seconds) and leaves idle timing to Sprites.
+
 To update an existing Sprite from your Mac:
 
 ```sh

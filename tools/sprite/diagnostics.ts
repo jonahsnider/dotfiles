@@ -50,6 +50,10 @@ export const diagnostics = defineDiagnostics({
 			why: 'Multiple Rex apps are connected to this Sprite; cannot choose which app to switch.',
 			fix: 'Disconnect the other Rex apps from this host, then run wake again.',
 		},
+		REX_KEEP_AWAKE_FAILED: {
+			why: 'The Rex keep-awake helper did not start.',
+			fix: ({ log }: { log: string }) => `Check ${log}, then run wake again.`,
+		},
 		REX_HOST_CONFLICT: {
 			why: ({ name }: { name: string }) => `A different Rex host already uses the name ${name}.`,
 		},
