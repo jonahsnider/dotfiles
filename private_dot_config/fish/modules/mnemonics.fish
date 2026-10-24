@@ -241,7 +241,22 @@ abbr --add c. "code ."
 
 # Sprites
 abbr --add sp "sprite"
+abbr --add spC "sprite create"
+abbr --add spD "sprite destroy"
+abbr --add spl "sprite list"
+abbr --add spi "sprite info"
+abbr --add spu "sprite use"
 abbr --add spc "sprite console"
+abbr --add spe "sprite exec"
+abbr --add spa "sprite attach"
+abbr --add sps "sprite sessions"
+abbr --add spsl "sprite sessions list"
+abbr --add spfp "sprite file pull"
+abbr --add spfP "sprite file push"
+abbr --add spcp "sprite checkpoint"
+abbr --add spcpc "sprite checkpoint create"
+abbr --add spcpl "sprite checkpoint list"
+abbr --add spr "sprite restore"
 
 # hunk
 abbr --add h "hunk"
