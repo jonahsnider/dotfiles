@@ -132,7 +132,10 @@ export async function provision(
 	// On resume, fish loads any already-rendered credentials before shared tools are installed.
 	await task(
 		'Installing managed tools…',
-		(output) => run(sprite, 'fish', ['-c', '$argv[1] bootstrap --yes --only tools', mise], bootstrapDir, output),
+		async (output) => {
+			await run(sprite, 'sudo', ['-n', 'chsh', '-s', '/usr/bin/fish', 'sprite'], home, output);
+			await run(sprite, 'fish', ['-c', '$argv[1] bootstrap --yes --only tools', mise], bootstrapDir, output);
+		},
 		reportProgress,
 	);
 	await task(
