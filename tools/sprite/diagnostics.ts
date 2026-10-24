@@ -25,6 +25,9 @@ export const diagnostics = defineDiagnostics({
 		REX_TAILSCALE_FAILED: {
 			why: ({ message }: { message: string }) => `Rex Tailscale: ${message}`,
 		},
+		REX_HOSTNAME_TOO_LONG: {
+			why: 'With --rex, the Sprite name must be at most 50 characters so the jonah-sprite- hostname fits the 63-character DNS limit.',
+		},
 		REX_HTTPS_TIMEOUT: {
 			why: 'Rex HTTPS was not ready within the sign-in timeout.',
 			fix: 'Complete Tailscale authorization, then retry with --resume --rex.',

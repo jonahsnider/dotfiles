@@ -79,7 +79,7 @@ test('creates a supervised personal server with persistent Tailscale state and n
 		expect.objectContaining({
 			cmd: '/usr/bin/rex',
 			env: expect.objectContaining({ HOME: '/home/sprite' }),
-			args: expect.arrayContaining(['--tailscale', '/home/sprite/.local/state/rex']),
+			args: expect.arrayContaining(['--tailscale', '/home/sprite/.local/state/rex', 'jonah-sprite-my-dev']),
 		}),
 		'1s',
 	);

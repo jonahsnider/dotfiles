@@ -83,7 +83,7 @@ export async function configureRex(sprite: Sprite, home: string) {
 			`${home}/.local/state/rex`,
 			'--tailscale',
 			'--tailscale-hostname',
-			sprite.name,
+			`jonah-sprite-${sprite.name}`,
 		],
 		dir: home,
 		env: { HOME: home, USER: 'sprite', LOGNAME: 'sprite', SHELL: '/usr/bin/fish', GODEBUG: '' },

@@ -38,6 +38,7 @@ export async function parseOptions(args: string[]) {
 		.option('--rex', 'Enable the Rex Tailscale server and save a Rex CLI host on your Mac', { default: false })
 		.action((name = 'dev', values: Record<string, unknown>) => {
 			validateName(name);
+			if (values['rex'] && name.length > 50) throw diagnostics.REX_HOSTNAME_TOO_LONG();
 			const value = values['ref'];
 			if (typeof value !== 'string' && typeof value !== 'number') throw diagnostics.SPRITE_INVALID_REF();
 			const ref = String(value);
