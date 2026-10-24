@@ -542,6 +542,9 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/devicon"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/args"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
