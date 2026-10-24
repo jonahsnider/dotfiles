@@ -45,6 +45,7 @@ These dotfiles are shared between my macOS laptop and Linux development hosts.
   - Chezmoi parses the `KEY=value` entries directly with `fromIni`
 - Linux hosts require the [1Password CLI beta](https://www.1password.dev/environments/read-environment-variables#get-environment-variables-beta) with `op environment read` (2.33.0-beta.02 or later)
   - Service-account token at `~/.config/op/service-account-token` with mode `0600`
+  - The Sprite service-account token is stored at `op://Personal/x7wy664xb4ysha6gyzjdz5o454/credential` in the `my.1password.com` account
 - The Linux Environment ID and shared token names are configured in [onepassword-secrets.json](.chezmoitemplates/onepassword-secrets.json)
 - To refresh tokens, run `chezmoi apply` and start a new shell
 
