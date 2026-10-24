@@ -154,6 +154,7 @@ curl -fsSL -u "rex:$REX_PACKAGE_TOKEN" https://pkgs.superlogical.com/rex/install
 }
 
 if (import.meta.main) {
+	if (process.stdout.isTTY) process.stdout.write('\u001b]2;sprite_create\u0007');
 	let options: ReturnType<typeof parseOptions>;
 	let created = false;
 	try {
