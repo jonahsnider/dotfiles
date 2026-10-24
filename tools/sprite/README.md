@@ -9,7 +9,7 @@ pnpm --dir tools/sprite run create my-dev --rex
 
 With the fish config applied, run `sprite_create my-dev --rex` from any directory.
 
-The CLI reads credentials from 1Password and installs the dotfiles, tools, and Rex. With `--rex`, it also starts Rex and adds the Sprite as a remote host on your Mac. Follow the printed Tailscale sign-in link using the same account as Rex on your Mac. If automatic registration fails, enter the printed name and URL in **Add Remote Host…**. Omit `--rex` to skip remote access setup.
+The CLI reads credentials from 1Password and installs the dotfiles, tools, and Rex. With `--rex`, it also starts Rex and saves the Sprite in the Rex CLI host list on your Mac. Follow the printed Tailscale sign-in link using the same account as Rex on your Mac. The [CLI host list does not sync to the Rex app](https://www.superlogical.com/rex/docs/linux/remote-access#adding-the-server-to-a-client): choose **Add Remote Host…** in the app and enter the printed name and URL. Omit `--rex` to skip remote access setup.
 
 Setup clones the repository from GitHub, so push changes before using them in a Sprite. Use `--ref <branch-or-tag>` to select a revision; the default is `main`. If setup is interrupted, rerun the same command with `--resume`.
 

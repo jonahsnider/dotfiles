@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs';
 import { delimiter, join } from 'node:path';
 import { setTimeout } from 'node:timers/promises';
+import { log as clackLog } from '@clack/prompts';
 import { ExecError, type Sprite, type ServiceRequest, type ServiceLogStream } from '@fly/sprites';
 import spawn from 'nano-spawn';
 import oscStatus from 'osc-status';
@@ -17,7 +18,7 @@ interface RexStatus {
 
 export async function waitForRex(
 	sprite: Sprite,
-	{ timeoutMs = 300_000, intervalMs = 2000, log = console.log, status: reportStatus = oscStatus } = {},
+	{ timeoutMs = 300_000, intervalMs = 2000, log = clackLog.info, status: reportStatus = oscStatus } = {},
 ) {
 	const deadline = Date.now() + timeoutMs;
 	let authURL: string | undefined;
