@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 set -l vscode com.microsoft.VSCode
-set -l arc company.thebrowser.Browser
+set -l dia company.thebrowser.dia
 
 function get_uti -a ext
     set -l tmpfile (mktemp /tmp/duti_probe.XXXXXX."$ext")
@@ -50,5 +50,5 @@ for ext in toml rs go sql tsx jsx scss sass less lua ipynb gradle groovy cmake c
     set_default $vscode (get_uti $ext)
 end
 
-# Arc - SVG
-set_default $arc public.svg-image
+# Dia - SVG
+set_default $dia public.svg-image
