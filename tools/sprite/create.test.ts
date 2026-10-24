@@ -23,39 +23,39 @@ function fixture() {
 	return { child, exec, write, chmod, spawn, wait, close, reportProgress, setup };
 }
 
-test('rejects malformed invocations before contacting either service', ({ expect }) => {
-	for (const args of [
-		[],
-		['-bad'],
-		['UPPERCASE'],
-		['a/b'],
-		['a'.repeat(64)],
-		['one', 'two'],
-		['one', '--ref=-bad'],
-		['one', '--typo'],
-		['one', '--account'],
-		['one', '--ref'],
-		['one', '--sprites-token-ref'],
-		['one', '--ref', 'main', '--ref', 'other'],
-		['one', '--', 'two'],
-	]) {
-		expect(() => parseOptions(args)).toThrow();
-	}
-	expect(parseOptions(['dev', '--resume'])).toMatchObject({ resume: true });
-	expect(parseOptions(['dev'])).toMatchObject({ rex: false });
-	expect(parseOptions(['dev', '--rex'])).toMatchObject({ rex: true });
-	expect(parseOptions(['--', 'dev'])).toMatchObject({ name: 'dev' });
-	expect(parseOptions(['dev', '--ref', '123'])).toMatchObject({ ref: '123' });
-	expect(parseOptions(['dev', '--sprites-token-ref', 'op://custom/item/token'])).toMatchObject({
-		tokenReference: 'op://custom/item/token',
-	});
+test.for([
+	{ args: [] },
+	{ args: ['-bad'] },
+	{ args: ['UPPERCASE'] },
+	{ args: ['a/b'] },
+	{ args: ['a'.repeat(64)] },
+	{ args: ['one', 'two'] },
+	{ args: ['one', '--ref=-bad'] },
+	{ args: ['one', '--typo'] },
+	{ args: ['one', '--account', 'Personal'] },
+	{ args: ['one', '--ref'] },
+	{ args: ['one', '--sprites-token-ref', 'op://custom/item/token'] },
+	{ args: ['one', '--ref', 'main', '--ref', 'other'] },
+	{ args: ['one', '--', 'two'] },
+])('rejects malformed invocation $args before contacting either service', ({ args }, { expect }) => {
+	expect(() => parseOptions(args)).toThrow();
+});
+
+test.for([
+	{ args: ['dev', '--resume'], expected: { resume: true } },
+	{ args: ['dev'], expected: { rex: false } },
+	{ args: ['dev', '--rex'], expected: { rex: true } },
+	{ args: ['--', 'dev'], expected: { name: 'dev' } },
+	{ args: ['dev', '--ref', '123'], expected: { ref: '123' } },
+])('parses options for $args', ({ args, expected }, { expect }) => {
+	expect(parseOptions(args)).toMatchObject(expected);
 });
 
 test('prints generated help and actionable CLI errors without contacting services', async ({ expect }) => {
 	const { stdout, stderr } = await spawn(process.execPath, ['create.ts', '--help'], { cwd: import.meta.dirname });
 	expect(stdout).toContain('Usage:');
-	expect(stdout).toContain('--sprites-token-ref');
-	expect(stdout).toContain('OP_ACCOUNT_NAME');
+	expect(stdout).toContain('--ref');
+	expect(stdout).toContain('--rex');
 	expect(stderr).toBe('');
 	const failure = spawn(process.execPath, ['create.ts', 'dev', '--typo'], { cwd: import.meta.dirname });
 	await expect(failure).rejects.toMatchObject({

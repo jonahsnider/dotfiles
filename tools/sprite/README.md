@@ -4,8 +4,10 @@ Run from the repository root on macOS with Node 26, pnpm 12, and the 1Password d
 
 ```sh
 pnpm --dir tools/sprite install
-pnpm --dir tools/sprite run create my-dev --account '<personal 1Password account name or ID>' --rex
+pnpm --dir tools/sprite run create my-dev --rex
 ```
+
+With the fish config applied, run `sprite_create my-dev --rex` from any directory.
 
 The CLI reads credentials from 1Password and installs the dotfiles, tools, and Rex. With `--rex`, it also starts Rex and adds the Sprite as a remote host on your Mac. Follow the printed Tailscale sign-in link using the same account as Rex on your Mac. If automatic registration fails, enter the printed name and URL in **Add Remote Host…**. Omit `--rex` to skip remote access setup.
 

@@ -12,10 +12,6 @@ export const diagnostics = defineDiagnostics({
 		SPRITE_INVALID_REF: {
 			why: '--ref must be a branch or tag.',
 		},
-		SPRITE_ACCOUNT_REQUIRED: {
-			why: 'The personal 1Password account is missing.',
-			fix: 'Set --account or OP_ACCOUNT_NAME to your personal 1Password account name or ID.',
-		},
 		SPRITE_EMPTY_TOKEN: {
 			why: ({ token }: { token: string }) => `The ${token} token is empty.`,
 			fix: 'Check the token in your personal 1Password vault.',

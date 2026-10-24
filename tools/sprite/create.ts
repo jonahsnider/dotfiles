@@ -2,42 +2,31 @@ import { readFile } from 'node:fs/promises';
 import { createClient, DesktopAuth } from '@1password/sdk';
 import { SpritesClient, type Sprite } from '@fly/sprites';
 import { cac } from 'cac';
-import { Diagnostic } from 'nostics';
 import oscStatus from 'osc-status';
 import { diagnostics, formatException } from './diagnostics.ts';
 import { configureRex, registerRexHost } from './rex.ts';
 
+const personalAccountID = 'JZNG2TXEHBHA7M2BS2TJATCIAA';
 const serviceAccountReference = 'op://Personal/x7wy664xb4ysha6gyzjdz5o454/credential';
 const spritesTokenReference = 'op://Personal/Sprites API key/credential';
 
 export function parseOptions(args: string[]) {
-	const cli = cac('pnpm run create')
+	const cli = cac('sprite_create')
 		.usage('<name> [options]')
-		.option('--account <account>', 'Personal 1Password account name or ID (or OP_ACCOUNT_NAME)')
 		.option('--ref <branch-or-tag>', 'Dotfiles revision', { default: 'main' })
 		.option('--resume', 'Resume setup of an existing Sprite', { default: false })
 		.option('--rex', 'Enable the Rex Tailscale server and add the remote host on your Mac', { default: false })
-		.option('--sprites-token-ref <reference>', '1Password reference for the Sprites API token', {
-			default: spritesTokenReference,
-		})
 		.help((sections) => {
 			sections.push({
 				body: 'Enable 1Password SDK desktop integration. Both tokens are read from your personal vault. Rex is always installed.',
 			});
 		});
-	const { options: values, args: parsedArgs } = cli.parse(['node', 'create.ts', ...args]);
+	const { options: values, args: parsedArgs } = cli.parse(['node', 'sprite_create', ...args]);
 	if (values['help']) return undefined;
 	try {
 		cli.globalCommand.checkUnknownOptions();
 		cli.globalCommand.checkOptionValue();
-		for (const key of ['account', 'ref', 'spritesTokenRef']) {
-			const value: unknown = values[key];
-			if (value !== undefined && typeof value !== 'string' && typeof value !== 'number') {
-				throw diagnostics.SPRITE_INVALID_OPTIONS({ message: `Provide one value for ${key}.` });
-			}
-		}
 	} catch (cause) {
-		if (cause instanceof Diagnostic) throw cause;
 		throw diagnostics.SPRITE_INVALID_OPTIONS({
 			message: cause instanceof Error ? cause.message : String(cause),
 			cause,
@@ -48,15 +37,15 @@ export function parseOptions(args: string[]) {
 	if (positionals.length !== 1 || !name || !/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(name)) {
 		throw diagnostics.SPRITE_INVALID_NAME();
 	}
-	const ref = String(values['ref']);
+	const refValue: unknown = values['ref'];
+	if (typeof refValue !== 'string' && typeof refValue !== 'number') throw diagnostics.SPRITE_INVALID_REF();
+	const ref = String(refValue);
 	if (!ref || ref.startsWith('-')) throw diagnostics.SPRITE_INVALID_REF();
 	return {
 		name,
-		account: values['account'] === undefined ? undefined : String(values['account']),
 		ref,
 		resume: Boolean(values['resume']),
 		rex: Boolean(values['rex']),
-		tokenReference: String(values['spritesTokenRef']),
 	};
 }
 
@@ -170,19 +159,17 @@ if (import.meta.main) {
 	try {
 		options = parseOptions(process.argv.slice(2));
 		if (options) {
-			const account = options.account ?? process.env['OP_ACCOUNT_NAME'];
-			if (!account) throw diagnostics.SPRITE_ACCOUNT_REQUIRED();
 			oscStatus.blocked({
 				app: 'dotfiles-sprite',
 				kind: 'auth',
 				message: 'Authorize access to your personal 1Password vault.',
 			});
 			const op = await createClient({
-				auth: new DesktopAuth(account),
+				auth: new DesktopAuth(personalAccountID),
 				integrationName: 'Dotfiles Sprite setup',
 				integrationVersion: '0.0.0',
 			});
-			const apiToken = await op.secrets.resolve(options.tokenReference);
+			const apiToken = await op.secrets.resolve(spritesTokenReference);
 			if (!apiToken?.trim()) throw diagnostics.SPRITE_EMPTY_TOKEN({ token: 'Sprites API' });
 			const serviceAccountToken = await op.secrets.resolve(serviceAccountReference);
 			if (!serviceAccountToken.trim()) throw diagnostics.SPRITE_EMPTY_TOKEN({ token: 'Sprite service-account' });
