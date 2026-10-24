@@ -1,6 +1,6 @@
-function sprite_dev -d "Create and upgrade dev Sprites"
+function sprite_dev -d "Create, upgrade, and wake dev Sprites"
     set -l source_dir (chezmoi source-path)
     or return
 
-    pnpm --silent --dir "$source_dir/tools/sprite" run cli $argv
+    node "$source_dir/tools/sprite/cli.ts" $argv
 end
