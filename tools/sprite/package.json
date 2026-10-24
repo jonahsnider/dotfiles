@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"create": "node create.ts",
+		"upgrade": "node upgrade.ts",
 		"build": "tsc --noEmit",
 		"test": "vitest run",
 		"lint": "oxlint",

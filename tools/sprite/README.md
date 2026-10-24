@@ -21,4 +21,13 @@ sprite exec -s my-dev --tty -- fish -l
 
 Sign in to Claude/Codex and check out your project inside the Sprite.
 
+To update an existing Sprite from your Mac:
+
+```sh
+sprite_upgrade my-dev
+# Or: pnpm --dir tools/sprite run upgrade my-dev
+```
+
+This pulls and applies dotfiles, reconciles configured Ubuntu packages, upgrades mise tools within their configured version ranges, and upgrades the Rex apt package. It then restarts running Sprite-managed Rex servers, including a proxy server. **Restarting ends those servers' terminal sessions and programs.** Stopped services stay stopped. Installation output uses the same compact previews as `sprite_create`; failed steps print their captured logs and stop the upgrade.
+
 For all options, run `pnpm --dir tools/sprite run create --help`. The [setup code](create.ts) and [Linux mise config](../../private_dot_config/mise/conf.d/linux.toml) define what runs during setup.

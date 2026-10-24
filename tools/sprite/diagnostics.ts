@@ -45,6 +45,10 @@ export const diagnostics = defineDiagnostics({
 		SPRITE_SETUP_FAILED: {
 			why: ({ message }: { message: string }) => message,
 		},
+		SPRITE_UPGRADE_FAILED: {
+			why: ({ message }: { message: string }) => message,
+			fix: 'Run sprite_upgrade --help for usage.',
+		},
 	},
 });
 
