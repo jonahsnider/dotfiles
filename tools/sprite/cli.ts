@@ -8,9 +8,8 @@ import oscStatus from 'osc-status';
 import { create, type CreateOptions } from './create.ts';
 import { diagnostics, formatException } from './diagnostics.ts';
 import { runUpgrade } from './upgrade.ts';
-import { runWake } from './wake.ts';
 
-type Options = ({ command: 'create' } & CreateOptions) | { command: 'upgrade' | 'wake'; name: string };
+type Options = ({ command: 'create' } & CreateOptions) | { command: 'upgrade'; name: string };
 
 function validateName(name: string) {
 	if (!/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(name)) throw diagnostics.SPRITE_INVALID_NAME();
@@ -51,10 +50,6 @@ export async function parseOptions(args: string[]) {
 			validateName(name);
 			result = { command: 'upgrade', name };
 		});
-	cli.command('wake [name]', 'Wake a Sprite and open its session in Rex (default: dev)').action((name = 'dev') => {
-		validateName(name);
-		result = { command: 'wake', name };
-	});
 	await tab(cli, {
 		subCommands: {
 			// Tab's CAC adapter exposes optional [name] arguments as arg0.
@@ -66,14 +61,13 @@ export async function parseOptions(args: string[]) {
 				},
 			},
 			upgrade: { args: { arg0: completeSprites } },
-			wake: { args: { arg0: completeSprites } },
 		},
 	});
 	try {
 		cli.parse(['node', 'sprite_dev', ...args], { run: false });
 		if (cli.options['help']) return undefined;
 		if (!cli.matchedCommand) {
-			if (args.length > 0) throw new Error('Choose create, upgrade, wake, or complete.');
+			if (args.length > 0) throw new Error('Choose create, upgrade, or complete.');
 			cli.outputHelp();
 			return undefined;
 		}
@@ -96,8 +90,7 @@ if (import.meta.main) {
 		if (options) {
 			if (process.stdout.isTTY) process.stdout.write('\u001b]2;sprite_dev\u0007');
 			if (options.command === 'create') await create(options);
-			else if (options.command === 'upgrade') await runUpgrade(options.name);
-			else await runWake(options.name);
+			else await runUpgrade(options.name);
 			oscStatus.done({ app: 'dotfiles-sprite', message: 'Sprite operation complete.' });
 		}
 	} catch (error) {

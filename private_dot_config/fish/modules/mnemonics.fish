@@ -263,7 +263,6 @@ abbr --add spr "sprite restore"
 abbr --add sd sprite_dev
 abbr --add sdc "sprite_dev create"
 abbr --add sdu "sprite_dev upgrade"
-abbr --add sdw "sprite_dev wake"
 
 # hunk
 abbr --add h "hunk"

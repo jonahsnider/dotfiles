@@ -117,7 +117,7 @@ export async function configureRex(sprite: Sprite, home: string) {
 	return waitForRex(sprite);
 }
 
-async function localRex(args: string[]) {
+export async function localRex(args: string[]) {
 	const candidates = [
 		...(process.env['REX_BIN_DIR'] ? [join(process.env['REX_BIN_DIR'], 'rex')] : []),
 		...(process.env['PATH']

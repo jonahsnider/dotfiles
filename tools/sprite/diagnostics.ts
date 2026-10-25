@@ -42,18 +42,6 @@ export const diagnostics = defineDiagnostics({
 			why: 'The local Rex CLI could not be found.',
 			fix: 'Install Rex or set REX_BIN_DIR to its CLI directory.',
 		},
-		REX_APP_NOT_CONNECTED: {
-			why: ({ name }: { name: string }) => `No Rex app connected to Sprite ${name} within 60 seconds.`,
-			fix: 'Open Rex on your Mac and add this Sprite as a remote host, then run wake again.',
-		},
-		REX_MULTIPLE_APPS: {
-			why: 'Multiple Rex apps are connected to this Sprite; cannot choose which app to switch.',
-			fix: 'Disconnect the other Rex apps from this host, then run wake again.',
-		},
-		REX_KEEP_AWAKE_FAILED: {
-			why: 'The Rex keep-awake helper did not start.',
-			fix: ({ log }: { log: string }) => `Check ${log}, then run wake again.`,
-		},
 		REX_HOST_CONFLICT: {
 			why: ({ name }: { name: string }) => `A different Rex host already uses the name ${name}.`,
 		},

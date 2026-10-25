@@ -1,0 +1,19 @@
+#:schema https://pitchfork.en.dev/schema.json
+
+[settings.web]
+auto_start = true
+bind_address = "127.0.0.1"
+bind_port = 3120
+port_attempts = 1
+
+[settings.general]
+mise = true
+
+{{ if eq .chezmoi.os "darwin" -}}
+[daemons.sprite-rex-autowake]
+run = [{{ printf "%s/.local/bin/mise" .chezmoi.homeDir | toJson }}, "exec", "node@26", "--", "node", "autowake.ts", "dev"]
+dir = {{ printf "%s/tools/sprite" .chezmoi.sourceDir | toJson }}
+env = { PATH = "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin" }
+mise = false
+cron = "*/15 * * * * *"
+{{ end -}}

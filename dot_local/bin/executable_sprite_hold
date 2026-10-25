@@ -1,0 +1,3 @@
+#!/bin/sh
+source_dir=$(chezmoi source-path) || exit
+exec node "$source_dir/tools/sprite/hold.ts" "$@"
