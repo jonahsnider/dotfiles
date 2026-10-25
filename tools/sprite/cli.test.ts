@@ -2,8 +2,27 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, delimiter } from 'node:path';
 import spawn from 'nano-spawn';
-import { test } from 'vitest';
-import { parseOptions } from './cli.ts';
+import { log } from '@clack/prompts';
+import oscStatus from 'osc-status';
+import { test, vi, type TestContext } from 'vitest';
+import { runCli } from './cli.ts';
+import * as createModule from './create.ts';
+import * as upgradeModule from './upgrade.ts';
+
+function fixture({ onTestFinished }: TestContext) {
+	const mocks = {
+		create: vi.spyOn(createModule, 'create').mockResolvedValue(undefined),
+		upgrade: vi.spyOn(upgradeModule, 'runUpgrade').mockResolvedValue(undefined),
+		done: vi.spyOn(oscStatus, 'done').mockReturnValue(false),
+		error: vi.spyOn(oscStatus, 'error').mockReturnValue(false),
+		consoleError: vi.spyOn(console, 'error').mockImplementation(() => {}),
+		logError: vi.spyOn(log, 'error').mockImplementation(() => {}),
+	};
+	onTestFinished(() => {
+		for (const mock of Object.values(mocks)) mock.mockRestore();
+	});
+	return mocks;
+}
 
 test.for([
 	['unknown'],
@@ -26,32 +45,70 @@ test.for([
 	['upgrade', 'dev', '--', 'extra'],
 	['upgrade', 'dev', '--rex'],
 	['wake'],
-])('rejects malformed invocation %j before contacting services', async (args, { expect }) => {
-	await expect(parseOptions(args)).rejects.toThrow();
+])('rejects malformed invocation %j before contacting services', { concurrent: false }, async (args, context) => {
+	const { expect } = context;
+	const { create, upgrade, consoleError, error } = fixture(context);
+	await expect(runCli(args)).resolves.toBe(1);
+	expect(create).not.toHaveBeenCalled();
+	expect(upgrade).not.toHaveBeenCalled();
+	expect(consoleError).toHaveBeenCalledOnce();
+	expect(error).not.toHaveBeenCalled();
 });
 
 test.for([
-	{ args: ['create'], expected: { command: 'create', name: 'dev', ref: 'main', resume: false, rex: false } },
-	{ args: ['create', '--rex'], expected: { command: 'create', name: 'dev', rex: true } },
+	{ args: ['create'], expected: { name: 'dev', ref: 'main', resume: false, rex: false } },
+	{ args: ['create', '--rex'], expected: { name: 'dev', rex: true } },
 	{ args: ['create', 'a'.repeat(50), '--rex'], expected: { name: 'a'.repeat(50), rex: true } },
 	{ args: ['create', 'a'.repeat(63)], expected: { name: 'a'.repeat(63), rex: false } },
-	{ args: ['create', 'dev'], expected: { command: 'create', name: 'dev', ref: 'main', resume: false, rex: false } },
-	{ args: ['create', 'dev', '--resume', '--rex'], expected: { command: 'create', resume: true, rex: true } },
-	{ args: ['create', '--', 'dev'], expected: { command: 'create', name: 'dev' } },
+	{ args: ['create', 'dev'], expected: { name: 'dev', ref: 'main', resume: false, rex: false } },
+	{ args: ['create', 'dev', '--resume', '--rex'], expected: { resume: true, rex: true } },
+	{ args: ['create', '--', 'dev'], expected: { name: 'dev' } },
 	{ args: ['create', 'dev', '--ref', '123'], expected: { ref: '123' } },
-	{ args: ['upgrade', 'dev3'], expected: { command: 'upgrade', name: 'dev3' } },
-	{ args: ['upgrade', '--', 'dev3'], expected: { command: 'upgrade', name: 'dev3' } },
-	{ args: ['upgrade'], expected: { command: 'upgrade', name: 'dev' } },
-])('parses %j', async ({ args, expected }, { expect }) => {
-	await expect(parseOptions(args)).resolves.toMatchObject(expected);
+])('runs create for %j', { concurrent: false }, async ({ args, expected }, context) => {
+	const { expect } = context;
+	const { create, upgrade, done, error } = fixture(context);
+	await expect(runCli(args)).resolves.toBe(0);
+	expect(create).toHaveBeenCalledExactlyOnceWith(expect.objectContaining(expected));
+	expect(upgrade).not.toHaveBeenCalled();
+	expect(done).toHaveBeenCalledOnce();
+	expect(error).not.toHaveBeenCalled();
 });
+
+test.for([
+	{ args: ['upgrade', 'dev3'], name: 'dev3' },
+	{ args: ['upgrade', '--', 'dev3'], name: 'dev3' },
+	{ args: ['upgrade'], name: 'dev' },
+])('runs upgrade for %j', { concurrent: false }, async ({ args, name }, context) => {
+	const { expect } = context;
+	const { create, upgrade, done, error } = fixture(context);
+	await expect(runCli(args)).resolves.toBe(0);
+	expect(upgrade).toHaveBeenCalledExactlyOnceWith(name);
+	expect(create).not.toHaveBeenCalled();
+	expect(done).toHaveBeenCalledOnce();
+	expect(error).not.toHaveBeenCalled();
+});
+
+test.for(['create', 'upgrade'] as const)(
+	'reports a failed %s workflow',
+	{ concurrent: false },
+	async (command, context) => {
+		const { expect } = context;
+		const mocks = fixture(context);
+		mocks[command].mockRejectedValueOnce(new Error('connection failed'));
+		await expect(runCli([command])).resolves.toBe(1);
+		expect(mocks.error).toHaveBeenCalledOnce();
+		expect(mocks.done).not.toHaveBeenCalled();
+		expect(mocks.logError).toHaveBeenCalledWith(expect.stringContaining('connection failed'));
+		expect(mocks.consoleError).not.toHaveBeenCalled();
+	},
+);
 
 test.for([[], ['create'], ['upgrade']])('prints help for %j without contacting services', async (args, { expect }) => {
 	const { stdout, stderr } = await spawn(process.execPath, ['cli.ts', ...args, '--help'], {
 		cwd: import.meta.dirname,
 	});
 	expect(stdout).toContain('sprite_dev');
-	expect(stdout).toContain('Usage:');
+	expect(stdout).toContain('USAGE');
 	expect(stdout).not.toContain('\u001b');
 	expect(stderr).toBe('');
 });

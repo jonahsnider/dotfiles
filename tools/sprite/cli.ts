@@ -1,106 +1,153 @@
 import { spawnSync } from 'node:child_process';
-import tab from '@bomb.sh/tab/cac';
-import type { Complete } from '@bomb.sh/tab';
+import { script, ShellCompDirective } from '@bomb.sh/tab';
 import { log, outro } from '@clack/prompts';
-import { cac } from 'cac';
-import { Diagnostic } from 'nostics';
+import {
+	buildApplication,
+	buildChoiceParser,
+	buildCommand,
+	buildRouteMap,
+	proposeCompletions,
+	run,
+	type ApplicationContext,
+} from '@stricli/core';
 import oscStatus from 'osc-status';
 import { create, type CreateOptions } from './create.ts';
 import { diagnostics, formatException } from './diagnostics.ts';
 import { runUpgrade } from './upgrade.ts';
 
-type Options = ({ command: 'create' } & CreateOptions) | { command: 'upgrade'; name: string };
-
 function validateName(name: string) {
 	if (!/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(name)) throw diagnostics.SPRITE_INVALID_NAME();
 }
 
-function completeSprites(complete: Complete) {
+function completeSprites() {
 	const result = spawnSync('sprite', ['list'], {
 		encoding: 'utf8',
 		timeout: 5000,
 		stdio: ['ignore', 'pipe', 'ignore'],
 	});
-	if (result.status === 0) {
-		for (const name of result.stdout.trim().split('\n').filter(Boolean)) complete(name, 'Sprite');
-	}
+	return result.status === 0 ? result.stdout.trim().split('\n').filter(Boolean) : [];
 }
 
-export async function parseOptions(args: string[]) {
-	let result: Options | undefined;
-	const cli = cac('sprite_dev');
-	cli.help();
-	cli
-		.command('create [name]', 'Create a dev Sprite with dotfiles and tools (default: dev)')
-		.option('--ref <branch-or-tag>', 'Dotfiles revision', { default: 'main' })
-		.option('--resume', 'Resume setup of an existing Sprite', { default: false })
-		.option('--rex', 'Enable the Rex Tailscale server and save a Rex CLI host on your Mac', { default: false })
-		.action((name = 'dev', values: Record<string, unknown>) => {
-			validateName(name);
-			if (values['rex'] && name.length > 50) throw diagnostics.REX_HOSTNAME_TOO_LONG();
-			const value = values['ref'];
-			if (typeof value !== 'string' && typeof value !== 'number') throw diagnostics.SPRITE_INVALID_REF();
-			const ref = String(value);
-			if (!ref || ref.startsWith('-')) throw diagnostics.SPRITE_INVALID_REF();
-			result = { command: 'create', name, ref, resume: Boolean(values['resume']), rex: Boolean(values['rex']) };
-		});
-	cli
-		.command('upgrade [name]', 'Update dotfiles, tools, and Rex; restarting Rex ends its sessions (default: dev)')
-		.action((name = 'dev') => {
-			validateName(name);
-			result = { command: 'upgrade', name };
-		});
-	await tab(cli, {
-		subCommands: {
-			// Tab's CAC adapter exposes optional [name] arguments as arg0.
-			create: {
-				args: {
-					arg0: (complete) => {
-						if (cli.options['resume']) completeSprites(complete);
-					},
+export async function runCli(args: string[]) {
+	let operationStarted = false;
+	let commandError: unknown;
+	let stderr = '';
+	const context: ApplicationContext = {
+		process: {
+			stdout: process.stdout,
+			stderr: {
+				write: (message) => {
+					stderr += message;
 				},
 			},
-			upgrade: { args: { arg0: completeSprites } },
+		},
+	};
+	async function runOperation(operation: () => Promise<void>) {
+		operationStarted = true;
+		if (process.stdout.isTTY) process.stdout.write('\u001b]2;sprite_dev\u0007');
+		await operation();
+		oscStatus.done({ app: 'dotfiles-sprite', message: 'Sprite operation complete.' });
+	}
+	const nameParameter = { parse: String, placeholder: 'name', brief: 'Sprite', default: 'dev' };
+	const routes = buildRouteMap({
+		routes: {
+			create: buildCommand({
+				async func(flags: Omit<CreateOptions, 'name'>, name: string) {
+					validateName(name);
+					if (flags.rex && name.length > 50) throw diagnostics.REX_HOSTNAME_TOO_LONG();
+					if (!flags.ref || flags.ref.startsWith('-')) throw diagnostics.SPRITE_INVALID_REF();
+					await runOperation(() => create({ name, ...flags }));
+				},
+				parameters: {
+					flags: {
+						ref: {
+							kind: 'parsed',
+							parse: String,
+							brief: 'Dotfiles revision',
+							placeholder: 'branch-or-tag',
+							default: 'main',
+						},
+						resume: { kind: 'boolean', brief: 'Resume setup of an existing Sprite', default: false },
+						rex: {
+							kind: 'boolean',
+							brief: 'Enable the Rex Tailscale server and save a Rex CLI host on your Mac',
+							default: false,
+						},
+					},
+					positional: {
+						kind: 'tuple',
+						parameters: [
+							{
+								...nameParameter,
+								proposeCompletions: () => (args.slice(2, -1).includes('--resume') ? completeSprites() : []),
+							},
+						],
+					},
+				},
+				docs: { brief: 'Create a dev Sprite with dotfiles and tools' },
+			}),
+			upgrade: buildCommand({
+				async func(_flags: {}, name: string) {
+					validateName(name);
+					await runOperation(() => runUpgrade(name));
+				},
+				parameters: {
+					positional: { kind: 'tuple', parameters: [{ ...nameParameter, proposeCompletions: completeSprites }] },
+				},
+				docs: { brief: 'Update dotfiles, tools, and Rex; restarting Rex ends its sessions' },
+			}),
+			complete: buildCommand({
+				func(_flags: {}, shell: string) {
+					script(shell, 'sprite_dev', 'sprite_dev');
+				},
+				parameters: {
+					positional: {
+						kind: 'tuple',
+						parameters: [
+							{
+								parse: buildChoiceParser(['bash', 'zsh', 'fish', 'powershell']),
+								placeholder: 'shell',
+								brief: 'Shell type',
+							},
+						],
+					},
+				},
+				docs: { brief: 'Generate shell completion scripts' },
+			}),
+		},
+		docs: { brief: 'Create and upgrade dev Sprites' },
+	});
+	const app = buildApplication(routes, {
+		name: 'sprite_dev',
+		scanner: { allowArgumentEscapeSequence: true },
+		determineExitCode(error) {
+			commandError = error;
+			return 1;
 		},
 	});
 	try {
-		cli.parse(['node', 'sprite_dev', ...args], { run: false });
-		if (cli.options['help']) return undefined;
-		if (!cli.matchedCommand) {
-			if (args.length > 0) throw new Error('Choose create, upgrade, or complete.');
-			cli.outputHelp();
-			return undefined;
+		if (args[0] === 'complete' && (args[1] === '--' || args.length === 1)) {
+			const inputs = args.length === 1 ? [''] : args.slice(2);
+			for (const { completion, brief } of await proposeCompletions(app, inputs, context)) {
+				console.log(`${completion}\t${brief}`);
+			}
+			console.log(`:${ShellCompDirective.ShellCompDirectiveNoFileComp}`);
+			return 0;
 		}
-		if (cli.matchedCommandName !== 'complete') {
-			cli.args = [...cli.args, ...(cli.options['--'] as string[])];
-			cli.options['--'] = [];
-		}
-		await cli.runMatchedCommand();
+		await run(app, args, context);
+		if (commandError !== undefined) throw commandError;
+		if (context.process.exitCode) throw diagnostics.SPRITE_INVALID_OPTIONS({ message: stderr.trim() });
+		return 0;
 	} catch (error) {
-		if (error instanceof Diagnostic) throw error;
-		throw diagnostics.SPRITE_INVALID_OPTIONS({ message: error instanceof Error ? error.message : String(error) });
-	}
-	return result;
-}
-
-if (import.meta.main) {
-	let options: Options | undefined;
-	try {
-		options = await parseOptions(process.argv.slice(2));
-		if (options) {
-			if (process.stdout.isTTY) process.stdout.write('\u001b]2;sprite_dev\u0007');
-			if (options.command === 'create') await create(options);
-			else await runUpgrade(options.name);
-			oscStatus.done({ app: 'dotfiles-sprite', message: 'Sprite operation complete.' });
-		}
-	} catch (error) {
-		if (options) {
+		if (operationStarted) {
 			oscStatus.error({ app: 'dotfiles-sprite', message: 'Sprite operation failed.' });
 			log.error(formatException(error));
 			outro('Sprite operation failed. Fix the error and rerun the same command to retry.');
 		} else {
 			console.error(formatException(error));
 		}
-		process.exitCode = 1;
+		return 1;
 	}
 }
+
+if (import.meta.main) process.exitCode = await runCli(process.argv.slice(2));
