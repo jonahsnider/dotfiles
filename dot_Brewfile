@@ -221,8 +221,6 @@ cask "keycastr"
 cask "jonahsnider/frc/limelight-hardware-manager"
 # Music app blocker utility
 cask "music-decoy"
-# Get up and running with large language models locally
-cask "ollama-app"
 # Native GUI for Apple Containers
 cask "orchard"
 # Simple yet powerful path planning tool for FRC robots

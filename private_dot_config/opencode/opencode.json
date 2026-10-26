@@ -11,19 +11,5 @@
       "type": "remote",
       "url": "https://mcp.sanity.io"
     }
-  },
-  "provider": {
-    "ollama": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Ollama",
-      "options": {
-        "baseURL": "http://localhost:11434/v1"
-      },
-      "models": {
-        "qwen3.8:27b-mlx": {
-          "name": "Qwen3.8-27B"
-        }
-      }
-    }
   }
 }
