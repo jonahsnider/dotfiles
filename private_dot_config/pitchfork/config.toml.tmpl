@@ -10,6 +10,10 @@ port_attempts = 1
 mise = true
 
 {{ if eq .chezmoi.os "darwin" -}}
+[settings.boot]
+# Keep launchd independent of Homebrew's versioned Cellar paths.
+executable = "/opt/homebrew/bin/pitchfork"
+
 [daemons.sprite-rex-autowake]
 run = [{{ printf "%s/.local/bin/mise" .chezmoi.homeDir | toJson }}, "exec", "node@26", "--", "node", "autowake.ts", "dev"]
 dir = {{ printf "%s/tools/sprite" .chezmoi.sourceDir | toJson }}
