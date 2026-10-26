@@ -554,6 +554,9 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/tab"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/sanity/mise-config"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
@@ -596,6 +599,9 @@ CHOKIDAR_USEPOLLING = "1"
 
 [hooks.state."/Users/jonah.snider/.codex/hooks.json:session_start:0:0"]
 trusted_hash = "sha256:7ac16f27c7b29bec5952047d0a2193dc7595d731faca5a12c3c476194bd2d532"
+
+[hooks.state."/Users/jonah.snider/.codex/hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:2ca46a46d2f461d61d97962c143bdea6305415db82fa1d7755db90dc6bac26b2"
 
 [[skills.config]]
 path = "/Users/jonah.snider/.agents/skills/hatch-pet/SKILL.md"
