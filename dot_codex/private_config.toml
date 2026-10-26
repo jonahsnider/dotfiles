@@ -151,8 +151,8 @@ NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.1016.62342"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.1016.62342/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+BROWSER_USE_CODEX_APP_VERSION = "26.1021.31345"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.1021.31345/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
 SKY_CUA_SERVICE_PATH = "/Users/jonah.snider/.codex/computer-use/Codex Computer Use.app"
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
 
@@ -548,6 +548,12 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/args"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/sanity/ai-spend-comparison"]
+trust_level = "trusted"
+
+[projects."/Users/jonah.snider/programming/tab"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
@@ -568,6 +574,12 @@ enabled = false
 # Sanity app
 [apps.asdk_app_69ceae6d8d78819192e59f76b8e170b5]
 enabled = true
+
+[apps.connector_openai_chatgpt_pets]
+enabled = false
+
+[apps.connector_openai_hotline]
+enabled = false
 
 [features]
 # Reassess daemon use once https://github.com/openai/codex/issues/48195 is resolved.
@@ -599,7 +611,4 @@ enabled = true
 enabled = true
 
 [plugins."computer-use@openai-bundled"]
-enabled = true
-
-[plugins."code-review@openai-bundled"]
 enabled = true
