@@ -9,10 +9,10 @@ source $modules_dir/path.fish
 {{ if eq .chezmoi.os "darwin" -}}
 # macOS tools
 fish_add_path -g /Applications
-fish_add_path -g /opt/homebrew/share/google-cloud-sdk/bin
 fish_add_path /opt/homebrew/opt/libpq/bin
 {{ end -}}
 
+fish_add_path --global --prepend "{{ .chezmoi.homeDir }}/programming/sanity/sanity-nix-config/.devenv/bin"
 mise activate fish | source
 
 # Stage 3 - Everything else
@@ -26,5 +26,5 @@ source $modules_dir/general.fish
 source $modules_dir/prompt.fish
 
 {{- if joinPath .chezmoi.homeDir "programming/sanity/mise-config/shell-hooks/loaded.fish" | lstat }}
-source "$HOME/programming/sanity/mise-config/shell-hooks/loaded.fish"
+test -f "{{ .chezmoi.homeDir }}/programming/sanity/mise-config/shell-hooks/loaded.fish"; and source "{{ .chezmoi.homeDir }}/programming/sanity/mise-config/shell-hooks/loaded.fish"
 {{- end }}

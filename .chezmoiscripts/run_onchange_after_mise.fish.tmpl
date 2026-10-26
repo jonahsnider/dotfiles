@@ -2,5 +2,5 @@
 
 # https://www.chezmoi.io/user-guide/use-scripts-to-perform-actions/#run-a-script-when-the-contents-of-another-file-changes
 
-# mise.toml hash: {{ include "private_dot_config/mise/config.toml" | sha256sum }}
+# mise.toml hash: {{ include "private_dot_config/mise/config.toml.tmpl" | sha256sum }}
 mise install

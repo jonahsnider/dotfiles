@@ -19,7 +19,7 @@ yarn = "latest"
 idiomatic_version_file_enable_tools = ["node", "pnpm", "yarn"]
 trusted_config_paths = [
   "~/conductor/workspaces/",
-  "~/programming/sanity",
+  "{{ .chezmoi.homeDir }}/programming/sanity",
 ]
 env_file = ".env"
 auto_update = true
@@ -28,6 +28,6 @@ auto_update = true
 credential_command = "gh auth token"
 
 [env]
-SANITY_WORKSPACE = "{{env.HOME}}/programming/sanity"
-SANITY_MISE_BOOTSTRAP_VERSION = "6"
-SANITY_NIX_PATH = "{{env.HOME}}/programming/sanity/sanity-nix-config"
+SANITY_WORKSPACE = "{{ .chezmoi.homeDir }}/programming/sanity"
+SANITY_MISE_BOOTSTRAP_VERSION = "7"
+SANITY_NIX_PATH = "{{ .chezmoi.homeDir }}/programming/sanity/sanity-nix-config"
