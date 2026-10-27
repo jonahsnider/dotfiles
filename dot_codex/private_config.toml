@@ -91,6 +91,7 @@ ambient-suggestions-enabled = false
 toys-audio-visualizer-enabled = false
 confirm-before-close = "never"
 worktree-keep-count = 5
+composer-predictions-enabled = false
 
 [desktop.open-in-target-preferences]
 global = "vscode"
