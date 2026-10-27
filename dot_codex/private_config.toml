@@ -134,6 +134,10 @@ source = "/Users/jonah.snider/.codex/.tmp/bundled-marketplaces/openai-bundled"
 source_type = "local"
 source = "/Users/jonah.snider/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
+[marketplaces.sanity-engineering]
+source_type = "git"
+source = "https://github.com/sanity-io/mcp-servers.git"
+
 [mcp_servers.node_repl]
 args = []
 command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
@@ -618,4 +622,7 @@ enabled = true
 enabled = true
 
 [plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."sanity-internal-tools@sanity-engineering"]
 enabled = true
