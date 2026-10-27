@@ -192,6 +192,9 @@ url = "https://mcp.fly.io"
 [mcp_servers.superlogical]
 url = "https://www.superlogical.com/rex/community-mcp"
 
+[mcp_servers.sanity-internal]
+url = "https://mcp.sanity.tools/mcp"
+
 [notice]
 fast_default_opt_out = true
 hide_full_access_warning = true
