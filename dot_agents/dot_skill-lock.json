@@ -6,9 +6,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/github/gh-stack.git",
       "skillPath": "skills/gh-stack/SKILL.md",
-      "skillFolderHash": "6bfe555e89a6b264e09d5ece7c4040226458c8e5",
+      "skillFolderHash": "1f58c48379bc9fcab68e8a37cb41aad3ad937419",
       "installedAt": "2026-05-27T00:25:01.562Z",
-      "updatedAt": "2026-09-03T04:38:24.513Z"
+      "updatedAt": "2026-10-28T21:37:44.155Z"
     },
     "deslop": {
       "source": "cursor/plugins",
@@ -24,9 +24,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/jonahsnider/wpilog-parser.git",
       "skillPath": "skills/analyze-wpilog/SKILL.md",
-      "skillFolderHash": "0139f12818f9609644c4b119c327f5d0b6b0fe55",
+      "skillFolderHash": "82c467dad984f37442d129db704f3d88dac612f0",
       "installedAt": "2026-09-29T06:40:48.556Z",
-      "updatedAt": "2026-09-29T06:40:48.556Z"
+      "updatedAt": "2026-10-28T21:37:48.185Z"
     }
   },
   "dismissed": {
