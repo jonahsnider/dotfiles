@@ -27,6 +27,9 @@ auto_update = true
 [settings.github]
 credential_command = "gh auth token"
 
+[settings.npm]
+package_manager = "pnpm"
+
 [env]
 SANITY_WORKSPACE = "{{ .chezmoi.homeDir }}/programming/sanity"
 SANITY_MISE_BOOTSTRAP_VERSION = "7"
