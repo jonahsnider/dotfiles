@@ -1,0 +1,29 @@
+{
+  "$version": 4,
+  "env": {
+    "OLLAMA_API_KEY": "ollama"
+  },
+  "hooks": {},
+  "model": {
+    "name": "qwen3.8:27b-mlx"
+  },
+  "modelProviders": {
+    "openai": [
+      {
+        "baseUrl": "http://127.0.0.1:11434/v1",
+        "envKey": "OLLAMA_API_KEY",
+        "id": "qwen3.8:27b-mlx",
+        "name": "qwen3.8:27b-mlx (Ollama)"
+      }
+    ]
+  },
+  "security": {
+    "auth": {
+      "baseUrl": "http://127.0.0.1:11434/v1",
+      "selectedType": "openai"
+    }
+  },
+  "ui": {
+    "autoModeAcknowledged": true
+  }
+}
