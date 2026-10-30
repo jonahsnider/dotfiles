@@ -1,4 +1,5 @@
 "$schema" = "https://conductor.build/schemas/settings.schema.json"
+codex_provider = "default"
 
 [git]
 archive_on_merge = true
@@ -7,6 +8,12 @@ delete_branch_on_archive = true
 
 [models]
 default = "gpt-5.5"
+review = "opus-5-5-1m"
+review_fast_mode = false
+
+[models.claude_code]
+personality = "concise"
+review_effort_level = "high"
 
 [models.codex]
 default_thinking_level = "high"
