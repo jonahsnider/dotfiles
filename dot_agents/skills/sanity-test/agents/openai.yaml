@@ -3,6 +3,6 @@ interface:
 dependencies:
   tools:
     - type: "mcp"
-      value: "sanity-local"
+      value: "sanity_local"
       transport: "streamable-http"
       url: "http://127.0.0.1:3003"
