@@ -1,10 +1,21 @@
 # Compilation and Runtime
 
 Use an LTS version of Node.js, preferably the latest release.
+Use modern syntax and runtime features where possible.
 
 ## Libraries
 
-Libraries should be built with `zshy`, which wraps `tsc`.
+Libraries should be built with `zshy`, which wraps `tsc`. Disable its CJS output in `package.json`:
+
+```json
+{
+  "type": "module",
+  "zshy": {
+    "exports": "./src/index.ts",
+    "cjs": false
+  }
+}
+```
 
 `tsconfig.json`:
 
@@ -15,6 +26,7 @@ Libraries should be built with `zshy`, which wraps `tsc`.
 ```
 
 Use Vite+ instead of zshy if it's already setup.
+Set `pack.format` to `["esm"]` in `vite.config.ts` for `vp pack`.
 
 ## Apps and scripts
 
