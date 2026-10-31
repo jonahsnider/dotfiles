@@ -1,2 +1,15 @@
+Host *.sprite
+	User sprite
+	IdentityFile ~/.ssh/sprite-proxy
+	IdentityAgent none
+	IdentitiesOnly yes
+	BatchMode yes
+	StrictHostKeyChecking accept-new
+	ProxyCommand /bin/sh -c 'exec /opt/homebrew/bin/sprite proxy --ssh -s "${1%%.sprite}"' sh %h
+	ExitOnForwardFailure yes
+	StreamLocalBindUnlink yes
+	ServerAliveInterval 30
+	ServerAliveCountMax 3
+
 Host *
 	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"

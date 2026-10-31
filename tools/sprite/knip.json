@@ -1,5 +1,5 @@
 {
 	"$schema": "https://unpkg.com/knip@6/schema.json",
-	"entry": ["autowake.ts", "hold.ts"],
+	"entry": ["hold.ts"],
 	"ignoreBinaries": ["sprite"]
 }

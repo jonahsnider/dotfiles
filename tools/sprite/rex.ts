@@ -1,74 +1,34 @@
 import { existsSync } from 'node:fs';
 import { delimiter, join } from 'node:path';
 import { setTimeout } from 'node:timers/promises';
-import { log as clackLog } from '@clack/prompts';
 import { ExecError, type Sprite, type ServiceRequest, type ServiceLogStream } from '@fly/sprites';
 import spawn from 'nano-spawn';
-import oscStatus from 'osc-status';
 import { diagnostics } from './diagnostics.ts';
 
-interface RexStatus {
-	tailscale: {
-		state: string;
-		auth_url?: string;
-		error?: string;
-		https?: { state: string; url?: string };
-	};
-}
+const rexEndpoint = 'http://127.0.0.1:7297';
 
-export async function waitForRex(
-	sprite: Sprite,
-	{ timeoutMs = 300_000, intervalMs = 2000, log = clackLog.info, status: reportStatus = oscStatus } = {},
-) {
+export async function waitForRex(sprite: Sprite, { timeoutMs = 30_000, intervalMs = 500 } = {}) {
 	const deadline = Date.now() + timeoutMs;
-	let authURL: string | undefined;
-	let needsApproval = false;
 	while (Date.now() < deadline) {
-		let status: RexStatus | undefined;
 		try {
-			// oxlint-disable-next-line no-await-in-loop -- Each poll depends on the preceding server state.
-			const { stdout } = await sprite.execFile('/usr/bin/rex', ['--autostart=false', 'server', 'status', '--json'], {
+			// oxlint-disable-next-line no-await-in-loop -- Wait for the supervised HTTP listener to accept requests.
+			await sprite.execFile('/usr/bin/rex', ['--autostart=false', '-S', rexEndpoint, 'ls', '--json'], {
 				timeout: 10_000,
 			});
-			status = JSON.parse(stdout.toString()) as RexStatus;
+			return;
 		} catch (error) {
 			// The supervised process can start before its local socket is ready.
 			if (
 				!(error instanceof ExecError) ||
 				error.exitCode !== 1 ||
-				!error.stderr.toString().includes('rex server is not running')
+				!error.stderr.toString().includes('connection refused')
 			)
 				throw error;
-		}
-		const tailscale = status?.tailscale;
-		if (tailscale?.error) throw diagnostics.REX_TAILSCALE_FAILED({ message: tailscale.error });
-		if (tailscale?.auth_url && tailscale.auth_url !== authURL) {
-			authURL = tailscale.auth_url;
-			log(`Sign this Sprite into the same Tailscale account as Rex on your MacBook:\n${authURL}`);
-			reportStatus.blocked({
-				app: 'dotfiles-sprite',
-				kind: 'auth',
-				message: 'Sign the Sprite into Tailscale using the printed authorization link.',
-			});
-		}
-		if (tailscale?.state === 'needs_machine_approval' && !needsApproval) {
-			needsApproval = true;
-			log('A Tailscale administrator must approve the Sprite device.');
-			reportStatus.blocked({
-				app: 'dotfiles-sprite',
-				kind: 'permission',
-				message: 'A Tailscale administrator must approve the Sprite device.',
-			});
-		}
-		if (tailscale?.state === 'running')
-			reportStatus.working({ app: 'dotfiles-sprite', message: 'Waiting for Rex HTTPS…' });
-		if (tailscale?.state === 'running' && tailscale.https?.state === 'available' && tailscale.https.url) {
-			return tailscale.https.url;
 		}
 		// oxlint-disable-next-line no-await-in-loop -- Delay before the next readiness poll.
 		await setTimeout(intervalMs);
 	}
-	throw diagnostics.REX_HTTPS_TIMEOUT();
+	throw diagnostics.REX_READY_TIMEOUT();
 }
 
 export async function configureRex(sprite: Sprite, home: string) {
@@ -81,9 +41,9 @@ export async function configureRex(sprite: Sprite, home: string) {
 			'text',
 			'--state-dir',
 			`${home}/.local/state/rex`,
-			'--tailscale',
-			'--tailscale-hostname',
-			`jonah-sprite-${sprite.name}`,
+			'--extra-listen',
+			rexEndpoint,
+			'--allow-anonymous',
 		],
 		dir: home,
 		env: { HOME: home, USER: 'sprite', LOGNAME: 'sprite', SHELL: '/usr/bin/fish', GODEBUG: '' },
@@ -117,7 +77,7 @@ export async function configureRex(sprite: Sprite, home: string) {
 	return waitForRex(sprite);
 }
 
-export async function localRex(args: string[]) {
+async function localRex(args: string[]) {
 	const candidates = [
 		...(process.env['REX_BIN_DIR'] ? [join(process.env['REX_BIN_DIR'], 'rex')] : []),
 		...(process.env['PATH']

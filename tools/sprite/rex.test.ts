@@ -1,93 +1,69 @@
 import { ExecError, ServiceLogStream, SpritesClient } from '@fly/sprites';
-import oscStatus from 'osc-status';
 import { test, vi } from 'vitest';
 import { configureRex, registerRexHost, waitForRex } from './rex.ts';
 
-const url = 'https://my-dev.example.ts.net';
-const ready = { tailscale: { state: 'running', https: { state: 'available', url } } };
-const readyResult = { stdout: JSON.stringify(ready), stderr: '', exitCode: 0 };
+const url = '/Users/test/.ssh/rex-my-dev.sock';
+const readyResult = { stdout: '{"sessions":[]}', stderr: '', exitCode: 0 };
 
-test('waits through login and certificate provisioning for the actual HTTPS URL', async ({ expect }) => {
+test('waits for the loopback listener to accept requests', async ({ expect }) => {
 	const sprite = new SpritesClient('test-token').sprite('my-dev');
-	const log = vi.fn();
-	const status = { ...oscStatus, blocked: vi.fn().mockReturnValue(false), working: vi.fn().mockReturnValue(false) };
-	const states = [
-		{ tailscale: { state: 'needs_login', auth_url: 'https://login.tailscale.com/test' } },
-		{ tailscale: { state: 'needs_machine_approval' } },
-		{ tailscale: { state: 'running', dns_name: 'my-dev.example.ts.net', https: { state: 'pending' } } },
-		ready,
-	];
-	const exec = vi.spyOn(sprite, 'execFile');
-	for (const state of states) {
-		exec.mockResolvedValueOnce({ stdout: JSON.stringify(state), stderr: '', exitCode: 0 });
-	}
-	await expect(waitForRex(sprite, { intervalMs: 0, timeoutMs: 1000, log, status })).resolves.toBe(url);
-	expect(exec).toHaveBeenCalledTimes(states.length);
-	expect(log).toHaveBeenCalledWith(expect.stringContaining('https://login.tailscale.com/test'));
-	expect(status.blocked).toHaveBeenNthCalledWith(1, expect.objectContaining({ kind: 'auth' }));
-	expect(status.blocked).toHaveBeenNthCalledWith(2, expect.objectContaining({ kind: 'permission' }));
-	expect(status.working).toHaveBeenCalled();
-});
-
-test('retries a socket that is not ready and reports Tailscale failures', async ({ expect }) => {
-	const sprite = new SpritesClient('test-token').sprite('my-dev');
-	vi.spyOn(sprite, 'execFile')
+	const exec = vi
+		.spyOn(sprite, 'execFile')
 		.mockRejectedValueOnce(
-			new ExecError('server not ready', { exitCode: 1, stdout: '', stderr: 'rex server is not running' }),
+			new ExecError('not ready', { exitCode: 1, stdout: '', stderr: 'connect: connection refused' }),
 		)
-		.mockResolvedValueOnce({
-			stdout: JSON.stringify({ tailscale: { state: 'disabled', error: 'HTTPS is disabled on this tailnet' } }),
-			stderr: '',
-			exitCode: 0,
-		});
-	await expect(waitForRex(sprite, { intervalMs: 0, timeoutMs: 1000 })).rejects.toThrow('HTTPS is disabled');
+		.mockResolvedValueOnce(readyResult);
+	await expect(waitForRex(sprite, { intervalMs: 0, timeoutMs: 1000 })).resolves.toBeUndefined();
+	expect(exec).toHaveBeenCalledTimes(2);
+	expect(exec).toHaveBeenLastCalledWith(
+		'/usr/bin/rex',
+		['--autostart=false', '-S', 'http://127.0.0.1:7297', 'ls', '--json'],
+		{ timeout: 10_000 },
+	);
 });
 
-test('reports unexpected status-command failures instead of polling through them', async ({ expect }) => {
+test('reports unexpected readiness failures instead of polling through them', async ({ expect }) => {
+	const sprite = new SpritesClient('test-token').sprite('my-dev');
+	const exec = vi
+		.spyOn(sprite, 'execFile')
+		.mockRejectedValue(new ExecError('permission denied', { exitCode: 1, stdout: '', stderr: 'permission denied' }));
+	await expect(waitForRex(sprite)).rejects.toThrow('permission denied');
+	expect(exec).toHaveBeenCalledOnce();
+});
+
+test('times out if the loopback listener never becomes ready', async ({ expect }) => {
 	const sprite = new SpritesClient('test-token').sprite('my-dev');
 	vi.spyOn(sprite, 'execFile').mockRejectedValue(
-		new ExecError('permission denied', { exitCode: 1, stdout: '', stderr: 'permission denied' }),
+		new ExecError('not ready', { exitCode: 1, stdout: '', stderr: 'connect: connection refused' }),
 	);
-	await expect(waitForRex(sprite)).rejects.toThrow('permission denied');
-});
-
-test('times out without treating a pending HTTPS listener as ready', async ({ expect }) => {
-	const sprite = new SpritesClient('test-token').sprite('my-dev');
-	vi.spyOn(sprite, 'execFile').mockResolvedValue({
-		stdout: JSON.stringify({ tailscale: { state: 'running', https: { state: 'pending' } } }),
-		stderr: '',
-		exitCode: 0,
-	});
 	await expect(waitForRex(sprite, { intervalMs: 0, timeoutMs: 10 })).rejects.toMatchObject({
-		code: 'REX_HTTPS_TIMEOUT',
+		code: 'REX_READY_TIMEOUT',
 		fix: expect.stringContaining('--resume --rex'),
 	});
 });
 
-test('creates a supervised personal server with persistent Tailscale state and no anonymous listener', async ({
-	expect,
-}) => {
+test('keeps the network listener on loopback and reuses an already-running service', async ({ expect }) => {
 	const sprite = new SpritesClient('test-token').sprite('my-dev');
 	const list = vi.spyOn(sprite, 'listServices').mockResolvedValue([]);
 	vi.spyOn(sprite, 'execFile').mockResolvedValue(readyResult);
 	const create = vi
 		.spyOn(sprite, 'createService')
 		.mockImplementation(async () => new ServiceLogStream(new Response('{"type":"started"}\n')));
-	await expect(configureRex(sprite, '/home/sprite')).resolves.toBe(url);
-	expect(create).toHaveBeenCalledWith(
-		'rex',
-		expect.objectContaining({
-			cmd: '/usr/bin/rex',
-			env: expect.objectContaining({ HOME: '/home/sprite' }),
-			args: expect.arrayContaining(['--tailscale', '/home/sprite/.local/state/rex', 'jonah-sprite-my-dev']),
-		}),
-		'1s',
-	);
+	await configureRex(sprite, '/home/sprite');
 	const config = create.mock.calls[0]![1];
-	expect(config.args).not.toContain('--allow-anonymous');
-	// Reusing the same service must preserve its sessions and Tailscale identity.
+	expect(config.args).toEqual([
+		'server',
+		'run',
+		'--log-format',
+		'text',
+		'--state-dir',
+		'/home/sprite/.local/state/rex',
+		'--extra-listen',
+		'http://127.0.0.1:7297',
+		'--allow-anonymous',
+	]);
 	list.mockResolvedValue([{ name: 'rex', needs: [], args: [], ...config, state: { name: 'rex', status: 'running' } }]);
-	await expect(configureRex(sprite, '/home/sprite')).resolves.toBe(url);
+	await configureRex(sprite, '/home/sprite');
 	expect(create).toHaveBeenCalledOnce();
 });
 

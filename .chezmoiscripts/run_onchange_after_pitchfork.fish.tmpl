@@ -8,7 +8,7 @@
 {{ if eq .chezmoi.os "darwin" -}}
 pitchfork boot enable
 pitchfork supervisor start
-pitchfork start global/sprite-rex-autowake; or exit $status
+pitchfork start global/sprite-rex; or exit $status
 {{ else -}}
 sudo pitchfork boot enable
 # Restart the pitchfork supervisor

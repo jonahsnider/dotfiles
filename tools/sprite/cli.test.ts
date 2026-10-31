@@ -30,7 +30,6 @@ test.for([
 	['create', 'UPPERCASE'],
 	['create', 'a/b'],
 	['create', 'a'.repeat(64)],
-	['create', 'a'.repeat(51), '--rex'],
 	['create', 'one', 'two'],
 	['create', 'one', '--ref=-bad'],
 	['create', 'one', '--typo'],
@@ -58,7 +57,7 @@ test.for([
 test.for([
 	{ args: ['create'], expected: { name: 'dev', ref: 'main', resume: false, rex: false } },
 	{ args: ['create', '--rex'], expected: { name: 'dev', rex: true } },
-	{ args: ['create', 'a'.repeat(50), '--rex'], expected: { name: 'a'.repeat(50), rex: true } },
+	{ args: ['create', 'a'.repeat(63), '--rex'], expected: { name: 'a'.repeat(63), rex: true } },
 	{ args: ['create', 'a'.repeat(63)], expected: { name: 'a'.repeat(63), rex: false } },
 	{ args: ['create', 'dev'], expected: { name: 'dev', ref: 'main', resume: false, rex: false } },
 	{ args: ['create', 'dev', '--resume', '--rex'], expected: { resume: true, rex: true } },

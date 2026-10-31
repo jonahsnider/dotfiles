@@ -14,10 +14,9 @@ mise = true
 # Keep launchd independent of Homebrew's versioned Cellar paths.
 executable = "/opt/homebrew/bin/pitchfork"
 
-[daemons.sprite-rex-autowake]
-run = [{{ printf "%s/.local/bin/mise" .chezmoi.homeDir | toJson }}, "exec", "node@26", "--", "node", "autowake.ts", "dev"]
-dir = {{ printf "%s/tools/sprite" .chezmoi.sourceDir | toJson }}
-env = { PATH = "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin" }
+[daemons.sprite-rex]
+run = ["/usr/bin/ssh", "-NT", "-L", {{ printf "%s/.ssh/rex-dev.sock:127.0.0.1:7297" .chezmoi.homeDir | toJson }}, "dev.sprite"]
 mise = false
-cron = "*/15 * * * * *"
+boot_start = true
+retry = true
 {{ end -}}

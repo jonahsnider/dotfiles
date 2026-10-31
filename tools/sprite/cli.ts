@@ -54,7 +54,6 @@ export async function runCli(args: string[]) {
 			create: buildCommand({
 				async func(flags: Omit<CreateOptions, 'name'>, name: string) {
 					validateName(name);
-					if (flags.rex && name.length > 50) throw diagnostics.REX_HOSTNAME_TOO_LONG();
 					if (!flags.ref || flags.ref.startsWith('-')) throw diagnostics.SPRITE_INVALID_REF();
 					await runOperation(() => create({ name, ...flags }));
 				},
@@ -70,7 +69,7 @@ export async function runCli(args: string[]) {
 						resume: { kind: 'boolean', brief: 'Resume setup of an existing Sprite', default: false },
 						rex: {
 							kind: 'boolean',
-							brief: 'Enable the Rex Tailscale server and save a Rex CLI host on your Mac',
+							brief: 'Enable Rex over the Sprite SSH proxy and save a Rex CLI host on your Mac',
 							default: false,
 						},
 					},
