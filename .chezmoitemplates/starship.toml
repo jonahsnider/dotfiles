@@ -61,6 +61,7 @@ format = "[$user]($style)@"
 show_always = true
 
 [hostname]
+aliases = { H0GNFVM2T2 = "mbp" }
 format = "[$hostname]($style) "
 ssh_only = false
 style = "green"
