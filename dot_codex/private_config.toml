@@ -68,6 +68,8 @@ extends = ":workspace"
 
 "~/.gradle" = "write"
 
+"~/.pkl/cache" = "write"
+
 [permissions.dev.network]
 enabled = true
 
