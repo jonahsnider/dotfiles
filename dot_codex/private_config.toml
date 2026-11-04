@@ -591,6 +591,9 @@ trust_level = "trusted"
 [projects."/Users/jonah.snider/programming/sanity/backstage"]
 trust_level = "trusted"
 
+[projects."/Users/jonah.snider/programming/hk"]
+trust_level = "trusted"
+
 [tui]
 theme = "dracula"
 session_picker_view = "comfortable"
