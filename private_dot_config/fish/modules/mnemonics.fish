@@ -144,9 +144,6 @@ abbr --add brU "brew upgrade"
 abbr --add brt "brew tap"
 abbr --add bri "brew install"
 
-# sudo
-abbr --add s sudo
-
 # open
 abbr --add o open
 abbr --add o. "open ."
