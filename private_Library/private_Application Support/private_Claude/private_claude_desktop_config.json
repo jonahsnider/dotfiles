@@ -10,9 +10,22 @@
     "coworkPreferredBrowser": "built_in",
     "launchPreviewPersistedWorkspaces": [],
     "launchPreviewSessionScopedSessions": [],
+    "launchChromeImportPrompt": "dismissed",
     "localAgentModeTrustedFolders": [
       "/Users/jonah.snider/programming/sanity"
     ],
+    "remoteFolderConsentMemory": [
+      "/Users/jonah.snider/programming/sanity/aigro-split-studio"
+    ],
+    "remoteChatFolderGrants": {
+      "ca7ed276-0fef-4de1-ba3a-8ebe51d041fc": {
+        "orgUuid": "70536e9b-4830-4565-8b77-c9881c354e7f",
+        "accountUuid": "db1872f9-9884-4f72-ad3d-fb2365936312",
+        "folders": [
+          "/Users/jonah.snider/programming/sanity/aigro-split-studio"
+        ]
+      }
+    },
     "coworkLegacyRootGrantsPruned": true,
     "coworkScheduledTasksEnabled": true,
     "coworkHipaaRestricted": false,
@@ -135,7 +148,8 @@
           "prefsSeeded": true
         }
       },
-      "epitaxy-auto-mode-denial-count.db1872f9-9884-4f72-ad3d-fb2365936312": 3
+      "epitaxy-auto-mode-denial-count.db1872f9-9884-4f72-ad3d-fb2365936312": 4,
+      "ultrathinkAvailable.claude-opus-5-5.db1872f9-9884-4f72-ad3d-fb2365936312": false
     }
   }
 }
