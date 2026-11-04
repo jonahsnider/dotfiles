@@ -66,6 +66,8 @@ extends = ":workspace"
 
 "~/.sprites" = "write"
 
+"~/.gradle" = "write"
+
 [permissions.dev.network]
 enabled = true
 
