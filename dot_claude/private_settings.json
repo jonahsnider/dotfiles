@@ -189,5 +189,6 @@
   "teammateMode": "auto",
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "outputStyle": "Concise"
 }
