@@ -1,4 +1,4 @@
-export MISE_IGNORED_CONFIG_PATHS="$HOME/programming/dotfiles/private_dot_config/mise"
+export MISE_IGNORED_CONFIG_PATHS="$HOME/programming/dotfiles/private_dot_config/mise:$HOME/Documents/Codex"
 
 # Vite+ bin (https://viteplus.dev)
 . "$HOME/.config/vite-plus/env"
