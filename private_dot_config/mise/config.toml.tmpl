@@ -8,6 +8,9 @@ gh = "latest"
 ], asset_pattern = "*.vsix", format = "raw", bin = "pkl.vsix", postinstall = 'code --install-extension "$MISE_TOOL_INSTALL_PATH/pkl.vsix" --force' }
 "github:facebook/infer" = "latest"
 "github:railwayapp/railpack" = "latest"
+"github:wpilibsuite/vscode-wpilib" = { version = "latest", os = [
+  "macos",
+], asset_pattern = "*.vsix", format = "raw", bin = "wpilib.vsix", postinstall = 'code --install-extension "$MISE_TOOL_INSTALL_PATH/wpilib.vsix" --force' }
 go = "latest"
 java = "temurin-25"
 node = "26"
