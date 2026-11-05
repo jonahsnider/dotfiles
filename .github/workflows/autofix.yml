@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Fish shell
-        uses: fish-shop/install-fish-shell@v2
+        uses: fish-shop/install-fish-shell@1ba366f90eef99b5a3e3a2e73e362d9248f39a3a # v2
         background: true
 
       - name: Checkout Git repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: pnpm/setup@v3
+      - uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3
         with:
           working-directory: tools/sprite
           cache: true
@@ -36,4 +36,4 @@ jobs:
         continue-on-error: true
 
       - name: Run autofix.ci
-        uses: autofix-ci/action@v1
+        uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a # v1
