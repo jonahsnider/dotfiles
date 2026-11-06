@@ -7,5 +7,12 @@ eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 export PATH="$HOME/.local/bin:$PATH"
 eval "$(mise activate zsh)"
 
+{{ if eq .chezmoi.os "darwin" -}}
+# Rex
+if (( ! $+commands[rex] )); then
+    export PATH="$PATH:$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS"
+fi
+{{ end -}}
+
 # direnv
 eval "$(direnv hook zsh)"

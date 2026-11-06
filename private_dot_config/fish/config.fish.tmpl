@@ -10,6 +10,11 @@ source $modules_dir/path.fish
 # macOS tools
 fish_add_path -g /Applications
 fish_add_path /opt/homebrew/opt/libpq/bin
+
+# Rex
+if not command -sq rex
+    fish_add_path -g --append "$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS"
+end
 {{ end -}}
 
 fish_add_path --global --prepend "{{ .chezmoi.homeDir }}/programming/sanity/sanity-nix-config/.devenv/bin"
