@@ -26,6 +26,7 @@
       "autoUpdate": false
     }
   },
+  "outputStyle": "Concise",
   "sandbox": {
     "enabled": false,
     "autoAllowBashIfSandboxed": true,
@@ -54,5 +55,9 @@
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "outputStyle": "Concise"
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  }
 }
