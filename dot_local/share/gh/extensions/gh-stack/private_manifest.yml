@@ -1,6 +1,0 @@
-owner: github
-name: gh-stack
-host: github.com
-tag: v0.3.0
-ispinned: true
-path: /Users/jonah.snider/.local/share/gh/extensions/gh-stack/gh-stack

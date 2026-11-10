@@ -1,9 +1,7 @@
 {
 	"extends": ["github>jonahsnider/renovate-config"],
 	"npm": {
-		"managerFilePatterns": [
-			"/^\\.chezmoitemplates\\/pnpm-global-packages\\.json$/"
-		]
+		"managerFilePatterns": ["/^\\.chezmoitemplates\\/pnpm-global-packages\\.json$/"]
 	},
 	"packageRules": [
 		{
@@ -14,14 +12,12 @@
 	],
 	"customManagers": [
 		{
-			"customType": "jsonata",
-			"fileFormat": "yaml",
-			"managerFilePatterns": [
-				"/^dot_local\\/share\\/gh\\/extensions\\/[^/]+\\/private_manifest\\.yml$/"
-			],
+			"customType": "regex",
+			"managerFilePatterns": ["/^dot_local\\/share\\/gh\\/extensions\\/[^/]+\\/private_manifest\\.yml\\.tmpl$/"],
 			"matchStrings": [
-				"$map($, function($manifest) { { \"depName\": $manifest.owner & \"/\" & $manifest.name, \"currentValue\": $manifest.tag } })"
+				"owner: (?<owner>\\S+)\\s+name: (?<name>\\S+)\\s+host: github\\.com\\s+tag: (?<currentValue>\\S+)"
 			],
+			"depNameTemplate": "{{{owner}}}/{{{name}}}",
 			"datasourceTemplate": "github-releases",
 			"depTypeTemplate": "github-cli-extension"
 		}

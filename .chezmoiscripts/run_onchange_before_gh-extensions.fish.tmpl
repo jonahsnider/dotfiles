@@ -1,8 +1,8 @@
 #!/usr/bin/env fish
 
 # Reinstall so gh updates each executable and its manifest together.
-{{ range joinPath .chezmoi.sourceDir "dot_local/share/gh/extensions/*/private_manifest.yml" | glob }}
-{{- $manifest := include . | fromYaml }}
+{{ range joinPath .chezmoi.sourceDir "dot_local/share/gh/extensions/*/private_manifest.yml.tmpl" | glob }}
+{{- $manifest := includeTemplate . $ | fromYaml }}
 if contains -- "gh {{ $manifest.name | trimPrefix "gh-" }}" (gh extension list | string split \t)
     gh extension remove "{{ $manifest.name }}"
 end
