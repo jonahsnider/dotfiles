@@ -12,6 +12,7 @@ gh = "latest"
   "macos",
 ], asset_pattern = "*.vsix", format = "raw", bin = "wpilib.vsix", postinstall = 'code --install-extension "$MISE_TOOL_INSTALL_PATH/wpilib.vsix" --force' }
 go = "latest"
+jactionlint = { version = "latest", workflow = "release.yaml" }
 java = "temurin-25"
 node = "26"
 pnpm = "12"
