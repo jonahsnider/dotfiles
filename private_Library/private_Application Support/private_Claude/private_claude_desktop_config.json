@@ -10,7 +10,20 @@
     "coworkPreferredBrowser": "built_in",
     "launchPreviewPersistedWorkspaces": [],
     "launchPreviewSessionScopedSessions": [],
+    "launchPreviewAllowedOrigins": [
+      "http://spot.local:5800"
+    ],
     "launchChromeImportPrompt": "dismissed",
+    "launchPreviewPrivateNetworkReadOrigins": [
+      "http://spot.local:5800"
+    ],
+    "launchPreviewPrivateNetworkReadPins": {
+      "http://spot.local:5800": [
+        "fe80::9078:75ff:fede:a9d8",
+        "192.168.3.2",
+        "192.168.69.170"
+      ]
+    },
     "localAgentModeTrustedFolders": [
       "/Users/jonah.snider/programming/sanity"
     ],
@@ -33,11 +46,13 @@
     "ccdScheduledTasksEnabled": true,
     "sidebarMode": "epitaxy",
     "bypassPermissionsGateByAccount": {
-      "db1872f9-9884-4f72-ad3d-fb2365936312": true
+      "db1872f9-9884-4f72-ad3d-fb2365936312": true,
+      "a62647e7-d487-474e-a239-c518a9783708": true
     },
-    "coworkWebSearchEnabled": true,
+    "coworkWebSearchEnabled": false,
     "coworkModelAutoFallbackByAccount": {
-      "db1872f9-9884-4f72-ad3d-fb2365936312": true
+      "db1872f9-9884-4f72-ad3d-fb2365936312": true,
+      "a62647e7-d487-474e-a239-c518a9783708": true
     },
     "remoteToolsDeviceName": "jonah-mbp-sanity",
     "ccRemoteControlDefaultEnabled": true,
@@ -51,7 +66,9 @@
       },
       "desktop-frame.paneStore.v1": {
         "state": {
-          "extraPanesByMode": {},
+          "extraPanesByMode": {
+            "code": []
+          },
           "colWeightsByMode": {},
           "rowSplit": 0.5,
           "draftNonce": 0,
@@ -59,20 +76,9 @@
         },
         "version": 4
       },
-      "ccd-sessions-filter": {
-        "state": {
-          "selectedProjects": []
-        },
-        "version": 0
-      },
       "dframe-group-scopes": {},
       "starred-local-routines": [],
       "epitaxy-keep-awake-band-used.db1872f9-9884-4f72-ad3d-fb2365936312": true,
-      "code-sessions-selected-environments-v2.db1872f9-9884-4f72-ad3d-fb2365936312": [
-        "local",
-        "bridge",
-        "ssh"
-      ],
       "epitaxy-transcript-links-in-preview": false,
       "epitaxy-transcript-links-chooser-seen": true,
       "epitaxy-auto-setup-snoozed-until.db1872f9-9884-4f72-ad3d-fb2365936312": 1791493746185,
@@ -80,8 +86,8 @@
       "epitaxy-diff-layout": "split",
       "epitaxy-split-suggestion": {
         "state": {
-          "shownCount": 1,
-          "accepted": false,
+          "shownCount": 3,
+          "accepted": true,
           "dismissCount": 1,
           "lastDismissedAt": 1790891220848
         },
@@ -90,6 +96,63 @@
       "epitaxy-pr-create-mode": "compose",
       "claude-code-preferred-editor": "vscode",
       "dframe-code-sections": {
+        "a62647e7-d487-474e-a239-c518a9783708/dcf5ddfc-bef7-49ee-8a6b-f73602757d3e": {
+          "sections": [
+            {
+              "id": "pinned",
+              "kind": "pinned",
+              "v": 2,
+              "name": "",
+              "order": 0,
+              "sortBy": "recency",
+              "ascending": false,
+              "show": {
+                "metadata": false,
+                "emptyGroups": false,
+                "sideChats": false,
+                "slack": true
+              },
+              "collapsed": false,
+              "shown": true
+            },
+            {
+              "id": "routines",
+              "kind": "routines",
+              "v": 2,
+              "name": "",
+              "order": 1,
+              "sortBy": "recency",
+              "ascending": false,
+              "show": {
+                "metadata": false,
+                "emptyGroups": false,
+                "sideChats": false,
+                "slack": true
+              },
+              "collapsed": true,
+              "shown": false
+            },
+            {
+              "id": "sessions",
+              "kind": "sessions",
+              "v": 2,
+              "name": "",
+              "order": 2,
+              "sortBy": "recency",
+              "ascending": false,
+              "show": {
+                "metadata": false,
+                "emptyGroups": false,
+                "sideChats": false,
+                "slack": true
+              },
+              "collapsed": false,
+              "shown": true
+            }
+          ],
+          "migratedFrom": 1,
+          "prefsSeeded": true
+        },
         "db1872f9-9884-4f72-ad3d-fb2365936312/70536e9b-4830-4565-8b77-c9881c354e7f": {
           "sections": [
             {
@@ -149,7 +212,18 @@
         }
       },
       "epitaxy-auto-mode-denial-count.db1872f9-9884-4f72-ad3d-fb2365936312": 4,
-      "ultrathinkAvailable.claude-opus-5-5.db1872f9-9884-4f72-ad3d-fb2365936312": false
+      "ultrathinkAvailable.claude-opus-5-5.db1872f9-9884-4f72-ad3d-fb2365936312": false,
+      "ultrathinkAvailable.claude-opus-5-5.a62647e7-d487-474e-a239-c518a9783708": true,
+      "epitaxy-auto-mode-denial-count.a62647e7-d487-474e-a239-c518a9783708": 5,
+      "epitaxy-serene-whistle-decided": {
+        "local_ecc3e0f3-6643-4d04-a644-7244c414bb5a": {
+          "base": "claude-opus-5-5",
+          "kept": true
+        }
+      },
+      "epitaxy-auto-default-notice-seen.a62647e7-d487-474e-a239-c518a9783708": true,
+      "epitaxy-auto-setup-band-seen.a62647e7-d487-474e-a239-c518a9783708": true,
+      "epitaxy-auto-setup-snoozed-until.a62647e7-d487-474e-a239-c518a9783708": 1794765045351
     }
   }
 }
