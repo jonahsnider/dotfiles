@@ -24,9 +24,9 @@
 		"osc-status": "1.0.0"
 	},
 	"devDependencies": {
-		"@tsconfig/node-ts": "23.6.4",
-		"@tsconfig/node26": "26.0.1",
-		"@tsconfig/strictest": "2.0.8",
+		"@tsconfig/node-ts": "23.6.5",
+		"@tsconfig/node26": "26.0.2",
+		"@tsconfig/strictest": "2.0.9",
 		"@types/node": "26.6.6",
 		"knip": "6.45.1",
 		"oxfmt": "0.78.0",
