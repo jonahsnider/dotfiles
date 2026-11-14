@@ -158,8 +158,6 @@ brew "temporal"
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
-# Command-line interface for Vercel
-brew "vercel"
 # Internet file retriever
 brew "wget"
 # Feature-rich command-line audio/video downloader
@@ -247,3 +245,5 @@ cask "visualvm"
 cask "jonahsnider/frc/wpilib"
 # REST, GraphQL and gRPC client
 cask "yaak"
+# Command-line interface for Vercel
+cask "vercel"
