@@ -1,0 +1,106 @@
+{
+  "favorites": [
+    {
+      "provider": "codex",
+      "model": "gpt-6.1-sol"
+    },
+    {
+      "provider": "claudeAgent",
+      "model": "claude-opus-5-5"
+    }
+  ],
+  "storageCleanup": {
+    "worktreeAfterDays": 14,
+    "worktreeSettledAfterDays": 14,
+    "worktreeOnMerge": true,
+    "worktreeOnDelete": true
+  },
+  "defaultAutoPull": true,
+  "projectScriptOverrides": {
+    "40fb77b2-9aff-485d-b16f-6cf46f1dcd69": [
+      {
+        "id": "dev-server",
+        "name": "Dev server",
+        "command": "pnpm dev",
+        "icon": "play",
+        "runOnWorktreeCreate": false,
+        "stopOnSettle": true,
+        "previewUrl": "https://pit.frc581.com.localhost",
+        "autoOpenPreview": true
+      }
+    ],
+    "9d4f8e5f-958d-4568-9295-7d5a8d8ef0f8": [
+      {
+        "id": "start-dev-server",
+        "name": "Start dev server",
+        "command": "mise dev",
+        "icon": "play",
+        "runOnWorktreeCreate": false,
+        "stopOnSettle": true,
+        "previewUrl": "http://localhost:5173",
+        "autoOpenPreview": false
+      }
+    ]
+  },
+  "defaultModelSelection": {
+    "instanceId": "claudeAgent",
+    "model": "claude-opus-5-5",
+    "options": [
+      {
+        "id": "effort",
+        "value": "high"
+      }
+    ]
+  },
+  "fallbackModelSelection": {
+    "instanceId": "codex",
+    "model": "gpt-6.1-sol",
+    "options": [
+      {
+        "id": "reasoningEffort",
+        "value": "high"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ]
+  },
+  "defaultRuntimeMode": "auto",
+  "projectSettingsOverrides": {
+    "40fb77b2-9aff-485d-b16f-6cf46f1dcd69": {
+      "defaultProjectScripts": [
+        {
+          "id": "dev-server",
+          "name": "Dev server",
+          "command": "pnpm dev",
+          "icon": "play",
+          "runOnWorktreeCreate": false,
+          "stopOnSettle": true,
+          "previewUrl": "https://pit.frc581.com.localhost",
+          "autoOpenPreview": true
+        }
+      ]
+    },
+    "9d4f8e5f-958d-4568-9295-7d5a8d8ef0f8": {
+      "defaultProjectScripts": [
+        {
+          "id": "start-dev-server",
+          "name": "Start dev server",
+          "command": "mise dev",
+          "icon": "play",
+          "runOnWorktreeCreate": false,
+          "stopOnSettle": true,
+          "previewUrl": "http://localhost:5173",
+          "autoOpenPreview": false
+        }
+      ]
+    }
+  },
+  "projectSettingsFolded": true,
+  "sidebarAutoSettleAfterDays": null,
+  "idleCompaction": "onReturn",
+  "sidebarAutoSettleOnMerge": false,
+  "addProjectBaseDirectory": "~/programming",
+  "branchNamingMode": "semantic"
+}
