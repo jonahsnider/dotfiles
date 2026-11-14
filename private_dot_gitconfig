@@ -67,3 +67,7 @@
 	enabled = true
 [push]
 	autoSetupRemote = false
+# Remove Claude co-author trailers that Claude adds despite being told not to
+[hook "strip-claude-coauthor"]
+	event = commit-msg
+	command = perl -i -ne 'print unless /^co-authored-by:.*[@]anthropic[.]com>/i'
