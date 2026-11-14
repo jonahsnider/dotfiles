@@ -196,10 +196,6 @@ cask "chatgpt"
 cask "clop"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# Write, edit, and chat about your code with AI
-cask "cursor"
-# Command-line agent for Cursor
-cask "cursor-cli"
 # FRC dashboard for viewing camera streams
 cask "jonahsnider/frc/dashshund"
 # Simple and modern dashboard for FRC
