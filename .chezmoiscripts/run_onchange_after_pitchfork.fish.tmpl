@@ -7,6 +7,15 @@
 # Only needed once per system, but it's idempotent
 {{ if eq .chezmoi.os "darwin" -}}
 pitchfork boot enable
+# launchd's default PATH omits Homebrew, so daemons couldn't find tools like docker
+plutil -replace EnvironmentVariables -json '{"PATH":"/opt/homebrew/bin:/opt/homebrew/sbin:/usr/bin:/bin:/usr/sbin:/sbin"}' ~/Library/LaunchAgents/pitchfork.plist
+# Reload the agent so launchd picks up the edited plist
+launchctl bootout gui/(id -u)/pitchfork 2>/dev/null
+# bootout returns before the supervisor finishes shutting down
+while launchctl print gui/(id -u)/pitchfork &>/dev/null
+    sleep 0.5
+end
+launchctl bootstrap gui/(id -u) ~/Library/LaunchAgents/pitchfork.plist
 pitchfork supervisor start
 pitchfork start global/sprite-rex; or exit $status
 {{ else -}}
