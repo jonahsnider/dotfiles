@@ -27,6 +27,35 @@
       "skillFolderHash": "82c467dad984f37442d129db704f3d88dac612f0",
       "installedAt": "2026-09-29T06:40:48.556Z",
       "updatedAt": "2026-10-28T21:37:48.185Z"
+    },
+    "grilling": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/productivity/grilling/SKILL.md",
+      "skillFolderHash": "f551b6e0d219fdda0b6abf277f8f915b3127d1e9",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-11-10T21:40:54.481Z",
+      "updatedAt": "2026-11-10T21:47:10.622Z"
+    },
+    "improve-codebase-architecture": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/engineering/improve-codebase-architecture/SKILL.md",
+      "skillFolderHash": "587147dd230da299cc5e84971cb0a33f6676f8a6",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-11-13T02:46:48.755Z",
+      "updatedAt": "2026-11-13T02:46:48.755Z"
+    },
+    "diataxis": {
+      "source": "oxidecomputer/claude-plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/oxidecomputer/claude-plugins.git",
+      "skillPath": "eng/skills/diataxis/SKILL.md",
+      "skillFolderHash": "2b54b6b914df4a60f1e8db11489b2117f10ff9bb",
+      "installedAt": "2026-11-13T03:03:41.908Z",
+      "updatedAt": "2026-11-13T03:03:41.908Z"
     }
   },
   "dismissed": {
@@ -38,6 +67,7 @@
     "codex",
     "cursor",
     "droid",
+    "fx",
     "gemini-cli",
     "github-copilot",
     "kilo",
@@ -45,6 +75,7 @@
     "opencode",
     "pi",
     "warp",
-    "zed"
+    "zed",
+    "claude-code"
   ]
 }
