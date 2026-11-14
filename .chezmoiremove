@@ -12,7 +12,6 @@
 .config/fish/completions/gel.fish
 .modal.toml
 .local/bin/op-env
-.t3
 {{ if eq .chezmoi.os "darwin" }}
 Library/Application Support/lazyreno
 .orbstack/config/docker.json
