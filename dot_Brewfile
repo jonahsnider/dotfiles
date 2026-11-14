@@ -1,4 +1,5 @@
 tap "anomalyco/tap", trusted: true
+tap "anthropics/tap"
 tap "charmbracelet/tap", trusted: true
 tap "desert-ant-labs/tap", trusted: true
 tap "encoredev/tap", trusted: true
@@ -8,6 +9,7 @@ tap "homebrew/core"
 tap "jonahsnider/frc", "https://github.com/jonahsnider/homebrew-frc.git", trusted: true
 tap "jonahsnider/tap", "https://github.com/jonahsnider/homebrew-tap.git", trusted: true
 tap "nrlquaker/createzap", trusted: true
+tap "openai/tools"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
 # Browser automation CLI for AI agents
@@ -184,6 +186,8 @@ brew "jonahsnider/tap/how"
 cask "1password-cli"
 # FRC log analysis tool
 cask "advantagescope"
+# CLI for the Claude Platform
+cask "anthropics/tap/ant", trusted: true
 # Menu bar app that automatically manages audio device priorities
 cask "jonahsnider/tap/audio-priority-bar"
 # Screen recorder
@@ -217,6 +221,8 @@ cask "keycastr"
 cask "jonahsnider/frc/limelight-hardware-manager"
 # Music app blocker utility
 cask "music-decoy"
+# The official CLI for the OpenAI API.
+cask "openai/tools/openai", trusted: true
 # Native GUI for Apple Containers
 cask "orchard"
 # Simple yet powerful path planning tool for FRC robots
