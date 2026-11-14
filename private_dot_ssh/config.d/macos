@@ -11,5 +11,10 @@ Host *.sprite
 	ServerAliveInterval 30
 	ServerAliveCountMax 3
 
+Host spot.local 10.5.81.11
+	User team581
+	IdentityFile ~/programming/team581/spot/nix/maintenance_ed25519
+	IdentitiesOnly yes
+
 Host *
 	IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
