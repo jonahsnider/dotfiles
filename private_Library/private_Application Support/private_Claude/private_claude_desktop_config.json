@@ -66,13 +66,14 @@
       },
       "desktop-frame.paneStore.v1": {
         "state": {
-          "extraPanesByMode": {
-            "code": []
-          },
+          "extraPanesByMode": {},
           "colWeightsByMode": {},
           "rowSplit": 0.5,
           "draftNonce": 0,
-          "lastPrimaryCodeSession": null
+          "lastPrimaryCodeSession": {
+            "id": "local_15e73e69-1647-4371-867b-77f9a54ca258",
+            "type": "local"
+          }
         },
         "version": 4
       },
@@ -212,7 +213,7 @@
         }
       },
       "epitaxy-auto-mode-denial-count.db1872f9-9884-4f72-ad3d-fb2365936312": 4,
-      "ultrathinkAvailable.claude-opus-5-5.db1872f9-9884-4f72-ad3d-fb2365936312": false,
+      "ultrathinkAvailable.claude-opus-5-5.db1872f9-9884-4f72-ad3d-fb2365936312": true,
       "ultrathinkAvailable.claude-opus-5-5.a62647e7-d487-474e-a239-c518a9783708": true,
       "epitaxy-auto-mode-denial-count.a62647e7-d487-474e-a239-c518a9783708": 5,
       "epitaxy-serene-whistle-decided": {
