@@ -31,7 +31,9 @@ brew "cloudflare-wrangler"
 # Cross-platform make
 brew "cmake"
 # Create and run Linux containers using lightweight virtual machines
-brew "container"
+# The service runs `container system start` at login, never start it with sudo
+# socktainer can't start it if container is a newer version than it was built with
+brew "container", start_service: true
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Command-line csv viewer
