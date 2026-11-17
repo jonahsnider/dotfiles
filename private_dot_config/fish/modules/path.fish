@@ -1,41 +1,32 @@
 # Local binaries
 fish_add_path -g ~/.local/bin
 
-#region Rust
+# Rust
 # Cargo binaries
 fish_add_path -g ~/.cargo/bin
-#endregion
 
-#region Nim
+# Nim
 fish_add_path -g ~/.nimble/bin
-#endregion
 
-#region npm
+# npm
 fish_add_path -g ~/.npm-global/bin
-#endregion
 
-#region Bun
+# Bun
 fish_add_path -g ~/.bun/bin
-#endregion
 
-#region tsgo
+# tsgo
 fish_add_path -g ~/programming/typescript-go/built/local
-#endregion
 
-#region Claude Code
+# Claude Code
 fish_add_path -g ~/.claude/local
-#endregion
 
-#region pnpm
+# pnpm
 fish_add_path -g "$PNPM_HOME" "$PNPM_HOME/bin"
-#endregion
 
-#region Composer
+# Composer
 fish_add_path -g ~/.composer/vendor/bin
-#endregion
 
-#region Sell Traces
+# Sell Traces
 fish_add_path -g ~/.selltraces/bin
-#endregion
 
 alias san "$HOME/programming/sanity/cli/packages/@sanity/cli/bin/run.js"
