@@ -21,8 +21,8 @@ abbr --add gc "git checkout"
 abbr --add gR "git reset"
 abbr --add gb "git branch"
 abbr --add gs "git switch"
-abbr --add gsm git_switch_main
-abbr --add gsmm "git_switch_main && git pull && gh poi --state closed"
+abbr --add gsm "git switch main"
+abbr --add gsmm "git switch main && git pull && gh poi --state closed"
 
 # gh stack
 abbr --add ghs "gh stack sync"
