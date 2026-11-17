@@ -34,4 +34,8 @@ fish_add_path -g "$PNPM_HOME" "$PNPM_HOME/bin"
 fish_add_path -g ~/.composer/vendor/bin
 #endregion
 
+#region Sell Traces
+fish_add_path -g ~/.selltraces/bin
+#endregion
+
 alias san "$HOME/programming/sanity/cli/packages/@sanity/cli/bin/run.js"
