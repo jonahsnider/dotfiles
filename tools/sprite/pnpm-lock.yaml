@@ -179,8 +179,8 @@ importers:
         specifier: 0.5.0
         version: 0.5.0
       '@bomb.sh/tab':
-        specifier: 0.0.22
-        version: 0.0.22
+        specifier: 0.0.23
+        version: 0.0.23
       '@clack/prompts':
         specifier: 1.9.0
         version: 1.9.0
@@ -239,8 +239,8 @@ packages:
   '@1password/sdk@0.5.0':
     resolution: {integrity: sha512-k6kov3pcA7PRg2tev9CgTfEf/3JSyAp11BPQNCEsqAD32QbqM032OXC1rfjyC8Ba0sfH+NHYZxcifUZToyGyYA==}
 
-  '@bomb.sh/tab@0.0.22':
-    resolution: {integrity: sha512-l5IuWpV7szqG4MM6A7I+qPMmP2qPMq2TD4veIXaOH0sD53dV0Tv8WZPARp5O5Kp4+y4fnVCl3VL1HZKNghO1yg==}
+  '@bomb.sh/tab@0.0.23':
+    resolution: {integrity: sha512-EEVg7jd4zpc0RJLI/pMCvJ3PKCF1NGcgH8eXaJOKnnQU9EzwYmOnvaIZUErd5t3sVIEzIrA+QGwTCaeTVlG1zA==}
     hasBin: true
     peerDependencies:
       cac: ^6.7.14 || ^7.0.0
@@ -1439,7 +1439,7 @@ snapshots:
     dependencies:
       '@1password/sdk-core': 0.5.0
 
-  '@bomb.sh/tab@0.0.22': {}
+  '@bomb.sh/tab@0.0.23': {}
 
   '@clack/core@1.6.0':
     dependencies:
