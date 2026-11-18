@@ -1,0 +1,34 @@
+{{ $secrets := includeTemplate "onepassword-secrets.json" . | fromJson -}}
+{
+  "amp.mcpServers": {
+{{- if index $secrets "SANITY_SLACK_MCP_XOXC_TOKEN" }}
+    "sanity-slack": {
+      "command": "pnpx",
+      "args": [
+        "slack-mcp-server",
+        "--transport",
+        "stdio"
+      ],
+      "env": {
+        "SLACK_MCP_XOXC_TOKEN": {{ $secrets.SANITY_SLACK_MCP_XOXC_TOKEN | toJson }},
+        "SLACK_MCP_XOXD_TOKEN": {{ $secrets.SANITY_SLACK_MCP_XOXD_TOKEN | toJson }}
+      }
+    }
+{{- end }}
+{{- if and (index $secrets "SANITY_SLACK_MCP_XOXC_TOKEN") (index $secrets "TEAM581_SLACK_MCP_XOXC_TOKEN") }},{{ end }}
+{{- if index $secrets "TEAM581_SLACK_MCP_XOXC_TOKEN" }}
+    "team581-slack": {
+      "command": "pnpx",
+      "args": [
+        "slack-mcp-server",
+        "--transport",
+        "stdio"
+      ],
+      "env": {
+        "SLACK_MCP_XOXC_TOKEN": {{ $secrets.TEAM581_SLACK_MCP_XOXC_TOKEN | toJson }},
+        "SLACK_MCP_XOXD_TOKEN": {{ $secrets.TEAM581_SLACK_MCP_XOXD_TOKEN | toJson }}
+      }
+    }
+{{- end }}
+  }
+}
