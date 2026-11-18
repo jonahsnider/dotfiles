@@ -32,6 +32,8 @@
 [gpg]
 	program = gpg
 	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
 [commit]
 	gpgsign = false
 [include]
