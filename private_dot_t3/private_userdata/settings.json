@@ -40,6 +40,34 @@
         "previewUrl": "http://localhost:5173",
         "autoOpenPreview": false
       }
+    ],
+    "d6b8f7b1-1c28-46f8-a0ab-61d983f08edd": [
+      {
+        "id": "start-dev-server",
+        "name": "Start dev server",
+        "command": "pnpm -F studio dev",
+        "icon": "play",
+        "runOnWorktreeCreate": false,
+        "stopOnSettle": true,
+        "previewUrl": "https://studio.doglog.dev.localhost",
+        "autoOpenPreview": true
+      },
+      {
+        "id": "setup",
+        "name": "Install dependencies",
+        "command": "pnpm install",
+        "icon": "configure",
+        "runOnWorktreeCreate": true,
+        "async": false
+      },
+      {
+        "id": "start-desktop-app",
+        "name": "Start desktop app",
+        "command": "pnpm --filter studio tauri dev",
+        "icon": "play",
+        "runOnWorktreeCreate": false,
+        "stopOnSettle": true
+      }
     ]
   },
   "defaultModelSelection": {
@@ -95,12 +123,80 @@
           "autoOpenPreview": false
         }
       ]
+    },
+    "d6b8f7b1-1c28-46f8-a0ab-61d983f08edd": {
+      "defaultProjectScripts": [
+        {
+          "id": "start-dev-server",
+          "name": "Start dev server",
+          "command": "pnpm -F studio dev",
+          "icon": "play",
+          "runOnWorktreeCreate": false,
+          "stopOnSettle": true,
+          "previewUrl": "https://studio.doglog.dev.localhost",
+          "autoOpenPreview": true
+        },
+        {
+          "id": "setup",
+          "name": "Install dependencies",
+          "command": "pnpm install",
+          "icon": "configure",
+          "runOnWorktreeCreate": true,
+          "async": false
+        },
+        {
+          "id": "start-desktop-app",
+          "name": "Start desktop app",
+          "command": "pnpm --filter studio tauri dev",
+          "icon": "play",
+          "runOnWorktreeCreate": false,
+          "stopOnSettle": true
+        }
+      ]
     }
   },
   "projectSettingsFolded": true,
   "sidebarAutoSettleAfterDays": null,
   "idleCompaction": "onReturn",
+  "snoozePresets": [
+    {
+      "kind": "after",
+      "minutes": 20
+    },
+    {
+      "kind": "after",
+      "minutes": 60
+    },
+    {
+      "kind": "after",
+      "minutes": 180
+    },
+    {
+      "kind": "at",
+      "day": "tomorrow",
+      "time": "09:00"
+    },
+    {
+      "kind": "at",
+      "day": "monday",
+      "time": "09:00"
+    }
+  ],
   "sidebarAutoSettleOnMerge": false,
   "addProjectBaseDirectory": "~/programming",
+  "textGenerationModelSelection": {
+    "instanceId": "codex",
+    "model": "gpt-6-luna",
+    "options": [
+      {
+        "id": "reasoningEffort",
+        "value": "medium"
+      },
+      {
+        "id": "serviceTier",
+        "value": "default"
+      }
+    ]
+  },
   "branchNamingMode": "semantic"
 }
