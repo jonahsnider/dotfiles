@@ -1,18 +1,46 @@
 # https://cli.github.com/manual/gh_repo_edit
+# Prints "<workflow> / <job>\t<job>" for each GitHub Actions check on the default branch
 function __gh_repo_configure_available_checks -a repo
     set -l default_branch (gh repo view $repo --json defaultBranchRef -q .defaultBranchRef.name)
-    set -l checks (gh api repos/$repo/commits/$default_branch/check-runs \
+    set -l sha (gh api repos/$repo/commits/$default_branch --jq .sha)
+    or return
+
+    set -l checks (gh api repos/$repo/commits/$sha/check-runs \
         --method GET \
         --paginate \
         -F per_page=100 \
-        --jq '.check_runs[] | select(.app.id == 15368) | .name')
+        --jq '.check_runs[] | select(.app.id == 15368) | "\(.check_suite.id)\t\(.name)"')
     or return
 
     if test (count $checks) -eq 0
         return 0
     end
 
-    printf '%s\n' $checks | sort -u
+    # Check runs only reference their check suite, so map suites to workflow names via workflow runs
+    set -l runs (gh api repos/$repo/actions/runs \
+        --method GET \
+        --paginate \
+        -f head_sha=$sha \
+        -F per_page=100 \
+        --jq '.workflow_runs[] | "\(.check_suite_id)\t\(.name)"')
+    or return
+
+    set -l suite_ids
+    set -l workflows
+    for run in $runs
+        set -l parts (string split -m1 \t -- $run)
+        set -a suite_ids $parts[1]
+        set -a workflows $parts[2]
+    end
+
+    for check in $checks
+        set -l parts (string split -m1 \t -- $check)
+        set -l label $parts[2]
+        if set -l index (contains -i -- $parts[1] $suite_ids)
+            set label "$workflows[$index] / $parts[2]"
+        end
+        printf '%s\t%s\n' $label $parts[2]
+    end | sort -u
 end
 
 function __gh_repo_configure_repository_ruleset_ids -a repo name
@@ -62,8 +90,8 @@ function gh_repo_configure -d "Configure opinionated defaults for the current Gi
     set -l repo (gh repo view --json nameWithOwner -q .nameWithOwner)
 
     if set -q _flag_list_checks
-        __gh_repo_configure_available_checks $repo
-        return
+        __gh_repo_configure_available_checks $repo | string split -f1 \t
+        return $pipestatus[1]
     end
 
     set -l available_checks (__gh_repo_configure_available_checks $repo)
@@ -76,9 +104,10 @@ function gh_repo_configure -d "Configure opinionated defaults for the current Gi
             return 1
         end
 
-        set selected_checks (printf '%s\n' $available_checks | gum choose --no-limit --header "Select automerge checks")
-        if test $status -ne 0
-            return $status
+        # Show "<workflow> / <job>" but output the job name, which is the check's context
+        set selected_checks (printf '%s\n' $available_checks | gum choose --no-limit --label-delimiter \t --header "Select automerge checks" | sort -u)
+        if test $pipestatus[2] -ne 0
+            return $pipestatus[2]
         end
 
         if test (count $selected_checks) -eq 0
