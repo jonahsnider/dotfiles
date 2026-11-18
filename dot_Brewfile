@@ -33,7 +33,9 @@ brew "cmake"
 # Create and run Linux containers using lightweight virtual machines
 # The service runs `container system start` at login, never start it with sudo
 # socktainer can't start it if container is a newer version than it was built with
-brew "container", start_service: true
+# The service exits after starting the container system, so only restart it on install/upgrade
+# Otherwise brew bundle tries to start the already loaded service and launchctl fails
+brew "container", restart_service: :changed, start_service: false
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Command-line csv viewer
