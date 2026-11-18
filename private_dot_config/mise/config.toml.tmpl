@@ -14,7 +14,12 @@ gh = "latest"
 go = "latest"
 jactionlint = { version = "latest", workflow = "release.yaml" }
 java = "temurin-25"
+{{ if eq .chezmoi.os "darwin" -}}
+# The portless service's launchd plist points at a specific node install
+node = { version = "26", postinstall = '{{ .chezmoi.homeDir }}/.local/bin/portless_service_sync "$MISE_TOOL_INSTALL_PATH/bin/node"' }
+{{ else -}}
 node = "26"
+{{ end -}}
 pnpm = "12"
 python = "3.11"
 ruff = "latest"

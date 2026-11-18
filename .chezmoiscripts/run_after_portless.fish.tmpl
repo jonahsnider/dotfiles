@@ -1,0 +1,6 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env fish
+
+# Catches portless updates, node upgrades are handled by node's postinstall in mise/config.toml
+~/.local/bin/portless_service_sync
+{{ end -}}

@@ -25,4 +25,5 @@ Library
 .config/mole
 .config/raycast
 .local/share/direnv/allow
+.local/bin/portless_service_sync
 {{ end }}

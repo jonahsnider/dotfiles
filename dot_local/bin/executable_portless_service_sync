@@ -1,0 +1,24 @@
+#!/usr/bin/env fish
+
+# `portless service install` writes absolute node and portless paths into its launchd plist
+# Reinstall the service whenever either one changes, ex. after a node upgrade or portless update
+# Usage: portless_service_sync [node path, defaults to `mise which node`]
+
+set -l plist /Library/LaunchDaemons/sh.portless.proxy.plist
+set -l shim "$PNPM_HOME/bin/portless"
+
+# On a fresh install mise installs node before the pnpm global packages script installs portless
+test -e $shim; or exit 0
+
+set -l node $argv[1]
+set -q node[1]; or set node (mise which node)
+set node (path resolve $node)
+set -l cli (string replace --filter --regex '^# cmd-shim-target=' '' < $shim)
+
+if test "$node" = "$(plutil -extract ProgramArguments.0 raw $plist 2>/dev/null)"
+    and test "$cli" = "$(plutil -extract ProgramArguments.1 raw $plist 2>/dev/null)"
+    exit
+end
+
+# portless elevates itself with sudo
+$node $cli service install
