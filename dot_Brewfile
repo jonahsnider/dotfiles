@@ -124,8 +124,6 @@ brew "pitchfork"
 brew "pkgconf"
 # CLI for the Pkl programming language
 brew "pkl"
-# Replace port numbers with stable, named local URLs for humans and agents
-brew "portless"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Search tool like grep and The Silver Searcher
