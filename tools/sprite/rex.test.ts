@@ -2,24 +2,20 @@ import { ExecError, ServiceLogStream, SpritesClient } from '@fly/sprites';
 import { test, vi } from 'vitest';
 import { configureRex, registerRexHost, waitForRex } from './rex.ts';
 
-const url = '/Users/test/.ssh/rex-my-dev.sock';
+const url = 'ssh://my-dev.sprite';
 const readyResult = { stdout: '{"sessions":[]}', stderr: '', exitCode: 0 };
+const notRunning =
+	'Error: no Rex server is running at /home/sprite/.local/state/rex/run/server.sock, and autostart is disabled';
 
-test('waits for the loopback listener to accept requests', async ({ expect }) => {
+test('waits for the server to accept requests', async ({ expect }) => {
 	const sprite = new SpritesClient('test-token').sprite('my-dev');
 	const exec = vi
 		.spyOn(sprite, 'execFile')
-		.mockRejectedValueOnce(
-			new ExecError('not ready', { exitCode: 1, stdout: '', stderr: 'connect: connection refused' }),
-		)
+		.mockRejectedValueOnce(new ExecError('not ready', { exitCode: 4, stdout: '', stderr: notRunning }))
 		.mockResolvedValueOnce(readyResult);
 	await expect(waitForRex(sprite, { intervalMs: 0, timeoutMs: 1000 })).resolves.toBeUndefined();
 	expect(exec).toHaveBeenCalledTimes(2);
-	expect(exec).toHaveBeenLastCalledWith(
-		'/usr/bin/rex',
-		['--autostart=false', '-S', 'http://127.0.0.1:7297', 'ls', '--json'],
-		{ timeout: 10_000 },
-	);
+	expect(exec).toHaveBeenLastCalledWith('/usr/bin/rex', ['--autostart=false', 'ls', '--json'], { timeout: 10_000 });
 });
 
 test('reports unexpected readiness failures instead of polling through them', async ({ expect }) => {
@@ -31,10 +27,10 @@ test('reports unexpected readiness failures instead of polling through them', as
 	expect(exec).toHaveBeenCalledOnce();
 });
 
-test('times out if the loopback listener never becomes ready', async ({ expect }) => {
+test('times out if the server never becomes ready', async ({ expect }) => {
 	const sprite = new SpritesClient('test-token').sprite('my-dev');
 	vi.spyOn(sprite, 'execFile').mockRejectedValue(
-		new ExecError('not ready', { exitCode: 1, stdout: '', stderr: 'connect: connection refused' }),
+		new ExecError('not ready', { exitCode: 4, stdout: '', stderr: notRunning }),
 	);
 	await expect(waitForRex(sprite, { intervalMs: 0, timeoutMs: 10 })).rejects.toMatchObject({
 		code: 'REX_READY_TIMEOUT',
@@ -42,7 +38,7 @@ test('times out if the loopback listener never becomes ready', async ({ expect }
 	});
 });
 
-test('keeps the network listener on loopback and reuses an already-running service', async ({ expect }) => {
+test('serves only the local socket and reuses an already-running service', async ({ expect }) => {
 	const sprite = new SpritesClient('test-token').sprite('my-dev');
 	const list = vi.spyOn(sprite, 'listServices').mockResolvedValue([]);
 	vi.spyOn(sprite, 'execFile').mockResolvedValue(readyResult);
@@ -58,9 +54,6 @@ test('keeps the network listener on loopback and reuses an already-running servi
 		'text',
 		'--state-dir',
 		'/home/sprite/.local/state/rex',
-		'--extra-listen',
-		'http://127.0.0.1:7297',
-		'--allow-anonymous',
 	]);
 	list.mockResolvedValue([{ name: 'rex', needs: [], args: [], ...config, state: { name: 'rex', status: 'running' } }]);
 	await configureRex(sprite, '/home/sprite');

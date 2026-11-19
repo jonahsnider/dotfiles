@@ -6,8 +6,6 @@ Host *.sprite
 	BatchMode yes
 	StrictHostKeyChecking accept-new
 	ProxyCommand /bin/sh -c 'exec /opt/homebrew/bin/sprite proxy --ssh -s "${1%%.sprite}"' sh %h
-	ExitOnForwardFailure yes
-	StreamLocalBindUnlink yes
 	ServerAliveInterval 30
 	ServerAliveCountMax 3
 

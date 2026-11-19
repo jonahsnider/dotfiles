@@ -69,7 +69,7 @@ export async function runCli(args: string[]) {
 						resume: { kind: 'boolean', brief: 'Resume setup of an existing Sprite', default: false },
 						rex: {
 							kind: 'boolean',
-							brief: 'Enable Rex over the Sprite SSH proxy and save a Rex CLI host on your Mac',
+							brief: 'Run a Rex server and add the Sprite to your Rex hosts over SSH',
 							default: false,
 						},
 					},

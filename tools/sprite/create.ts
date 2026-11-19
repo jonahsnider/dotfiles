@@ -1,6 +1,4 @@
 import { readFile } from 'node:fs/promises';
-import { homedir } from 'node:os';
-import { join } from 'node:path';
 import { createClient, DesktopAuth } from '@1password/sdk';
 import { intro, log, note, outro } from '@clack/prompts';
 import { SpritesClient, type Sprite } from '@fly/sprites';
@@ -194,21 +192,16 @@ export async function create(options: CreateOptions) {
 		created = true;
 		const home = await provision(sprite, serviceAccountToken, ref);
 		if (rex) {
-			log.step('Configuring the Rex loopback listener…');
-			oscStatus.working({ app: 'dotfiles-sprite', message: 'Configuring the Rex loopback listener…' });
+			log.step('Starting the Rex server…');
+			oscStatus.working({ app: 'dotfiles-sprite', message: 'Starting the Rex server…' });
 			await configureRex(sprite, home);
-			const address = join(homedir(), '.ssh', `rex-${name}.sock`);
+			const address = `ssh://${name}.sprite`;
 			try {
-				await task('Saving the remote host in the Rex CLI host list on your Mac…', () =>
-					registerRexHost(name, address),
-				);
+				await task('Adding the Sprite to your Rex hosts…', () => registerRexHost(name, address));
 			} catch (error) {
 				log.warn(formatException(error));
 			}
-			note(
-				`Name: ${name}\nAddress: ${address}\n\nTunnel on your Mac (pitchfork manages this for dev):\nssh -NT -L ~/.ssh/rex-${name}.sock:127.0.0.1:7297 ${name}.sprite\n\nIn Rex on your Mac, choose Add Remote Host…\nand enter the name and address above.\nThe CLI host list does not sync to the app.`,
-				'Rex remote host',
-			);
+			note(`Name: ${name}\nAddress: ${address}\n\nrex -S ${name} new`, 'Rex host');
 		}
 		note(`sprite exec -s ${name} --tty -- fish -l\n\nSign in to Claude/Codex inside the Sprite.`, 'Connect');
 		outro('Sprite setup complete.');

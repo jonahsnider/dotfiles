@@ -17,7 +17,6 @@ while launchctl print gui/(id -u)/pitchfork &>/dev/null
 end
 launchctl bootstrap gui/(id -u) ~/Library/LaunchAgents/pitchfork.plist
 pitchfork supervisor start
-pitchfork start global/sprite-rex; or exit $status
 {{ else -}}
 sudo pitchfork boot enable
 # Restart the pitchfork supervisor

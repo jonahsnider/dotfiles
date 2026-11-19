@@ -13,10 +13,4 @@ mise = true
 [settings.boot]
 # Keep launchd independent of Homebrew's versioned Cellar paths.
 executable = "/opt/homebrew/bin/pitchfork"
-
-[daemons.sprite-rex]
-run = ["/usr/bin/ssh", "-NT", "-L", {{ printf "%s/.ssh/rex-dev.sock:127.0.0.1:7297" .chezmoi.homeDir | toJson }}, "dev.sprite"]
-mise = false
-boot_start = true
-retry = true
 {{ end -}}

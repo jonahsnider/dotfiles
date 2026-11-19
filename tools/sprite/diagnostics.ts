@@ -23,7 +23,7 @@ export const diagnostics = defineDiagnostics({
 			why: 'Sprite did not return an absolute HOME directory.',
 		},
 		REX_READY_TIMEOUT: {
-			why: 'The Rex loopback listener was not ready within 30 seconds.',
+			why: 'The Rex server was not ready within 30 seconds.',
 			fix: 'Check the rex Sprite service logs, then retry with --resume --rex.',
 		},
 		REX_SERVICE_CONFLICT: {

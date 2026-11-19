@@ -10,8 +10,7 @@ node tools/sprite/cli.ts create --rex
 With the fish config applied, run `sprite_dev create --rex` from any directory. The `create` and `upgrade` commands default to the Sprite named `dev`. Pass a name to manage another Sprite, for example `sprite_dev create my-dev --rex`.
 
 The CLI reads credentials from 1Password and installs the dotfiles, tools, and Rex.
-With `--rex`, it starts Rex with a loopback HTTP listener on port 7297 and saves the Mac's Unix socket address in the Rex CLI host list.
-In the Rex app, choose **Add Remote Host…** and enter the printed name and socket path.
+With `--rex`, it runs the Rex server as a Sprite service and adds `ssh://<name>.sprite` to your Rex hosts, which every Rex client that follows your home sees.
 Omit `--rex` to skip remote access setup.
 
 Setup clones the repository from GitHub, so push changes before using them in a Sprite. Use `--ref <branch-or-tag>` to select a revision; the default is `main`. If setup is interrupted, rerun the same command with `--resume`.
@@ -26,22 +25,14 @@ Sign in to Claude/Codex and check out your project inside the Sprite.
 
 ## Rex connection and automatic wake on macOS
 
-Applying the Mac dotfiles generates a dedicated local SSH key, configures `*.sprite` SSH destinations, and starts the `global/sprite-rex` pitchfork daemon.
-It forwards `~/.ssh/rex-dev.sock` to Rex's loopback listener through `sprite proxy --ssh`.
-
+Applying the Mac dotfiles generates a dedicated local SSH key and configures `*.sprite` SSH destinations to go through `sprite proxy --ssh`.
+Rex connects to `ssh://dev.sprite` with that config and reaches the server's Unix socket over SSH, so the server has no network listener.
 The SSH server is emulated by the local Sprites CLI.
-Rex's anonymous HTTP listener is bound only to `127.0.0.1`, not exposed through the Sprite's public URL.
 
-The local forwarding process can stay running while the Sprite sleeps.
-Connecting Rex to the socket wakes the Sprite.
-Disconnecting closes the forwarded connections so it can sleep again.
-Rex keeps the Sprite awake while it remains connected.
+Sprites have no systemd, so `rex server install ssh://…` can't manage the server there; the `rex` Sprite service runs it instead.
 
-For another Sprite, start its tunnel manually and add the corresponding socket in Rex:
-
-```sh
-ssh -NT -L ~/.ssh/rex-my-dev.sock:127.0.0.1:7297 my-dev.sprite
-```
+Connecting to the host wakes the Sprite.
+Rex keeps the Sprite awake while it remains connected, and disconnecting lets it sleep again.
 
 ## Unattended agents
 

@@ -5,14 +5,12 @@ import { ExecError, type Sprite, type ServiceRequest, type ServiceLogStream } fr
 import spawn from 'nano-spawn';
 import { diagnostics } from './diagnostics.ts';
 
-const rexEndpoint = 'http://127.0.0.1:7297';
-
 export async function waitForRex(sprite: Sprite, { timeoutMs = 30_000, intervalMs = 500 } = {}) {
 	const deadline = Date.now() + timeoutMs;
 	while (Date.now() < deadline) {
 		try {
-			// oxlint-disable-next-line no-await-in-loop -- Wait for the supervised HTTP listener to accept requests.
-			await sprite.execFile('/usr/bin/rex', ['--autostart=false', '-S', rexEndpoint, 'ls', '--json'], {
+			// oxlint-disable-next-line no-await-in-loop -- Wait for the supervised server to accept requests.
+			await sprite.execFile('/usr/bin/rex', ['--autostart=false', 'ls', '--json'], {
 				timeout: 10_000,
 			});
 			return;
@@ -20,8 +18,8 @@ export async function waitForRex(sprite: Sprite, { timeoutMs = 30_000, intervalM
 			// The supervised process can start before its local socket is ready.
 			if (
 				!(error instanceof ExecError) ||
-				error.exitCode !== 1 ||
-				!error.stderr.toString().includes('connection refused')
+				error.exitCode !== 4 ||
+				!error.stderr.toString().includes('no Rex server is running')
 			)
 				throw error;
 		}
@@ -34,17 +32,7 @@ export async function waitForRex(sprite: Sprite, { timeoutMs = 30_000, intervalM
 export async function configureRex(sprite: Sprite, home: string) {
 	const config: ServiceRequest = {
 		cmd: '/usr/bin/rex',
-		args: [
-			'server',
-			'run',
-			'--log-format',
-			'text',
-			'--state-dir',
-			`${home}/.local/state/rex`,
-			'--extra-listen',
-			rexEndpoint,
-			'--allow-anonymous',
-		],
+		args: ['server', 'run', '--log-format', 'text', '--state-dir', `${home}/.local/state/rex`],
 		dir: home,
 		env: { HOME: home, USER: 'sprite', LOGNAME: 'sprite', SHELL: '/usr/bin/fish', GODEBUG: '' },
 	};
