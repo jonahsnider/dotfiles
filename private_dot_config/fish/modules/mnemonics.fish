@@ -234,9 +234,6 @@ abbr --add upd "up -D"
 # Codex
 abbr --add ca "codex app"
 
-# T3 Code
-abbr --add t3a "t3 app"
-
 # VS Code
 abbr --add c. "code ."
 
