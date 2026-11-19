@@ -73,16 +73,18 @@ function __gh_repo_configure_upsert_ruleset -a repo name
 end
 
 function gh_repo_configure -d "Configure opinionated defaults for the current GitHub repo"
-    argparse --name=gh_repo_configure h/help l/list-checks -- $argv
+    argparse --name=gh_repo_configure h/help l/list-checks 'c/checks=+' -- $argv
     or return
 
     if set -q _flag_help
-        echo "Usage: gh_repo_configure [-l/--list-checks]"
+        echo "Usage: gh_repo_configure [-l/--list-checks] [-c/--checks CHECK]..."
         echo
         echo "Configures opinionated defaults for the current GitHub repo."
         echo
         echo "Options:"
-        echo "  -l, --list-checks  List available GitHub Actions checks from the default branch and exit"
+        echo "  -l, --list-checks  List available GitHub Actions checks from the default branch as"
+        echo "                     \"<workflow> / <job><tab><check>\" and exit"
+        echo "  -c, --checks       Require CHECK for automerge instead of choosing interactively (repeatable)"
         echo "  -h, --help         Show this help"
         return 0
     end
@@ -90,14 +92,19 @@ function gh_repo_configure -d "Configure opinionated defaults for the current Gi
     set -l repo (gh repo view --json nameWithOwner -q .nameWithOwner)
 
     if set -q _flag_list_checks
-        __gh_repo_configure_available_checks $repo | string split -f1 \t
-        return $pipestatus[1]
+        __gh_repo_configure_available_checks $repo
+        return
     end
 
-    set -l available_checks (__gh_repo_configure_available_checks $repo)
-    or return
-
     set -l selected_checks
+    set -l available_checks
+    if set -q _flag_checks
+        set selected_checks (printf '%s\n' $_flag_checks | sort -u)
+    else
+        set available_checks (__gh_repo_configure_available_checks $repo)
+        or return
+    end
+
     if test (count $available_checks) -gt 0
         if not command -q gum
             echo "gh_repo_configure: gum is required (brew install gum)" >&2
