@@ -1,2 +1,16 @@
 globalBinDir: /Users/jonah.snider/Library/pnpm/bin
 enableGlobalVirtualStore: true
+globalPackagesConfig:
+  permissions:
+    '@getgrit/cli':
+      build: true
+    '@posthog/cli':
+      build: true
+    agent-desktop:
+      build: true
+    growthbook:
+      build: true
+    msgpackr-extract:
+      build: true
+    workerd:
+      build: true
