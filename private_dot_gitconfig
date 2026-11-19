@@ -73,3 +73,7 @@
 [hook "strip-claude-coauthor"]
 	event = commit-msg
 	command = perl -i -ne 'print unless /^co-authored-by:.*[@]anthropic[.]com>/i'
+# Remove Amp co-author and thread trailers
+[hook "strip-amp-trailers"]
+	event = commit-msg
+	command = perl -i -ne 'print unless /^(co-authored-by:.*[@]ampcode[.]com>|amp-thread-id:)/i'
