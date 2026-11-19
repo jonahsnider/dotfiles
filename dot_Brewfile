@@ -14,27 +14,25 @@ tap "openai/tools"
 brew "actionlint"
 # Browser automation CLI for AI agents
 brew "agent-browser"
+# Native desktop automation CLI for AI agents
+brew "agent-desktop"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ccusage"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
 # Manage your dotfiles across multiple diverse machines, securely
 brew "chezmoi"
 # Official command-line tool for CircleCI
 brew "circleci"
-# Command-line interface for the Cloudflare API and Workers
-brew "cloudflare-cli"
 # CLI tool for Cloudflare Workers
 brew "cloudflare-wrangler"
 # Cross-platform make
 brew "cmake"
 # Create and run Linux containers using lightweight virtual machines
-# The service runs `container system start` at login, never start it with sudo
-# socktainer can't start it if container is a newer version than it was built with
-# The service exits after starting the container system, so only restart it on install/upgrade
-# Otherwise brew bundle tries to start the already loaded service and launchctl fails
 brew "container", restart_service: :changed, start_service: false
 # GNU File, Shell, and Text utilities
 brew "coreutils"
@@ -92,6 +90,8 @@ brew "graphviz"
 brew "gum"
 # Review-first terminal diff viewer for agent-authored changesets
 brew "hunk"
+# Command-line benchmarking tool
+brew "hyperfine"
 # Handy way to save and run project-specific commands
 brew "just"
 # Compiler for generating binary data parsers
@@ -116,14 +116,16 @@ brew "mcp-inspector"
 brew "mole"
 # Command-line Git information tool
 brew "onefetch"
+# Open source computer vision library
+brew "opencv"
+# Spec-driven development (SDD) for AI coding assistants
+brew "openspec"
 # High-performance formatting tool for JavaScript and TypeScript
 brew "oxfmt"
 # High-performance linter for JavaScript and TypeScript written in Rust
 brew "oxlint"
 # CLI for managing daemons with a focus on developer experience
 brew "pitchfork"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
 # CLI for the Pkl programming language
 brew "pkl"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
@@ -156,10 +158,14 @@ brew "tailscale"
 brew "taze"
 # Command-line interface for running and interacting with Temporal Server and UI
 brew "temporal"
+# Terminal multiplexer
+brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
 brew "unar"
+# Tool for packaging, publishing and managing VS Code extensions
+brew "vsce"
 # Internet file retriever
 brew "wget"
 # Feature-rich command-line audio/video downloader
@@ -186,6 +192,8 @@ brew "jonahsnider/tap/how"
 cask "1password-cli"
 # FRC log analysis tool
 cask "advantagescope"
+# Coding agent and development environment
+cask "amp-app"
 # CLI for the Claude Platform
 cask "anthropics/tap/ant", trusted: true
 # Menu bar app that automatically manages audio device priorities
@@ -202,6 +210,7 @@ cask "clop"
 cask "codex"
 # FRC dashboard for viewing camera streams
 cask "jonahsnider/frc/dashshund"
+cask "jonahsnider/frc/doglog-studio"
 # Simple and modern dashboard for FRC
 cask "jonahsnider/frc/elastic", trusted: true
 # Driver station for the FIRST Robotics Competition
@@ -237,6 +246,8 @@ cask "sprites"
 cask "tailscale-app"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin@25"
+# Command-line interface for Vercel
+cask "vercel"
 # Open-source code editor
 cask "visual-studio-code"
 # All-in-One Java Troubleshooting Tool
@@ -245,5 +256,3 @@ cask "visualvm"
 cask "jonahsnider/frc/wpilib"
 # REST, GraphQL and gRPC client
 cask "yaak"
-# Command-line interface for Vercel
-cask "vercel"
