@@ -20,3 +20,4 @@ Library/Application Support/com.mitchellh.ghostty/config
 {{ end }}
 programming/sanity/CLAUDE.md
 programming/team581/CLAUDE.md
+programming/sanity/mise.toml

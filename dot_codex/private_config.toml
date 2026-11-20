@@ -34,7 +34,7 @@ extends = ":workspace"
 
 "~/programming/sanity/sanity-nix-config" = "write"
 
-"~/.sentry" = "write"
+"~/.config/sentry" = "write"
 
 "~/.cf" = "write"
 "~/Library/Preferences/cloudflare" = "write"

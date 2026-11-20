@@ -1,2 +1,0 @@
-[env]
-SENTRY_CONFIG_DIR = "{{env.HOME}}/.sentry/sanity"
