@@ -11,7 +11,11 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "hooks": {},
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
   "enabledPlugins": {
     "clangd-lsp@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
@@ -59,9 +63,17 @@
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "high"
-    }
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh -c 'rex __internal session-start --agent claude 2>/dev/null || true'",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
   }
 }
