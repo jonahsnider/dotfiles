@@ -48,8 +48,6 @@ brew "docker-buildx"
 brew "docker-compose"
 # Select default apps for documents and URL schemes on macOS
 brew "duti"
-# LLVM bytecode to JavaScript compiler
-brew "emscripten"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Codebase intelligence for TypeScript and JavaScript
