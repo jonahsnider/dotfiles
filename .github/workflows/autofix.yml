@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Fish shell
-        uses: fish-shop/install-fish-shell@b93ff71cb0566d1d461927fd0f182ae7a777a8d6 # v2
+        uses: fish-shop/install-fish-shell@98d78ff0ce31e6e9dff6c0bee5902db4a6ee8e94 # v2
         background: true
 
       - name: Checkout Git repository
