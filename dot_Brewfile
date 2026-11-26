@@ -212,7 +212,6 @@ cask "clop"
 cask "codex"
 # FRC dashboard for viewing camera streams
 cask "jonahsnider/frc/dashshund"
-cask "jonahsnider/frc/doglog-studio"
 # Simple and modern dashboard for FRC
 cask "jonahsnider/frc/elastic", trusted: true
 # Driver station for the FIRST Robotics Competition
