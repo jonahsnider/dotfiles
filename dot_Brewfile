@@ -230,6 +230,8 @@ cask "jonahsnider/frc/limelight-hardware-manager"
 cask "music-decoy"
 # The official CLI for the OpenAI API.
 cask "openai/tools/openai", trusted: true
+# AI usage tracker for Cursor, Claude Code, Codex, Copilot and more
+cask "openusage"
 # Native GUI for Apple Containers
 cask "orchard"
 # Simple yet powerful path planning tool for FRC robots
