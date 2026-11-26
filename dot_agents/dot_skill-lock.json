@@ -24,10 +24,10 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/jonahsnider/wpilog-parser.git",
       "skillPath": "packages/wpilog-parser/skills/analyze-wpilog/SKILL.md",
-      "skillFolderHash": "c5c30e3539ed6e37bf5d1c07c4472e728bfca332",
+      "skillFolderHash": "c73ff535c484d2be21dfd6dde5f0cdf05d1cb413",
       "installedAt": "2026-09-29T06:40:48.556Z",
-      "updatedAt": "2026-11-24T20:53:17.158Z",
-      "commit": "11d5c6c471cc3923df13a05cb1028c8c023a8b27"
+      "updatedAt": "2026-11-26T20:02:36.353Z",
+      "commit": "96e6c136c0ca023aba615c0d21c5903f91fecbe9"
     },
     "grilling": {
       "source": "mattpocock/skills",
