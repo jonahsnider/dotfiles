@@ -126,6 +126,8 @@ brew "oxlint"
 brew "pitchfork"
 # CLI for the Pkl programming language
 brew "pkl"
+# CLI for Playwright: record/generate code, inspect selectors, take screenshots
+brew "playwright-cli"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Search tool like grep and The Silver Searcher
