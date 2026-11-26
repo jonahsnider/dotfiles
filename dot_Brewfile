@@ -220,8 +220,6 @@ cask "foxglove"
 cask "github"
 # Homebrew's official GUI
 cask "homebrew-app"
-# Apple tool to create multi-platform icons
-cask "icon-composer"
 # Open-source keystroke visualiser
 cask "keycastr"
 # Flash and find Limelight devices
