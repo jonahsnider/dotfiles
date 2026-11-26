@@ -88,7 +88,7 @@ usePointerCursors = false
 dock-icon-preference = "app-default"
 enabled-reasoning-efforts = ["low", "medium", "high", "xhigh"]
 keepRemoteControlAwakeWhilePluggedIn = true
-conversationDetailMode = "STEPS_COMMANDS"
+conversationDetailMode = "STEPS_PROSE"
 preventSleepWhileRunning = true
 avatar-overlay-pet-visible = false
 ambient-suggestions-enabled = false
@@ -163,10 +163,11 @@ NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.1111.71704"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.1111.71704/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+BROWSER_USE_CODEX_APP_VERSION = "26.1117.41037"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/jonah.snider/.codex/plugins/cache/openai-bundled/browser/26.1117.41037/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
 SKY_CUA_SERVICE_PATH = "/Users/jonah.snider/.codex/computer-use/Codex Computer Use.app"
 CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
+NODE_REPL_LAZY_TRUSTED_WORKER = "0"
 
 [mcp_servers.openaiDeveloperDocs]
 url = "https://developers.openai.com/mcp"
@@ -201,6 +202,10 @@ url = "https://mcp.sanity.tools/mcp"
 [mcp_servers.tauri]
 command = "mcp-server-tauri"
 args = ["--help"]
+
+[mcp_servers.doglog]
+command = "/usr/local/bin/doglog"
+args = ["mcp"]
 
 [notice]
 fast_default_opt_out = true
