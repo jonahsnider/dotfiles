@@ -88,7 +88,10 @@ export default function (amp: PluginAPI) {
 	amp.on('session.start', async (_event, ctx) => {
 		const found = await findCandidates(ctx.tools)
 		if (!found) return
-		const { removed } = await removeWorktrees(found)
+		// A clean detached HEAD can still contain commits that no branch or tag references.
+		const candidates = found.candidates.filter((wt) => wt.branch !== undefined)
+		if (!candidates.length) return
+		const { removed } = await removeWorktrees({ ...found, candidates })
 		if (removed.length) await ctx.ui.notify(`Removed ${removed.length} worktree(s) from archived threads.`)
 	})
 
